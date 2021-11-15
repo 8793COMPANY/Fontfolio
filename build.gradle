@@ -13,7 +13,7 @@ buildscript {
         // in the individual module build.gradle files
 
         // 코틀린(.kt) 병행 사용 설정
-        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
+        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:1.5.31"
     }
 }
 

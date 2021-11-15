@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">Fontfolio</string>
+
+    <!-- activity_join.xml -->
+    <string name="sign_up_btn"><u>Si</u>g<u>n u</u><u>p</u></string>
+    <string name="welcome_text">Welcome to <b>Fontfolio</b></string>
 </resources>
