@@ -1,5 +1,12 @@
 <resources>
     <string name="app_name">Fontfolio</string>
+<<<<<<< HEAD
     <string name="login_message">Login with a different account</string>
     <string name="privacy_policy_text">By continuing, you agree to fontfolio</string>
+=======
+
+    <!-- activity_join.xml -->
+    <string name="sign_up_btn"><u>Si</u>g<u>n u</u><u>p</u></string>
+    <string name="welcome_text">Welcome to <b>Fontfolio</b></string>
+>>>>>>> 966383db40b51e8e7fe7662af10e523716fa1725
 </resources>
