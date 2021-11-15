@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">Fontfolio</string>
+    <string name="login_message">Login with a different account</string>
+    <string name="privacy_policy_text">By continuing, you agree to fontfolio</string>
 </resources>

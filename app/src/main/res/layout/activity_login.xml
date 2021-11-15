@@ -1,0 +1,282 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".LoginActivity">
+
+    <LinearLayout
+        android:id="@+id/actionbar"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:background="@color/white"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toTopOf="@+id/empty1"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintWidth_default="percent"
+        android:elevation="5dp"
+        app:layout_constraintVertical_chainStyle="spread"
+        app:layout_constraintVertical_weight="0.07">
+
+
+    </LinearLayout>
+
+    <View
+        android:id="@+id/empty1"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toTopOf="@+id/login_messge"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/actionbar"
+        app:layout_constraintWidth_default="percent"
+        android:elevation="5dp"
+        app:layout_constraintVertical_weight="0.01"></View>
+
+    <TextView
+        android:id="@+id/login_messge"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:text="Login with a different account"
+        android:textColor="@color/black"
+        android:gravity="center"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toTopOf="@+id/empty2"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/empty1"
+        app:layout_constraintWidth_default="percent"
+        android:elevation="5dp"
+        app:layout_constraintVertical_weight="0.02"></TextView>
+
+    <View
+        android:id="@+id/empty2"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toTopOf="@+id/kakao_login_area"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/login_messge"
+        app:layout_constraintWidth_default="percent"
+        android:elevation="5dp"
+        app:layout_constraintVertical_weight="0.01"></View>
+
+
+    <LinearLayout
+        android:id="@+id/kakao_login_area"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toTopOf="@+id/empty3"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/empty2"
+        app:layout_constraintWidth_default="percent"
+        android:elevation="5dp"
+        app:layout_constraintVertical_weight="0.06"></LinearLayout>
+
+    <View
+        android:id="@+id/empty3"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toTopOf="@+id/facebook_login_area"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/kakao_login_area"
+        app:layout_constraintWidth_default="percent"
+        android:elevation="5dp"
+        app:layout_constraintVertical_weight="0.01"></View>
+
+
+    <LinearLayout
+        android:id="@+id/facebook_login_area"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toTopOf="@+id/empty4"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/empty3"
+        app:layout_constraintWidth_default="percent"
+        android:elevation="5dp"
+        app:layout_constraintVertical_weight="0.06"></LinearLayout>
+
+    <View
+        android:id="@+id/empty4"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toTopOf="@+id/google_login_area"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/facebook_login_area"
+        app:layout_constraintWidth_default="percent"
+        android:elevation="5dp"
+        app:layout_constraintVertical_weight="0.01"></View>
+
+
+    <LinearLayout
+        android:id="@+id/google_login_area"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toTopOf="@+id/empty5"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/empty4"
+        app:layout_constraintWidth_default="percent"
+        app:layout_constraintVertical_weight="0.06"></LinearLayout>
+
+    <View
+        android:id="@+id/empty5"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toTopOf="@+id/login_type_devide_section"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/google_login_area"
+        app:layout_constraintWidth_default="percent"
+        app:layout_constraintVertical_weight="0.01"></View>
+
+
+    <TextView
+        android:id="@+id/login_type_devide_section"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:text="or"
+        android:gravity="center"
+        android:textColor="@color/black"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toTopOf="@+id/empty6"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/empty5"
+        app:layout_constraintWidth_default="percent"
+        app:layout_constraintVertical_weight="0.02"></TextView>
+
+
+    <View
+        android:id="@+id/empty6"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toTopOf="@+id/login_section"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/login_type_devide_section"
+        app:layout_constraintWidth_default="percent"
+        app:layout_constraintVertical_weight="0.05"></View>
+
+    <LinearLayout
+        android:id="@+id/login_section"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toTopOf="@+id/empty8"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/empty6"
+        app:layout_constraintWidth_default="percent"
+        app:layout_constraintVertical_weight="0.15"></LinearLayout>
+
+
+    <View
+        android:id="@+id/empty8"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toTopOf="@+id/login_btn_area"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/login_section"
+        app:layout_constraintWidth_default="percent"
+        app:layout_constraintVertical_weight="0.05"></View>
+
+
+    <LinearLayout
+        android:id="@+id/login_btn_area"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toTopOf="@+id/empty9"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/empty8"
+        app:layout_constraintWidth_default="percent"
+        app:layout_constraintVertical_weight="0.06"></LinearLayout>
+
+    <View
+        android:id="@+id/empty9"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toTopOf="@+id/privacy_policy_text"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/login_btn_area"
+        app:layout_constraintWidth_default="percent"
+        app:layout_constraintVertical_weight="0.01"></View>
+
+
+    <TextView
+        android:id="@+id/privacy_policy_text"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toTopOf="@+id/empty10"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/empty9"
+        app:layout_constraintWidth_default="percent"
+        app:layout_constraintVertical_weight="0.03"></TextView>
+
+    <View
+        android:id="@+id/empty10"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toTopOf="@+id/forgot_pw_text"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/privacy_policy_text"
+        app:layout_constraintWidth_default="percent"
+        app:layout_constraintVertical_weight="0.05"></View>
+
+
+    <TextView
+        android:id="@+id/forgot_pw_text"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:text="Forgot your password?"
+        android:gravity="center"
+        android:textStyle="bold"
+        android:textColor="@color/black"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toTopOf="@+id/empty11"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/empty10"
+        app:layout_constraintWidth_default="percent"
+        app:layout_constraintVertical_weight="0.02"></TextView>
+
+    <LinearLayout
+        android:id="@+id/empty11"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/forgot_pw_text"
+        app:layout_constraintWidth_default="percent"
+        android:elevation="5dp"
+        app:layout_constraintVertical_weight="0.14"></LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
