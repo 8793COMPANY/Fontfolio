@@ -4,9 +4,9 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".LoginActivity">
+    tools:context=".activity.LoginActivity">
 
-    <LinearLayout
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/actionbar"
         android:layout_width="0dp"
         android:layout_height="0dp"
@@ -17,12 +17,40 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintWidth_default="percent"
-        android:elevation="5dp"
         app:layout_constraintVertical_chainStyle="spread"
         app:layout_constraintVertical_weight="0.07">
 
+        <Button
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:background="@drawable/login_back_btn"
+            app:layout_constraintWidth_default="percent"
+            app:layout_constraintHeight_default="percent"
+            app:layout_constraintWidth_percent="0.065"
+            app:layout_constraintHeight_percent="0.5"
+            app:layout_constraintHorizontal_bias="0.04"
+            app:layout_constraintVertical_bias="0.5"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"></Button>
 
-    </LinearLayout>
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:text="Login"
+            android:textColor="#80000000"
+            android:gravity="center"
+            android:textSize="19sp"
+            android:textStyle="bold"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"></TextView>
+
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
     <View
         android:id="@+id/empty1"
@@ -51,7 +79,7 @@
         app:layout_constraintTop_toBottomOf="@+id/empty1"
         app:layout_constraintWidth_default="percent"
         android:elevation="5dp"
-        app:layout_constraintVertical_weight="0.02"></TextView>
+        app:layout_constraintVertical_weight="0.03"></TextView>
 
     <View
         android:id="@+id/empty2"
@@ -71,6 +99,7 @@
         android:id="@+id/kakao_login_area"
         android:layout_width="0dp"
         android:layout_height="0dp"
+        android:background="@drawable/kakao_login_btn"
         android:orientation="horizontal"
         app:layout_constraintBottom_toTopOf="@+id/empty3"
         app:layout_constraintEnd_toEndOf="parent"
@@ -78,7 +107,11 @@
         app:layout_constraintTop_toBottomOf="@+id/empty2"
         app:layout_constraintWidth_default="percent"
         android:elevation="5dp"
-        app:layout_constraintVertical_weight="0.06"></LinearLayout>
+        app:layout_constraintVertical_weight="0.06"
+        app:layout_constraintWidth_percent="0.85">
+
+
+    </LinearLayout>
 
     <View
         android:id="@+id/empty3"
@@ -98,6 +131,7 @@
         android:id="@+id/facebook_login_area"
         android:layout_width="0dp"
         android:layout_height="0dp"
+        android:background="@drawable/facebook_login_btn"
         android:orientation="horizontal"
         app:layout_constraintBottom_toTopOf="@+id/empty4"
         app:layout_constraintEnd_toEndOf="parent"
@@ -105,7 +139,8 @@
         app:layout_constraintTop_toBottomOf="@+id/empty3"
         app:layout_constraintWidth_default="percent"
         android:elevation="5dp"
-        app:layout_constraintVertical_weight="0.06"></LinearLayout>
+        app:layout_constraintVertical_weight="0.06"
+        app:layout_constraintWidth_percent="0.85"></LinearLayout>
 
     <View
         android:id="@+id/empty4"
@@ -125,13 +160,15 @@
         android:id="@+id/google_login_area"
         android:layout_width="0dp"
         android:layout_height="0dp"
+        android:background="@drawable/google_login_btn"
         android:orientation="horizontal"
         app:layout_constraintBottom_toTopOf="@+id/empty5"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/empty4"
         app:layout_constraintWidth_default="percent"
-        app:layout_constraintVertical_weight="0.06"></LinearLayout>
+        app:layout_constraintVertical_weight="0.06"
+        app:layout_constraintWidth_percent="0.85"></LinearLayout>
 
     <View
         android:id="@+id/empty5"
@@ -210,7 +247,23 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/empty8"
         app:layout_constraintWidth_default="percent"
-        app:layout_constraintVertical_weight="0.06"></LinearLayout>
+        app:layout_constraintVertical_weight="0.06"
+        android:background="@drawable/xml_rounding_btn_default"
+        android:backgroundTint="#0D000000"
+        app:layout_constraintWidth_percent="0.85">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:letterSpacing="-0.01"
+            android:lineSpacingExtra="6sp"
+            android:text="Log in"
+            android:textColor="#80000000"
+            android:textSize="17sp"
+            android:textStyle="bold" />
+
+    </LinearLayout>
 
     <View
         android:id="@+id/empty9"
@@ -229,13 +282,16 @@
         android:id="@+id/privacy_policy_text"
         android:layout_width="0dp"
         android:layout_height="0dp"
+        android:textSize="11dp"
         android:orientation="horizontal"
+        android:gravity="center"
+        android:text="@string/privacy_policy_text"
         app:layout_constraintBottom_toTopOf="@+id/empty10"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/empty9"
         app:layout_constraintWidth_default="percent"
-        app:layout_constraintVertical_weight="0.03"></TextView>
+        app:layout_constraintVertical_weight="0.042"></TextView>
 
     <View
         android:id="@+id/empty10"
@@ -264,7 +320,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/empty10"
         app:layout_constraintWidth_default="percent"
-        app:layout_constraintVertical_weight="0.02"></TextView>
+        app:layout_constraintVertical_weight="0.025"></TextView>
 
     <LinearLayout
         android:id="@+id/empty11"
