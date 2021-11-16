@@ -11,8 +11,10 @@
     <string name="pw_input_box_hint">Enter your password</string>
     
     <!--    login bottom sheet -->
-    <string name="sent_msg">Sent you password\nreset email.</string>
-
+    <string name="sent_title">Sent you password\nreset email.</string>
+    <string name="sent_email_text">We sent an email to @\nPlease check your email to reset your password</string>
+    <string name="resend_email">Resend email</string>
+    <string name="got_it">Got it</string>
 
     <!-- activity_join.xml -->
     <string name="sign_up_btn"><u>Si</u>g<u>n u</u><u>p</u></string>

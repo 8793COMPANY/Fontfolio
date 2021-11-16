@@ -43,7 +43,7 @@ public class AppLoginActivity  extends AppCompatActivity {
 
         welcome_login_text.setText(spannableString);
 
-        final InitPwBottomDialog initPwBottomDialog = new InitPwBottomDialog();
+        final InitPwBottomDialog initPwBottomDialog = new InitPwBottomDialog("boxerlady@naver.com");
 
 
 
