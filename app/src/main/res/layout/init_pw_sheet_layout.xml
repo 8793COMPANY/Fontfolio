@@ -32,7 +32,13 @@
         android:textStyle="bold"
         app:layout_constraintLeft_toLeftOf="@+id/guideline_left_text"
         app:layout_constraintTop_toTopOf="@+id/guideline_top"
+<<<<<<< HEAD
         app:layout_constraintWidth_percent="0.9" />
+=======
+        app:layout_constraintBottom_toTopOf="@+id/sent_email_content"
+        app:layout_constraintWidth_percent="0.9"/>
+
+>>>>>>> 710399f69b72910699a73997a003dcce0aca7900
 
     <TextView
         android:id="@+id/sent_email_content"
@@ -45,10 +51,14 @@
         app:layout_constraintLeft_toLeftOf="@+id/guideline_left_text"
         app:layout_constraintTop_toBottomOf="@+id/sent_email_title"
         app:layout_constraintBottom_toBottomOf="parent"
+<<<<<<< HEAD
         app:layout_constraintVertical_bias="0"
         app:layout_constraintWidth_percent="0.9"
         app:layout_constraintHeight_percent="0.09" />
 
+=======
+        app:layout_constraintWidth_percent="0.9"/>
+>>>>>>> 710399f69b72910699a73997a003dcce0aca7900
 
 
     <LinearLayout
