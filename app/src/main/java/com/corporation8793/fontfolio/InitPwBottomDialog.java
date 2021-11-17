@@ -2,7 +2,14 @@ package com.corporation8793.fontfolio;
 
 import android.app.Activity;
 import android.app.Dialog;
+import android.graphics.Color;
+import android.graphics.Typeface;
 import android.os.Bundle;
+import android.text.Spannable;
+import android.text.SpannableString;
+import android.text.style.ForegroundColorSpan;
+import android.text.style.RelativeSizeSpan;
+import android.text.style.StyleSpan;
 import android.util.DisplayMetrics;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -36,7 +43,18 @@ public class InitPwBottomDialog extends BottomSheetDialogFragment {
 
         Log.e("email",email);
 
-        sent_email_content.setText(sent_email_content.getText().toString().replace("@",email+"."));
+        String content = sent_email_content.getText().toString().replace("@",email+".");
+        SpannableString spannableString = new SpannableString(content);
+
+        int start = content.indexOf(email);
+        int end = start + email.length();
+
+        spannableString.setSpan(new ForegroundColorSpan(Color.parseColor("#000000")), start, end, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
+        spannableString.setSpan(new StyleSpan(Typeface.BOLD), start, end, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
+        spannableString.setSpan(new RelativeSizeSpan(1.1f), start, end, SpannableString.SPAN_EXCLUSIVE_EXCLUSIVE);
+
+        sent_email_content.setText(spannableString);
+
         return view;
     }
 

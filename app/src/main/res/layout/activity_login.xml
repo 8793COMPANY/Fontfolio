@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".activity.LoginActivity">
+    tools:context=".LoginActivity">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/actionbar"
@@ -12,13 +12,13 @@
         android:layout_height="0dp"
         android:background="@color/white"
         android:orientation="horizontal"
-        app:layout_constraintBottom_toTopOf="@+id/empty1"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintWidth_default="percent"
-        app:layout_constraintVertical_chainStyle="spread"
-        app:layout_constraintVertical_weight="0.07">
+        app:layout_constraintHeight_percent="0.07"
+        app:layout_constraintVertical_bias="0">
 
         <Button
             android:layout_width="0dp"
@@ -52,18 +52,7 @@
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
-    <View
-        android:id="@+id/empty1"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:orientation="horizontal"
-        app:layout_constraintBottom_toTopOf="@+id/login_messge"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/actionbar"
-        app:layout_constraintWidth_default="percent"
-        android:elevation="5dp"
-        app:layout_constraintVertical_weight="0.01"></View>
+
 
     <TextView
         android:id="@+id/login_messge"
@@ -73,26 +62,15 @@
         android:textColor="@color/black"
         android:gravity="center"
         android:orientation="horizontal"
-        app:layout_constraintBottom_toTopOf="@+id/empty2"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/empty1"
+        app:layout_constraintTop_toBottomOf="@+id/actionbar"
         app:layout_constraintWidth_default="percent"
-        android:elevation="5dp"
-        app:layout_constraintVertical_weight="0.03"></TextView>
+        app:layout_constraintHeight_percent="0.03"
+        app:layout_constraintVertical_bias="0.015"></TextView>
 
-    <View
-        android:id="@+id/empty2"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:orientation="horizontal"
-        app:layout_constraintBottom_toTopOf="@+id/kakao_login_area"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/login_messge"
-        app:layout_constraintWidth_default="percent"
-        android:elevation="5dp"
-        app:layout_constraintVertical_weight="0.01"></View>
+
 
 
     <LinearLayout
@@ -101,30 +79,19 @@
         android:layout_height="0dp"
         android:background="@drawable/kakao_login_btn"
         android:orientation="horizontal"
-        app:layout_constraintBottom_toTopOf="@+id/empty3"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/empty2"
+        app:layout_constraintTop_toBottomOf="@+id/login_messge"
         app:layout_constraintWidth_default="percent"
-        android:elevation="5dp"
-        app:layout_constraintVertical_weight="0.06"
-        app:layout_constraintWidth_percent="0.85">
+        app:layout_constraintHeight_percent="0.06"
+        app:layout_constraintWidth_percent="0.9"
+        app:layout_constraintVertical_bias="0.015">
 
 
     </LinearLayout>
 
-    <View
-        android:id="@+id/empty3"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:orientation="horizontal"
-        app:layout_constraintBottom_toTopOf="@+id/facebook_login_area"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/kakao_login_area"
-        app:layout_constraintWidth_default="percent"
-        android:elevation="5dp"
-        app:layout_constraintVertical_weight="0.01"></View>
+
 
 
     <LinearLayout
@@ -133,27 +100,15 @@
         android:layout_height="0dp"
         android:background="@drawable/facebook_login_btn"
         android:orientation="horizontal"
-        app:layout_constraintBottom_toTopOf="@+id/empty4"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/empty3"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/kakao_login_area"
+        app:layout_constraintStart_toStartOf="@+id/kakao_login_area"
+        app:layout_constraintTop_toBottomOf="@+id/kakao_login_area"
         app:layout_constraintWidth_default="percent"
-        android:elevation="5dp"
-        app:layout_constraintVertical_weight="0.06"
-        app:layout_constraintWidth_percent="0.85"></LinearLayout>
+        app:layout_constraintHeight_percent="0.06"
+        app:layout_constraintWidth_percent="0.9"
+        app:layout_constraintVertical_bias="0.012"></LinearLayout>
 
-    <View
-        android:id="@+id/empty4"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:orientation="horizontal"
-        app:layout_constraintBottom_toTopOf="@+id/google_login_area"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/facebook_login_area"
-        app:layout_constraintWidth_default="percent"
-        android:elevation="5dp"
-        app:layout_constraintVertical_weight="0.01"></View>
 
 
     <LinearLayout
@@ -162,25 +117,16 @@
         android:layout_height="0dp"
         android:background="@drawable/google_login_btn"
         android:orientation="horizontal"
-        app:layout_constraintBottom_toTopOf="@+id/empty5"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/empty4"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/facebook_login_area"
+        app:layout_constraintStart_toStartOf="@+id/facebook_login_area"
+        app:layout_constraintTop_toBottomOf="@+id/facebook_login_area"
         app:layout_constraintWidth_default="percent"
-        app:layout_constraintVertical_weight="0.06"
-        app:layout_constraintWidth_percent="0.85"></LinearLayout>
+        app:layout_constraintHeight_percent="0.06"
+        app:layout_constraintWidth_percent="0.9"
+        app:layout_constraintVertical_bias="0.012"></LinearLayout>
 
-    <View
-        android:id="@+id/empty5"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:orientation="horizontal"
-        app:layout_constraintBottom_toTopOf="@+id/login_type_devide_section"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/google_login_area"
-        app:layout_constraintWidth_default="percent"
-        app:layout_constraintVertical_weight="0.01"></View>
+
 
 
     <TextView
@@ -191,50 +137,156 @@
         android:gravity="center"
         android:textColor="@color/black"
         android:orientation="horizontal"
-        app:layout_constraintBottom_toTopOf="@+id/empty6"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/empty5"
+        app:layout_constraintTop_toBottomOf="@+id/google_login_area"
         app:layout_constraintWidth_default="percent"
-        app:layout_constraintVertical_weight="0.02"></TextView>
+        app:layout_constraintHeight_default="percent"
+        app:layout_constraintHeight_percent="0.02"
+        app:layout_constraintVertical_bias="0.015"></TextView>
 
 
-    <View
-        android:id="@+id/empty6"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:orientation="horizontal"
-        app:layout_constraintBottom_toTopOf="@+id/login_section"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/login_type_devide_section"
-        app:layout_constraintWidth_default="percent"
-        app:layout_constraintVertical_weight="0.05"></View>
 
-    <LinearLayout
+
+<!--    <LinearLayout-->
+<!--        android:id="@+id/login_section"-->
+<!--        android:layout_width="0dp"-->
+<!--        android:layout_height="0dp"-->
+<!--        android:orientation="horizontal"-->
+<!--        app:layout_constraintBottom_toBottomOf="parent"-->
+<!--        app:layout_constraintEnd_toEndOf="parent"-->
+<!--        app:layout_constraintStart_toStartOf="parent"-->
+<!--        app:layout_constraintTop_toBottomOf="@+id/login_type_devide_section"-->
+<!--        app:layout_constraintWidth_default="percent"-->
+<!--        app:layout_constraintHeight_percent="0.15"-->
+<!--        app:layout_constraintVertical_bias="0.1"></LinearLayout>-->
+
+
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/login_section"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:orientation="horizontal"
-        app:layout_constraintBottom_toTopOf="@+id/empty8"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/empty6"
+        app:layout_constraintTop_toBottomOf="@+id/login_type_devide_section"
         app:layout_constraintWidth_default="percent"
-        app:layout_constraintVertical_weight="0.15"></LinearLayout>
+        app:layout_constraintHeight_percent="0.15"
+        app:layout_constraintVertical_bias="0.1">
+
+        <TextView
+            android:id="@+id/email"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:textSize="13sp"
+            android:text="@string/email"
+            android:textColor="#333333"
+            app:layout_constraintLeft_toLeftOf="@id/guideline"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintWidth_percent="0.1"
+            app:layout_constraintHeight_percent="0.15"
+            app:layout_constraintVertical_bias="0"></TextView>
 
 
-    <View
-        android:id="@+id/empty8"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:orientation="horizontal"
-        app:layout_constraintBottom_toTopOf="@+id/login_btn_area"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/login_section"
-        app:layout_constraintWidth_default="percent"
-        app:layout_constraintVertical_weight="0.05"></View>
+        <EditText
+            android:id="@+id/email_input_box"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:background="@android:color/transparent"
+            android:textColor="#333333"
+            android:textSize="19sp"
+            android:hint="@string/please_email_input_box_hint"
+            android:autoText="false"
+            app:layout_constraintTop_toBottomOf="@+id/email"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="@+id/email"
+            app:layout_constraintWidth_percent="0.72"
+            app:layout_constraintHeight_percent="0.28"
+            app:layout_constraintVertical_bias="0"></EditText>
+
+
+
+
+        <TextView
+            android:id="@+id/pw"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:text="@string/pw"
+            android:textColor="#333333"
+            app:layout_constraintTop_toBottomOf="@+id/email_input_box"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="@+id/email_input_box"
+            app:layout_constraintWidth_percent="0.16"
+            app:layout_constraintHeight_percent="0.15"
+            app:layout_constraintVertical_bias="0.2"></TextView>
+
+
+        <EditText
+            android:id="@+id/pw_input_box"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:textSize="19sp"
+            android:background="@android:color/transparent"
+            android:textColor="#333333"
+            android:hint="@string/please_pw_input_box_hint"
+            android:autoText="false"
+            app:layout_constraintStart_toStartOf="@+id/pw"
+            app:layout_constraintTop_toBottomOf="@+id/pw"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintWidth_percent="0.72"
+            app:layout_constraintHeight_percent="0.28"
+            app:layout_constraintVertical_bias="0"></EditText>
+
+        <Button
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:background="@drawable/login_view_pw_off_btn"
+            android:textColor="#333333"
+            android:autoText="false"
+            app:layout_constraintStart_toEndOf="@+id/guideline_right"
+            app:layout_constraintTop_toBottomOf="@+id/pw"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintWidth_percent="0.09"
+            app:layout_constraintHeight_percent="0.28"
+            app:layout_constraintVertical_bias="0"></Button>
+
+
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            app:layout_constraintGuide_percent="0.06"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            android:orientation="vertical">
+
+        </androidx.constraintlayout.widget.Guideline>
+
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline_right"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            app:layout_constraintGuide_percent="0.86"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            android:orientation="vertical">
+
+        </androidx.constraintlayout.widget.Guideline>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+
+
 
 
     <LinearLayout
@@ -242,15 +294,16 @@
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:orientation="horizontal"
-        app:layout_constraintBottom_toTopOf="@+id/empty9"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/empty8"
+        app:layout_constraintTop_toBottomOf="@+id/login_section"
         app:layout_constraintWidth_default="percent"
-        app:layout_constraintVertical_weight="0.06"
         android:background="@drawable/xml_rounding_btn_default"
         android:backgroundTint="#0D000000"
-        app:layout_constraintWidth_percent="0.85">
+        app:layout_constraintWidth_percent="0.9"
+        app:layout_constraintHeight_percent="0.06"
+        app:layout_constraintVertical_bias="0.18">
 
         <TextView
             android:layout_width="match_parent"
@@ -265,17 +318,7 @@
 
     </LinearLayout>
 
-    <View
-        android:id="@+id/empty9"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:orientation="horizontal"
-        app:layout_constraintBottom_toTopOf="@+id/privacy_policy_text"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/login_btn_area"
-        app:layout_constraintWidth_default="percent"
-        app:layout_constraintVertical_weight="0.01"></View>
+
 
 
     <TextView
@@ -286,24 +329,14 @@
         android:orientation="horizontal"
         android:gravity="center"
         android:text="@string/privacy_policy_text"
-        app:layout_constraintBottom_toTopOf="@+id/empty10"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/empty9"
+        app:layout_constraintTop_toBottomOf="@+id/login_btn_area"
         app:layout_constraintWidth_default="percent"
-        app:layout_constraintVertical_weight="0.042"></TextView>
+        app:layout_constraintHeight_percent="0.042"
+        app:layout_constraintVertical_bias="0.014"></TextView>
 
-    <View
-        android:id="@+id/empty10"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:orientation="horizontal"
-        app:layout_constraintBottom_toTopOf="@+id/forgot_pw_text"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/privacy_policy_text"
-        app:layout_constraintWidth_default="percent"
-        app:layout_constraintVertical_weight="0.05"></View>
 
 
     <TextView
@@ -315,12 +348,13 @@
         android:textStyle="bold"
         android:textColor="@color/black"
         android:orientation="horizontal"
-        app:layout_constraintBottom_toTopOf="@+id/empty11"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/empty10"
+        app:layout_constraintTop_toBottomOf="@+id/privacy_policy_text"
         app:layout_constraintWidth_default="percent"
-        app:layout_constraintVertical_weight="0.025"></TextView>
+        app:layout_constraintHeight_percent="0.025"
+        app:layout_constraintVertical_bias="0.1"></TextView>
 
     <LinearLayout
         android:id="@+id/empty11"
