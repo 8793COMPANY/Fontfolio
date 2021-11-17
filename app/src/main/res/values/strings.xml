@@ -12,7 +12,7 @@
     
     <!--    login bottom sheet -->
     <string name="sent_title">Sent you password\nreset email.</string>
-    <string name="sent_email_text">We sent an email to @\nPlease check your email to reset your password</string>
+    <string name="sent_email_text">We sent an email to @\nPlease check your email to reset your password.</string>
     <string name="resend_email">Resend email</string>
     <string name="got_it">Got it</string>
 
