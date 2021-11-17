@@ -16,6 +16,8 @@ class Join : AppCompatActivity() {
         val sign_up_btn : LinearLayout = findViewById(R.id.sign_up_btn)
         val log_in_btn : LinearLayout = findViewById(R.id.log_in_btn)
 
+        fontfolio.xlsToRoom()
+
         sign_up_btn.setOnClickListener {
             fontfolio.moveToActivity(this, SignUp::class.java, true)
         }
