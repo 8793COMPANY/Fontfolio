@@ -1,0 +1,290 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".AppLoginActivity">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/actionbar"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:background="@color/white"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toTopOf="@+id/empty1"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintWidth_default="percent"
+        app:layout_constraintVertical_chainStyle="spread"
+        app:layout_constraintVertical_weight="0.07">
+
+        <Button
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:background="@drawable/login_back_btn"
+            app:layout_constraintWidth_default="percent"
+            app:layout_constraintHeight_default="percent"
+            app:layout_constraintWidth_percent="0.065"
+            app:layout_constraintHeight_percent="0.5"
+            app:layout_constraintHorizontal_bias="0.065"
+            app:layout_constraintVertical_bias="0.5"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"></Button>
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:text="Login"
+            android:textColor="#80000000"
+            android:gravity="center"
+            android:textSize="19sp"
+            android:textStyle="bold"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"></TextView>
+
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+    <View
+        android:id="@+id/empty1"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/actionbar"
+        app:layout_constraintBottom_toTopOf="@+id/welcome_login_text"
+        app:layout_constraintVertical_weight="0.015"
+        ></View>
+
+
+    <TextView
+        android:id="@+id/welcome_login_text"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:text="@string/login_welcom_text"
+        android:textColor="@color/black"
+        android:textStyle="bold"
+        android:textSize="18sp"
+        android:letterSpacing="-0.01"
+        android:lineSpacingExtra="-1sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/empty1"
+        app:layout_constraintBottom_toTopOf="@+id/empty2"
+        app:layout_constraintVertical_weight="0.07"
+        app:layout_constraintWidth_percent="0.85"
+        app:layout_constraintWidth_default="percent"></TextView>
+
+
+    <View
+        android:id="@+id/empty2"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/welcome_login_text"
+        app:layout_constraintBottom_toTopOf="@+id/login_section"
+        app:layout_constraintVertical_weight="0.02"
+        ></View>
+
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/login_section"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/empty2"
+        app:layout_constraintBottom_toTopOf="@+id/empty3"
+        app:layout_constraintVertical_weight="0.24">
+
+        <TextView
+            android:id="@+id/email"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:text="@string/email"
+            android:textColor="#333333"
+            app:layout_constraintLeft_toLeftOf="@id/guideline"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintWidth_percent="0.1"
+            app:layout_constraintHeight_percent="0.1"
+            app:layout_constraintVertical_bias="0"></TextView>
+
+
+        <EditText
+            android:id="@+id/email_input_box"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:background="@android:color/transparent"
+            android:textColor="#333333"
+            android:hint="@string/email_input_box_hint"
+            app:layout_constraintLeft_toLeftOf="@id/guideline"
+            app:layout_constraintTop_toBottomOf="@+id/email"
+            app:layout_constraintBottom_toTopOf="@+id/email_pw_space"
+            app:layout_constraintWidth_percent="0.72"
+            app:layout_constraintHeight_percent="0.17"
+            app:layout_constraintVertical_bias="0"></EditText>
+
+        <View
+            android:id="@+id/email_pw_space"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            app:layout_constraintLeft_toLeftOf="@id/guideline"
+            app:layout_constraintTop_toBottomOf="@+id/email_input_box"
+            app:layout_constraintBottom_toTopOf="@+id/pw"
+            app:layout_constraintWidth_percent="0.72"
+            app:layout_constraintHeight_percent="0.22"></View>
+
+
+        <TextView
+            android:id="@+id/pw"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:text="@string/pw"
+            android:textColor="#333333"
+            app:layout_constraintLeft_toLeftOf="@id/guideline"
+            app:layout_constraintTop_toBottomOf="@+id/email_pw_space"
+            app:layout_constraintBottom_toTopOf="@+id/pw_input_box"
+            app:layout_constraintWidth_percent="0.16"
+            app:layout_constraintHeight_percent="0.1"
+            app:layout_constraintVertical_bias="0"></TextView>
+
+
+        <EditText
+            android:id="@+id/pw_input_box"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:background="@android:color/transparent"
+            android:textColor="#333333"
+            android:hint="@string/pw_input_box_hint"
+            app:layout_constraintLeft_toLeftOf="@id/guideline"
+            app:layout_constraintTop_toBottomOf="@+id/pw"
+            app:layout_constraintBottom_toTopOf="@+id/login_section_bottom"
+            app:layout_constraintWidth_percent="0.72"
+            app:layout_constraintHeight_percent="0.17"
+            app:layout_constraintVertical_bias="0"></EditText>
+
+
+        <View
+            android:id="@+id/login_section_bottom"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            app:layout_constraintLeft_toLeftOf="@id/guideline"
+            app:layout_constraintTop_toBottomOf="@+id/pw_input_box"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintWidth_percent="0.72"
+            app:layout_constraintHeight_percent="0.24"></View>
+
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            app:layout_constraintGuide_percent="0.075"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            android:orientation="vertical">
+
+        </androidx.constraintlayout.widget.Guideline>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <View
+        android:id="@+id/empty3"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/login_section"
+        app:layout_constraintBottom_toTopOf="@+id/login_btn_area"
+        app:layout_constraintVertical_weight="0.07"
+        ></View>
+
+
+
+    <LinearLayout
+        android:id="@+id/login_btn_area"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toTopOf="@+id/empty4"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/empty3"
+        app:layout_constraintWidth_default="percent"
+        app:layout_constraintVertical_weight="0.06"
+        android:background="@drawable/xml_rounding_btn_default"
+        android:backgroundTint="#0D000000"
+        app:layout_constraintWidth_percent="0.85">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:letterSpacing="-0.01"
+            android:lineSpacingExtra="6sp"
+            android:text="Log in"
+            android:textColor="#80000000"
+            android:textSize="17sp"
+            android:textStyle="bold" />
+
+    </LinearLayout>
+
+
+
+
+
+
+    <View
+        android:id="@+id/empty4"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/login_btn_area"
+        app:layout_constraintBottom_toTopOf="@+id/privacy_policy_text"
+        app:layout_constraintVertical_weight="0.015"
+        ></View>
+
+
+    <TextView
+        android:id="@+id/privacy_policy_text"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:textSize="11dp"
+        android:orientation="horizontal"
+        android:gravity="center"
+        android:text="@string/privacy_policy_text"
+        app:layout_constraintBottom_toTopOf="@+id/empty5"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/empty4"
+        app:layout_constraintWidth_default="percent"
+        app:layout_constraintVertical_weight="0.042"></TextView>
+
+
+    <View
+        android:id="@+id/empty5"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/privacy_policy_text"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintVertical_weight="0.37"
+        ></View>
+
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

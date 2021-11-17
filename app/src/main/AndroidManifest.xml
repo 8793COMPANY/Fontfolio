@@ -3,25 +3,29 @@
     package="com.corporation8793.fontfolio">
 
     <application
+        android:name=".common.Fontfolio"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:name=".common.Fontfolio"
         android:theme="@style/Theme.Fontfolio">
-        <activity android:name=".LoginActivity"></activity>
+        <activity android:name=".AppLoginActivity"
+            android:windowSoftInputMode="adjustNothing">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".activity.LoginActivity"></activity>
         <activity
             android:name=".activity.SignUp"
             android:exported="false" />
         <activity
             android:name=".activity.Join"
             android:exported="true">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
     </application>
 
