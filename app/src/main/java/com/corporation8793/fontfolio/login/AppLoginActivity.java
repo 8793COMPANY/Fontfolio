@@ -1,4 +1,4 @@
-package com.corporation8793.fontfolio;
+package com.corporation8793.fontfolio.login;
 
 import android.graphics.Color;
 import android.graphics.Typeface;
@@ -8,15 +8,16 @@ import android.text.SpannableString;
 import android.text.style.ForegroundColorSpan;
 import android.text.style.RelativeSizeSpan;
 import android.text.style.StyleSpan;
-import android.view.LayoutInflater;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
-import android.widget.Button;
 import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
+
+import com.corporation8793.fontfolio.R;
+import com.corporation8793.fontfolio.dialog.InitPwBottomDialog;
 
 public class AppLoginActivity  extends AppCompatActivity {
 

@@ -1,4 +1,4 @@
-package com.corporation8793.fontfolio;
+package com.corporation8793.fontfolio.dialog;
 
 import android.app.Activity;
 import android.app.Dialog;
@@ -21,6 +21,7 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
+import com.corporation8793.fontfolio.R;
 import com.google.android.material.bottomsheet.BottomSheetBehavior;
 import com.google.android.material.bottomsheet.BottomSheetDialog;
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment;

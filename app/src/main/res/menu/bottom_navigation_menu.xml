@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/page_home"
+        android:enabled="true"
+        android:icon="@drawable/bottom_navigation_home_selector" />
+
+    <item
+        android:id="@+id/page_search"
+        android:enabled="true"
+        android:icon="@drawable/bottom_navigation_search_selector" />
+
+    <item
+        android:id="@+id/page_camera"
+        android:enabled="true"
+        android:icon="@drawable/bottom_navigation_camera_selector" />
+
+
+    <item
+        android:id="@+id/page_qna"
+        android:enabled="true"
+        android:icon="@drawable/bottom_navigation_qna_selector" />
+
+    <item
+        android:id="@+id/page_info"
+        android:enabled="true"
+        android:icon="@drawable/bottom_navigation_info_selector" />
+
+</menu>

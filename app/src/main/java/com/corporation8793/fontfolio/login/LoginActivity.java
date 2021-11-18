@@ -1,4 +1,4 @@
-package com.corporation8793.fontfolio;
+package com.corporation8793.fontfolio.login;
 
 import androidx.appcompat.app.AppCompatActivity;
 
