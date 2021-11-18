@@ -20,44 +20,47 @@
 
     </androidx.constraintlayout.widget.Guideline>
 
+
     <TextView
         android:id="@+id/sent_email_title"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:textSize="32sp"
-        android:textStyle="bold"
+        android:gravity="center_vertical"
         android:text="@string/sent_title"
         android:textColor="@color/black"
-        app:layout_constraintLeft_toLeftOf="@+id/guideline_left"
+        android:textSize="32sp"
+        android:textStyle="bold"
+        app:layout_constraintLeft_toLeftOf="@+id/guideline_left_text"
         app:layout_constraintTop_toTopOf="@+id/guideline_top"
-        app:layout_constraintBottom_toTopOf="@+id/sent_email_content"
-        app:layout_constraintWidth_percent="0.9"/>
-
+        app:layout_constraintWidth_percent="0.9" />
 
     <TextView
         android:id="@+id/sent_email_content"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:textSize="14sp"
-        android:textStyle="bold"
         android:text="@string/sent_email_text"
-        android:textColor="@color/black"
-        app:layout_constraintLeft_toLeftOf="@+id/guideline_left"
+        android:textColor="#CC000000"
+        android:gravity="center_vertical"
+        app:layout_constraintLeft_toLeftOf="@+id/guideline_left_text"
         app:layout_constraintTop_toBottomOf="@+id/sent_email_title"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintWidth_percent="0.9"/>
+        app:layout_constraintVertical_bias="0"
+        app:layout_constraintWidth_percent="0.9"
+        app:layout_constraintHeight_percent="0.09" />
 
 
     <LinearLayout
-        android:id="@+id/log_in_btn"
+        android:id="@+id/got_it_btn"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:background="@drawable/xml_rounding_btn_default"
         android:backgroundTint="#0D000000"
-        app:layout_constraintBottom_toTopOf="@+id/sign_up_btn"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/sent_email_content"
         app:layout_constraintLeft_toLeftOf="@+id/guideline_left"
         app:layout_constraintHeight_default="percent"
-        app:layout_constraintHeight_percent="0.06"
+        app:layout_constraintHeight_percent="0.1"
         app:layout_constraintVertical_bias="0.1"
         app:layout_constraintWidth_default="percent"
         app:layout_constraintWidth_percent="0.9">
@@ -75,17 +78,18 @@
     </LinearLayout>
 
     <LinearLayout
-        android:id="@+id/sign_up_btn"
+        android:id="@+id/resend_email_btn"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:background="@drawable/xml_rounding_btn_default"
         android:backgroundTint="#dd0000"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintHeight_default="percent"
-        app:layout_constraintHeight_percent="0.06"
-        app:layout_constraintLeft_toLeftOf="@+id/guideline_left"
-        app:layout_constraintTop_toBottomOf="@+id/take_to_experience"
-        app:layout_constraintVertical_bias="0.08"
+        app:layout_constraintHeight_percent="0.1"
+        app:layout_constraintStart_toStartOf="@+id/got_it_btn"
+        app:layout_constraintEnd_toEndOf="@+id/got_it_btn"
+        app:layout_constraintTop_toBottomOf="@+id/got_it_btn"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintVertical_bias="0.05"
         app:layout_constraintWidth_default="percent"
         app:layout_constraintWidth_percent="0.9">
 
@@ -93,10 +97,10 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:gravity="center"
-            android:text="@string/resend_email"
-            android:textColor="#FFF"
             android:letterSpacing="-0.01"
             android:lineSpacingExtra="6sp"
+            android:text="@string/resend_email"
+            android:textColor="#FFF"
             android:textSize="16sp"
             android:textStyle="bold" />
     </LinearLayout>
@@ -107,6 +111,19 @@
         android:layout_width="0dp"
         android:layout_height="0dp"
         app:layout_constraintGuide_percent="0.05"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:orientation="vertical">
+
+    </androidx.constraintlayout.widget.Guideline>
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline_left_text"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintGuide_percent="0.07"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"

@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".AppLoginActivity">
+    tools:context=".login.AppLoginActivity">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/actionbar"
@@ -20,6 +20,19 @@
         app:layout_constraintVertical_chainStyle="spread"
         app:layout_constraintVertical_weight="0.07">
 
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/back_btn_guideline"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            app:layout_constraintGuide_percent="0.05"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            android:orientation="vertical">
+
+        </androidx.constraintlayout.widget.Guideline>
+
         <Button
             android:layout_width="0dp"
             android:layout_height="0dp"
@@ -28,12 +41,10 @@
             app:layout_constraintHeight_default="percent"
             app:layout_constraintWidth_percent="0.065"
             app:layout_constraintHeight_percent="0.5"
-            app:layout_constraintHorizontal_bias="0.065"
             app:layout_constraintVertical_bias="0.5"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toStartOf="parent"></Button>
+            app:layout_constraintLeft_toRightOf="@+id/back_btn_guideline"></Button>
 
         <TextView
             android:layout_width="0dp"
@@ -124,25 +135,45 @@
             android:id="@+id/email_input_box"
             android:layout_width="0dp"
             android:layout_height="0dp"
+            android:autoText="false"
             android:background="@android:color/transparent"
-            android:textColor="#333333"
+            android:gravity="center_vertical"
             android:hint="@string/email_input_box_hint"
+            android:textColor="#000000"
+            android:letterSpacing="-0.01"
+            android:lineSpacingExtra="7sp"
+            android:textColorHint="#33000000"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintHeight_percent="0.17"
             app:layout_constraintLeft_toLeftOf="@id/guideline"
             app:layout_constraintTop_toBottomOf="@+id/email"
-            app:layout_constraintBottom_toTopOf="@+id/email_pw_space"
-            app:layout_constraintWidth_percent="0.72"
-            app:layout_constraintHeight_percent="0.17"
-            app:layout_constraintVertical_bias="0"></EditText>
+            app:layout_constraintVertical_bias="0"
+            app:layout_constraintWidth_percent="0.72"></EditText>
 
-        <View
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/email_cancel_btn"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:background="@drawable/login_close_btn"
+            app:layout_constraintStart_toEndOf="@+id/guideline_right"
+            app:layout_constraintTop_toBottomOf="@+id/email"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintWidth_percent="0.09"
+            app:layout_constraintHeight_percent="0.17"
+            app:layout_constraintVertical_bias="0"></androidx.appcompat.widget.AppCompatButton>
+
+        <ImageView
             android:id="@+id/email_pw_space"
             android:layout_width="0dp"
             android:layout_height="0dp"
+            android:background="@drawable/login_error1"
             app:layout_constraintLeft_toLeftOf="@id/guideline"
             app:layout_constraintTop_toBottomOf="@+id/email_input_box"
-            app:layout_constraintBottom_toTopOf="@+id/pw"
-            app:layout_constraintWidth_percent="0.72"
-            app:layout_constraintHeight_percent="0.22"></View>
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintWidth_percent="0.9"
+            app:layout_constraintHeight_percent="0.17"
+            app:layout_constraintVertical_bias="0"
+            ></ImageView>
 
 
         <TextView
@@ -153,10 +184,10 @@
             android:textColor="#333333"
             app:layout_constraintLeft_toLeftOf="@id/guideline"
             app:layout_constraintTop_toBottomOf="@+id/email_pw_space"
-            app:layout_constraintBottom_toTopOf="@+id/pw_input_box"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintWidth_percent="0.16"
             app:layout_constraintHeight_percent="0.1"
-            app:layout_constraintVertical_bias="0"></TextView>
+            app:layout_constraintVertical_bias="0.07"></TextView>
 
 
         <EditText
@@ -164,8 +195,13 @@
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:background="@android:color/transparent"
-            android:textColor="#333333"
+            android:textColor="#000000"
+            android:textColorHint="#33000000"
             android:hint="@string/pw_input_box_hint"
+            android:gravity="center_vertical"
+            android:autoText="false"
+            android:letterSpacing="-0.01"
+            android:lineSpacingExtra="7sp"
             app:layout_constraintLeft_toLeftOf="@id/guideline"
             app:layout_constraintTop_toBottomOf="@+id/pw"
             app:layout_constraintBottom_toTopOf="@+id/login_section_bottom"
@@ -178,22 +214,50 @@
             android:id="@+id/login_section_bottom"
             android:layout_width="0dp"
             android:layout_height="0dp"
+            android:background="@drawable/login_error4"
             app:layout_constraintLeft_toLeftOf="@id/guideline"
             app:layout_constraintTop_toBottomOf="@+id/pw_input_box"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintWidth_percent="0.72"
-            app:layout_constraintHeight_percent="0.24"></View>
+            app:layout_constraintWidth_percent="0.71"
+            app:layout_constraintHeight_percent="0.27"></View>
+
+        <Button
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:background="@drawable/login_view_pw_off_btn"
+            android:textColor="#333333"
+            android:autoText="false"
+            app:layout_constraintStart_toEndOf="@+id/guideline_right"
+            app:layout_constraintTop_toBottomOf="@+id/pw"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintWidth_percent="0.09"
+            app:layout_constraintHeight_percent="0.17"
+            app:layout_constraintVertical_bias="0"></Button>
 
 
         <androidx.constraintlayout.widget.Guideline
             android:id="@+id/guideline"
             android:layout_width="0dp"
             android:layout_height="0dp"
-            app:layout_constraintGuide_percent="0.075"
+            app:layout_constraintGuide_percent="0.06"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintBottom_toBottomOf="parent"
+            android:orientation="vertical">
+
+        </androidx.constraintlayout.widget.Guideline>
+
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline_right"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            app:layout_constraintGuide_percent="0.86"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
             android:orientation="vertical">
 
         </androidx.constraintlayout.widget.Guideline>

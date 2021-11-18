@@ -1,20 +1,27 @@
 <resources>
     <string name="app_name">Fontfolio</string>
 
-    <!--    login activity -->
+    <!-- login activity -->
     <string name="login_message">Login with a different account</string>
     <string name="privacy_policy_text">By continuing, you agree to fontfolio\'s <b>Terms of Service</b> and\n acknowleage you\'ve read our <b>Privacy Policy</b></string>
     <string name="login_welcom_text"><b>Welcome :)</b>\nEnter your E-mail and password.</string>
     <string name="email">E-mail</string>
+    <string name="please_email_input_box_hint">Please enter your email</string>
     <string name="email_input_box_hint">Enter your email</string>
     <string name="pw">Password</string>
+    <string name="please_pw_input_box_hint">Please enter your password</string>
     <string name="pw_input_box_hint">Enter your password</string>
-    
-    <!--    login bottom sheet -->
+
+    <!-- login bottom sheet -->
     <string name="sent_title">Sent you password\nreset email.</string>
-    <string name="sent_email_text">We sent an email to @\nPlease check your email to reset your password</string>
+    <string name="sent_email_text">We sent an email to @\nPlease check your email to reset your password.</string>
     <string name="resend_email">Resend email</string>
     <string name="got_it">Got it</string>
+
+
+    <!-- loading -->
+    <string name="loading_title">Fontfolio All Set!</string>
+    <string name="loading_content">Hold tight while we customize\nyour home feed...</string>
 
     <!-- activity_join.xml -->
     <string name="sign_up_btn"><u>Si</u>g<u>n u</u><u>p</u></string>
