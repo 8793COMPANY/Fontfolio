@@ -3,11 +3,15 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/DONG/Documents/AndroidStudioProjects/JavaProject/Fontfolio/app/src/main/res/drawable-v24/xml_rounding_btn_no_edge.xml" value="0.225" />
         <entry key="..\:/DONG/Documents/AndroidStudioProjects/JavaProject/Fontfolio/app/src/main/res/drawable-xml/rounding_btn_default.xml" value="0.35625" />
+        <entry key="..\:/DONG/Documents/AndroidStudioProjects/JavaProject/Fontfolio/app/src/main/res/drawable/xml_rounding_btn_default.xml" value="0.225" />
         <entry key="..\:/DONG/Documents/AndroidStudioProjects/JavaProject/Fontfolio/app/src/main/res/drawable/xml_rounding_btn_edge.xml" value="0.35625" />
+        <entry key="..\:/DONG/Documents/AndroidStudioProjects/JavaProject/Fontfolio/app/src/main/res/layout/activity_app_login.xml" value="0.1830601092896175" />
         <entry key="..\:/DONG/Documents/AndroidStudioProjects/JavaProject/Fontfolio/app/src/main/res/layout/activity_join.xml" value="0.2" />
+        <entry key="..\:/DONG/Documents/AndroidStudioProjects/JavaProject/Fontfolio/app/src/main/res/layout/activity_login.xml" value="0.41334569045412417" />
         <entry key="..\:/DONG/Documents/AndroidStudioProjects/JavaProject/Fontfolio/app/src/main/res/layout/activity_main.xml" value="0.16271442986881937" />
-        <entry key="..\:/DONG/Documents/AndroidStudioProjects/JavaProject/Fontfolio/app/src/main/res/layout/activity_sign_up.xml" value="0.1039651837524178" />
+        <entry key="..\:/DONG/Documents/AndroidStudioProjects/JavaProject/Fontfolio/app/src/main/res/layout/activity_sign_up.xml" value="0.25" />
         <entry key="..\:/DONG/Documents/AndroidStudioProjects/JavaProject/Fontfolio/app/src/main/res/layout/init_pw_sheet_layout.xml" value="0.11315789473684211" />
       </map>
     </option>
