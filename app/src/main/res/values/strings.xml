@@ -18,10 +18,19 @@
     <string name="resend_email">Resend email</string>
     <string name="got_it">Got it</string>
 
-
     <!-- loading -->
     <string name="loading_title">Fontfolio All Set!</string>
     <string name="loading_content">Hold tight while we customize\nyour home feed...</string>
+
+    <!-- main -->
+    <string name="sort_by">Sort by</string>
+    <string name="sort_by_recommended">Recommended order</string>
+    <string name="sort_by_popularity">View by Popularity</string>
+    <string name="sort_by_random">View by Random</string>
+    <string name="organize_profile">Organize profile</string>
+    <string name="reorder_boards">Reorder Boards</string>
+    <string name="reorder_boards_content">Drag and drop to reorder boards. it will save as your custom sort by setting</string>
+    <string name="close">close</string>
 
     <!-- activity_join.xml -->
     <string name="sign_up_btn"><u>Si</u>g<u>n u</u><u>p</u></string>

@@ -10,7 +10,6 @@ import com.google.android.material.bottomnavigation.BottomNavigationView
 
 
 class MainActivity : AppCompatActivity() , BottomNavigationView.OnNavigationItemSelectedListener{
-    lateinit var menu_view : LinearLayout;
     lateinit var bottomNavigationView:BottomNavigationView
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -20,14 +19,14 @@ class MainActivity : AppCompatActivity() , BottomNavigationView.OnNavigationItem
 
         bottomNavigationView.setOnNavigationItemSelectedListener(this)
 
-        supportFragmentManager.beginTransaction().add(R.id.menu_view, HomeFragment()).commit()
+        supportFragmentManager.beginTransaction().add(R.id.menu_view, HomeFragment(this)).commit()
     }
 
     override fun onNavigationItemSelected(item: MenuItem): Boolean {
 
         when(item.itemId) {
             R.id.page_home -> {
-                supportFragmentManager.beginTransaction().replace(R.id.menu_view , HomeFragment()).commitAllowingStateLoss()
+                supportFragmentManager.beginTransaction().replace(R.id.menu_view , HomeFragment(this)).commitAllowingStateLoss()
                 return true
             }
             R.id.page_search -> {
