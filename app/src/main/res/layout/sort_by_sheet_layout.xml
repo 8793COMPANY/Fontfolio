@@ -48,8 +48,8 @@
         app:layout_constraintTop_toBottomOf="@+id/sent_email_title"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintVertical_bias="0.03"
-        app:layout_constraintWidth_percent="0.9"
-        app:layout_constraintHeight_percent="0.05" />
+        app:layout_constraintWidth_percent="0.93"
+        app:layout_constraintHeight_percent="0.06" />
 
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/recommeded_check"
@@ -59,7 +59,7 @@
         app:layout_constraintLeft_toLeftOf="@+id/guideline_check_btn"
         app:layout_constraintTop_toBottomOf="@+id/sent_email_title"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintVertical_bias="0.03"
+        app:layout_constraintVertical_bias="0.035"
         app:layout_constraintWidth_percent="0.06"
         app:layout_constraintHeight_percent="0.04"></androidx.appcompat.widget.AppCompatButton>
 
@@ -76,18 +76,19 @@
         app:layout_constraintTop_toBottomOf="@+id/sort_by_recommended"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintVertical_bias="0.03"
-        app:layout_constraintWidth_percent="0.9"
-        app:layout_constraintHeight_percent="0.05" />
+        app:layout_constraintWidth_percent="0.93"
+        app:layout_constraintHeight_percent="0.06" />
 
 
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/random_check"
+        android:background="@drawable/home_main_bts_list_item_check"
         android:layout_width="0dp"
         android:layout_height="0dp"
         app:layout_constraintLeft_toLeftOf="@+id/guideline_check_btn"
         app:layout_constraintTop_toBottomOf="@+id/sort_by_recommended"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintVertical_bias="0.03"
+        app:layout_constraintVertical_bias="0.035"
         app:layout_constraintWidth_percent="0.06"
         app:layout_constraintHeight_percent="0.04"></androidx.appcompat.widget.AppCompatButton>
 
@@ -104,18 +105,19 @@
         app:layout_constraintTop_toBottomOf="@+id/sort_by_random"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintVertical_bias="0.03"
-        app:layout_constraintWidth_percent="0.9"
-        app:layout_constraintHeight_percent="0.05" />
+        app:layout_constraintWidth_percent="0.93"
+        app:layout_constraintHeight_percent="0.06" />
 
 
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/popularity_check"
+        android:background="@drawable/home_main_bts_list_item_check"
         android:layout_width="0dp"
         android:layout_height="0dp"
         app:layout_constraintLeft_toLeftOf="@+id/guideline_check_btn"
         app:layout_constraintTop_toBottomOf="@+id/sort_by_random"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintVertical_bias="0.03"
+        app:layout_constraintVertical_bias="0.035"
         app:layout_constraintWidth_percent="0.06"
         app:layout_constraintHeight_percent="0.04"></androidx.appcompat.widget.AppCompatButton>
 

@@ -11,27 +11,29 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Fontfolio">
         <activity android:name=".MainActivity">
+
         </activity>
 
         <activity
             android:name=".login.AppLoginActivity"
-            android:windowSoftInputMode="adjustNothing"></activity>
+            android:windowSoftInputMode="adjustNothing">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+
+        </activity>
         <activity android:name=".login.LoginActivity"></activity>
         <activity android:name=".LoadingActivity">
 
         </activity>
         <activity
             android:name=".activity.SignUp"
-            android:exported="true"></activity>
+            android:exported="false" />
         <activity
             android:name=".activity.Join"
-            android:exported="true">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
+            android:exported="true"></activity>
     </application>
 
 </manifest>

@@ -30,6 +30,8 @@ import com.google.android.material.bottomsheet.BottomSheetDialogFragment;
 
 public class SortByDialog extends BottomSheetDialogFragment {
     LinearLayout close_btn;
+    TextView sort_by_recommended,sort_by_random,sort_by_popularity;
+    Button recommended_check,random_check,popularity_check;
     public SortByDialog(){
 
     }
@@ -41,12 +43,47 @@ public class SortByDialog extends BottomSheetDialogFragment {
         View view = inflater.inflate(R.layout.sort_by_sheet_layout,container,false);
         close_btn = view.findViewById(R.id.close_btn);
 
+        sort_by_recommended = view.findViewById(R.id.sort_by_recommended);
+        sort_by_random = view.findViewById(R.id.sort_by_random);
+        sort_by_popularity = view.findViewById(R.id.sort_by_popularity);
+
+        recommended_check = view.findViewById(R.id.recommeded_check);
+        random_check = view.findViewById(R.id.random_check);
+        popularity_check = view.findViewById(R.id.popularity_check);
+
         close_btn.setOnClickListener(v->{
             Log.e("clici","!");
+            dismiss();
+        });
+
+        check_init();
+        recommended_check.setVisibility(View.VISIBLE);
+
+        sort_by_recommended.setOnClickListener(v->{
+            check_init();
+            recommended_check.setVisibility(View.VISIBLE);
+        });
+
+        sort_by_random.setOnClickListener(v->{
+            check_init();
+            random_check.setVisibility(View.VISIBLE);
+        });
+
+        sort_by_popularity.setOnClickListener(v->{
+            check_init();
+            popularity_check.setVisibility(View.VISIBLE);
         });
 
 
+
+
         return view;
+    }
+
+    public void check_init(){
+        recommended_check.setVisibility(View.INVISIBLE);
+        random_check.setVisibility(View.INVISIBLE);
+        popularity_check.setVisibility(View.INVISIBLE);
     }
 
 
