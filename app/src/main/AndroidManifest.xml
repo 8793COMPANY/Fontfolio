@@ -10,10 +10,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Fontfolio">
-        <activity android:name=".MainActivity">
-
-        </activity>
-
+        <activity android:name=".CreateBoardActivity"></activity>
+        <activity android:name=".SaveBoardActivity" />
+        <activity android:name=".MainActivity" />
         <activity
             android:name=".login.AppLoginActivity"
             android:windowSoftInputMode="adjustNothing">
@@ -22,18 +21,15 @@
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-
         </activity>
-        <activity android:name=".login.LoginActivity"></activity>
-        <activity android:name=".LoadingActivity">
-
-        </activity>
+        <activity android:name=".login.LoginActivity" />
+        <activity android:name=".LoadingActivity" />
         <activity
             android:name=".activity.SignUp"
             android:exported="false" />
         <activity
             android:name=".activity.Join"
-            android:exported="true"></activity>
+            android:exported="true" />
     </application>
 
 </manifest>

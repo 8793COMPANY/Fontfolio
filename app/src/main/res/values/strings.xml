@@ -32,6 +32,24 @@
     <string name="reorder_boards_content">Drag and drop to reorder boards. it will save as your custom sort by setting</string>
     <string name="close">close</string>
 
+
+    <!-- save board -->
+    <string name="save_to_board">Save to board</string>
+    <string name="your_board">Your board</string>
+
+
+    <!--  create board  -->
+    <string name="create_board">Create board</string>
+
+    <string name="font_name">Font name</string>
+    <string name="board_name">Board name</string>
+    <string name="board_image">Board image</string>
+    
+    <string name="organize_privacy">Organize Privacy</string>
+    <string name="board_secret_check">Make this board secret</string>
+    <string name="board_secret_check_content">Only you will see board.\nUnlock to share your board with others.</string>
+
+
     <!-- activity_join.xml -->
     <string name="sign_up_btn"><u>Si</u>g<u>n u</u><u>p</u></string>
     <string name="welcome_text">Welcome to <b>Fontfolio</b></string>
