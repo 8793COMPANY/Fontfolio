@@ -6,19 +6,21 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AbsListView;
 import android.widget.BaseAdapter;
 import android.widget.GridView;
 import android.widget.ImageView;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.constraintlayout.widget.ConstraintLayout;
 
 import java.lang.reflect.Field;
 import java.util.ArrayList;
 
 public class SelectFontStyleActivity extends AppCompatActivity {
 
-    ArrayList font_style_list = new ArrayList();
+    ArrayList<String> font_style_list = new ArrayList<String>();
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -32,9 +34,9 @@ public class SelectFontStyleActivity extends AppCompatActivity {
                 getApplicationContext(),
                 R.layout.font_style_item,       // GridView 항목의 레이아웃 row.xml
                 font_style_list);    // 데이터
-//
-//        GridView gv = (GridView)findViewById(R.id.font_style_list);
-//        gv.setAdapter(adapter);
+
+        GridView gv = (GridView)findViewById(R.id.font_style_list);
+        gv.setAdapter(adapter);
 
     }
 
@@ -43,10 +45,10 @@ public class SelectFontStyleActivity extends AppCompatActivity {
     class MyAdapter extends BaseAdapter {
         Context context;
         int layout;
-        ArrayList img;
+        ArrayList<String> img;
         LayoutInflater inf;
 
-        public MyAdapter(Context context, int layout, ArrayList img) {
+        public MyAdapter(Context context, int layout, ArrayList<String> img) {
             this.context = context;
             this.layout = layout;
             this.img = img;
@@ -72,9 +74,15 @@ public class SelectFontStyleActivity extends AppCompatActivity {
         @Override
         public View getView(int position, View convertView, ViewGroup parent) {
             if (convertView == null)
-                convertView = inf.inflate(layout, null);
+                convertView = inf.inflate(layout, parent,false);
+
+            AbsListView.LayoutParams layoutParams= (AbsListView.LayoutParams) convertView.getLayoutParams();
+            layoutParams.height = 320;
+            convertView.setLayoutParams(layoutParams);
             ImageView iv = (ImageView) convertView.findViewById(R.id.font_style);
-//            iv.setBackgroundResource(returnDrawable(img.get(position)));
+            iv.setBackgroundResource(returnDrawable(img.get(position)));
+
+
 
             return convertView;
         }
