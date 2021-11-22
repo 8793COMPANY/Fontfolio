@@ -4,8 +4,11 @@ import android.app.Activity
 import android.app.Application
 import android.content.Context
 import android.content.Intent
+import android.graphics.Typeface
 import android.util.Log
+import android.widget.TextView
 import androidx.room.Room
+import com.corporation8793.fontfolio.R
 import com.corporation8793.fontfolio.library.excel.Excel
 import com.corporation8793.fontfolio.library.room.AppDatabase
 import com.corporation8793.fontfolio.library.room.entity.Font
@@ -140,5 +143,20 @@ class Fontfolio : Application() {
                 finish()
             }
         }
+    }
+
+    /**
+     * 현재 [Activity]에 있는 [TextView]의 폰트를 바꿉니다.
+     * @author  두동근
+     * @param   act 현재 액티비티
+     * @param   textView 현재 액티비티에 위치한 [TextView]의 인스턴스
+     * @param   font_name res/font 에 있는 폰트파일의 이름
+     * @see     Typeface
+     * @see     android.widget.TextView
+     * @see     <a href="https://developer.android.com/guide/topics/ui/look-and-feel/fonts-in-xml#fonts-in-code">developer-android</a>
+     */
+    fun changeFontOfTextView(act : Activity, textView: TextView, font_name : String) {
+        textView.typeface = resources.getFont(resources.getIdentifier("$font_name",
+            "id", act.packageName))
     }
 }

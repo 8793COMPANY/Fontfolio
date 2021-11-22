@@ -21,6 +21,10 @@
     <!-- loading -->
     <string name="loading_title">Fontfolio All Set!</string>
     <string name="loading_content">Hold tight while we customize\nyour home feed...</string>
+    
+    <!-- select font style -->
+    <string name="welcome_fontfolio">Welcome to Fontfolio</string>
+    <string name="select_style_content">Pick 4 or more font styles.</string>
 
     <!-- main -->
     <string name="sort_by">Sort by</string>
@@ -53,4 +57,7 @@
     <!-- activity_join.xml -->
     <string name="sign_up_btn"><u>Si</u>g<u>n u</u><u>p</u></string>
     <string name="welcome_text">Welcome to <b>Fontfolio</b></string>
+
+    <!-- activity_sign_up.xml -->
+    <string name="sign_up_next_btn">Next</string>
 </resources>

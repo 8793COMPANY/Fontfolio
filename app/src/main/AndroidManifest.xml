@@ -10,28 +10,40 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Fontfolio">
-        <activity android:name=".CreateBoardActivity">
+        <activity android:name=".board.CreateBoardActivity">
+
+        </activity>
+
+        <activity android:name=".SelectFontStyleActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".SaveBoardActivity" />
-        <activity android:name=".MainActivity" />
-        <activity
-            android:name=".login.AppLoginActivity"
-            android:windowSoftInputMode="adjustNothing">
+
+        <activity android:name=".board.SaveBoardActivity" >
 
         </activity>
-        <activity android:name=".login.LoginActivity" />
-        <activity android:name=".LoadingActivity" />
+        <activity android:name=".MainActivity"></activity>
+        <activity
+            android:name=".login.AppLoginActivity"
+            android:windowSoftInputMode="adjustNothing"></activity>
+        <activity android:name=".login.LoginActivity"></activity>
+        <activity android:name=".LoadingActivity"></activity>
         <activity
             android:name=".activity.SignUp"
+            android:windowSoftInputMode="adjustNothing"
             android:exported="false" />
         <activity
             android:name=".activity.Join"
-            android:exported="true" />
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
     </application>
 
 </manifest>

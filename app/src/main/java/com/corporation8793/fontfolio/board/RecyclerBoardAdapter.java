@@ -1,4 +1,4 @@
-package com.corporation8793.fontfolio;
+package com.corporation8793.fontfolio.board;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -8,6 +8,8 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.recyclerview.widget.RecyclerView;
+
+import com.corporation8793.fontfolio.R;
 
 import java.util.ArrayList;
 
@@ -39,6 +41,12 @@ public class RecyclerBoardAdapter extends RecyclerView.Adapter<RecyclerBoardAdap
 
         holder.icon.setBackgroundResource(item.getBoard_image()); ;
         holder.title.setText(item.getBoard_name()) ;
+
+
+        holder.itemView.getLayoutParams().height = 75;
+        holder.itemView.requestLayout();
+
+
     }
 
     // getItemCount() - 전체 데이터 갯수 리턴.
