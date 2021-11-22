@@ -6,6 +6,7 @@ import android.widget.LinearLayout
 import android.widget.Toast
 import com.corporation8793.fontfolio.R
 import com.corporation8793.fontfolio.common.Fontfolio
+import com.corporation8793.fontfolio.login.AppLoginActivity
 
 class Join : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -19,11 +20,11 @@ class Join : AppCompatActivity() {
         fontfolio.xlsToRoom()
 
         sign_up_btn.setOnClickListener {
-            fontfolio.moveToActivity(this, SignUp::class.java, true)
+            fontfolio.moveToActivity(this, SignUp::class.java, false)
         }
 
         log_in_btn.setOnClickListener {
-            Toast.makeText(this, "로그인", Toast.LENGTH_SHORT).show()
+            fontfolio.moveToActivity(this, AppLoginActivity::class.java, false)
         }
     }
 }

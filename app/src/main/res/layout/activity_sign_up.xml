@@ -54,104 +54,143 @@
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/guideline_left"
+        android:id="@+id/guideline_parent_left"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="vertical"
         app:layout_constraintGuide_percent="0.055" />
 
     <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/guideline_right"
+        android:id="@+id/guideline_parent_right"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="vertical"
         app:layout_constraintGuide_percent="0.945" />
 
-    <LinearLayout
-        android:id="@+id/welcome_text_div"
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline_parent_bottom"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintVertical_bias="0.025"
-        app:layout_constraintLeft_toRightOf="@id/guideline_left"
-        app:layout_constraintRight_toLeftOf="@id/guideline_right"
-        app:layout_constraintTop_toBottomOf="@id/actionBar">
-
-        <TextView
-            android:id="@+id/welcome_text_1"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:letterSpacing="0.05"
-            android:text="Welcome :)"
-            android:textColor="#000"
-            android:textSize="24sp"
-            android:textStyle="bold" />
-
-        <TextView
-            android:id="@+id/welcome_text_2"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:letterSpacing="0.05"
-            android:text="Let me know your E-mail address."
-            android:textColor="#000"
-            android:textSize="18sp"
-            android:textStyle="bold" />
-    </LinearLayout>
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.53" />
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/input_email_div"
+        android:id="@+id/step1"
         android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintVertical_bias="0.025"
-        app:layout_constraintLeft_toRightOf="@id/guideline_left"
-        app:layout_constraintRight_toLeftOf="@id/guideline_right"
-        app:layout_constraintTop_toBottomOf="@id/welcome_text_div"
-        app:layout_constraintWidth_default="percent"
-        app:layout_constraintWidth_percent="0.89">
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toTopOf="@+id/guideline_parent_bottom"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/actionBar">
 
-        <EditText
-            android:id="@+id/input_email"
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline_left"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.055" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline_right"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.945" />
+
+        <LinearLayout
+            android:id="@+id/welcome_text_div"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintLeft_toRightOf="@id/guideline_left"
+            app:layout_constraintRight_toLeftOf="@id/guideline_right"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.025">
+
+            <TextView
+                android:id="@+id/welcome_text_1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:letterSpacing="0.05"
+                android:text="Welcome :)"
+                android:textColor="#000"
+                android:textSize="24sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/welcome_text_2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:letterSpacing="0.05"
+                android:text="Let me know your E-mail address."
+                android:textColor="#000"
+                android:textSize="18sp"
+                android:textStyle="bold" />
+        </LinearLayout>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/input_email_div"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:background="@android:color/transparent"
-            android:letterSpacing="0.025"
-            android:text="design_thoughtby_mins"
-            android:textColor="#000"
-            android:textSize="19sp"
-            android:textStyle="bold"
+            android:orientation="vertical"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.0"
-            app:layout_constraintWidth_percent="0.85" />
-
-        <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/input_email_init"
-            android:layout_width="33dp"
-            android:layout_height="30dp"
-            android:background="@drawable/login_close_btn"
-            app:layout_constraintBottom_toBottomOf="@id/input_email"
-            app:layout_constraintLeft_toRightOf="@id/input_email"
-            app:layout_constraintTop_toTopOf="@id/input_email" />
-
-        <ImageView
-            android:id="@+id/sign_up_error"
-            android:layout_width="0dp"
-            android:layout_height="0dp"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintLeft_toRightOf="@id/guideline_left"
+            app:layout_constraintRight_toLeftOf="@id/guideline_right"
+            app:layout_constraintTop_toBottomOf="@id/welcome_text_div"
+            app:layout_constraintVertical_bias="0.025"
             app:layout_constraintWidth_default="percent"
-            app:layout_constraintHeight_default="percent"
-            app:layout_constraintWidth_percent="0.52"
-            app:layout_constraintHeight_percent="0.52"
-            android:background="@drawable/sign_up_error2"
-            app:layout_constraintStart_toStartOf="@+id/input_email"
-            app:layout_constraintTop_toBottomOf="@id/input_email" />
+            app:layout_constraintWidth_percent="0.89">
+
+            <EditText
+                android:id="@+id/input_email"
+                android:inputType="textEmailAddress"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:background="@android:color/transparent"
+                android:letterSpacing="0.025"
+                android:hint="E-mail address"
+                android:textColor="#000"
+                android:textSize="19sp"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.0"
+                app:layout_constraintWidth_percent="0.85" />
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/input_email_init"
+                android:visibility="invisible"
+                android:layout_width="33dp"
+                android:layout_height="30dp"
+                android:background="@drawable/login_close_btn"
+                app:layout_constraintBottom_toBottomOf="@id/input_email"
+                app:layout_constraintLeft_toRightOf="@id/input_email"
+                app:layout_constraintTop_toTopOf="@id/input_email" />
+
+            <ImageView
+                android:id="@+id/sign_up_error"
+                android:visibility="invisible"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:background="@drawable/sign_up_error2"
+                app:layout_constraintHeight_default="percent"
+                app:layout_constraintHeight_percent="0.52"
+                app:layout_constraintStart_toStartOf="@+id/input_email"
+                app:layout_constraintTop_toBottomOf="@id/input_email"
+                app:layout_constraintWidth_default="percent"
+                app:layout_constraintWidth_percent="0.52" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.constraintlayout.widget.ConstraintLayout>
 
+
+
+
+
+    <!-- Progress-Zone -->
     <TextView
         android:id="@+id/progressText"
         android:layout_width="wrap_content"
@@ -173,8 +212,8 @@
         app:layout_constraintWidth_default="percent"
         app:layout_constraintWidth_percent="0.68"
         android:layout_marginBottom="15dp"
-        app:layout_constraintLeft_toRightOf="@id/guideline_left"
-        app:layout_constraintRight_toLeftOf="@id/guideline_right"
+        app:layout_constraintLeft_toRightOf="@id/guideline_parent_left"
+        app:layout_constraintRight_toLeftOf="@id/guideline_parent_right"
         app:layout_constraintBottom_toTopOf="@id/next_btn"
         app:trackColor="#33000000"
         app:indicatorColor="#FF000000"
@@ -190,12 +229,12 @@
         android:layout_height="0dp"
         android:background="@drawable/xml_rounding_btn_default"
         android:backgroundTint="#33000000"
-        app:layout_constraintLeft_toRightOf="@id/guideline_left"
-        app:layout_constraintRight_toLeftOf="@id/guideline_right"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintHeight_default="percent"
         app:layout_constraintHeight_percent="0.06"
-        app:layout_constraintVertical_bias="0.1"
+        app:layout_constraintLeft_toRightOf="@id/guideline_parent_left"
+        app:layout_constraintRight_toLeftOf="@id/guideline_parent_right"
+        app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintWidth_default="percent"
         app:layout_constraintWidth_percent="0.88">
 
