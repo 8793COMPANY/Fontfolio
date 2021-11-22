@@ -109,25 +109,96 @@
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_bias="0.025">
 
-            <TextView
-                android:id="@+id/welcome_text_1"
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:letterSpacing="0.05"
-                android:text="Welcome :)"
-                android:textColor="#000"
-                android:textSize="24sp"
-                android:textStyle="bold" />
+                android:gravity="bottom">
 
-            <TextView
-                android:id="@+id/welcome_text_2"
+                <TextView
+                    android:id="@+id/welcome_text_1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:letterSpacing="0.05"
+                    android:text="Welcome :)"
+                    android:textColor="#000"
+                    android:textSize="24sp"
+                    android:textStyle="bold" />
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/input_name_div"
+                    android:visibility="invisible"
+                    android:layout_marginLeft="5dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
+
+                    <EditText
+                        android:id="@+id/input_name"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="@android:color/transparent"
+                        android:letterSpacing="0.025"
+                        android:maxLength="12"
+                        android:enabled="false"
+                        android:maxLines="1"
+                        android:hint="Name"
+                        android:textColor="#000"
+                        android:textSize="19sp"
+                        android:textStyle="bold"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintLeft_toLeftOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintVertical_bias="0.0"
+                        app:layout_constraintWidth_percent="0.75" />
+
+                    <androidx.appcompat.widget.AppCompatButton
+                        android:id="@+id/input_name_init"
+                        android:layout_marginLeft="15dp"
+                        android:visibility="invisible"
+                        android:layout_width="33dp"
+                        android:layout_height="30dp"
+                        android:background="@drawable/login_close_btn"
+                        app:layout_constraintBottom_toBottomOf="@id/input_name"
+                        app:layout_constraintLeft_toRightOf="@id/input_name"
+                        app:layout_constraintTop_toTopOf="@id/input_name" />
+
+                    <androidx.appcompat.widget.AppCompatButton
+                        android:id="@+id/input_name_edit"
+                        android:visibility="visible"
+                        android:layout_marginLeft="15dp"
+                        android:layout_width="33dp"
+                        android:layout_height="30dp"
+                        android:background="@drawable/edit_name_img"
+                        app:layout_constraintBottom_toBottomOf="@id/input_name_init"
+                        app:layout_constraintLeft_toRightOf="@id/input_name_init"
+                        app:layout_constraintTop_toTopOf="@id/input_name_init" />
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+            </LinearLayout>
+
+            <FrameLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:letterSpacing="0.05"
-                android:text="Let me know your E-mail address."
-                android:textColor="#000"
-                android:textSize="18sp"
-                android:textStyle="bold" />
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:id="@+id/welcome_text_2"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:letterSpacing="0.05"
+                    android:text="Let me know your E-mail address."
+                    android:textColor="#000"
+                    android:textSize="18sp"
+                    android:textStyle="bold" />
+
+                <ImageView
+                    android:id="@+id/sign_up_name_error"
+                    android:visibility="invisible"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginLeft="95dp"
+                    android:layout_width="159.5dp"
+                    android:layout_height="28dp"
+                    android:background="@drawable/sign_up_name_error" />
+
+            </FrameLayout>
         </LinearLayout>
 
         <androidx.constraintlayout.widget.ConstraintLayout
@@ -173,17 +244,42 @@
 
             <ImageView
                 android:id="@+id/sign_up_error"
-                android:visibility="invisible"
-                android:layout_width="0dp"
-                android:layout_height="0dp"
+                android:visibility="gone"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
                 android:background="@drawable/sign_up_error2"
-                app:layout_constraintHeight_default="percent"
-                app:layout_constraintHeight_percent="0.52"
                 app:layout_constraintStart_toStartOf="@+id/input_email"
-                app:layout_constraintTop_toBottomOf="@id/input_email"
-                app:layout_constraintWidth_default="percent"
-                app:layout_constraintWidth_percent="0.52" />
+                app:layout_constraintTop_toBottomOf="@id/input_email" />
         </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <LinearLayout
+            android:id="@+id/view_pw_btn"
+            android:visibility="invisible"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            app:layout_constraintHorizontal_bias="0.01"
+            app:layout_constraintVertical_bias="0.02"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toRightOf="@id/guideline_left"
+            app:layout_constraintRight_toLeftOf="@id/guideline_right"
+            app:layout_constraintTop_toBottomOf="@id/input_email_div">
+
+            <ImageView
+                android:id="@+id/view_pw_chk"
+                android:layout_width="17dp"
+                android:layout_height="17dp"
+                android:layout_margin="4dp"
+                android:background="@drawable/view_pw_off_btn" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textStyle="bold"
+                android:textSize="12sp"
+                android:text="View password" />
+
+        </LinearLayout>
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 
