@@ -365,8 +365,9 @@ class SignUp : AppCompatActivity() {
 
         welcome_text_1.text = "Finally :)"
         welcome_text_2.text = "Choose your occupation group,\nYou can find more related content."
-        next_btn.backgroundTintList = (ColorStateList.valueOf(resources.getColor(R.color.btn_gray, theme)))
-        next_btn.isEnabled = false
+        // 시연용
+        next_btn.backgroundTintList = (ColorStateList.valueOf(resources.getColor(R.color.btn_red, theme)))
+        next_btn.isEnabled = true
         input_email.text.clear()
 
         actionBar.visibility = View.INVISIBLE
