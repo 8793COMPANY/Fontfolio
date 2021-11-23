@@ -53,6 +53,7 @@
     <!-- activity_join.xml -->
     <string name="sign_up_btn"><u>Si</u>g<u>n u</u><u>p</u></string>
     <string name="welcome_text">Welcome to <b>Fontfolio</b></string>
+    <string name="welcome_text_3">The start where you can experience\nall the fonts in the world!</string>
 
     <!-- activity_sign_up.xml -->
     <string name="sign_up_next_btn">Next</string>

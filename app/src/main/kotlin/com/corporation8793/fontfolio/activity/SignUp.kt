@@ -29,6 +29,7 @@ class SignUp : AppCompatActivity() {
     lateinit var step1 : ConstraintLayout
     lateinit var welcome_text_1 : TextView
     lateinit var welcome_text_2 : TextView
+    lateinit var input_email_div : ConstraintLayout
     lateinit var input_email : EditText
     lateinit var input_email_init : AppCompatButton
     lateinit var sign_up_error : ImageView
@@ -60,6 +61,7 @@ class SignUp : AppCompatActivity() {
         step1 = findViewById(R.id.step1)
         welcome_text_1 = findViewById(R.id.welcome_text_1)
         welcome_text_2 = findViewById(R.id.welcome_text_2)
+        input_email_div = findViewById(R.id.input_email_div)
         input_email = findViewById(R.id.input_email)
         input_email_init = findViewById(R.id.input_email_init)
         sign_up_error = findViewById(R.id.sign_up_error)
@@ -317,6 +319,13 @@ class SignUp : AppCompatActivity() {
 
     fun step4() {
         // step3 - init
+        welcome_text_1.text = "Finally :)"
+        welcome_text_2.text = "Choose your occupation group,\nYou can find more related content."
+
+        input_name_div.visibility = View.GONE
+        input_email_div.visibility = View.GONE
+
+
         step = 3
         progressText.text = "FontFolio"
         progressBar.progress = 3

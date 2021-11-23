@@ -201,8 +201,10 @@
             </FrameLayout>
         </LinearLayout>
 
+        <!-- TODO : visibility : VISIBLE -->
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/input_email_div"
+            android:visibility="gone"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:orientation="vertical"
@@ -252,9 +254,10 @@
                 app:layout_constraintTop_toBottomOf="@id/input_email" />
         </androidx.constraintlayout.widget.ConstraintLayout>
 
+        <!-- TODO : visibility : INVISIBLE -->
         <LinearLayout
             android:id="@+id/view_pw_btn"
-            android:visibility="invisible"
+            android:visibility="gone"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:gravity="center"
@@ -280,6 +283,54 @@
                 android:text="View password" />
 
         </LinearLayout>
+
+        <!-- step4 : FontFolio -->
+        <TextView
+            android:id="@+id/welcome_text_3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/welcome_text_3"
+            android:textAlignment="viewStart"
+            android:textSize="13sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintLeft_toRightOf="@id/guideline_left"
+            app:layout_constraintRight_toLeftOf="@id/guideline_right"
+            app:layout_constraintTop_toBottomOf="@+id/welcome_text_div"
+            app:layout_constraintVertical_bias="0.0" />
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/group_select_div"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toRightOf="@id/guideline_left"
+            app:layout_constraintRight_toLeftOf="@id/guideline_right"
+            app:layout_constraintTop_toBottomOf="@+id/welcome_text_3"
+            app:layout_constraintVertical_bias="0.1">
+
+            <TextView
+                android:id="@+id/group_select_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Select your occupation group"
+                android:textSize="19sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <ImageView
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:src="@drawable/view_occupation_group_btn"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintHorizontal_bias="0.95"
+                app:layout_constraintLeft_toLeftOf="@id/group_select_text"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 
