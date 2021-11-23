@@ -200,6 +200,7 @@
             android:hint="@string/pw_input_box_hint"
             android:gravity="center_vertical"
             android:autoText="false"
+            android:password="true"
             android:letterSpacing="-0.01"
             android:lineSpacingExtra="7sp"
             app:layout_constraintLeft_toLeftOf="@id/guideline"
@@ -222,9 +223,10 @@
             app:layout_constraintHeight_percent="0.27"></View>
 
         <Button
+            android:id="@+id/visible_password"
             android:layout_width="0dp"
             android:layout_height="0dp"
-            android:background="@drawable/login_view_pw_off_btn"
+            android:background="@drawable/visible_btn_selector"
             android:textColor="#333333"
             android:autoText="false"
             app:layout_constraintStart_toEndOf="@+id/guideline_right"
@@ -290,7 +292,7 @@
         app:layout_constraintVertical_weight="0.06"
         android:background="@drawable/xml_rounding_btn_default"
         android:backgroundTint="#0D000000"
-        app:layout_constraintWidth_percent="0.85">
+        app:layout_constraintWidth_percent="0.91">
 
         <TextView
             android:layout_width="match_parent"

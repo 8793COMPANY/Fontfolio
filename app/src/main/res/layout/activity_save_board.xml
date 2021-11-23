@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".SaveBoardActivity">
+    tools:context=".board.SaveBoardActivity">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/actionbar"
@@ -73,6 +73,7 @@
         android:id="@+id/save_board_list"
         android:layout_width="0dp"
         android:layout_height="0dp"
+        android:paddingTop="10sp"
         app:layout_constraintTop_toBottomOf="@id/board_devide_section"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -92,7 +93,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHeight_percent="0.06"
+        app:layout_constraintHeight_percent="0.055"
         app:layout_constraintWidth_percent="0.11"
         app:layout_constraintVertical_bias="0.5"
         app:layout_constraintHorizontal_bias="0.5"></androidx.appcompat.widget.AppCompatButton>
@@ -103,7 +104,7 @@
         android:layout_height="0dp"
         android:text="Create"
         android:textColor="#D9000000"
-        android:textSize="14sp"
+        android:textSize="15sp"
         android:textStyle="normal"
         android:gravity="center"
         app:layout_constraintTop_toBottomOf="@id/save_board_list"
@@ -122,7 +123,7 @@
         android:layout_height="0dp"
         android:text="board"
         android:textColor="#D9000000"
-        android:textSize="14sp"
+        android:textSize="15sp"
         android:textStyle="normal"
         android:gravity="center_vertical"
         app:layout_constraintTop_toBottomOf="@id/save_board_list"

@@ -29,7 +29,9 @@ public class AppLoginActivity  extends AppCompatActivity {
     EditText email_input_box, pw_input_box;
     LinearLayout login_btn;
     ImageView email_error_msg, pw_error_msg;
-    Button input_cancel_btn;
+    Button input_cancel_btn, visible_btn;
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,6 +46,8 @@ public class AppLoginActivity  extends AppCompatActivity {
         email_error_msg = findViewById(R.id.email_pw_space);
 
         input_cancel_btn = findViewById(R.id.email_cancel_btn);
+
+        visible_btn = findViewById(R.id.visible_password);
 
         String content = welcome_login_text.getText().toString();
         SpannableString spannableString = new SpannableString(content);
@@ -70,6 +74,10 @@ public class AppLoginActivity  extends AppCompatActivity {
             }
         });
 
+        input_cancel_btn.setOnClickListener(v->{
+            email_input_box.setText("");
+        });
+
 
         email_input_box.addTextChangedListener(new TextWatcher() {
             @Override
@@ -80,7 +88,9 @@ public class AppLoginActivity  extends AppCompatActivity {
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
                 if (!email_input_box.getText().toString().trim().equals("")){
-
+                    input_cancel_btn.setVisibility(View.VISIBLE);
+                }else{
+                    input_cancel_btn.setVisibility(View.INVISIBLE);
                 }
             }
 
@@ -114,6 +124,10 @@ public class AppLoginActivity  extends AppCompatActivity {
                     email_error_msg.setBackgroundResource(R.drawable.login_error1);
                 }
             }
+        });
+
+        visible_btn.setOnClickListener(v->{
+
         });
 
 

@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".CreateBoardActivity">
+    tools:context=".board.CreateBoardActivity">
 
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -22,6 +22,7 @@
         app:layout_constraintVertical_bias="0">
 
         <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/cancel_btn"
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:background="@drawable/action_bar_close_btn"
@@ -52,12 +53,13 @@
 
 
         <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/finish_btn"
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:background="@drawable/action_bar_next_arrow_btn"
             app:layout_constraintWidth_default="percent"
             app:layout_constraintHeight_default="percent"
-            app:layout_constraintWidth_percent="0.11"
+            app:layout_constraintWidth_percent="0.12"
             app:layout_constraintHeight_percent="0.84"
             app:layout_constraintHorizontal_bias="0.96"
             app:layout_constraintVertical_bias="1"
@@ -145,10 +147,11 @@
         android:id="@+id/take_picture_view"
         android:layout_width="0dp"
         android:layout_height="0dp"
+        android:background="@drawable/board_image_camera_btn"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/board_image"
-        app:layout_constraintLeft_toRightOf="@+id/guideline"
-        app:layout_constraintWidth_percent="0.15"
+        app:layout_constraintStart_toStartOf="@+id/guideline"
+        app:layout_constraintWidth_percent="0.155"
         app:layout_constraintHeight_percent="0.08"
         app:layout_constraintVertical_bias="0.02"
         app:layout_constraintHorizontal_chainStyle="spread"></ImageView>
@@ -158,52 +161,60 @@
         android:id="@+id/get_picture_view"
         android:layout_width="0dp"
         android:layout_height="0dp"
+        android:background="@drawable/board_image_gallery_btn"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/board_image"
         app:layout_constraintLeft_toRightOf="@+id/take_picture_view"
         app:layout_constraintRight_toLeftOf="@+id/board_icon_view1"
-        app:layout_constraintWidth_percent="0.15"
+        app:layout_constraintWidth_percent="0.155"
         app:layout_constraintVertical_bias="0.02"
         app:layout_constraintHeight_percent="0.08"></ImageView>
 
 
-    <ImageView
+    <com.corporation8793.fontfolio.CustomView
         android:id="@+id/board_icon_view1"
         android:layout_width="0dp"
         android:layout_height="0dp"
+        app:selected="false"
+        android:background="@drawable/board_image_heart_btn"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/board_image"
         app:layout_constraintLeft_toRightOf="@+id/get_picture_view"
         app:layout_constraintRight_toLeftOf="@+id/board_icon_view2"
-        app:layout_constraintWidth_percent="0.15"
+        app:layout_constraintWidth_percent="0.155"
         app:layout_constraintVertical_bias="0.02"
-        app:layout_constraintHeight_percent="0.08"></ImageView>
+        app:layout_constraintHeight_percent="0.08"></com.corporation8793.fontfolio.CustomView>
 
-    <ImageView
+    <com.corporation8793.fontfolio.CustomView
         android:id="@+id/board_icon_view2"
         android:layout_width="0dp"
         android:layout_height="0dp"
+        app:selected="false"
+        android:background="@drawable/board_image_star_btn"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/board_image"
         app:layout_constraintLeft_toRightOf="@+id/board_icon_view1"
         app:layout_constraintRight_toLeftOf="@+id/board_icon_view3"
-        app:layout_constraintWidth_percent="0.15"
+        app:layout_constraintWidth_percent="0.155"
         app:layout_constraintVertical_bias="0.02"
-        app:layout_constraintHeight_percent="0.08"></ImageView>
+        app:layout_constraintHeight_percent="0.08"></com.corporation8793.fontfolio.CustomView>
 
 
-    <ImageView
+    <com.corporation8793.fontfolio.CustomView
         android:id="@+id/board_icon_view3"
         android:layout_width="0dp"
         android:layout_height="0dp"
+        app:selected="false"
+        android:background="@drawable/board_image_folder_btn"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/board_image"
         app:layout_constraintLeft_toRightOf="@+id/board_icon_view2"
         app:layout_constraintRight_toRightOf="@+id/guideline_right"
-        app:layout_constraintWidth_percent="0.15"
+        app:layout_constraintWidth_percent="0.155"
         app:layout_constraintHeight_percent="0.08"
         app:layout_constraintVertical_bias="0.02"
-        app:layout_constraintHorizontal_bias="1"></ImageView>
+        app:layout_constraintHorizontal_bias="1"
+        ></com.corporation8793.fontfolio.CustomView>
 
 
     <ImageView
@@ -216,7 +227,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintVertical_bias="0.05"
         app:layout_constraintWidth_percent="0.01"
-        app:layout_constraintHeight_percent="0.05"></ImageView>
+        app:layout_constraintHeight_percent="0.025"></ImageView>
 
 
     <TextView
@@ -234,7 +245,7 @@
         app:layout_constraintVertical_bias="0.05"
         app:layout_constraintHorizontal_bias="0.01"
         app:layout_constraintWidth_percent="0.51"
-        app:layout_constraintHeight_percent="0.05" />
+        app:layout_constraintHeight_percent="0.025" />
 
 
 
@@ -255,6 +266,19 @@
         app:layout_constraintVertical_bias="0.01"
         app:layout_constraintWidth_percent="0.51"
         app:layout_constraintHeight_percent="0.05" />
+
+
+    <Switch
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:track="@drawable/switch_track_selector"
+        android:switchMinWidth="0dp" android:textOff="" android:textOn=""
+        app:layout_constraintTop_toBottomOf="@+id/organize_privacy"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintRight_toLeftOf="@+id/guideline_right"
+        app:layout_constraintVertical_bias="0.01"
+        app:layout_constraintWidth_percent="0.15"
+        app:layout_constraintHeight_percent="0.035"></Switch>
 
 
     <TextView
