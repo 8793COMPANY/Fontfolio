@@ -1,5 +1,6 @@
 package com.corporation8793.fontfolio;
 
+import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.PorterDuff;
 import android.media.Image;
@@ -49,6 +50,12 @@ public class LoadingActivity extends AppCompatActivity {
         loading_video.setOnPreparedListener(mp -> {
             mp.start();
         });
+
+        loading_video.setOnCompletionListener(mp -> {
+            Intent intent = new Intent(LoadingActivity.this, MainActivity.class);
+            startActivity(intent);
+        });
+
 
         handler = new Handler(){
             @Override

@@ -1,5 +1,6 @@
 package com.corporation8793.fontfolio.login;
 
+import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.Typeface;
 import android.os.Bundle;
@@ -21,6 +22,7 @@ import android.widget.TextView;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.corporation8793.fontfolio.R;
+import com.corporation8793.fontfolio.SelectFontStyleActivity;
 import com.corporation8793.fontfolio.dialog.InitPwBottomDialog;
 
 public class AppLoginActivity  extends AppCompatActivity {
@@ -49,6 +51,8 @@ public class AppLoginActivity  extends AppCompatActivity {
 
         visible_btn = findViewById(R.id.visible_password);
 
+        pw_error_msg = findViewById(R.id.login_section_bottom);
+
         String content = welcome_login_text.getText().toString();
         SpannableString spannableString = new SpannableString(content);
 
@@ -70,7 +74,9 @@ public class AppLoginActivity  extends AppCompatActivity {
         login_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                initPwBottomDialog.show(getSupportFragmentManager(),initPwBottomDialog.getTag());
+                Intent intent = new Intent(AppLoginActivity.this, SelectFontStyleActivity.class);
+                startActivity(intent);
+
             }
         });
 
@@ -128,6 +134,13 @@ public class AppLoginActivity  extends AppCompatActivity {
 
         visible_btn.setOnClickListener(v->{
 
+        });
+
+        pw_error_msg.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                initPwBottomDialog.show(getSupportFragmentManager(),initPwBottomDialog.getTag());
+            }
         });
 
 
