@@ -1,5 +1,6 @@
 package com.corporation8793.fontfolio.activity
 
+import android.content.Context
 import android.content.res.ColorStateList
 import android.graphics.Rect
 import android.media.Image
@@ -10,7 +11,9 @@ import android.text.TextWatcher
 import android.text.method.HideReturnsTransformationMethod
 import android.text.method.PasswordTransformationMethod
 import android.text.method.TransformationMethod
+import android.view.LayoutInflater
 import android.view.View
+import android.view.ViewGroup
 import android.view.inputmethod.EditorInfo
 import android.widget.*
 import androidx.annotation.IdRes
@@ -18,6 +21,8 @@ import androidx.appcompat.widget.AppCompatButton
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.constraintlayout.widget.ConstraintSet
 import com.corporation8793.fontfolio.R
+import com.google.android.material.bottomsheet.BottomSheetBehavior
+import com.google.android.material.bottomsheet.BottomSheetDialog
 import com.google.android.material.progressindicator.LinearProgressIndicator
 
 class SignUp : AppCompatActivity() {
@@ -48,6 +53,20 @@ class SignUp : AppCompatActivity() {
     lateinit var input_name_edit : AppCompatButton
     lateinit var sign_up_name_error : ImageView
     var edit_name_state : Boolean = false
+
+    // step4 - widget
+    lateinit var actionBar : ConstraintLayout
+    lateinit var welcome_text_3 : TextView
+    lateinit var group_select_div : ConstraintLayout
+    lateinit var group_select_text : TextView
+    lateinit var group_select_error : ImageView
+    lateinit var group_type_more_div : ConstraintLayout
+    lateinit var group_type_more_input : EditText
+    lateinit var group_type_more_input_init : ImageView
+    lateinit var group_type_more_error : ImageView
+
+    lateinit var bottomSheetView : View
+    lateinit var bottomSheetDialog : BottomSheetDialog
 
     // step1 & total function
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -116,6 +135,8 @@ class SignUp : AppCompatActivity() {
         })
 
         // TODO : For test
+        step2()
+        step3()
         step4()
     }
 
@@ -321,13 +342,40 @@ class SignUp : AppCompatActivity() {
     }
 
     fun step4() {
-        // step3 - init
+        // step4 - init
+        actionBar = findViewById(R.id.actionBar)
+        welcome_text_3 = findViewById(R.id.welcome_text_3)
+        group_select_div = findViewById(R.id.group_select_div)
+        group_select_text = findViewById(R.id.group_select_text)
+        group_select_error = findViewById(R.id.group_select_error)
+        group_type_more_div = findViewById(R.id.group_type_more_div)
+        group_type_more_input = findViewById(R.id.group_type_more_input)
+        group_type_more_input_init = findViewById(R.id.group_type_more_input_init)
+        group_type_more_error = findViewById(R.id.group_type_more_error)
+
+        bottomSheetView = layoutInflater.inflate(R.layout.group_select_sheet_layout, null)
+        bottomSheetDialog = BottomSheetDialog(this)
+        bottomSheetDialog.setContentView(bottomSheetView)
+        bottomSheetDialog.behavior.state = BottomSheetBehavior.STATE_EXPANDED
+        bottomSheetDialog.behavior.skipCollapsed = true
+        bottomSheetDialog.behavior.saveFlags = BottomSheetBehavior.SAVE_SKIP_COLLAPSED
+        bottomSheetDialog.behavior.isFitToContents = true
+
         welcome_text_1.text = "Finally :)"
         welcome_text_2.text = "Choose your occupation group,\nYou can find more related content."
+        next_btn.backgroundTintList = (ColorStateList.valueOf(resources.getColor(R.color.btn_gray, theme)))
+        next_btn.isEnabled = false
+        input_email.text.clear()
 
+        actionBar.visibility = View.INVISIBLE
         input_name_div.visibility = View.GONE
         input_email_div.visibility = View.GONE
 
+        group_select_div.visibility = View.VISIBLE
+
+        group_select_div.setOnClickListener {
+            bottomSheetDialog.show()
+        }
 
         step = 3
         progressText.text = "FontFolio"

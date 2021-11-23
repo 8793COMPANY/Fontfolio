@@ -201,10 +201,9 @@
             </FrameLayout>
         </LinearLayout>
 
-        <!-- TODO : visibility : VISIBLE -->
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/input_email_div"
-            android:visibility="gone"
+            android:visibility="visible"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:orientation="vertical"
@@ -254,10 +253,9 @@
                 app:layout_constraintTop_toBottomOf="@id/input_email" />
         </androidx.constraintlayout.widget.ConstraintLayout>
 
-        <!-- TODO : visibility : INVISIBLE -->
         <LinearLayout
             android:id="@+id/view_pw_btn"
-            android:visibility="gone"
+            android:visibility="invisible"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:gravity="center"
@@ -289,6 +287,7 @@
             android:id="@+id/welcome_text_3"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:visibility="gone"
             android:text="@string/welcome_text_3"
             android:textAlignment="viewStart"
             android:textSize="13sp"
@@ -297,10 +296,11 @@
             app:layout_constraintLeft_toRightOf="@id/guideline_left"
             app:layout_constraintRight_toLeftOf="@id/guideline_right"
             app:layout_constraintTop_toBottomOf="@+id/welcome_text_div"
-            app:layout_constraintVertical_bias="0.0" />
+            app:layout_constraintVertical_bias="0.02" />
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/group_select_div"
+            android:visibility="gone"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             app:layout_constraintBottom_toBottomOf="parent"
@@ -313,7 +313,9 @@
                 android:id="@+id/group_select_text"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Select your occupation group"
+                android:background="@android:color/transparent"
+                android:hint="Select your occupation group"
+                android:textStyle="bold"
                 android:textSize="19sp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintLeft_toLeftOf="parent"
@@ -333,7 +335,7 @@
 
             <ImageView
                 android:id="@+id/group_select_error"
-                android:visibility="visible"
+                android:visibility="invisible"
                 android:layout_width="195.5dp"
                 android:layout_height="28dp"
                 android:src="@drawable/occupation_select_error"
@@ -344,6 +346,7 @@
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/group_type_more_div"
+            android:visibility="gone"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             app:layout_constraintBottom_toBottomOf="parent"
@@ -383,7 +386,7 @@
 
             <ImageView
                 android:id="@+id/group_type_more_error"
-                android:visibility="visible"
+                android:visibility="invisible"
                 android:layout_width="195.5dp"
                 android:layout_height="28dp"
                 android:src="@drawable/occupation_select_error"
