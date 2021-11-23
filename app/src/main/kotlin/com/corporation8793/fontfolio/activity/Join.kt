@@ -7,6 +7,7 @@ import android.widget.Toast
 import com.corporation8793.fontfolio.R
 import com.corporation8793.fontfolio.common.Fontfolio
 import com.corporation8793.fontfolio.login.AppLoginActivity
+import com.corporation8793.fontfolio.login.LoginActivity
 
 class Join : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -24,7 +25,7 @@ class Join : AppCompatActivity() {
         }
 
         log_in_btn.setOnClickListener {
-            fontfolio.moveToActivity(this, AppLoginActivity::class.java, false)
+            fontfolio.moveToActivity(this, LoginActivity::class.java, false)
         }
     }
 }
