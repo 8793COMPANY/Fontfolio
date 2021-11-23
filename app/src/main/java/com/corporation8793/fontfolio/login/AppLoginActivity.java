@@ -1,9 +1,12 @@
 package com.corporation8793.fontfolio.login;
 
+import android.content.Intent;
+import android.content.res.ColorStateList;
 import android.graphics.Color;
 import android.graphics.Typeface;
 import android.os.Bundle;
 import android.text.Editable;
+import android.text.InputType;
 import android.text.Spannable;
 import android.text.SpannableString;
 import android.text.TextWatcher;
@@ -21,16 +24,18 @@ import android.widget.TextView;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.corporation8793.fontfolio.R;
+import com.corporation8793.fontfolio.SelectFontStyleActivity;
 import com.corporation8793.fontfolio.dialog.InitPwBottomDialog;
 
 public class AppLoginActivity  extends AppCompatActivity {
 
-    TextView welcome_login_text;
+    TextView welcome_login_text, login_btn_text;
     EditText email_input_box, pw_input_box;
     LinearLayout login_btn;
     ImageView email_error_msg, pw_error_msg;
-    Button input_cancel_btn, visible_btn;
+    Button input_cancel_btn, visible_btn, back_btn;
 
+    boolean check = false;
 
 
     @Override
@@ -48,6 +53,12 @@ public class AppLoginActivity  extends AppCompatActivity {
         input_cancel_btn = findViewById(R.id.email_cancel_btn);
 
         visible_btn = findViewById(R.id.visible_password);
+
+        pw_error_msg = findViewById(R.id.login_section_bottom);
+
+        login_btn_text = findViewById(R.id.login_btn_text);
+
+        back_btn = findViewById(R.id.back_btn);
 
         String content = welcome_login_text.getText().toString();
         SpannableString spannableString = new SpannableString(content);
@@ -70,12 +81,17 @@ public class AppLoginActivity  extends AppCompatActivity {
         login_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                initPwBottomDialog.show(getSupportFragmentManager(),initPwBottomDialog.getTag());
+                Intent intent = new Intent(AppLoginActivity.this, SelectFontStyleActivity.class);
+                startActivity(intent);
+
             }
         });
 
         input_cancel_btn.setOnClickListener(v->{
             email_input_box.setText("");
+            check = false;
+            login_btn.setBackgroundTintList((ColorStateList.valueOf(Color.parseColor("#0D000000"))));
+            login_btn_text.setTextColor(Color.parseColor("#80000000"));
         });
 
 
@@ -87,20 +103,25 @@ public class AppLoginActivity  extends AppCompatActivity {
 
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
-                if (!email_input_box.getText().toString().trim().equals("")){
-                    input_cancel_btn.setVisibility(View.VISIBLE);
-                }else{
-                    input_cancel_btn.setVisibility(View.INVISIBLE);
-                }
+                check_login_enabled();
             }
 
             @Override
             public void afterTextChanged(Editable s) {
                 if(!android.util.Patterns.EMAIL_ADDRESS.matcher(s.toString()).matches()){
+                    email_error_msg.setVisibility(View.VISIBLE);
                     email_error_msg.setBackgroundResource(R.drawable.login_error3);
                 }
                 else{
-                    email_error_msg.setBackgroundResource(R.drawable.login_error3);
+                    email_error_msg.setBackgroundResource(0);
+                    check = true;
+                }
+
+                if (!email_input_box.getText().toString().trim().equals("")){
+                    input_cancel_btn.setVisibility(View.VISIBLE);
+                }else{
+                    input_cancel_btn.setVisibility(View.INVISIBLE);
+                    email_error_msg.setVisibility(View.INVISIBLE);
                 }
             }
         });
@@ -115,7 +136,7 @@ public class AppLoginActivity  extends AppCompatActivity {
 
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
-
+                check_login_enabled();
             }
 
             @Override
@@ -127,9 +148,38 @@ public class AppLoginActivity  extends AppCompatActivity {
         });
 
         visible_btn.setOnClickListener(v->{
-
+            if (visible_btn.isSelected()){
+                visible_btn.setBackgroundResource(R.drawable.login_view_pw_off_btn);
+                pw_input_box.setInputType(InputType.TYPE_CLASS_TEXT | InputType.TYPE_TEXT_VARIATION_PASSWORD);
+                visible_btn.setSelected(false);
+            }else{
+                visible_btn.setBackgroundResource(R.drawable.login_view_pw_on_btn);
+                pw_input_box.setInputType(InputType.TYPE_TEXT_VARIATION_VISIBLE_PASSWORD);
+                visible_btn.setSelected(true);
+            }
         });
 
+        pw_error_msg.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                initPwBottomDialog.show(getSupportFragmentManager(),initPwBottomDialog.getTag());
+            }
+        });
 
+        back_btn.setOnClickListener(v->{
+            finish();
+        });
+
+    }
+
+    void check_login_enabled(){
+        if(check && !pw_input_box.getText().toString().trim().equals("") ){
+            login_btn.setBackgroundTintList((ColorStateList.valueOf(Color.parseColor("#dd0000"))));
+            login_btn_text.setTextColor(getColor(R.color.white));
+        }else{
+            login_btn.setBackgroundTintList((ColorStateList.valueOf(Color.parseColor("#0D000000"))));
+            login_btn_text.setTextColor(Color.parseColor("#80000000"));
+
+        }
     }
 }

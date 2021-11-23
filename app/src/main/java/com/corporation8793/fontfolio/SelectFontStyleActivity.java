@@ -24,6 +24,8 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.constraintlayout.widget.ConstraintLayout;
 
+import com.corporation8793.fontfolio.login.AppLoginActivity;
+
 import java.io.InputStream;
 import java.lang.reflect.Field;
 import java.util.ArrayList;
@@ -32,6 +34,7 @@ public class SelectFontStyleActivity extends AppCompatActivity {
 
     ArrayList<String> font_style_list = new ArrayList<String>();
 
+    LinearLayout next_btn;
 
 
     @Override
@@ -39,7 +42,7 @@ public class SelectFontStyleActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_select_font_style);
 
-
+        next_btn = findViewById(R.id.next_btn);
         listDrawable();
 
         Display display = getWindowManager().getDefaultDisplay();  // in Activity
@@ -63,6 +66,10 @@ public class SelectFontStyleActivity extends AppCompatActivity {
 
         gv.setHorizontalSpacing((int)((width /720.0) * 16));
 
+        next_btn.setOnClickListener(v->{
+            Intent intent = new Intent(SelectFontStyleActivity.this, LoadingActivity.class);
+            startActivity(intent);
+        });
     }
 
 

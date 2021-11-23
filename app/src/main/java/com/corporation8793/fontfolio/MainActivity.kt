@@ -1,11 +1,14 @@
 package com.corporation8793.fontfolio
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.MenuItem
 import android.view.View
 import android.widget.LinearLayout
 import androidx.appcompat.app.AppCompatActivity
+import com.corporation8793.fontfolio.board.SaveBoardActivity
 import com.corporation8793.fontfolio.fragment.*
+import com.corporation8793.fontfolio.login.AppLoginActivity
 import com.google.android.material.bottomnavigation.BottomNavigationView
 
 
@@ -44,8 +47,11 @@ class MainActivity : AppCompatActivity() , BottomNavigationView.OnNavigationItem
             }
 
             R.id.page_info -> {
-                supportFragmentManager.beginTransaction().replace(R.id.menu_view, InfoFragment()).commitAllowingStateLoss()
-                return true
+                val intent = Intent(this, SaveBoardActivity::class.java)
+                startActivity(intent)
+
+//                supportFragmentManager.beginTransaction().replace(R.id.menu_view, InfoFragment()).commitAllowingStateLoss()
+//                return true
             }
         }
 

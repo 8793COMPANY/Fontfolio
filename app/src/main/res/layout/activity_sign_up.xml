@@ -203,6 +203,7 @@
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/input_email_div"
+            android:visibility="visible"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:orientation="vertical"
@@ -280,6 +281,119 @@
                 android:text="View password" />
 
         </LinearLayout>
+
+        <!-- step4 : FontFolio -->
+        <TextView
+            android:id="@+id/welcome_text_3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:visibility="gone"
+            android:text="@string/welcome_text_3"
+            android:textAlignment="viewStart"
+            android:textSize="13sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintLeft_toRightOf="@id/guideline_left"
+            app:layout_constraintRight_toLeftOf="@id/guideline_right"
+            app:layout_constraintTop_toBottomOf="@+id/welcome_text_div"
+            app:layout_constraintVertical_bias="0.02" />
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/group_select_div"
+            android:visibility="gone"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toRightOf="@id/guideline_left"
+            app:layout_constraintRight_toLeftOf="@id/guideline_right"
+            app:layout_constraintTop_toBottomOf="@+id/welcome_text_3"
+            app:layout_constraintVertical_bias="0.1">
+
+            <TextView
+                android:id="@+id/group_select_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@android:color/transparent"
+                android:hint="Select your occupation group"
+                android:textStyle="bold"
+                android:textSize="19sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.0" />
+
+            <ImageView
+                android:layout_width="33dp"
+                android:layout_height="30dp"
+                android:padding="4dp"
+                android:src="@drawable/view_occupation_group_btn"
+                app:layout_constraintBottom_toBottomOf="@id/group_select_text"
+                app:layout_constraintHorizontal_bias="1.0"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toTopOf="@id/group_select_text" />
+
+            <ImageView
+                android:id="@+id/group_select_error"
+                android:visibility="invisible"
+                android:layout_width="195.5dp"
+                android:layout_height="28dp"
+                android:src="@drawable/occupation_select_error"
+                app:layout_constraintLeft_toLeftOf="@id/group_select_text"
+                app:layout_constraintTop_toBottomOf="@id/group_select_text"/>
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/group_type_more_div"
+            android:visibility="gone"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toRightOf="@id/guideline_left"
+            app:layout_constraintRight_toLeftOf="@id/guideline_right"
+            app:layout_constraintTop_toBottomOf="@+id/group_select_div"
+            app:layout_constraintVertical_bias="0.1">
+
+            <EditText
+                android:id="@+id/group_type_more_input"
+                android:inputType="textEmailAddress"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:background="@android:color/transparent"
+                android:letterSpacing="0.025"
+                android:hint="Please enter your occupation."
+                android:textColor="#000"
+                android:textSize="19sp"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.0"
+                app:layout_constraintWidth_percent="0.85" />
+
+            <ImageView
+                android:id="@+id/group_type_more_input_init"
+                android:layout_width="33dp"
+                android:layout_height="30dp"
+                android:background="@drawable/login_close_btn"
+                android:visibility="visible"
+                app:layout_constraintBottom_toBottomOf="@id/group_type_more_input"
+                app:layout_constraintHorizontal_bias="1.0"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toTopOf="@id/group_type_more_input" />
+
+            <ImageView
+                android:id="@+id/group_type_more_error"
+                android:visibility="invisible"
+                android:layout_width="195.5dp"
+                android:layout_height="28dp"
+                android:src="@drawable/occupation_select_error"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/group_type_more_input"/>
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 
