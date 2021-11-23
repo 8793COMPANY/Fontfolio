@@ -20,7 +20,9 @@ import androidx.annotation.IdRes
 import androidx.appcompat.widget.AppCompatButton
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.constraintlayout.widget.ConstraintSet
+import com.corporation8793.fontfolio.LoadingActivity
 import com.corporation8793.fontfolio.R
+import com.corporation8793.fontfolio.common.Fontfolio
 import com.google.android.material.bottomsheet.BottomSheetBehavior
 import com.google.android.material.bottomsheet.BottomSheetDialog
 import com.google.android.material.progressindicator.LinearProgressIndicator
@@ -375,6 +377,11 @@ class SignUp : AppCompatActivity() {
 
         group_select_div.setOnClickListener {
             bottomSheetDialog.show()
+        }
+
+        next_btn.setOnClickListener {
+            val fontfolio = Fontfolio()
+            fontfolio.moveToActivity(this, LoadingActivity::class.java, true)
         }
 
         step = 3
