@@ -114,6 +114,9 @@ class SignUp : AppCompatActivity() {
 
             fun isEmailValid(email : CharSequence) = android.util.Patterns.EMAIL_ADDRESS.matcher(email).matches()
         })
+
+        // TODO : For test
+        step4()
     }
 
     fun step2() {
