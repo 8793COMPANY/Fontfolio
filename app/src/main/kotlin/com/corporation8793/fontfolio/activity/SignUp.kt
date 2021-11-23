@@ -137,9 +137,9 @@ class SignUp : AppCompatActivity() {
         })
 
         // TODO : For test
-/*        step2()
+        step2()
         step3()
-        step4()*/
+        step4()
     }
 
     fun step2() {
@@ -357,17 +357,17 @@ class SignUp : AppCompatActivity() {
 
         bottomSheetView = layoutInflater.inflate(R.layout.group_select_sheet_layout, null)
         bottomSheetDialog = BottomSheetDialog(this)
-        bottomSheetDialog.setContentView(bottomSheetView)
         bottomSheetDialog.behavior.state = BottomSheetBehavior.STATE_EXPANDED
         bottomSheetDialog.behavior.skipCollapsed = true
         bottomSheetDialog.behavior.saveFlags = BottomSheetBehavior.SAVE_SKIP_COLLAPSED
         bottomSheetDialog.behavior.isFitToContents = true
+        bottomSheetDialog.setContentView(bottomSheetView)
 
         welcome_text_1.text = "Finally :)"
         welcome_text_2.text = "Choose your occupation group,\nYou can find more related content."
-        // 시연용
-        next_btn.backgroundTintList = (ColorStateList.valueOf(resources.getColor(R.color.btn_red, theme)))
-        next_btn.isEnabled = true
+        next_btn.backgroundTintList = (ColorStateList.valueOf(resources.getColor(R.color.btn_gray, theme)))
+        next_btn.isEnabled = false
+        input_email.text.clear()
 
         actionBar.visibility = View.INVISIBLE
         input_name_div.visibility = View.GONE
@@ -376,12 +376,17 @@ class SignUp : AppCompatActivity() {
         group_select_div.visibility = View.VISIBLE
 
         group_select_div.setOnClickListener {
+            bottomSheetDialog.behavior.state = BottomSheetBehavior.STATE_EXPANDED
+            bottomSheetDialog.behavior.skipCollapsed = true
+            bottomSheetDialog.behavior.saveFlags = BottomSheetBehavior.SAVE_SKIP_COLLAPSED
+            bottomSheetDialog.behavior.isFitToContents = true
+
+            bottomSheetDialog.setContentView(bottomSheetView)
             bottomSheetDialog.show()
         }
 
         next_btn.setOnClickListener {
-            val fontfolio = Fontfolio()
-            fontfolio.moveToActivity(this, LoadingActivity::class.java, true)
+            Fontfolio().moveToActivity(this, LoadingActivity::class.java, true)
         }
 
         step = 3
