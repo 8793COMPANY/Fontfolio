@@ -91,6 +91,7 @@
                 app:layout_constraintTop_toTopOf="parent">
 
                 <LinearLayout
+                    android:id="@+id/job_architecture"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="vertical">
@@ -111,6 +112,7 @@
                 </LinearLayout>
 
                 <LinearLayout
+                    android:id="@+id/job_art"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="vertical">
@@ -131,6 +133,7 @@
                 </LinearLayout>
 
                 <LinearLayout
+                    android:id="@+id/job_broadcast"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="vertical">
@@ -151,6 +154,7 @@
                 </LinearLayout>
 
                 <LinearLayout
+                    android:id="@+id/job_business"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="vertical">
@@ -171,6 +175,7 @@
                 </LinearLayout>
 
                 <LinearLayout
+                    android:id="@+id/job_chemistry"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="vertical">
@@ -191,6 +196,7 @@
                 </LinearLayout>
 
                 <LinearLayout
+                    android:id="@+id/job_education"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="vertical">
@@ -211,6 +217,7 @@
                 </LinearLayout>
 
                 <LinearLayout
+                    android:id="@+id/job_electronic"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="vertical">
@@ -231,6 +238,7 @@
                 </LinearLayout>
 
                 <LinearLayout
+                    android:id="@+id/job_food"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="vertical">
@@ -251,6 +259,7 @@
                 </LinearLayout>
 
                 <LinearLayout
+                    android:id="@+id/job_health"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="vertical">
@@ -271,6 +280,7 @@
                 </LinearLayout>
 
                 <LinearLayout
+                    android:id="@+id/job_it"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="vertical">
@@ -291,6 +301,7 @@
                 </LinearLayout>
 
                 <LinearLayout
+                    android:id="@+id/job_sports"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="vertical">
@@ -311,6 +322,7 @@
                 </LinearLayout>
 
                 <LinearLayout
+                    android:id="@+id/job_etc"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="vertical">
