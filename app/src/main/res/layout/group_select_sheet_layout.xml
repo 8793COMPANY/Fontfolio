@@ -55,6 +55,7 @@
             app:layout_constraintTop_toBottomOf="@+id/guideline_top" />
 
         <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/job_korea"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             app:layout_constraintVertical_bias="0.25"
@@ -337,7 +338,17 @@
                         android:textStyle="bold" />
                 </LinearLayout>
             </LinearLayout>
-
         </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <ImageView
+            android:id="@+id/bottom_sheet_close_btn"
+            android:layout_width="64.4dp"
+            android:layout_height="64.4dp"
+            app:layout_constraintLeft_toRightOf="@id/guideline_left"
+            app:layout_constraintRight_toLeftOf="@id/guideline_right"
+            app:layout_constraintTop_toBottomOf="@id/job_korea"
+            app:layout_constraintBottom_toBottomOf="parent"
+            android:src="@drawable/bottom_sheet_close_btn" />
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

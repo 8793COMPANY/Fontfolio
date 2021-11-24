@@ -64,15 +64,15 @@ class HomeFragment(activity: MainActivity) : Fragment() {
         })
 
         CoroutineScope(Dispatchers.IO).launch {
-            Log.e("in","data print")
-            Log.e("size",fontfolio.db.fontDao().getAll().size.toString())
+            //Log.e("in","data print")
+            //Log.e("size",fontfolio.db.fontDao().getAll().size.toString())
             for (i in fontfolio.db.fontDao().getAll()){
-                Log.e("fontName",i.fontName)
-                Log.e("fontLicense",i.fontLicense.toString())
-                Log.e("fontLicenseDescription",i.fontLicenseDescription)
-                Log.e("fontCopyrightHolder",i.fontCopyrightHolder)
-                Log.e("fontStyle",i.fontStyle)
-                Log.e("-----------","----------")
+                //Log.e("fontName",i.fontName)
+                //Log.e("fontLicense",i.fontLicense.toString())
+                //Log.e("fontLicenseDescription",i.fontLicenseDescription)
+                //Log.e("fontCopyrightHolder",i.fontCopyrightHolder)
+                //Log.e("fontStyle",i.fontStyle)
+                //Log.e("-----------","----------")
             }
 
 

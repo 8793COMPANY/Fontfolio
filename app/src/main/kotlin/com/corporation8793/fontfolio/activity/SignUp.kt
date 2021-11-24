@@ -80,6 +80,8 @@ class SignUp : AppCompatActivity() {
     lateinit var job_sports : LinearLayout
     lateinit var job_etc : LinearLayout
 
+    lateinit var bottom_sheet_close_btn : ImageView
+
     lateinit var bottomSheetView : View
     lateinit var bottomSheetDialog : BottomSheetDialog
 
@@ -388,6 +390,7 @@ class SignUp : AppCompatActivity() {
         job_it = bottomSheetView.findViewById(R.id.job_it)
         job_sports = bottomSheetView.findViewById(R.id.job_sports)
         job_etc = bottomSheetView.findViewById(R.id.job_etc)
+        bottom_sheet_close_btn = bottomSheetView.findViewById(R.id.bottom_sheet_close_btn)
 
         welcome_text_1.text = "Finally :)"
         welcome_text_2.text = "Choose your occupation group,\nYou can find more related content."
@@ -461,61 +464,76 @@ class SignUp : AppCompatActivity() {
         job_architecture.setOnClickListener {
             group_select_text.text = "Architecture / Facilities"
             group_type_more_div.visibility = View.VISIBLE
+            group_select_error.visibility = View.INVISIBLE
             bottomSheetDialog.dismiss()
         }
         job_art.setOnClickListener {
             group_select_text.text = "Art / Design / Creation"
             group_type_more_div.visibility = View.VISIBLE
+            group_select_error.visibility = View.INVISIBLE
             bottomSheetDialog.dismiss()
         }
         job_broadcast.setOnClickListener {
             group_select_text.text = "Broadcast / Culture"
             group_type_more_div.visibility = View.VISIBLE
+            group_select_error.visibility = View.INVISIBLE
             bottomSheetDialog.dismiss()
         }
         job_business.setOnClickListener {
             group_select_text.text = "Business / Management"
             group_type_more_div.visibility = View.VISIBLE
+            group_select_error.visibility = View.INVISIBLE
             bottomSheetDialog.dismiss()
         }
         job_chemistry.setOnClickListener {
             group_select_text.text = "Chemistry / Materials"
             group_type_more_div.visibility = View.VISIBLE
+            group_select_error.visibility = View.INVISIBLE
             bottomSheetDialog.dismiss()
         }
         job_education.setOnClickListener {
             group_select_text.text = "Education / Research"
             group_type_more_div.visibility = View.VISIBLE
+            group_select_error.visibility = View.INVISIBLE
             bottomSheetDialog.dismiss()
         }
         job_electronic.setOnClickListener {
             group_select_text.text = "Electronic / Communication"
             group_type_more_div.visibility = View.VISIBLE
+            group_select_error.visibility = View.INVISIBLE
             bottomSheetDialog.dismiss()
         }
         job_food.setOnClickListener {
             group_select_text.text = "Food / Restaurant"
             group_type_more_div.visibility = View.VISIBLE
+            group_select_error.visibility = View.INVISIBLE
             bottomSheetDialog.dismiss()
         }
         job_health.setOnClickListener {
             group_select_text.text = "Health / Medical"
             group_type_more_div.visibility = View.VISIBLE
+            group_select_error.visibility = View.INVISIBLE
             bottomSheetDialog.dismiss()
         }
         job_it.setOnClickListener {
             group_select_text.text = "IT / Software / Solution"
             group_type_more_div.visibility = View.VISIBLE
+            group_select_error.visibility = View.INVISIBLE
             bottomSheetDialog.dismiss()
         }
         job_sports.setOnClickListener {
             group_select_text.text = "Sports / Entertainment"
             group_type_more_div.visibility = View.VISIBLE
+            group_select_error.visibility = View.INVISIBLE
             bottomSheetDialog.dismiss()
         }
         job_etc.setOnClickListener {
             group_select_text.text = "Etc & Direct input"
             group_type_more_div.visibility = View.VISIBLE
+            group_select_error.visibility = View.INVISIBLE
+            bottomSheetDialog.dismiss()
+        }
+        bottom_sheet_close_btn.setOnClickListener {
             bottomSheetDialog.dismiss()
         }
     }
