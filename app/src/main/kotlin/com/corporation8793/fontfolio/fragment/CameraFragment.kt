@@ -1,17 +1,13 @@
 package com.corporation8793.fontfolio.fragment
 
-import android.annotation.SuppressLint
-import android.graphics.fonts.Font
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
-import com.corporation8793.fontfolio.MainActivity
 import com.corporation8793.fontfolio.R
 import com.corporation8793.fontfolio.common.Fontfolio
-import com.corporation8793.fontfolio.library.ocr.StartOcrActivity
+import com.corporation8793.fontfolio.activity.ocr.StartOcrActivity
 
 private const val ARG_PARAM1 = "param1"
 private const val ARG_PARAM2 = "param2"

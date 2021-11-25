@@ -11,10 +11,8 @@ import android.widget.Toast
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import com.corporation8793.fontfolio.BuildConfig
-import com.corporation8793.fontfolio.MainActivity
 import com.corporation8793.fontfolio.R
 import com.corporation8793.fontfolio.common.Fontfolio
-import com.corporation8793.fontfolio.login.AppLoginActivity
 import com.corporation8793.fontfolio.login.LoginActivity
 
 class Join : AppCompatActivity() {

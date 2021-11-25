@@ -1,14 +1,12 @@
-package com.corporation8793.fontfolio
+package com.corporation8793.fontfolio.activity
 
 import android.content.Intent
 import android.os.Bundle
 import android.view.MenuItem
-import android.view.View
-import android.widget.LinearLayout
 import androidx.appcompat.app.AppCompatActivity
+import com.corporation8793.fontfolio.R
 import com.corporation8793.fontfolio.board.SaveBoardActivity
 import com.corporation8793.fontfolio.fragment.*
-import com.corporation8793.fontfolio.login.AppLoginActivity
 import com.google.android.material.bottomnavigation.BottomNavigationView
 
 
@@ -29,7 +27,7 @@ class MainActivity : AppCompatActivity() , BottomNavigationView.OnNavigationItem
 
         when(item.itemId) {
             R.id.page_home -> {
-                supportFragmentManager.beginTransaction().replace(R.id.menu_view , HomeFragment(this)).commitAllowingStateLoss()
+                supportFragmentManager.beginTransaction().replace(R.id.menu_view, HomeFragment(this)).commitAllowingStateLoss()
                 return true
             }
             R.id.page_search -> {

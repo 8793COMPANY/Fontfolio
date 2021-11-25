@@ -36,7 +36,7 @@
         <activity android:name=".board.SaveBoardActivity" >
 
         </activity>
-        <activity android:name=".MainActivity"></activity>
+        <activity android:name=".activity.MainActivity"></activity>
         <activity
             android:name=".login.AppLoginActivity"
             android:windowSoftInputMode="adjustNothing"></activity>
@@ -57,11 +57,11 @@
         </activity>
 
         <!-- OCR 액티비티 -->
-        <activity android:name=".library.ocr.StartOcrActivity"/>
-        <activity android:name=".library.ocr.TakePhoteActivity"
+        <activity android:name=".activity.ocr.StartOcrActivity"/>
+        <activity android:name=".activity.ocr.TakePhoteActivity"
             android:configChanges="orientation|keyboard|keyboardHidden|screenSize"
             android:screenOrientation="nosensor" />
-        <activity android:name=".library.ocr.ShowCropperedActivity"
+        <activity android:name=".activity.ocr.ShowCropperedActivity"
             android:configChanges="orientation|keyboard|keyboardHidden|screenSize"
             android:screenOrientation="nosensor" />
     </application>

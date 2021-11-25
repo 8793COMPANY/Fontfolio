@@ -1,4 +1,4 @@
-package com.corporation8793.fontfolio.library.ocr;
+package com.corporation8793.fontfolio.activity.ocr;
 
 import android.app.ProgressDialog;
 import android.content.Context;

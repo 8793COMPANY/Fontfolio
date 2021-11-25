@@ -2,18 +2,14 @@ package com.corporation8793.fontfolio.fragment
 
 import android.annotation.SuppressLint
 import android.os.Bundle
-import android.os.Handler
-import android.os.Looper
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import androidx.fragment.app.Fragment
-import com.corporation8793.fontfolio.MainActivity
+import com.corporation8793.fontfolio.activity.MainActivity
 import com.corporation8793.fontfolio.R
 import com.corporation8793.fontfolio.common.Fontfolio
-import com.corporation8793.fontfolio.dialog.InitPwBottomDialog
 import com.corporation8793.fontfolio.dialog.SortByDialog
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
