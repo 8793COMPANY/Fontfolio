@@ -16,6 +16,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.util.Log;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -43,6 +44,8 @@ public class ShowCropperedActivity extends AppCompatActivity {
     private static final String    TAG = "ShowCropperedActivity";
     private              ImageView imageView;
     private              TextView  textView;
+    private              Button    back_btn;
+    private              Button    info_btn;
 
     private int    width;
     private int    height;
@@ -74,6 +77,10 @@ public class ShowCropperedActivity extends AppCompatActivity {
     private void initView() {
         imageView = findViewById(R.id.image);
         textView = findViewById(R.id.text);
+        back_btn = findViewById(R.id.back_btn);
+        info_btn = findViewById(R.id.info_btn);
+
+        back_btn.setOnClickListener(v -> finish());
 
         dialog = new ProgressDialog(context);
         dialog.setMessage("OCR 판독 중 ...");
