@@ -42,9 +42,7 @@ public class ShowCropperedActivity extends AppCompatActivity {
 
     private static final String    TAG = "ShowCropperedActivity";
     private              ImageView imageView;
-    private              ImageView imageView2;
     private              TextView  textView;
-    private              TextView  textView2;
 
     private int    width;
     private int    height;
@@ -75,25 +73,15 @@ public class ShowCropperedActivity extends AppCompatActivity {
 
     private void initView() {
         imageView = findViewById(R.id.image);
-        imageView2 = findViewById(R.id.image2);
         textView = findViewById(R.id.text);
-        textView2 = findViewById(R.id.text_2);
 
         dialog = new ProgressDialog(context);
         dialog.setMessage("OCR 판독 중 ...");
         dialog.setCancelable(false);
         dialog.show();
 
-        if (width != 0 && height != 0) {
-            int screenWidth = Utils.getWidthInPx(this);
-            float scale = (float) screenWidth / (float) width;
-            final ViewGroup.LayoutParams lp = imageView.getLayoutParams();
-            int imgHeight = (int) (scale * height);
-            lp.height = imgHeight;
-            imageView.setLayoutParams(lp);
-            Log.e(TAG, "imageView.getLayoutParams().width:" + imageView.getLayoutParams().width);
-        }
         imageView.setImageURI(uri);
+        imageView.setScaleType(ImageView.ScaleType.FIT_XY);
     }
 
     private void initTess() {
@@ -211,9 +199,7 @@ public class ShowCropperedActivity extends AppCompatActivity {
             baseApi.end();
 
             handler.post(() -> {
-                imageView2.setImageBitmap(bitmap_1);
                 textView.setText(result);
-                textView2.setText(randText());
                 dialog.dismiss();
             });
         }

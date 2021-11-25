@@ -167,7 +167,6 @@ public class CameraPreview extends SurfaceView implements SurfaceHolder.Callback
             Camera.CameraInfo cameraInfo = new Camera.CameraInfo();
             cameraCount = Camera.getNumberOfCameras(); // get cameras number
 
-            // TODO : 카메라 이슈
             for (int camIdx = 0; camIdx < cameraCount; camIdx++) {
                 // get camerainfo
                 Camera.getCameraInfo(camIdx, cameraInfo);
