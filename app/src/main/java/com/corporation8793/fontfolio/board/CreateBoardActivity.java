@@ -51,6 +51,7 @@ public class CreateBoardActivity extends AppCompatActivity {
         get_picture_view = findViewById(R.id.get_picture_view);
 
         take_picture_view.setClipToOutline(true);
+        get_picture_view.setClipToOutline(true);
 
 
         board_icon_view1.setOnClickListener(new View.OnClickListener() {
@@ -175,6 +176,7 @@ public class CreateBoardActivity extends AppCompatActivity {
                     in.close();
                     Drawable drawable = new BitmapDrawable(img);
                     get_picture_view.setBackground(drawable);
+                    get_picture_view.setClipToOutline(true);
 
 
 
@@ -190,7 +192,7 @@ public class CreateBoardActivity extends AppCompatActivity {
 
             Drawable drawable = new BitmapDrawable(imageBitmap);
             take_picture_view.setBackground(drawable);
-
+            take_picture_view.setClipToOutline(true);
         }
     }
 }
