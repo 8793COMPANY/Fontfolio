@@ -49,7 +49,7 @@ public class LoadingActivity extends AppCompatActivity {
         loading_video.setVideoURI(uri);
         loading_video.setOnPreparedListener(mp -> {
             mp.start();
-            sendMessage();
+            handler.sendEmptyMessageDelayed(1,1000);
         });
 
         loading_video.setOnCompletionListener(mp -> {
@@ -61,14 +61,26 @@ public class LoadingActivity extends AppCompatActivity {
         handler = new Handler(){
             @Override
             public void handleMessage(Message msg) {
-                if(cnt<100){
-                    cnt++;
-                    progressBar.getProgressDrawable().setColorFilter(Color.RED, PorterDuff.Mode.SRC_IN);
-                    progressBar.setProgress(cnt);
-                    LoadingActivity.this.sendMessage();
-                }else{
-                    handler.removeCallbacksAndMessages(null);
+                switch (msg.what){
+                    case 0:
+                        if(cnt<250){
+                            cnt++;
+                            progressBar.getProgressDrawable().setColorFilter(Color.RED, PorterDuff.Mode.SRC_IN);
+                            progressBar.setProgress(cnt);
+                            LoadingActivity.this.sendProgressMessage();
+                        }else{
+                            handler.removeCallbacksAndMessages(null);
+                        }
+
+                        break;
+
+                    case 1:
+                        sendProgressMessage();
+                        break;
+
+
                 }
+
             }
         };
 
@@ -76,7 +88,7 @@ public class LoadingActivity extends AppCompatActivity {
 
     }
 
-    public void sendMessage(){
+    public void sendProgressMessage(){
         Message message = new Message(); //0.01초에 한번씩 Handler로 메세지를 전송
          handler.sendMessageDelayed(message,10);
     }
