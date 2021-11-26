@@ -63,7 +63,7 @@ public class LoadingActivity extends AppCompatActivity {
             public void handleMessage(Message msg) {
                 switch (msg.what){
                     case 0:
-                        if(cnt<250){
+                        if(cnt<200){
                             cnt++;
                             progressBar.getProgressDrawable().setColorFilter(Color.RED, PorterDuff.Mode.SRC_IN);
                             progressBar.setProgress(cnt);

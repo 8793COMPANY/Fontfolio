@@ -64,7 +64,7 @@
         android:id="@+id/progressbar"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:max="300"
+        android:max="200"
         style="@style/Widget.AppCompat.ProgressBar.Horizontal"
         android:progressDrawable="@drawable/progressbar_progressbar"
         app:layout_constraintTop_toBottomOf="@+id/loading_content"
