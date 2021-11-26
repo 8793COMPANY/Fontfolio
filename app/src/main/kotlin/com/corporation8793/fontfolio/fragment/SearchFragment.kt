@@ -38,11 +38,19 @@ class SearchFragment : Fragment() {
         return view
     }
 
-    // 써치-바 동적 크기 변경
+    // 써치-바 PercentWidth 동적 크기 변경
     fun ConstraintLayout.constrainPercentWidth(@IdRes targetViewId: Int, bias: Float) {
         val constraintSet = ConstraintSet()
         constraintSet.clone(this)
         constraintSet.constrainPercentWidth(targetViewId, bias)
+        constraintSet.applyTo(this)
+    }
+
+    // 써치-바 인풋 setHorizontalBias 동적 크기 변경
+    fun ConstraintLayout.setHorizontalBias(@IdRes targetViewId: Int, bias: Float) {
+        val constraintSet = ConstraintSet()
+        constraintSet.clone(this)
+        constraintSet.setHorizontalBias(targetViewId, bias)
         constraintSet.applyTo(this)
     }
 }
