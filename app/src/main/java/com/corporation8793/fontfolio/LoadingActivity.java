@@ -47,6 +47,7 @@ public class LoadingActivity extends AppCompatActivity {
         loading_video.setVideoURI(uri);
         loading_video.setOnPreparedListener(mp -> {
             mp.start();
+            sendMessage();
         });
 
         loading_video.setOnCompletionListener(mp -> {
@@ -69,7 +70,7 @@ public class LoadingActivity extends AppCompatActivity {
             }
         };
 
-        sendMessage();
+
 
     }
 

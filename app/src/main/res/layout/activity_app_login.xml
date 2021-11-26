@@ -34,6 +34,7 @@
         </androidx.constraintlayout.widget.Guideline>
 
         <Button
+            android:id="@+id/back_btn"
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:background="@drawable/login_back_btn"
@@ -202,7 +203,7 @@
             android:hint="@string/pw_input_box_hint"
             android:gravity="center_vertical"
             android:autoText="false"
-            android:password="true"
+            android:inputType="textPassword"
             android:letterSpacing="-0.01"
             android:lineSpacingExtra="7sp"
             app:layout_constraintLeft_toLeftOf="@id/guideline"
@@ -297,6 +298,7 @@
         app:layout_constraintWidth_percent="0.91">
 
         <TextView
+            android:id="@+id/login_btn_text"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:gravity="center"

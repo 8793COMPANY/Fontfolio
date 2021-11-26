@@ -47,6 +47,7 @@ public class RecyclerBoardAdapter extends RecyclerView.Adapter<RecyclerBoardAdap
         holder.itemView.requestLayout();
 
 
+
     }
 
     // getItemCount() - 전체 데이터 갯수 리턴.
