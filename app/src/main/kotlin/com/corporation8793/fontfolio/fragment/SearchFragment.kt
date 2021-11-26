@@ -5,6 +5,9 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.annotation.IdRes
+import androidx.constraintlayout.widget.ConstraintLayout
+import androidx.constraintlayout.widget.ConstraintSet
 import androidx.fragment.app.Fragment
 import com.corporation8793.fontfolio.R
 
@@ -24,7 +27,6 @@ class SearchFragment : Fragment() {
         }
     }
 
-
     @SuppressLint("MissingPermission")
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -34,5 +36,13 @@ class SearchFragment : Fragment() {
         val view: View = inflater.inflate(R.layout.fragment_search, container, false)
 
         return view
+    }
+
+    // 써치-바 동적 크기 변경
+    fun ConstraintLayout.constrainPercentWidth(@IdRes targetViewId: Int, bias: Float) {
+        val constraintSet = ConstraintSet()
+        constraintSet.clone(this)
+        constraintSet.constrainPercentWidth(targetViewId, bias)
+        constraintSet.applyTo(this)
     }
 }
