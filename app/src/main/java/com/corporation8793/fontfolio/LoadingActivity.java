@@ -8,6 +8,7 @@ import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
+import android.util.Log;
 import android.view.View;
 import android.widget.ProgressBar;
 import android.widget.VideoView;
@@ -47,26 +48,54 @@ public class LoadingActivity extends AppCompatActivity {
         loading_video.setVideoURI(uri);
         loading_video.setOnPreparedListener(mp -> {
             mp.start();
-            sendMessage();
+            handler.sendEmptyMessageDelayed(1,1000);
         });
 
         loading_video.setOnCompletionListener(mp -> {
             Intent intent = new Intent(LoadingActivity.this, MainActivity.class);
             startActivity(intent);
+            finish();
         });
 
 
         handler = new Handler(){
             @Override
             public void handleMessage(Message msg) {
-                if(cnt<100){
-                    cnt++;
-                    progressBar.getProgressDrawable().setColorFilter(Color.RED, PorterDuff.Mode.SRC_IN);
-                    progressBar.setProgress(cnt);
-                    LoadingActivity.this.sendMessage();
-                }else{
-                    handler.removeCallbacksAndMessages(null);
+                switch (msg.what){
+                    case 0:
+                        if(cnt<230){
+                            cnt++;
+//                            progressBar.getProgressDrawable().setColorFilter(Color.RED, PorterDuff.Mode.SRC_IN);
+//                            if(cnt < 15){
+//                                progressBar.getProgressDrawable().setColorFilter(Color.WHITE, PorterDuff.Mode.SRC_IN);
+//                            }else if(cnt <= 50){
+//                                progressBar.getProgressDrawable().setColorFilter(Color.parseColor("#D5D5D5"), PorterDuff.Mode.SRC_IN);
+//                            } else if(cnt <=100){
+//                                progressBar.getProgressDrawable().setColorFilter(Color.GRAY, PorterDuff.Mode.SRC_IN);
+//                            }else{
+//                                progressBar.getProgressDrawable().setColorFilter(Color.BLACK, PorterDuff.Mode.SRC_IN);
+//                            }
+                            int value = map(cnt,0,230,0,255);
+                            Log.e("value",value+"");
+
+                                progressBar.getProgressDrawable().setAlpha(value);
+
+                            progressBar.setProgress(cnt);
+
+                            LoadingActivity.this.sendProgressMessage();
+                        }else{
+                            handler.removeCallbacksAndMessages(null);
+                        }
+
+                        break;
+
+                    case 1:
+                        sendProgressMessage();
+                        break;
+
+
                 }
+
             }
         };
 
@@ -74,9 +103,13 @@ public class LoadingActivity extends AppCompatActivity {
 
     }
 
-    public void sendMessage(){
+    public void sendProgressMessage(){
         Message message = new Message(); //0.01초에 한번씩 Handler로 메세지를 전송
          handler.sendMessageDelayed(message,10);
+    }
+
+    public int map(int x, int in_min, int in_max, int out_min, int out_max) {
+        return (x - in_min) * (out_max - out_min) / (in_max - in_min) + out_min;
     }
 
 }

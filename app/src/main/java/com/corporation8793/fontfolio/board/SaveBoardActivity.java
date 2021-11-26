@@ -16,7 +16,7 @@ public class SaveBoardActivity extends AppCompatActivity {
     RecyclerView save_board;
     RecyclerBoardAdapter mAdapter = null ;
     ArrayList<BoardItem> mList = new ArrayList<BoardItem>();
-    Button create_btn;
+    Button create_btn, cancel_btn;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,6 +25,7 @@ public class SaveBoardActivity extends AppCompatActivity {
 
         save_board = findViewById(R.id.save_board_list);
         create_btn = findViewById(R.id.create_btn);
+        cancel_btn = findViewById(R.id.cancel_btn);
 
         mAdapter = new RecyclerBoardAdapter(mList);
         save_board.setAdapter(mAdapter);
@@ -46,6 +47,10 @@ public class SaveBoardActivity extends AppCompatActivity {
             Intent intent = new Intent(SaveBoardActivity.this, CreateBoardActivity.class);
             startActivity(intent);
 
+        });
+
+        cancel_btn.setOnClickListener(v->{
+            finish();
         });
     }
 

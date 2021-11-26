@@ -71,6 +71,7 @@ public class SelectFontStyleActivity extends AppCompatActivity {
 
 
         gv.setHorizontalSpacing((int)((width /720.0) * 16));
+        gv.setVerticalSpacing((int)((width /720.0) * 16));
 
         next_btn.setOnClickListener(v->{
             Intent intent = new Intent(SelectFontStyleActivity.this, LoadingActivity.class);
@@ -182,7 +183,7 @@ public class SelectFontStyleActivity extends AppCompatActivity {
         Field[]  fields = R.drawable.class.getFields();
 
         for(int count=0; count < fields.length; count++){
-            if (fields[count].getName().contains("font_style")) {
+            if (fields[count].getName().contains("font_style") && !fields[count].getName().equals("font_style_select_img")) {
                 MyFontStyle fontStyle = new MyFontStyle();
                 fontStyle.fontName = fields[count].getName();
                 fontStyle.isImageChanged = false;
