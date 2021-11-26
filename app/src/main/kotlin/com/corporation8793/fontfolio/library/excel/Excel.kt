@@ -58,11 +58,11 @@ class Excel(context: Context, xlsFileNameWithExtension:String) {
                 if (sheet.getCell(col, row).contents != null) {
                     data[col] = sheet.getCell(col, row).contents
                     insertData[col] = data[col]
-                    Log.i("Excel.kt", "extractTotalSheet: DATA(${data[col]}) in row : $row col : ${sheet.getCell(col, 0).contents}")
+                    //Log.i("Excel.kt", "extractTotalSheet: DATA(${data[col]}) in row : $row col : ${sheet.getCell(col, 0).contents}")
                 } else {
                     data[col] = "NULL"
                     insertData[col] = data[col]
-                    Log.e("Excel.kt", "extractTotalSheet: NULL in row : $row col : ${sheet.getCell(col, 0).contents}")
+                    //Log.e("Excel.kt", "extractTotalSheet: NULL in row : $row col : ${sheet.getCell(col, 0).contents}")
                 }
             }
 

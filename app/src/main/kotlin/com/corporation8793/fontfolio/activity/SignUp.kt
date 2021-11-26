@@ -67,6 +67,21 @@ class SignUp : AppCompatActivity() {
     lateinit var group_type_more_input_init : ImageView
     lateinit var group_type_more_error : ImageView
 
+    lateinit var job_architecture : LinearLayout
+    lateinit var job_art : LinearLayout
+    lateinit var job_broadcast : LinearLayout
+    lateinit var job_business : LinearLayout
+    lateinit var job_chemistry : LinearLayout
+    lateinit var job_education : LinearLayout
+    lateinit var job_electronic : LinearLayout
+    lateinit var job_food : LinearLayout
+    lateinit var job_health : LinearLayout
+    lateinit var job_it : LinearLayout
+    lateinit var job_sports : LinearLayout
+    lateinit var job_etc : LinearLayout
+
+    lateinit var bottom_sheet_close_btn : ImageView
+
     lateinit var bottomSheetView : View
     lateinit var bottomSheetDialog : BottomSheetDialog
 
@@ -135,11 +150,6 @@ class SignUp : AppCompatActivity() {
 
             fun isEmailValid(email : CharSequence) = android.util.Patterns.EMAIL_ADDRESS.matcher(email).matches()
         })
-
-        // TODO : For test
-/*        step2()
-        step3()
-        step4()*/
     }
 
     fun step2() {
@@ -357,17 +367,31 @@ class SignUp : AppCompatActivity() {
 
         bottomSheetView = layoutInflater.inflate(R.layout.group_select_sheet_layout, null)
         bottomSheetDialog = BottomSheetDialog(this)
-        bottomSheetDialog.setContentView(bottomSheetView)
         bottomSheetDialog.behavior.state = BottomSheetBehavior.STATE_EXPANDED
         bottomSheetDialog.behavior.skipCollapsed = true
         bottomSheetDialog.behavior.saveFlags = BottomSheetBehavior.SAVE_SKIP_COLLAPSED
         bottomSheetDialog.behavior.isFitToContents = true
+        bottomSheetDialog.setContentView(bottomSheetView)
+
+        job_architecture = bottomSheetView.findViewById(R.id.job_architecture)
+        job_art = bottomSheetView.findViewById(R.id.job_art)
+        job_broadcast = bottomSheetView.findViewById(R.id.job_broadcast)
+        job_business = bottomSheetView.findViewById(R.id.job_business)
+        job_chemistry = bottomSheetView.findViewById(R.id.job_chemistry)
+        job_education = bottomSheetView.findViewById(R.id.job_education)
+        job_electronic = bottomSheetView.findViewById(R.id.job_electronic)
+        job_food = bottomSheetView.findViewById(R.id.job_food)
+        job_health = bottomSheetView.findViewById(R.id.job_health)
+        job_it = bottomSheetView.findViewById(R.id.job_it)
+        job_sports = bottomSheetView.findViewById(R.id.job_sports)
+        job_etc = bottomSheetView.findViewById(R.id.job_etc)
+        bottom_sheet_close_btn = bottomSheetView.findViewById(R.id.bottom_sheet_close_btn)
 
         welcome_text_1.text = "Finally :)"
         welcome_text_2.text = "Choose your occupation group,\nYou can find more related content."
-        // 시연용
-        next_btn.backgroundTintList = (ColorStateList.valueOf(resources.getColor(R.color.btn_red, theme)))
-        next_btn.isEnabled = true
+        next_btn.backgroundTintList = (ColorStateList.valueOf(resources.getColor(R.color.btn_gray, theme)))
+        next_btn.isEnabled = false
+        input_email.text.clear()
 
         actionBar.visibility = View.INVISIBLE
         input_name_div.visibility = View.GONE
@@ -376,18 +400,137 @@ class SignUp : AppCompatActivity() {
         group_select_div.visibility = View.VISIBLE
 
         group_select_div.setOnClickListener {
+            bottomSheetDialog.behavior.state = BottomSheetBehavior.STATE_EXPANDED
+            bottomSheetDialog.behavior.skipCollapsed = true
+            bottomSheetDialog.behavior.saveFlags = BottomSheetBehavior.SAVE_SKIP_COLLAPSED
+            bottomSheetDialog.behavior.isFitToContents = true
+
+            bottomSheetDialog.setContentView(bottomSheetView)
             bottomSheetDialog.show()
         }
 
         next_btn.setOnClickListener {
-            val fontfolio = Fontfolio()
-            fontfolio.moveToActivity(this, LoadingActivity::class.java, true)
+            if (group_select_text.text.isEmpty()) {
+                group_select_error.visibility = View.VISIBLE
+                next_btn.backgroundTintList = (ColorStateList.valueOf(resources.getColor(R.color.btn_gray, theme)))
+                next_btn.isEnabled = false
+            } else if (group_type_more_input.text.isEmpty()) {
+                group_type_more_error.visibility = View.VISIBLE
+                group_type_more_input_init.visibility = View.INVISIBLE
+                group_type_more_input.requestFocus()
+                next_btn.backgroundTintList = (ColorStateList.valueOf(resources.getColor(R.color.btn_gray, theme)))
+                next_btn.isEnabled = false
+            } else {
+                Fontfolio().moveToActivity(this, LoadingActivity::class.java, true)
+            }
+        }
+
+        group_type_more_input.addTextChangedListener(object : TextWatcher{
+            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
+            }
+
+            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
+            }
+
+            override fun afterTextChanged(s: Editable?) {
+                if (group_type_more_input.text.isEmpty()) {
+                    group_type_more_error.visibility = View.VISIBLE
+                    group_type_more_input_init.visibility = View.INVISIBLE
+                    next_btn.backgroundTintList = (ColorStateList.valueOf(resources.getColor(R.color.btn_gray, theme)))
+                    next_btn.isEnabled = false
+                } else {
+                    group_type_more_error.visibility = View.INVISIBLE
+                    group_type_more_input_init.visibility = View.VISIBLE
+                    next_btn.backgroundTintList = (ColorStateList.valueOf(resources.getColor(R.color.btn_red, theme)))
+                    next_btn.isEnabled = true
+                }
+            }
+        })
+
+        group_type_more_input_init.setOnClickListener {
+            group_type_more_input.text.clear()
         }
 
         step = 3
         progressText.text = "FontFolio"
         progressBar.progress = 3
         main_div.setHorizontalBias(R.id.progressText, 0.9f)
+
+        job_architecture.setOnClickListener {
+            group_select_text.text = "Architecture / Facilities"
+            group_type_more_div.visibility = View.VISIBLE
+            group_select_error.visibility = View.INVISIBLE
+            bottomSheetDialog.dismiss()
+        }
+        job_art.setOnClickListener {
+            group_select_text.text = "Art / Design / Creation"
+            group_type_more_div.visibility = View.VISIBLE
+            group_select_error.visibility = View.INVISIBLE
+            bottomSheetDialog.dismiss()
+        }
+        job_broadcast.setOnClickListener {
+            group_select_text.text = "Broadcast / Culture"
+            group_type_more_div.visibility = View.VISIBLE
+            group_select_error.visibility = View.INVISIBLE
+            bottomSheetDialog.dismiss()
+        }
+        job_business.setOnClickListener {
+            group_select_text.text = "Business / Management"
+            group_type_more_div.visibility = View.VISIBLE
+            group_select_error.visibility = View.INVISIBLE
+            bottomSheetDialog.dismiss()
+        }
+        job_chemistry.setOnClickListener {
+            group_select_text.text = "Chemistry / Materials"
+            group_type_more_div.visibility = View.VISIBLE
+            group_select_error.visibility = View.INVISIBLE
+            bottomSheetDialog.dismiss()
+        }
+        job_education.setOnClickListener {
+            group_select_text.text = "Education / Research"
+            group_type_more_div.visibility = View.VISIBLE
+            group_select_error.visibility = View.INVISIBLE
+            bottomSheetDialog.dismiss()
+        }
+        job_electronic.setOnClickListener {
+            group_select_text.text = "Electronic / Communication"
+            group_type_more_div.visibility = View.VISIBLE
+            group_select_error.visibility = View.INVISIBLE
+            bottomSheetDialog.dismiss()
+        }
+        job_food.setOnClickListener {
+            group_select_text.text = "Food / Restaurant"
+            group_type_more_div.visibility = View.VISIBLE
+            group_select_error.visibility = View.INVISIBLE
+            bottomSheetDialog.dismiss()
+        }
+        job_health.setOnClickListener {
+            group_select_text.text = "Health / Medical"
+            group_type_more_div.visibility = View.VISIBLE
+            group_select_error.visibility = View.INVISIBLE
+            bottomSheetDialog.dismiss()
+        }
+        job_it.setOnClickListener {
+            group_select_text.text = "IT / Software / Solution"
+            group_type_more_div.visibility = View.VISIBLE
+            group_select_error.visibility = View.INVISIBLE
+            bottomSheetDialog.dismiss()
+        }
+        job_sports.setOnClickListener {
+            group_select_text.text = "Sports / Entertainment"
+            group_type_more_div.visibility = View.VISIBLE
+            group_select_error.visibility = View.INVISIBLE
+            bottomSheetDialog.dismiss()
+        }
+        job_etc.setOnClickListener {
+            group_select_text.text = "Etc & Direct input"
+            group_type_more_div.visibility = View.VISIBLE
+            group_select_error.visibility = View.INVISIBLE
+            bottomSheetDialog.dismiss()
+        }
+        bottom_sheet_close_btn.setOnClickListener {
+            bottomSheetDialog.dismiss()
+        }
     }
 
     fun ConstraintLayout.setHorizontalBias(@IdRes targetViewId: Int, bias: Float) {

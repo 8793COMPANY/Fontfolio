@@ -315,6 +315,7 @@
                 android:layout_height="wrap_content"
                 android:background="@android:color/transparent"
                 android:hint="Select your occupation group"
+                android:textColor="#000"
                 android:textStyle="bold"
                 android:textSize="19sp"
                 app:layout_constraintBottom_toBottomOf="parent"
@@ -335,7 +336,7 @@
 
             <ImageView
                 android:id="@+id/group_select_error"
-                android:visibility="invisible"
+                android:visibility="visible"
                 android:layout_width="195.5dp"
                 android:layout_height="28dp"
                 android:src="@drawable/occupation_select_error"
@@ -377,7 +378,7 @@
                 android:layout_width="33dp"
                 android:layout_height="30dp"
                 android:background="@drawable/login_close_btn"
-                android:visibility="visible"
+                android:visibility="invisible"
                 app:layout_constraintBottom_toBottomOf="@id/group_type_more_input"
                 app:layout_constraintHorizontal_bias="1.0"
                 app:layout_constraintLeft_toLeftOf="parent"

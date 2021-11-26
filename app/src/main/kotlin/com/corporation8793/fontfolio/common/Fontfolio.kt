@@ -116,12 +116,12 @@ class Fontfolio : Application() {
                 Log.i("Application", "DB Data is Empty !! X_X")
                 for (i in roomData.indices) {
                     db.fontDao().insertAll(roomData[i])
-                    Log.i("Application", "DB Data Successful Inserted !! -> ${roomData[i]}")
+                    //Log.i("Application", "DB Data Successful Inserted !! -> ${roomData[i]}")
                 }
             } else {
                 Log.i("Application", "DB Data is Already Exist !! O_O")
                 for (i in roomData.indices) {
-                    Log.i("Application", "DB Data Already Exist !! -> ${roomData[i].id} : ${roomData[i].fontName}")
+                    //Log.i("Application", "DB Data Already Exist !! -> ${roomData[i].id} : ${roomData[i].fontName}")
                 }
             }
         }
