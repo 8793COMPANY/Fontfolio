@@ -4,49 +4,44 @@
     package="com.corporation8793.fontfolio">
 
     <uses-permission android:name="android.permission.CAMERA" />
+
     <uses-feature android:name="android.hardware.camera.autofocus" />
     <uses-feature android:name="android.hardware.camera" />
-    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
 
-    <!-- Without this folders will be inaccessible in Android-11 and above devices -->
-    <uses-permission android:name="android.permission.MANAGE_EXTERNAL_STORAGE" />
-
-    <!-- Without this entry storage-permission entry will not be visible under app-info permissions list Android-10 and below -->
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" /> <!-- Without this folders will be inaccessible in Android-11 and above devices -->
+    <uses-permission android:name="android.permission.MANAGE_EXTERNAL_STORAGE" /> <!-- Without this entry storage-permission entry will not be visible under app-info permissions list Android-10 and below -->
     <uses-permission
         android:name="android.permission.WRITE_EXTERNAL_STORAGE"
         android:maxSdkVersion="29"
-        tools:ignore="ScopedStorage"/>
+        tools:ignore="ScopedStorage" />
 
     <application
         android:name=".common.Fontfolio"
         android:allowBackup="true"
-        android:requestLegacyExternalStorage="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
+        android:requestLegacyExternalStorage="true"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Fontfolio">
-        <activity android:name=".board.CreateBoardActivity">
-
-        </activity>
-
-        <activity android:name=".SelectFontStyleActivity">
-        </activity>
-
-        <activity android:name=".board.SaveBoardActivity" >
-
-        </activity>
-        <activity android:name=".activity.MainActivity"
-            android:windowSoftInputMode="adjustNothing"/>
+        <activity
+            android:name=".activity.FontInformation"
+            android:exported="false" />
+        <activity android:name=".board.CreateBoardActivity"></activity>
+        <activity android:name=".SelectFontStyleActivity"></activity>
+        <activity android:name=".board.SaveBoardActivity"></activity>
+        <activity
+            android:name=".activity.MainActivity"
+            android:windowSoftInputMode="adjustNothing" />
         <activity
             android:name=".login.AppLoginActivity"
-            android:windowSoftInputMode="adjustNothing"></activity>
-        <activity android:name=".login.LoginActivity"></activity>
-        <activity android:name=".LoadingActivity"></activity>
+            android:windowSoftInputMode="adjustNothing" />
+        <activity android:name=".login.LoginActivity" />
+        <activity android:name=".LoadingActivity" />
         <activity
             android:name=".activity.SignUp"
-            android:windowSoftInputMode="adjustNothing|stateAlwaysVisible"
-            android:exported="false" />
+            android:exported="false"
+            android:windowSoftInputMode="adjustNothing|stateAlwaysVisible" />
         <activity
             android:name=".activity.Join"
             android:exported="true">
@@ -55,14 +50,14 @@
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-        </activity>
-
-        <!-- OCR 액티비티 -->
-        <activity android:name=".activity.ocr.StartOcrActivity"/>
-        <activity android:name=".activity.ocr.TakePhoteActivity"
+        </activity> <!-- OCR 액티비티 -->
+        <activity android:name=".activity.ocr.StartOcrActivity" />
+        <activity
+            android:name=".activity.ocr.TakePhoteActivity"
             android:configChanges="orientation|keyboard|keyboardHidden|screenSize"
             android:screenOrientation="nosensor" />
-        <activity android:name=".activity.ocr.ShowCropperedActivity"
+        <activity
+            android:name=".activity.ocr.ShowCropperedActivity"
             android:configChanges="orientation|keyboard|keyboardHidden|screenSize"
             android:screenOrientation="nosensor" />
     </application>

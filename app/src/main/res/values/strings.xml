@@ -21,7 +21,7 @@
     <!-- loading -->
     <string name="loading_title">Fontfolio All Set!</string>
     <string name="loading_content">Hold tight while we customize\nyour home feed...</string>
-    
+
     <!-- select font style -->
     <string name="welcome_fontfolio">Welcome to Fontfolio</string>
     <string name="select_style_content">Pick 4 or more font styles.</string>
@@ -48,7 +48,7 @@
     <string name="font_name">Font name</string>
     <string name="board_name">Board name</string>
     <string name="board_image">Board image</string>
-    
+
     <string name="organize_privacy">Organize Privacy</string>
     <string name="board_secret_check">Make this board secret</string>
     <string name="board_secret_check_content">Only you will see board.\nUnlock to share your board with others.</string>
