@@ -2,15 +2,23 @@ package com.corporation8793.fontfolio.fragment
 
 import android.annotation.SuppressLint
 import android.os.Bundle
+import android.os.Handler
+import android.os.Looper
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import androidx.fragment.app.Fragment
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
+import androidx.recyclerview.widget.StaggeredGridLayoutManager
 import com.corporation8793.fontfolio.activity.MainActivity
 import com.corporation8793.fontfolio.R
 import com.corporation8793.fontfolio.common.Fontfolio
 import com.corporation8793.fontfolio.dialog.SortByDialog
+import com.corporation8793.fontfolio.recylcerview.FontAdapter
+import com.corporation8793.fontfolio.recylcerview.FontItem
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -26,7 +34,10 @@ class HomeFragment(activity : MainActivity) : Fragment() {
     var mActivity = activity
 
     lateinit var fontfolio: Fontfolio
+    lateinit var font_list: RecyclerView
 
+    val datas = mutableListOf<FontItem>()
+    lateinit var mAdapter:FontAdapter
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -48,9 +59,17 @@ class HomeFragment(activity : MainActivity) : Fragment() {
         // Inflate the layout for this fragment
         val view: View = inflater.inflate(R.layout.fragment_home, container, false)
         sort_by_btn = view.findViewById(R.id.sort_by_btn)
+        font_list = view.findViewById(R.id.font_list)
 
         val sortByDialog = SortByDialog()
+        val staggeredGridLayoutManager = StaggeredGridLayoutManager(2, LinearLayoutManager.VERTICAL)
+        mAdapter = FontAdapter(mActivity.applicationContext)
 
+        notifyItem()
+
+        font_list.adapter = mAdapter
+        font_list.layoutManager = staggeredGridLayoutManager
+        
 
         sort_by_btn.setOnClickListener(View.OnClickListener {
             sortByDialog.show(
@@ -59,25 +78,53 @@ class HomeFragment(activity : MainActivity) : Fragment() {
             )
         })
 
-        CoroutineScope(Dispatchers.IO).launch {
-            //Log.e("in","data print")
-            //Log.e("size",fontfolio.db.fontDao().getAll().size.toString())
-            for (i in fontfolio.db.fontDao().getAll()){
-                //Log.e("fontName",i.fontName)
-                //Log.e("fontLicense",i.fontLicense.toString())
-                //Log.e("fontLicenseDescription",i.fontLicenseDescription)
-                //Log.e("fontCopyrightHolder",i.fontCopyrightHolder)
-                //Log.e("fontStyle",i.fontStyle)
-                //Log.e("-----------","----------")
-            }
-
-
-        }
+//        CoroutineScope(Dispatchers.IO).launch {
+//            //Log.e("in","data print")
+//            //Log.e("size",fontfolio.db.fontDao().getAll().size.toString())
+//            for (i in fontfolio.db.fontDao().getAll()){
+//                //Log.e("fontName",i.fontName)
+//                //Log.e("fontLicense",i.fontLicense.toString())
+//                //Log.e("fontLicenseDescription",i.fontLicenseDescription)
+//                //Log.e("fontCopyrightHolder",i.fontCopyrightHolder)
+//                //Log.e("fontStyle",i.fontStyle)
+//                //Log.e("-----------","----------")
+//            }
+//
+//
+//        }
 
 
 
 
 
         return view
+    }
+
+    fun notifyItem(){
+
+        datas.clear()
+        datas.apply {
+            Log.e("in", "notifyItem")
+
+            CoroutineScope(Dispatchers.IO).launch {
+                var count : Int = 0
+                    for(i in fontfolio.db.fontDao().getAll()){
+                        Log.e("확인", i.fontName)
+                        add(FontItem(i.fontName,i.fontCopyrightHolder))
+                        count += 1
+                        if (count >10)
+                            break
+                    }
+
+
+                Handler(Looper.getMainLooper()).postDelayed({
+                    mAdapter.datas = datas
+                    mAdapter.notifyDataSetChanged()
+                }, 0)
+
+            }
+
+
+        }
     }
 }

@@ -1,5 +1,6 @@
 package com.corporation8793.fontfolio.login;
 
+import android.content.Context;
 import android.content.Intent;
 import android.content.res.ColorStateList;
 import android.graphics.Color;
@@ -14,6 +15,7 @@ import android.text.style.ForegroundColorSpan;
 import android.text.style.RelativeSizeSpan;
 import android.text.style.StyleSpan;
 import android.view.View;
+import android.view.inputmethod.EditorInfo;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
@@ -73,7 +75,11 @@ public class AppLoginActivity  extends AppCompatActivity {
 
         welcome_login_text.setText(spannableString);
 
+        InputMethodManager imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
+        imm.hideSoftInputFromWindow(email_input_box.getApplicationWindowToken(), 0);
+
         final InitPwBottomDialog initPwBottomDialog = new InitPwBottomDialog("boxerlady@naver.com");
+
 
 
 

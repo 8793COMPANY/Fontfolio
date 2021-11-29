@@ -37,6 +37,7 @@ import java.util.ArrayList;
 public class SelectFontStyleActivity extends AppCompatActivity {
 
     ArrayList<MyFontStyle> font_style_list = new ArrayList();
+    ArrayList<Integer> select_list = new ArrayList<>();
 
     LinearLayout next_btn;
     TextView next_btn_text;
@@ -49,6 +50,8 @@ public class SelectFontStyleActivity extends AppCompatActivity {
 
         next_btn = findViewById(R.id.next_btn);
         next_btn_text = findViewById(R.id.next_btn_text);
+
+        next_btn.setEnabled(false);
         listDrawable();
 
         Display display = getWindowManager().getDefaultDisplay();  // in Activity
@@ -69,7 +72,6 @@ public class SelectFontStyleActivity extends AppCompatActivity {
         gv.setAdapter(adapter);
 
 
-
         gv.setHorizontalSpacing((int)((width /720.0) * 16));
         gv.setVerticalSpacing((int)((width /720.0) * 16));
 
@@ -84,13 +86,23 @@ public class SelectFontStyleActivity extends AppCompatActivity {
                     @Override
                     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                         adapter.changeImage(position);
+                        if (select_list.contains(position)){
+                            select_list.remove(position);
+                        }else{
+                            select_list.add(position);
+                        }
+
+                        Log.e("font Name",font_style_list.get(position).fontName);
                         Log.e("count",adapter.checkImageChange()+"");
+
                         if (adapter.checkImageChange() >3){
                             next_btn.setBackgroundTintList((ColorStateList.valueOf(Color.parseColor("#dd0000"))));
                             next_btn_text.setTextColor(getColor(R.color.white));
+                            next_btn.setEnabled(true);
                         }else{
                             next_btn.setBackgroundTintList((ColorStateList.valueOf(Color.parseColor("#0D000000"))));
                             next_btn_text.setTextColor(Color.parseColor("#80000000"));
+                            next_btn.setEnabled(false);
                         }
                     }
                 });

@@ -151,11 +151,12 @@
         android:scaleType="centerCrop"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/board_image"
-        app:layout_constraintStart_toStartOf="@+id/guideline"
+        app:layout_constraintLeft_toLeftOf="@+id/guideline"
+        app:layout_constraintRight_toLeftOf="@+id/get_picture_view"
         app:layout_constraintWidth_percent="0.155"
         app:layout_constraintHeight_percent="0.08"
         app:layout_constraintVertical_bias="0.02"
-        app:layout_constraintHorizontal_chainStyle="spread"></ImageView>
+        app:layout_constraintHorizontal_chainStyle="spread_inside"></ImageView>
 
 
     <ImageView
@@ -170,7 +171,8 @@
         app:layout_constraintRight_toLeftOf="@+id/board_icon_view1"
         app:layout_constraintWidth_percent="0.155"
         app:layout_constraintVertical_bias="0.02"
-        app:layout_constraintHeight_percent="0.08"></ImageView>
+        app:layout_constraintHeight_percent="0.08"
+        app:layout_constraintHorizontal_chainStyle="spread"></ImageView>
 
 
     <com.corporation8793.fontfolio.CustomView
@@ -185,7 +187,8 @@
         app:layout_constraintRight_toLeftOf="@+id/board_icon_view2"
         app:layout_constraintWidth_percent="0.155"
         app:layout_constraintVertical_bias="0.02"
-        app:layout_constraintHeight_percent="0.08"></com.corporation8793.fontfolio.CustomView>
+        app:layout_constraintHeight_percent="0.08"
+        app:layout_constraintHorizontal_chainStyle="spread"></com.corporation8793.fontfolio.CustomView>
 
     <com.corporation8793.fontfolio.CustomView
         android:id="@+id/board_icon_view2"
@@ -199,7 +202,8 @@
         app:layout_constraintRight_toLeftOf="@+id/board_icon_view3"
         app:layout_constraintWidth_percent="0.155"
         app:layout_constraintVertical_bias="0.02"
-        app:layout_constraintHeight_percent="0.08"></com.corporation8793.fontfolio.CustomView>
+        app:layout_constraintHeight_percent="0.08"
+        app:layout_constraintHorizontal_chainStyle="spread"></com.corporation8793.fontfolio.CustomView>
 
 
     <com.corporation8793.fontfolio.CustomView
@@ -215,7 +219,7 @@
         app:layout_constraintWidth_percent="0.155"
         app:layout_constraintHeight_percent="0.08"
         app:layout_constraintVertical_bias="0.02"
-        app:layout_constraintHorizontal_bias="1"
+        app:layout_constraintHorizontal_chainStyle="spread_inside"
         ></com.corporation8793.fontfolio.CustomView>
 
 
@@ -271,14 +275,18 @@
 
 
     <Switch
-        android:layout_width="0dp"
-        android:layout_height="0dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:scaleX="0.48"
+        android:scaleY="0.53"
         android:track="@drawable/switch_track_selector"
+        android:thumb="@drawable/setting_switch_btn"
         android:switchMinWidth="0dp" android:textOff="" android:textOn=""
+        android:thumbTextPadding="15dp"
         app:layout_constraintTop_toBottomOf="@+id/organize_privacy"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintRight_toLeftOf="@+id/guideline_right"
-        app:layout_constraintVertical_bias="0.01"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintVertical_bias="0"
         app:layout_constraintWidth_percent="0.15"
         app:layout_constraintHeight_percent="0.035"></Switch>
 
@@ -290,7 +298,6 @@
         android:textSize="14sp"
         android:text="@string/board_secret_check_content"
         android:textColor="#80000000"
-        android:gravity="center_vertical"
         app:layout_constraintLeft_toLeftOf="@+id/guideline"
         app:layout_constraintTop_toBottomOf="@+id/board_secret_check"
         app:layout_constraintBottom_toBottomOf="parent"
