@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout
+    android:id="@+id/search_div"
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
@@ -39,8 +40,8 @@
         android:backgroundTint="#0D000000"
         android:orientation="horizontal"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintHeight_default="percent"
         app:layout_constraintLeft_toRightOf="@id/guideline_parent_left"
+        app:layout_constraintHeight_default="percent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.02"
         app:layout_constraintWidth_default="percent">
@@ -106,8 +107,8 @@
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <TextView
-        android:visibility="gone"
         android:id="@+id/search_bar_input_cancel"
+        android:visibility="gone"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:gravity="center"
@@ -118,6 +119,17 @@
         app:layout_constraintTop_toTopOf="@+id/search_bar_div"
         app:layout_constraintBottom_toBottomOf="@+id/search_bar_div"
         app:layout_constraintLeft_toRightOf="@id/search_bar_div"
+        app:layout_constraintRight_toLeftOf="@id/guideline_parent_right"/>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/search_listview"
+        android:paddingTop="9dp"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:scrollbars="none"
+        app:layout_constraintTop_toBottomOf="@id/search_bar_div"
+        app:layout_constraintBottom_toBottomOf="@id/guideline_parent_bottom"
+        app:layout_constraintLeft_toRightOf="@id/guideline_parent_left"
         app:layout_constraintRight_toLeftOf="@id/guideline_parent_right"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

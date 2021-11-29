@@ -36,7 +36,8 @@
         <activity android:name=".board.SaveBoardActivity" >
 
         </activity>
-        <activity android:name=".activity.MainActivity"></activity>
+        <activity android:name=".activity.MainActivity"
+            android:windowSoftInputMode="adjustNothing"/>
         <activity
             android:name=".login.AppLoginActivity"
             android:windowSoftInputMode="adjustNothing"></activity>
@@ -44,7 +45,7 @@
         <activity android:name=".LoadingActivity"></activity>
         <activity
             android:name=".activity.SignUp"
-            android:windowSoftInputMode="adjustNothing"
+            android:windowSoftInputMode="adjustNothing|stateAlwaysVisible"
             android:exported="false" />
         <activity
             android:name=".activity.Join"
