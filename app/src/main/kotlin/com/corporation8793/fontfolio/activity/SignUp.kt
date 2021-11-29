@@ -1,5 +1,6 @@
 package com.corporation8793.fontfolio.activity
 
+import android.app.Activity
 import android.content.Context
 import android.content.res.ColorStateList
 import android.graphics.Rect
@@ -15,6 +16,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.view.inputmethod.EditorInfo
+import android.view.inputmethod.InputMethodManager
 import android.widget.*
 import androidx.annotation.IdRes
 import androidx.appcompat.widget.AppCompatButton
@@ -104,6 +106,8 @@ class SignUp : AppCompatActivity() {
         back_btn = findViewById(R.id.back_btn)
         next_btn = findViewById(R.id.next_btn)
         next_btn.isEnabled = false
+        input_email.requestFocus()
+        showKeyboard(this)
 
         back_btn.setOnClickListener { finish() }
 
@@ -164,6 +168,8 @@ class SignUp : AppCompatActivity() {
         input_email.hint = "Enter more than 6-digits"
         input_email.inputType = EditorInfo.TYPE_TEXT_VARIATION_PASSWORD
         input_email.transformationMethod = PasswordTransformationMethod()
+        input_email.requestFocus()
+        showKeyboard(this)
 
             input_email.addTextChangedListener(object : TextWatcher {
                 override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
@@ -241,20 +247,28 @@ class SignUp : AppCompatActivity() {
             input_name.text.clear()
         }
 
+        input_name.requestFocus()
+        showKeyboard(this)
+        sign_up_name_error.visibility = View.VISIBLE
+
+        input_name_edit.visibility = View.GONE
         input_name_edit.setOnClickListener {
+            /*
             edit_name_state = !edit_name_state
             if(edit_name_state) {
                 input_name.isEnabled = true
                 input_name.maxLines = 1
                 input_name.requestFocus()
+                showKeyboard(this)
 
                 input_name_edit.background = resources.getDrawable(R.drawable.edit_name_done, theme)
             } else {
-                input_name.isEnabled = false
+                //input_name.isEnabled = false
                 input_name_init.visibility = View.GONE
 
                 input_name_edit.background = resources.getDrawable(R.drawable.edit_name_img, theme)
             }
+             */
         }
 
         input_name.addTextChangedListener(object : TextWatcher {
@@ -334,21 +348,25 @@ class SignUp : AppCompatActivity() {
                 sign_up_name_error.visibility = View.VISIBLE
                 next_btn.backgroundTintList = (ColorStateList.valueOf(resources.getColor(R.color.btn_gray, theme)))
                 next_btn.isEnabled = false
-            } else if (input_email.text.toString().toInt() > 99) {
-                sign_up_error.background = resources.getDrawable(R.drawable.sign_up_error4, theme)
-                sign_up_error.visibility = View.VISIBLE
-                input_email.requestFocus()
-                next_btn.backgroundTintList = (ColorStateList.valueOf(resources.getColor(R.color.btn_gray, theme)))
-                next_btn.isEnabled = false
             } else if (input_email.text.isEmpty()) {
                 sign_up_error.background = resources.getDrawable(R.drawable.sign_up_error6, theme)
                 sign_up_error.visibility = View.VISIBLE
                 input_email_init.visibility = View.GONE
                 input_email.requestFocus()
+                showKeyboard(this)
                 next_btn.backgroundTintList = (ColorStateList.valueOf(resources.getColor(R.color.btn_gray, theme)))
                 next_btn.isEnabled = false
-            } else {
-                step4()
+            } else if (input_email.text.isNotEmpty()) {
+                if (input_email.text.toString().toInt() > 99) {
+                    sign_up_error.background = resources.getDrawable(R.drawable.sign_up_error4, theme)
+                    sign_up_error.visibility = View.VISIBLE
+                    input_email.requestFocus()
+                    showKeyboard(this)
+                    next_btn.backgroundTintList = (ColorStateList.valueOf(resources.getColor(R.color.btn_gray, theme)))
+                    next_btn.isEnabled = false
+                } else {
+                    step4()
+                }
             }
         }
     }
@@ -418,6 +436,7 @@ class SignUp : AppCompatActivity() {
                 group_type_more_error.visibility = View.VISIBLE
                 group_type_more_input_init.visibility = View.INVISIBLE
                 group_type_more_input.requestFocus()
+                showKeyboard(this)
                 next_btn.backgroundTintList = (ColorStateList.valueOf(resources.getColor(R.color.btn_gray, theme)))
                 next_btn.isEnabled = false
             } else {
@@ -461,76 +480,112 @@ class SignUp : AppCompatActivity() {
             group_type_more_div.visibility = View.VISIBLE
             group_select_error.visibility = View.INVISIBLE
             bottomSheetDialog.dismiss()
+            group_type_more_input.requestFocus()
+            showKeyboard(this)
         }
         job_art.setOnClickListener {
             group_select_text.text = "Art / Design / Creation"
             group_type_more_div.visibility = View.VISIBLE
             group_select_error.visibility = View.INVISIBLE
             bottomSheetDialog.dismiss()
+            group_type_more_input.requestFocus()
+            showKeyboard(this)
         }
         job_broadcast.setOnClickListener {
             group_select_text.text = "Broadcast / Culture"
             group_type_more_div.visibility = View.VISIBLE
             group_select_error.visibility = View.INVISIBLE
             bottomSheetDialog.dismiss()
+            group_type_more_input.requestFocus()
+            showKeyboard(this)
         }
         job_business.setOnClickListener {
             group_select_text.text = "Business / Management"
             group_type_more_div.visibility = View.VISIBLE
             group_select_error.visibility = View.INVISIBLE
             bottomSheetDialog.dismiss()
+            group_type_more_input.requestFocus()
+            showKeyboard(this)
         }
         job_chemistry.setOnClickListener {
             group_select_text.text = "Chemistry / Materials"
             group_type_more_div.visibility = View.VISIBLE
             group_select_error.visibility = View.INVISIBLE
             bottomSheetDialog.dismiss()
+            group_type_more_input.requestFocus()
+            showKeyboard(this)
         }
         job_education.setOnClickListener {
             group_select_text.text = "Education / Research"
             group_type_more_div.visibility = View.VISIBLE
             group_select_error.visibility = View.INVISIBLE
             bottomSheetDialog.dismiss()
+            group_type_more_input.requestFocus()
+            showKeyboard(this)
         }
         job_electronic.setOnClickListener {
             group_select_text.text = "Electronic / Communication"
             group_type_more_div.visibility = View.VISIBLE
             group_select_error.visibility = View.INVISIBLE
             bottomSheetDialog.dismiss()
+            group_type_more_input.requestFocus()
+            showKeyboard(this)
         }
         job_food.setOnClickListener {
             group_select_text.text = "Food / Restaurant"
             group_type_more_div.visibility = View.VISIBLE
             group_select_error.visibility = View.INVISIBLE
             bottomSheetDialog.dismiss()
+            group_type_more_input.requestFocus()
+            showKeyboard(this)
         }
         job_health.setOnClickListener {
             group_select_text.text = "Health / Medical"
             group_type_more_div.visibility = View.VISIBLE
             group_select_error.visibility = View.INVISIBLE
             bottomSheetDialog.dismiss()
+            group_type_more_input.requestFocus()
+            showKeyboard(this)
         }
         job_it.setOnClickListener {
             group_select_text.text = "IT / Software / Solution"
             group_type_more_div.visibility = View.VISIBLE
             group_select_error.visibility = View.INVISIBLE
             bottomSheetDialog.dismiss()
+            group_type_more_input.requestFocus()
+            showKeyboard(this)
         }
         job_sports.setOnClickListener {
             group_select_text.text = "Sports / Entertainment"
             group_type_more_div.visibility = View.VISIBLE
             group_select_error.visibility = View.INVISIBLE
             bottomSheetDialog.dismiss()
+            group_type_more_input.requestFocus()
+            showKeyboard(this)
         }
         job_etc.setOnClickListener {
             group_select_text.text = "Etc & Direct input"
             group_type_more_div.visibility = View.VISIBLE
             group_select_error.visibility = View.INVISIBLE
             bottomSheetDialog.dismiss()
+            group_type_more_input.requestFocus()
+            showKeyboard(this)
         }
         bottom_sheet_close_btn.setOnClickListener {
             bottomSheetDialog.dismiss()
         }
+    }
+
+    fun hideKeyboard(activity: Activity) {
+        val view = activity.currentFocus
+        val methodManager = activity.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
+        methodManager.hideSoftInputFromWindow(view!!.windowToken, InputMethodManager.HIDE_NOT_ALWAYS)
+    }
+
+    private fun showKeyboard(activity: Activity) {
+        val view = activity.currentFocus
+        val methodManager = activity.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
+        methodManager.showSoftInput(view, InputMethodManager.SHOW_IMPLICIT)
     }
 
     fun ConstraintLayout.setHorizontalBias(@IdRes targetViewId: Int, bias: Float) {

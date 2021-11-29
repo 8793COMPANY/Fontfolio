@@ -138,7 +138,6 @@
                         android:background="@android:color/transparent"
                         android:letterSpacing="0.025"
                         android:maxLength="12"
-                        android:enabled="false"
                         android:maxLines="1"
                         android:hint="Name"
                         android:textColor="#000"

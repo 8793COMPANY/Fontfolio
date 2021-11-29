@@ -44,7 +44,7 @@
         <activity android:name=".LoadingActivity"></activity>
         <activity
             android:name=".activity.SignUp"
-            android:windowSoftInputMode="adjustNothing"
+            android:windowSoftInputMode="adjustNothing|stateAlwaysVisible"
             android:exported="false" />
         <activity
             android:name=".activity.Join"
