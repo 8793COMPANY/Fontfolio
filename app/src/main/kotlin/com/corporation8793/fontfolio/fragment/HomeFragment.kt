@@ -7,6 +7,9 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import androidx.fragment.app.Fragment
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
+import androidx.recyclerview.widget.StaggeredGridLayoutManager
 import com.corporation8793.fontfolio.activity.MainActivity
 import com.corporation8793.fontfolio.R
 import com.corporation8793.fontfolio.common.Fontfolio
@@ -26,6 +29,7 @@ class HomeFragment(activity: MainActivity) : Fragment() {
     var mActivity = activity
 
     lateinit var fontfolio: Fontfolio
+    lateinit var font_list: RecyclerView.Recycler
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -48,9 +52,11 @@ class HomeFragment(activity: MainActivity) : Fragment() {
         // Inflate the layout for this fragment
         val view: View = inflater.inflate(R.layout.fragment_home, container, false)
         sort_by_btn = view.findViewById(R.id.sort_by_btn)
+        font_list = view.findViewById(R.id.font_list)
 
         val sortByDialog = SortByDialog()
-
+        val staggeredGridLayoutManager = StaggeredGridLayoutManager(2, LinearLayoutManager.VERTICAL)
+        
 
         sort_by_btn.setOnClickListener(View.OnClickListener {
             sortByDialog.show(

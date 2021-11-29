@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item>
+        <shape android:shape="rectangle">
+
+            <solid android:color="#a7a7a7"></solid>
+            <corners android:radius="90dp"></corners>
+            <size android:width="90dp" android:height="50dp"></size>
+        </shape>
+
+    </item>
+
+
+    <item android:drawable="@drawable/track_off_image_icon"
+        android:width="20dp"
+        android:height="20dp"
+        android:right="13dp"
+        android:gravity="center_vertical|right">
+
+    </item>
+
+
+</layer-list>
