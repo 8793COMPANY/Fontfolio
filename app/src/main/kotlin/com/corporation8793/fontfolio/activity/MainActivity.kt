@@ -7,6 +7,7 @@ import androidx.appcompat.app.AppCompatActivity
 import com.corporation8793.fontfolio.R
 import com.corporation8793.fontfolio.board.SaveBoardActivity
 import com.corporation8793.fontfolio.fragment.*
+import com.corporation8793.fontfolio.fragment.search.SearchFragment
 import com.google.android.material.bottomnavigation.BottomNavigationView
 
 
@@ -31,7 +32,7 @@ class MainActivity : AppCompatActivity() , BottomNavigationView.OnNavigationItem
                 return true
             }
             R.id.page_search -> {
-                supportFragmentManager.beginTransaction().replace(R.id.menu_view, SearchFragment()).commitAllowingStateLoss()
+                supportFragmentManager.beginTransaction().replace(R.id.menu_view, SearchFragment(this)).commitAllowingStateLoss()
                 return true
             }
             R.id.page_camera -> {

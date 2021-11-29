@@ -18,7 +18,7 @@ import kotlinx.coroutines.launch
 private const val ARG_PARAM1 = "param1"
 private const val ARG_PARAM2 = "param2"
 
-class HomeFragment(activity: MainActivity) : Fragment() {
+class HomeFragment(activity : MainActivity) : Fragment() {
 
     private var param1: String? = null
     private var param2: String? = null

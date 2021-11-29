@@ -37,6 +37,7 @@ class Fontfolio : Application() {
      * [AppDatabase]의 인스턴스
      */
     lateinit var db : AppDatabase
+    lateinit var list : List<Font>
 
     /**
      * 애플리케이션 인스턴스를 반환합니다.
