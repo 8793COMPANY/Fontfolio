@@ -12,14 +12,14 @@ import androidx.room.PrimaryKey
  */
 @Entity
 data class FontLicense(
-    @PrimaryKey(autoGenerate = true) val id : Int = 0,
-    @ColumnInfo(name = "AL") val AL : Boolean = false,
-    @ColumnInfo(name = "PF") val PF : Boolean = false,
-    @ColumnInfo(name = "PPF") val PPF : Boolean = false,
-    @ColumnInfo(name = "GNU_GPL") val GNU_GPL : Boolean = false,
-    @ColumnInfo(name = "OFL") val OFL : Boolean = false,
-    @ColumnInfo(name = "FPU") val FPU : Boolean = false,
-    @ColumnInfo(name = "FCU") val FCU : Boolean = false,
-    @ColumnInfo(name = "Free") val Free : Boolean = false,
-    @ColumnInfo(name = "Unknown") val Unknown : Boolean = false
+    @PrimaryKey(autoGenerate = true) var id : Int = 0,
+    @ColumnInfo(name = "AL") var AL : Boolean = false,
+    @ColumnInfo(name = "PF") var PF : Boolean = false,
+    @ColumnInfo(name = "PPF") var PPF : Boolean = false,
+    @ColumnInfo(name = "GNU_GPL") var GNU_GPL : Boolean = false,
+    @ColumnInfo(name = "OFL") var OFL : Boolean = false,
+    @ColumnInfo(name = "FPU") var FPU : Boolean = false,
+    @ColumnInfo(name = "FCU") var FCU : Boolean = false,
+    @ColumnInfo(name = "Free") var Free : Boolean = false,
+    @ColumnInfo(name = "Unknown") var Unknown : Boolean = false
 )

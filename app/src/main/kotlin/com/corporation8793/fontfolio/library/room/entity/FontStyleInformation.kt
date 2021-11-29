@@ -12,7 +12,7 @@ import androidx.room.PrimaryKey
  */
 @Entity
 data class FontStyleInformation(
-    @PrimaryKey(autoGenerate = true) val id : Int = 0,
-    @ColumnInfo(name = "Original") val Original : Boolean = false,
-    @ColumnInfo(name = "Normal") val Normal : Boolean = false,
+    @PrimaryKey(autoGenerate = true) var id : Int = 0,
+    @ColumnInfo(name = "Original") var Original : Boolean = false,
+    @ColumnInfo(name = "Normal") var Normal : Boolean = false,
 )

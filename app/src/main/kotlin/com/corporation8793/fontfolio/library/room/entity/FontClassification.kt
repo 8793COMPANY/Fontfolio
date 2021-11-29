@@ -12,12 +12,12 @@ import androidx.room.PrimaryKey
  */
 @Entity
 data class FontClassification(
-    @PrimaryKey(autoGenerate = true) val id : Int = 0,
-    @ColumnInfo(name = "Serif") val Serif : Boolean = false,
-    @ColumnInfo(name = "Sans_Serif") val Sans_Serif : Boolean = false,
-    @ColumnInfo(name = "Slab_Serif") val Slab_Serif : Boolean = false,
-    @ColumnInfo(name = "Display") val Display : Boolean = false,
-    @ColumnInfo(name = "Hand_Written") val Hand_Written : Boolean = false,
-    @ColumnInfo(name = "Calligraphy") val Calligraphy : Boolean = false,
-    @ColumnInfo(name = "Script") val Script : Boolean = false,
+    @PrimaryKey(autoGenerate = true) var id : Int = 0,
+    @ColumnInfo(name = "Serif") var Serif : Boolean = false,
+    @ColumnInfo(name = "Sans_Serif") var Sans_Serif : Boolean = false,
+    @ColumnInfo(name = "Slab_Serif") var Slab_Serif : Boolean = false,
+    @ColumnInfo(name = "Display") var Display : Boolean = false,
+    @ColumnInfo(name = "Hand_Written") var Hand_Written : Boolean = false,
+    @ColumnInfo(name = "Calligraphy") var Calligraphy : Boolean = false,
+    @ColumnInfo(name = "Script") var Script : Boolean = false,
 )
