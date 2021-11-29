@@ -11,7 +11,6 @@ import android.view.ViewGroup
 import android.view.inputmethod.InputMethodManager
 import android.widget.EditText
 import android.widget.ImageView
-import android.widget.ListView
 import android.widget.TextView
 import androidx.annotation.IdRes
 import androidx.constraintlayout.widget.ConstraintLayout
@@ -117,11 +116,11 @@ class SearchFragment(val activity : MainActivity) : Fragment() {
                 filter_result = total_result.toMutableList()
                 if (s != null) {
                     filter_result = filter_result.filter { font -> font.fontName.contains(s)}.toMutableList()
-                }
 
-                search_listview_adapter = SearchListviewAdapter(mFragment, filter_result, listDataSet)
-                search_listview.adapter = search_listview_adapter
-                search_listview.adapter?.notifyDataSetChanged()
+                    search_listview_adapter = SearchListviewAdapter(mFragment, filter_result, listDataSet, s)
+                    search_listview.adapter = search_listview_adapter
+                    search_listview.adapter?.notifyDataSetChanged()
+                }
             }
 
             override fun afterTextChanged(s: Editable?) {
