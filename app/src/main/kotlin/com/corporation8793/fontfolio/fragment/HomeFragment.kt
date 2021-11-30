@@ -17,8 +17,10 @@ import com.corporation8793.fontfolio.activity.MainActivity
 import com.corporation8793.fontfolio.R
 import com.corporation8793.fontfolio.common.Fontfolio
 import com.corporation8793.fontfolio.dialog.SortByDialog
+import com.corporation8793.fontfolio.library.room.entity.Font
 import com.corporation8793.fontfolio.recylcerview.FontAdapter
 import com.corporation8793.fontfolio.recylcerview.FontItem
+import com.corporation8793.fontfolio.recylcerview.SpacesItemDecoration
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -36,7 +38,7 @@ class HomeFragment(activity : MainActivity) : Fragment() {
     lateinit var fontfolio: Fontfolio
     lateinit var font_list: RecyclerView
 
-    val datas = mutableListOf<FontItem>()
+    val datas = mutableListOf<Font>()
     lateinit var mAdapter:FontAdapter
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -48,6 +50,10 @@ class HomeFragment(activity : MainActivity) : Fragment() {
 
         fontfolio= Fontfolio().getInstance(mActivity.applicationContext)
         fontfolio.xlsToRoom()
+        CoroutineScope(Dispatchers.IO).launch {
+            Log.e("check",fontfolio.db.fontDao().getAll().size.toString())
+        }
+
     }
 
 
@@ -64,11 +70,14 @@ class HomeFragment(activity : MainActivity) : Fragment() {
         val sortByDialog = SortByDialog()
         val staggeredGridLayoutManager = StaggeredGridLayoutManager(2, LinearLayoutManager.VERTICAL)
         mAdapter = FontAdapter(mActivity.applicationContext)
-
         notifyItem()
+
+
 
         font_list.adapter = mAdapter
         font_list.layoutManager = staggeredGridLayoutManager
+
+        font_list.addItemDecoration(SpacesItemDecoration(10))
         
 
         sort_by_btn.setOnClickListener(View.OnClickListener {
@@ -77,25 +86,6 @@ class HomeFragment(activity : MainActivity) : Fragment() {
                 sortByDialog.tag
             )
         })
-
-//        CoroutineScope(Dispatchers.IO).launch {
-//            //Log.e("in","data print")
-//            //Log.e("size",fontfolio.db.fontDao().getAll().size.toString())
-//            for (i in fontfolio.db.fontDao().getAll()){
-//                //Log.e("fontName",i.fontName)
-//                //Log.e("fontLicense",i.fontLicense.toString())
-//                //Log.e("fontLicenseDescription",i.fontLicenseDescription)
-//                //Log.e("fontCopyrightHolder",i.fontCopyrightHolder)
-//                //Log.e("fontStyle",i.fontStyle)
-//                //Log.e("-----------","----------")
-//            }
-//
-//
-//        }
-
-
-
-
 
         return view
     }
@@ -108,11 +98,12 @@ class HomeFragment(activity : MainActivity) : Fragment() {
 
             CoroutineScope(Dispatchers.IO).launch {
                 var count : Int = 0
+                Log.e("font size",fontfolio.db.fontDao().getAll().size.toString())
                     for(i in fontfolio.db.fontDao().getAll()){
                         Log.e("확인", i.fontName)
-                        add(FontItem(i.fontName,i.fontCopyrightHolder))
+                        add(i)
                         count += 1
-                        if (count >10)
+                        if (count >20)
                             break
                     }
 
