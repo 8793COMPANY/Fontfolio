@@ -79,12 +79,6 @@ class SearchFragment(val activity : MainActivity) : Fragment() {
         // 스크롤 방지 코드
         search_listview.layoutManager = object : LinearLayoutManager(context) { override fun canScrollVertically(): Boolean { return false } }
 
-
-        CoroutineScope(Dispatchers.IO).launch {
-            total_result = fontfolio.db.fontDao().getAll()
-            Log.i("Application", "DB ${total_result[0].fontName}")
-        }
-
         // 자동 키보드 노출
         search_bar_input.showSoftKeyboard()
 
@@ -113,7 +107,7 @@ class SearchFragment(val activity : MainActivity) : Fragment() {
             }
 
             override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
-                filter_result = total_result.toMutableList()
+                filter_result = Fontfolio.list.toMutableList()
                 if (s != null) {
                     filter_result = filter_result.filter { font -> font.fontName.contains(s)}.toMutableList()
 

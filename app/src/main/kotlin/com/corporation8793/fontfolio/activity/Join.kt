@@ -6,6 +6,7 @@ import android.net.Uri
 import android.os.*
 import androidx.appcompat.app.AppCompatActivity
 import android.provider.Settings
+import android.util.Log
 import android.widget.LinearLayout
 import android.widget.Toast
 import androidx.core.app.ActivityCompat
@@ -14,6 +15,9 @@ import com.corporation8793.fontfolio.BuildConfig
 import com.corporation8793.fontfolio.R
 import com.corporation8793.fontfolio.common.Fontfolio
 import com.corporation8793.fontfolio.login.LoginActivity
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
 
 class Join : AppCompatActivity() {
     val PERMISSIONS = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {
@@ -39,6 +43,11 @@ class Join : AppCompatActivity() {
         val take_to_experience : LinearLayout = findViewById(R.id.take_to_experience)
 
         fontfolio.xlsToRoom()
+
+        CoroutineScope(Dispatchers.IO).launch {
+            Fontfolio.list = fontfolio.db.fontDao().getAll()
+            Log.i("Application", "DB ${Fontfolio.list[0].fontName}")
+        }
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R && !Environment.isExternalStorageManager()) {
             val uri = Uri.parse("package:" + BuildConfig.APPLICATION_ID)

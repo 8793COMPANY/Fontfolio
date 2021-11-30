@@ -9,6 +9,8 @@ import androidx.core.text.bold
 import androidx.core.text.buildSpannedString
 import androidx.recyclerview.widget.RecyclerView
 import com.corporation8793.fontfolio.R
+import com.corporation8793.fontfolio.activity.FontInformation
+import com.corporation8793.fontfolio.common.Fontfolio
 import com.corporation8793.fontfolio.library.room.entity.Font
 
 
@@ -41,7 +43,7 @@ class SearchListviewAdapter(
         listDataSet.add(listData(position = position, font_name = dataSet[position].fontName))
 
         holder.font_name_div.setOnClickListener {
-            Toast.makeText(mFragment.activity, "${dataSet[position].fontName} 페이지로 이동", Toast.LENGTH_SHORT).show()
+            Fontfolio().moveToActivity(mFragment.activity, FontInformation(dataSet[position])::class.java, true)
         }
     }
 
