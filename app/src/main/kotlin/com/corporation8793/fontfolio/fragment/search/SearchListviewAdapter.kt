@@ -1,5 +1,7 @@
 package com.corporation8793.fontfolio.fragment.search
 
+import android.content.Intent
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -43,7 +45,11 @@ class SearchListviewAdapter(
         listDataSet.add(listData(position = position, font_name = dataSet[position].fontName))
 
         holder.font_name_div.setOnClickListener {
-            Fontfolio().moveToActivity(mFragment.activity, FontInformation(dataSet[position])::class.java, true)
+            Log.e("onBindViewHolder", "onBindViewHolder: ${dataSet[position].fontName}")
+            mFragment.activity.apply {
+                startActivity(Intent(this, FontInformation().javaClass)
+                    .putExtra("fontName", dataSet[position].fontName))
+            }
         }
     }
 
