@@ -36,6 +36,10 @@ android {
     sourceSets {
         main.java.srcDirs += 'src/main/kotlin'
     }
+
+    packagingOptions {
+        exclude 'META-INF/DEPENDENCIES'
+    }
 }
 
 dependencies {
@@ -83,4 +87,7 @@ dependencies {
     })
     implementation 'com.edmodo:cropper:1.0.1'
     implementation 'com.rmtheis:tess-two:6.1.1'
+
+    // jsoup HTML parser library @ https://jsoup.org/
+    implementation 'org.jsoup:jsoup:1.14.3'
 }
