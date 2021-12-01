@@ -54,6 +54,7 @@ class HomeFragment(activity : MainActivity) : Fragment() {
             Log.e("check",fontfolio.db.fontDao().getAll().size.toString())
         }
 
+
     }
 
 
@@ -71,7 +72,6 @@ class HomeFragment(activity : MainActivity) : Fragment() {
         val staggeredGridLayoutManager = StaggeredGridLayoutManager(2, LinearLayoutManager.VERTICAL)
         mAdapter = FontAdapter(mActivity.applicationContext)
         notifyItem()
-
 
 
         font_list.adapter = mAdapter
