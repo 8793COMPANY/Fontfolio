@@ -27,6 +27,7 @@
         android:theme="@style/Theme.Fontfolio">
         <activity
             android:name=".activity.FontInformation"
+            android:windowSoftInputMode="adjustNothing"
             android:exported="false" />
         <activity android:name=".board.CreateBoardActivity"></activity>
         <activity android:name=".SelectFontStyleActivity"></activity>

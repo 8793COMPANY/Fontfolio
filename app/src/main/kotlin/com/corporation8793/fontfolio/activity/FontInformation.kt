@@ -1,19 +1,14 @@
 package com.corporation8793.fontfolio.activity
 
 import android.os.Bundle
-import android.text.Html
 import android.util.Log
-import android.webkit.ValueCallback
 import android.webkit.WebView
 import android.webkit.WebViewClient
 import android.widget.EditText
 import android.widget.TextView
-import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.text.htmlEncode
 import com.corporation8793.fontfolio.R
 import com.corporation8793.fontfolio.common.Fontfolio
-import org.jsoup.Jsoup
 
 
 class FontInformation : AppCompatActivity() {

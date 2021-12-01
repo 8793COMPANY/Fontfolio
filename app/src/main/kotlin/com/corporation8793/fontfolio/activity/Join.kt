@@ -46,7 +46,6 @@ class Join : AppCompatActivity() {
 
         CoroutineScope(Dispatchers.IO).launch {
             Fontfolio.list = fontfolio.db.fontDao().getAll()
-            Log.i("Application", "DB ${Fontfolio.list[0].fontName}")
         }
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R && !Environment.isExternalStorageManager()) {
