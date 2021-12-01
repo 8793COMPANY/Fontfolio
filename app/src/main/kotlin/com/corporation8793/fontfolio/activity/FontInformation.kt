@@ -40,14 +40,12 @@ class FontInformation : AppCompatActivity() {
         desc.loadUrl(font.fontDownloadLink)
         desc.webViewClient = object : WebViewClient() {
             override fun onPageFinished(view: WebView?, url: String?) {
-                view?.evaluateJavascript("(function() { return (document.getElementsByClassName('specimen__about-description')[0].innerText); })();")
+                view?.evaluateJavascript("(function() { if(document.getElementsByClassName('specimen__about-description')[0] != null){ return (document.getElementsByClassName('specimen__about-description')[0].innerText)}; })();")
                 { html ->
                     Log.e("raw html", html)
                     if (html != "null") {
-                        val result = html.run {
-                            replace("\\\n", "\n")
-                            replace("\\\"", "\"")
-                        }
+                        val result = html.replace("\\n", "")
+                            .replace("\\\"", "")
                         Log.e("replace html", result)
                         desc_result.text = result
                     }
