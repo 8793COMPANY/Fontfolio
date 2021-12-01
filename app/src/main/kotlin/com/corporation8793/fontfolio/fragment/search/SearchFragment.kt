@@ -57,8 +57,6 @@ class SearchFragment(val activity : MainActivity) : Fragment() {
             param1 = it.getString(ARG_PARAM1)
             param2 = it.getString(ARG_PARAM2)
         }
-
-        fontfolio = Fontfolio().getInstance(activity.applicationContext)
     }
 
     override fun onCreateView(
@@ -75,6 +73,17 @@ class SearchFragment(val activity : MainActivity) : Fragment() {
         search_bar_input_init = view.findViewById(R.id.search_bar_input_init)
         search_bar_input_cancel = view.findViewById(R.id.search_bar_input_cancel)
         search_listview = view.findViewById(R.id.search_listview)
+
+        fontfolio = Fontfolio().getInstance(activity.applicationContext)
+
+        if (Fontfolio.list.isNullOrEmpty()) {
+            CoroutineScope(Dispatchers.IO).launch {
+                Log.e("SearchFragment", "list is Null Or Empty, Trying... re-initialize")
+                Fontfolio.list = fontfolio.db.fontDao().getAll()
+            }
+        } else {
+            filter_result = Fontfolio.list.toMutableList()
+        }
 
         // 스크롤 방지 코드
         search_listview.layoutManager = object : LinearLayoutManager(context) { override fun canScrollVertically(): Boolean { return false } }
@@ -107,8 +116,8 @@ class SearchFragment(val activity : MainActivity) : Fragment() {
             }
 
             override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
-                filter_result = Fontfolio.list.toMutableList()
                 if (s != null) {
+                    filter_result = Fontfolio.list.toMutableList()
                     filter_result = filter_result.filter { font -> font.fontName.contains(s)}.toMutableList()
 
                     search_listview_adapter = SearchListviewAdapter(mFragment, filter_result, listDataSet, s)
