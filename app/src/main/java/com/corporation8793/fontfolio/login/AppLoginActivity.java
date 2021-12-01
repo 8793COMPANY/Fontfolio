@@ -6,6 +6,8 @@ import android.content.res.ColorStateList;
 import android.graphics.Color;
 import android.graphics.Typeface;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Message;
 import android.text.Editable;
 import android.text.InputType;
 import android.text.Spannable;
@@ -15,6 +17,8 @@ import android.text.style.ForegroundColorSpan;
 import android.text.style.RelativeSizeSpan;
 import android.text.style.StyleSpan;
 import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.view.inputmethod.EditorInfo;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
@@ -37,8 +41,12 @@ public class AppLoginActivity  extends AppCompatActivity {
     ImageView email_error_msg, pw_error_msg;
     Button input_cancel_btn, visible_btn, back_btn;
 
+
+
+
     boolean check = false;
 
+    View login_section;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -61,7 +69,24 @@ public class AppLoginActivity  extends AppCompatActivity {
         login_btn_text = findViewById(R.id.login_btn_text);
 
         back_btn = findViewById(R.id.back_btn);
+        login_section = findViewById(R.id.login_section);
 
+//        Animation middleAnim = AnimationUtils.loadAnimation(getApplicationContext(),R.anim.anim_splash_textview);
+//
+//        login_section.startAnimation(middleAnim);
+//
+//        middleAnim.setAnimationListener(aniListener01);
+//
+//        handler.sendEmptyMessageDelayed(0,250);
+
+
+
+
+
+
+
+
+        email_input_box.setFocusable(View.FOCUSABLE);
         String content = welcome_login_text.getText().toString();
         SpannableString spannableString = new SpannableString(content);
 
@@ -82,11 +107,21 @@ public class AppLoginActivity  extends AppCompatActivity {
 
 
 
+//        Handler handler = new Handler();
+//        handler.postDelayed(new Runnable() {
+//            @Override
+//            public void run() {
+//
+//
+//            }
+//        },3000);
+
 
 
         login_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
                 Intent intent = new Intent(AppLoginActivity.this, SelectFontStyleActivity.class);
                 startActivity(intent);
 
@@ -188,4 +223,49 @@ public class AppLoginActivity  extends AppCompatActivity {
 
         }
     }
+
+    Animation.AnimationListener aniListener01 = new Animation.AnimationListener() {
+        public void onAnimationEnd(Animation animation) {
+//            logo_img.setVisibility(View.VISIBLE);
+
+        }
+
+        @Override
+        public void onAnimationRepeat(Animation animation) { }
+        @Override
+        public void onAnimationStart(Animation animation) { }
+    };
+
+    Animation.AnimationListener aniListener02 = new Animation.AnimationListener() {
+        public void onAnimationEnd(Animation animation) {
+//            logo_img.setVisibility(View.VISIBLE);
+
+        }
+
+        @Override
+        public void onAnimationRepeat(Animation animation) { }
+        @Override
+        public void onAnimationStart(Animation animation) { }
+    };
+
+    Handler handler = new Handler(){
+        @Override
+        public void handleMessage(Message msg) {
+            switch (msg.what) {
+                case 0 :
+                    welcome_login_text.setVisibility(View.VISIBLE);
+                    Animation middleAnim2 = AnimationUtils.loadAnimation(getApplicationContext(),R.anim.anim_splash_welcome_text);
+                    welcome_login_text.startAnimation(middleAnim2);
+                    middleAnim2.setAnimationListener(aniListener02);
+
+//                    welcome_login_text.setVisibility(View.VISIBLE);
+
+                    break ;
+                case 1 :
+                    break ;
+                // TODO : add case.
+            }
+        }
+    } ;
 }
+

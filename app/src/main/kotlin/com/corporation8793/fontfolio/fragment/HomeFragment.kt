@@ -50,9 +50,7 @@ class HomeFragment(activity : MainActivity) : Fragment() {
 
         fontfolio= Fontfolio().getInstance(mActivity.applicationContext)
         fontfolio.xlsToRoom()
-        CoroutineScope(Dispatchers.IO).launch {
-            Log.e("check",fontfolio.db.fontDao().getAll().size.toString())
-        }
+
 
 
     }
@@ -93,29 +91,19 @@ class HomeFragment(activity : MainActivity) : Fragment() {
     fun notifyItem(){
 
         datas.clear()
-        datas.apply {
-            Log.e("in", "notifyItem")
+        for (i in Fontfolio.list){
+//            Log.e("font",i.fontName)
+//            Log.e("font",i.fontCopyrightHolder)
+//            Log.e("font",i.fontLicenseDescription)
+            Log.e("OFL",i.fontLicense.OFL.toString())
+//            Log.e("font",i.fontClassification.toString())
+//            Log.e("-----------","---------------")
 
-            CoroutineScope(Dispatchers.IO).launch {
-                var count : Int = 0
-                Log.e("font size",fontfolio.db.fontDao().getAll().size.toString())
-                    for(i in fontfolio.db.fontDao().getAll()){
-                        Log.e("확인", i.fontName)
-                        add(i)
-                        count += 1
-                        if (count >20)
-                            break
-                    }
-
-
-                Handler(Looper.getMainLooper()).postDelayed({
-                    mAdapter.datas = datas
-                    mAdapter.notifyDataSetChanged()
-                }, 0)
-
-            }
-
-
+            datas.add(i)
         }
+
+        mAdapter.datas = datas
+        mAdapter.notifyDataSetChanged()
+
     }
 }
