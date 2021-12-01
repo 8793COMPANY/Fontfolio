@@ -65,13 +65,13 @@ public class LoginActivity extends AppCompatActivity {
         a.setFillAfter(true);
         pw.startAnimation(a);
 
-        Animation middleAnim = AnimationUtils.loadAnimation(getApplicationContext(),R.anim.anim_splash_textview);
-        login_section.startAnimation(middleAnim);
-        middleAnim.setAnimationListener(aniListener01);
-
-        Animation middleAnim2 = AnimationUtils.loadAnimation(getApplicationContext(),R.anim.anim_splash_welcome_text);
-        login_btn.startAnimation(middleAnim2);
-        middleAnim.setAnimationListener(aniListener02);
+//        Animation middleAnim = AnimationUtils.loadAnimation(getApplicationContext(),R.anim.anim_splash_textview);
+//        login_section.startAnimation(middleAnim);
+//        middleAnim.setAnimationListener(aniListener01);
+//
+//        Animation middleAnim2 = AnimationUtils.loadAnimation(getApplicationContext(),R.anim.anim_splash_welcome_text);
+//        login_btn.startAnimation(middleAnim2);
+//        middleAnim.setAnimationListener(aniListener02);
 
 
 
