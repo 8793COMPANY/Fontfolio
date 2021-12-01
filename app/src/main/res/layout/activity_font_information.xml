@@ -24,17 +24,19 @@
         android:id="@+id/search_bar_div"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        app:layout_constraintHeight_percent="0.06"
-        app:layout_constraintWidth_percent="0.75"
         android:background="@drawable/xml_rounding_btn_default"
         android:backgroundTint="#0D000000"
         android:orientation="horizontal"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintRight_toLeftOf="@+id/guideline_parent_right"
         app:layout_constraintHeight_default="percent"
+        app:layout_constraintHeight_percent="0.06"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintLeft_toRightOf="@id/search_bar_input_cancel"
+        app:layout_constraintRight_toLeftOf="@+id/guideline_parent_right"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.02"
-        app:layout_constraintWidth_default="percent">
+        app:layout_constraintWidth_default="percent"
+        app:layout_constraintWidth_percent="0.83">
 
         <EditText
             android:id="@+id/search_bar_input"
@@ -58,18 +60,24 @@
         android:visibility="visible"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:gravity="center|left"
+        app:layout_constraintRight_toLeftOf="@id/search_bar_div"
         app:layout_constraintTop_toTopOf="@+id/search_bar_div"
         app:layout_constraintBottom_toBottomOf="@+id/search_bar_div"
-        app:layout_constraintLeft_toRightOf="@id/guideline_parent_left"
-        app:layout_constraintRight_toLeftOf="@id/search_bar_div">
+        app:layout_constraintLeft_toRightOf="@id/guideline_parent_left">
 
         <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:padding="8.5dp"
+            android:layout_width="25dp"
+            android:layout_height="25dp"
+            android:layout_gravity="center"
             android:src="@drawable/action_bar_prev_arrow_btn"/>
     </LinearLayout>
+
+    <WebView
+        android:id="@+id/desc"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/search_bar_input_cancel"
+        android:layout_width="0dp"
+        android:layout_height="0dp"/>
 
     <ScrollView
         android:layout_width="0dp"
@@ -82,10 +90,10 @@
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="wrap_content">
 
             <TextView
-                android:id="@+id/test"
+                android:id="@+id/font_title"
                 app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
                 android:layout_width="wrap_content"
@@ -95,23 +103,266 @@
                 android:textSize="20sp"
                 android:textStyle="bold"/>
 
-            <WebView
-                android:id="@+id/desc"
+            <ImageView
+                android:id="@+id/font_info_heart"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:src="@drawable/font_info_heart_off"
+                app:layout_constraintHorizontal_bias="0.95"
+                app:layout_constraintLeft_toRightOf="@+id/font_title"
+                app:layout_constraintBottom_toBottomOf="@+id/font_info_add_btn"
+                app:layout_constraintRight_toLeftOf="@+id/font_info_add_btn"
+                app:layout_constraintTop_toTopOf="@+id/font_info_add_btn"/>
+
+            <ImageView
+                android:id="@+id/font_info_add_btn"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:src="@drawable/font_info_add_btn"
+                app:layout_constraintBottom_toTopOf="@+id/font_preview"
+                app:layout_constraintLeft_toRightOf="@id/font_title"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintHorizontal_bias="0.9"
+                app:layout_constraintVertical_bias="0.1" />
+
+            <TextView
+                android:id="@+id/font_sub_title"
                 app:layout_constraintLeft_toLeftOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/test"
+                app:layout_constraintTop_toBottomOf="@+id/font_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginVertical="3dp"
+                android:text="Adobe"
+                android:textColor="#80000000"
+                android:textSize="13sp"/>
+
+            <TextView
+                android:id="@+id/font_sub_style"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/font_sub_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginVertical="3dp"
+                android:text="6 styles"
+                android:textColor="#80000000"
+                android:textSize="13sp"/>
+
+            <LinearLayout
                 android:layout_width="0dp"
-                android:layout_height="0dp"/>
+                android:layout_height="0dp"
+                android:gravity="right|center"
+                app:layout_constraintBottom_toBottomOf="@+id/font_sub_style"
+                app:layout_constraintLeft_toRightOf="@id/font_sub_style"
+                app:layout_constraintRight_toRightOf="@id/font_info_add_btn"
+                app:layout_constraintTop_toTopOf="@+id/font_sub_style"
+                app:layout_constraintHorizontal_bias="1.0">
+
+                <ImageView
+                    android:layout_width="9.15dp"
+                    android:layout_height="7.95dp"
+                    android:layout_marginHorizontal="4.85dp"
+                    android:src="@drawable/font_info_small_heart" />
+
+                <TextView
+                    android:gravity="center"
+                    android:id="@+id/font_heart_count"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:text="94,124"
+                    android:textColor="#80000000"
+                    android:textSize="10sp" />
+
+                <View
+                    android:layout_width="2dp"
+                    android:layout_height="9dp"
+                    android:layout_marginHorizontal="8dp"
+                    android:background="#4D000000"/>
+
+                <TextView
+                    android:gravity="center"
+                    android:id="@+id/font_view_count"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:text="View 274,124"
+                    android:textColor="#80000000"
+                    android:textSize="10sp" />
+
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/font_preview"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/font_sub_style"
+                android:layout_marginTop="20dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="The secret of a good life is to have the right loyalties and hold them in the right scale of values."
+                android:textColor="#000"
+                android:textSize="27sp"/>
+
+            <LinearLayout
+                android:id="@+id/badge_area_style"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/font_preview"
+                android:layout_marginTop="40dp"
+                android:orientation="horizontal">
+
+                <LinearLayout
+                    android:id="@+id/fc_badge"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/xml_rounding_btn_default"
+                    android:backgroundTint="#709365">
+
+                    <TextView
+                        android:id="@+id/fc_badge_text"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginVertical="1.5dp"
+                        android:layout_marginHorizontal="10dp"
+                        android:gravity="center"
+                        android:textStyle="bold"
+                        android:text="Sans Serif"
+                        android:textColor="#FFF"
+                        android:textSize="13sp"/>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/fs_badge"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/xml_rounding_btn_default"
+                    android:layout_marginHorizontal="5dp"
+                    android:backgroundTint="#f0cb4d">
+
+                    <TextView
+                        android:id="@+id/fs_badge_text"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginVertical="1.5dp"
+                        android:layout_marginHorizontal="10dp"
+                        android:gravity="center"
+                        android:textStyle="bold"
+                        android:text="Grotesque"
+                        android:textColor="#B3000000"
+                        android:textSize="13sp"/>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/fsi_badge"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/xml_rounding_btn_default"
+                    android:backgroundTint="#1a000000">
+
+                    <TextView
+                        android:id="@+id/fsi_badge_text"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginVertical="1.5dp"
+                        android:layout_marginHorizontal="10dp"
+                        android:gravity="center"
+                        android:textStyle="bold"
+                        android:text="Original"
+                        android:textColor="#B3000000"
+                        android:textSize="13sp"/>
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/badge_area_paid"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/badge_area_style"
+                android:layout_marginTop="6.5dp"
+                android:orientation="horizontal">
+
+                <View
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:layout_marginBottom="57.5dp"/>
+
+                <LinearLayout
+                    android:id="@+id/ofl_badge"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/xml_rounding_btn_default"
+                    android:backgroundTint="#29646f">
+
+                    <TextView
+                        android:id="@+id/ofl_badge_text"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginVertical="1.5dp"
+                        android:layout_marginHorizontal="10dp"
+                        android:gravity="center"
+                        android:textStyle="bold"
+                        android:text="OFL (Open Font License)"
+                        android:textColor="#FFF"
+                        android:textSize="13sp"/>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/paid_badge"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/xml_rounding_btn_default"
+                    android:backgroundTint="#c70000">
+
+                    <TextView
+                        android:id="@+id/paid_badge_text"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginVertical="1.5dp"
+                        android:layout_marginHorizontal="10dp"
+                        android:gravity="center"
+                        android:textStyle="bold"
+                        android:text="Paid font"
+                        android:textColor="#FFF"
+                        android:textSize="13sp"/>
+                </LinearLayout>
+
+            </LinearLayout>
 
             <TextView
                 android:id="@+id/desc_result"
+                android:layout_marginVertical="22dp"
                 app:layout_constraintLeft_toLeftOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/test"
+                app:layout_constraintTop_toBottomOf="@+id/badge_area_paid"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Adobe Caslon Pro"
+                android:text="desc_result"
                 android:textColor="#000"
-                android:textSize="10sp"
-                android:textStyle="bold"/>
+                android:textSize="14sp"/>
+
+            <TextView
+                android:id="@+id/copyright"
+                android:layout_marginVertical="3dp"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/desc_result"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="copyright"
+                android:textColor="#000"
+                android:textSize="14sp"/>
+
+            <TextView
+                android:id="@+id/license"
+                android:layout_marginVertical="3dp"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/copyright"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="License"
+                android:textColor="#000"
+                android:textSize="14sp"/>
 
         </androidx.constraintlayout.widget.ConstraintLayout>
     </ScrollView>
