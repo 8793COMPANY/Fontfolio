@@ -6,6 +6,7 @@ import android.view.MenuItem
 import androidx.appcompat.app.AppCompatActivity
 import com.corporation8793.fontfolio.R
 import com.corporation8793.fontfolio.board.SaveBoardActivity
+import com.corporation8793.fontfolio.common.Fontfolio
 import com.corporation8793.fontfolio.fragment.*
 import com.corporation8793.fontfolio.fragment.search.SearchFragment
 import com.google.android.material.bottomnavigation.BottomNavigationView

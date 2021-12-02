@@ -1,5 +1,6 @@
 package com.corporation8793.fontfolio.activity
 
+import android.content.Context
 import android.os.Bundle
 import android.util.Log
 import android.view.View
@@ -13,11 +14,15 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.constraintlayout.widget.ConstraintLayout
 import com.corporation8793.fontfolio.R
 import com.corporation8793.fontfolio.common.Fontfolio
+import android.content.Intent
+import android.graphics.Paint
+import android.net.Uri
+import android.view.inputmethod.InputMethodManager
+import com.corporation8793.fontfolio.fragment.search.SearchFragment
 
-
-class FontInformation : AppCompatActivity() {
-    lateinit var search_bar_input : EditText
-    lateinit var search_bar_input_cancel : LinearLayout
+class FontInformation() : AppCompatActivity() {
+    lateinit var search_bar_input : TextView
+    lateinit var search_bar_back_btn : LinearLayout
     lateinit var search_bar_div : ConstraintLayout
     lateinit var font_title : TextView
     lateinit var font_sub_title : TextView
@@ -34,16 +39,24 @@ class FontInformation : AppCompatActivity() {
     lateinit var paid_badge : LinearLayout
     lateinit var copyright : TextView
     lateinit var license : TextView
+    lateinit var download_link : TextView
 
     lateinit var desc : WebView
     lateinit var desc_result : TextView
+
+    override fun onDestroy() {
+        super.onDestroy()
+        if (Fontfolio.searchFragment != null) {
+            Fontfolio.searchFragment.showSoftKeyboard()
+        }
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_font_information)
 
         search_bar_input = findViewById(R.id.search_bar_input)
-        search_bar_input_cancel = findViewById(R.id.search_bar_input_cancel)
+        search_bar_back_btn = findViewById(R.id.search_bar_back_btn)
         search_bar_div = findViewById(R.id.search_bar_div)
         font_title = findViewById(R.id.font_title)
         font_sub_title = findViewById(R.id.font_sub_title)
@@ -60,14 +73,50 @@ class FontInformation : AppCompatActivity() {
         paid_badge = findViewById(R.id.paid_badge)
         copyright = findViewById(R.id.copyright)
         license = findViewById(R.id.license)
+        download_link = findViewById(R.id.download_link)
 
         desc = findViewById(R.id.desc)
         desc_result = findViewById(R.id.desc_result)
 
         val font = Fontfolio.list.filter { font -> font.fontName == intent.getStringExtra("fontName") }[0]
 
-        search_bar_input.setText(font.fontName)
+        search_bar_back_btn.setOnClickListener {
+            Fontfolio.searchFragment.search_bar_input.text.clear()
+            finish()
+        }
+
+        search_bar_div.setOnClickListener {
+            Fontfolio.searchFragment.search_bar_input.setText(font.fontName)
+            Fontfolio.searchFragment.search_bar_input.setSelection(font.fontName.length)
+            Fontfolio.searchFragment.search_bar_input_cancel.setOnClickListener {
+                Fontfolio.searchFragment.activity.apply {
+                    startActivity(Intent(this, FontInformation().javaClass)
+                        .putExtra("fontName", font.fontName))
+                }
+            }
+            finish()
+        }
+
+        search_bar_input.text = font.fontName
+
         font_title.text = font.fontName
+
+        font_sub_title.text = if (font.fontName.contains(" ")){
+            font.fontName.substringBefore(" ")
+        } else {
+            font.fontName.substringBefore("-")
+        }
+        Log.e("font_sub_title", font_sub_title.text.toString())
+
+        font_sub_style.text = "${Fontfolio.list.count {
+                it.fontName.contains(font_sub_title.text.toString()) }} styles"
+
+        if (resources.getIdentifier("${font.fontName}",
+                "id", this.packageName) == 0) {
+            Log.e("changeFontOfTextView", "${font.fontName} Font File Not Found !! :(")
+        } else {
+            Fontfolio().changeFontOfTextView(this, font_preview, font.fontName)
+        }
 
         font.fontClassification.apply {
             fc_badge_text.text = when {
@@ -96,8 +145,14 @@ class FontInformation : AppCompatActivity() {
             true -> paid_badge.visibility = View.GONE
             false -> ofl_badge.visibility = View.GONE
         }
-        copyright.text = font.fontCopyrightHolder
-        license.text = font.fontLicenseDescription
+        license.text = "License : ${font.fontLicenseDescription}"
+        copyright.text = "Copyright : ${font.fontCopyrightHolder}"
+
+        download_link.text = "${font.fontDownloadLink}"
+        download_link.paintFlags = Paint.UNDERLINE_TEXT_FLAG
+        download_link.setOnClickListener {
+            startActivity(Intent(Intent.ACTION_VIEW, Uri.parse("${font.fontDownloadLink}")))
+        }
 
         desc.settings.javaScriptEnabled = true
         desc.loadUrl(font.fontDownloadLink)
@@ -105,11 +160,11 @@ class FontInformation : AppCompatActivity() {
             override fun onPageFinished(view: WebView?, url: String?) {
                 view?.evaluateJavascript("(function() { if(document.getElementsByClassName('specimen__about-description')[0] != null){ return (document.getElementsByClassName('specimen__about-description')[0].innerText)}; })();")
                 { html ->
-                    Log.e("raw html", html)
+                    //Log.e("raw html", html)
                     if (html != "null") {
                         val result = html.replace("\\n", "\n")
                             .replace("\\\"", "\"")
-                        Log.e("replace html", result)
+                        //Log.e("replace html", result)
                         desc_result.text = result
                     } else {
                         desc_result.text = "Font Description Not Found.\nPlease Try Again Later. :("

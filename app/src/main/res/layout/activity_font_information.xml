@@ -31,19 +31,22 @@
         app:layout_constraintHeight_default="percent"
         app:layout_constraintHeight_percent="0.06"
         app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintLeft_toRightOf="@id/search_bar_input_cancel"
+        app:layout_constraintLeft_toRightOf="@id/search_bar_back_btn"
         app:layout_constraintRight_toLeftOf="@+id/guideline_parent_right"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.02"
         app:layout_constraintWidth_default="percent"
         app:layout_constraintWidth_percent="0.83">
 
-        <EditText
+        <TextView
             android:id="@+id/search_bar_input"
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:background="@android:color/transparent"
             android:text="something font :)"
+            android:textSize="15sp"
+            android:gravity="left|center"
+            android:textColor="#000"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintLeft_toLeftOf="parent"
@@ -55,7 +58,7 @@
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <LinearLayout
-        android:id="@+id/search_bar_input_cancel"
+        android:id="@+id/search_bar_back_btn"
         android:orientation="horizontal"
         android:visibility="visible"
         android:layout_width="0dp"
@@ -342,11 +345,33 @@
                 android:textColor="#000"
                 android:textSize="14sp"/>
 
+            <View
+                android:id="@+id/empty_space_under_desc"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                app:layout_constraintHeight_default="percent"
+                app:layout_constraintHeight_percent="0.02"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/desc_result"
+                app:layout_constraintBottom_toBottomOf="@id/license"/>
+
+            <TextView
+                android:id="@+id/license"
+                android:layout_marginVertical="3dp"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/empty_space_under_desc"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="License"
+                android:textColor="#000"
+                android:textSize="14sp"/>
+
             <TextView
                 android:id="@+id/copyright"
                 android:layout_marginVertical="3dp"
                 app:layout_constraintLeft_toLeftOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/desc_result"
+                app:layout_constraintTop_toBottomOf="@+id/license"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="copyright"
@@ -354,15 +379,44 @@
                 android:textSize="14sp"/>
 
             <TextView
-                android:id="@+id/license"
-                android:layout_marginVertical="3dp"
-                app:layout_constraintLeft_toLeftOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/copyright"
+                android:id="@+id/download_link_left"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="License"
+                android:layout_marginVertical="3dp"
+                android:text="Link : "
                 android:textColor="#000"
-                android:textSize="14sp"/>
+                android:textSize="14sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintVertical_bias="0.0"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toLeftOf="@id/download_link"
+                app:layout_constraintTop_toBottomOf="@+id/copyright" />
+
+            <TextView
+                android:id="@+id/download_link"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginVertical="3dp"
+                android:text="download_link"
+                android:textColor="#1f5d9b"
+                android:textSize="14sp"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintBottom_toBottomOf="@id/download_link_left"
+                app:layout_constraintLeft_toRightOf="@id/download_link"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toTopOf="@id/download_link_left" />
+
+            <View
+                android:id="@+id/empty_space_under_link"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                app:layout_constraintHeight_default="percent"
+                app:layout_constraintHeight_percent="0.08"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/download_link"
+                app:layout_constraintBottom_toBottomOf="parent"/>
 
         </androidx.constraintlayout.widget.ConstraintLayout>
     </ScrollView>
