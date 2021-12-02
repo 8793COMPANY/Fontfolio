@@ -12,7 +12,6 @@ import androidx.core.text.buildSpannedString
 import androidx.recyclerview.widget.RecyclerView
 import com.corporation8793.fontfolio.R
 import com.corporation8793.fontfolio.activity.FontInformation
-import com.corporation8793.fontfolio.common.Fontfolio
 import com.corporation8793.fontfolio.library.room.entity.Font
 
 
@@ -46,8 +45,9 @@ class SearchListviewAdapter(
 
         holder.font_name_div.setOnClickListener {
             Log.e("onBindViewHolder", "onBindViewHolder: ${dataSet[position].fontName}")
+            mFragment.search_bar_input.text.clear()
             mFragment.activity.apply {
-                startActivity(Intent(this, FontInformation().javaClass)
+                startActivity(Intent(this, FontInformation(mFragment).javaClass)
                     .putExtra("fontName", dataSet[position].fontName))
             }
         }
