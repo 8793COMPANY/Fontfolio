@@ -19,6 +19,7 @@ import android.view.ViewGroup;
 import android.widget.AbsListView;
 import android.widget.AdapterView;
 import android.widget.BaseAdapter;
+import android.widget.Button;
 import android.widget.GridView;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -43,6 +44,8 @@ public class SelectFontStyleActivity extends AppCompatActivity {
     LinearLayout next_btn;
     TextView next_btn_text;
 
+    Button back_btn;
+
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -50,6 +53,7 @@ public class SelectFontStyleActivity extends AppCompatActivity {
         setContentView(R.layout.activity_select_font_style);
 
         next_btn = findViewById(R.id.next_btn);
+        back_btn = findViewById(R.id.back_btn);
         next_btn_text = findViewById(R.id.next_btn_text);
 
         next_btn.setEnabled(false);
@@ -85,6 +89,10 @@ public class SelectFontStyleActivity extends AppCompatActivity {
             Fontfolio.prefs.setString("font_style",fontStyle.substring(0,fontStyle.length()-1));
             Intent intent = new Intent(SelectFontStyleActivity.this, LoadingActivity.class);
             startActivity(intent);
+            finish();
+        });
+
+        back_btn.setOnClickListener(v->{
             finish();
         });
 

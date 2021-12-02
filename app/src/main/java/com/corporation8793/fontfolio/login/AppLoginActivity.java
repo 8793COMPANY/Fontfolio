@@ -105,7 +105,7 @@ public class AppLoginActivity  extends AppCompatActivity {
         InputMethodManager imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
         imm.hideSoftInputFromWindow(email_input_box.getApplicationWindowToken(), 0);
 
-        final InitPwBottomDialog initPwBottomDialog = new InitPwBottomDialog("boxerlady@naver.com");
+
 
         login_btn.setEnabled(false);
 
@@ -213,6 +213,7 @@ public class AppLoginActivity  extends AppCompatActivity {
         pw_error_msg.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                final InitPwBottomDialog initPwBottomDialog = new InitPwBottomDialog(email_input_box.getText().toString());
                 initPwBottomDialog.show(getSupportFragmentManager(),initPwBottomDialog.getTag());
             }
         });
