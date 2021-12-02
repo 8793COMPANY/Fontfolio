@@ -16,6 +16,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.FrameLayout;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -30,6 +31,7 @@ import org.w3c.dom.Text;
 
 public class InitPwBottomDialog extends BottomSheetDialogFragment {
     String email;
+    LinearLayout got_it_btn,resend_email_btn;
     public InitPwBottomDialog(String email){
         this.email = email;
 
@@ -41,6 +43,8 @@ public class InitPwBottomDialog extends BottomSheetDialogFragment {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.init_pw_sheet_layout,container,false);
         TextView sent_email_content = view.findViewById(R.id.sent_email_content);
+        got_it_btn = view.findViewById(R.id.got_it_btn);
+        resend_email_btn = view.findViewById(R.id.resend_email_btn);
 
         Log.e("email",email);
 
@@ -55,6 +59,13 @@ public class InitPwBottomDialog extends BottomSheetDialogFragment {
         spannableString.setSpan(new RelativeSizeSpan(1.1f), start, end, SpannableString.SPAN_EXCLUSIVE_EXCLUSIVE);
 
         sent_email_content.setText(spannableString);
+
+        got_it_btn.setOnClickListener(v->{
+            dismiss();
+        });
+        resend_email_btn.setOnClickListener(v->{
+            dismiss();
+        });
 
         return view;
     }
