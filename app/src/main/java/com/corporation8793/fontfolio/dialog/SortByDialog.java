@@ -24,6 +24,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
 import com.corporation8793.fontfolio.R;
+import com.corporation8793.fontfolio.common.Fontfolio;
 import com.google.android.material.bottomsheet.BottomSheetBehavior;
 import com.google.android.material.bottomsheet.BottomSheetDialog;
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment;
@@ -56,22 +57,30 @@ public class SortByDialog extends BottomSheetDialogFragment {
             dismiss();
         });
 
-        check_init();
-        recommended_check.setVisibility(View.VISIBLE);
+        if (Fontfolio.prefs.getInt("sortBy",1) == 1){
+            recommended_check.setVisibility(View.VISIBLE);
+        }else if (Fontfolio.prefs.getInt("sortBy",1) == 2){
+            random_check.setVisibility(View.VISIBLE);
+        }else if(Fontfolio.prefs.getInt("sortBy",1) == 3){
+            popularity_check.setVisibility(View.VISIBLE);
+        }
 
         sort_by_recommended.setOnClickListener(v->{
             check_init();
             recommended_check.setVisibility(View.VISIBLE);
+            Fontfolio.prefs.setInt("sortBy",1);
         });
 
         sort_by_random.setOnClickListener(v->{
             check_init();
             random_check.setVisibility(View.VISIBLE);
+            Fontfolio.prefs.setInt("sortBy",2);
         });
 
         sort_by_popularity.setOnClickListener(v->{
             check_init();
             popularity_check.setVisibility(View.VISIBLE);
+            Fontfolio.prefs.setInt("sortBy",3);
         });
 
 

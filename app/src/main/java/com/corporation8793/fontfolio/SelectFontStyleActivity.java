@@ -28,6 +28,7 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.constraintlayout.widget.ConstraintLayout;
 
+import com.corporation8793.fontfolio.common.Fontfolio;
 import com.corporation8793.fontfolio.login.AppLoginActivity;
 
 import java.io.InputStream;
@@ -76,6 +77,12 @@ public class SelectFontStyleActivity extends AppCompatActivity {
         gv.setVerticalSpacing((int)((width /720.0) * 16));
 
         next_btn.setOnClickListener(v->{
+            String fontStyle = "";
+            for (int i =0; i<select_list.size(); i++){
+                fontStyle += font_style_list.get(i).fontName+"/";
+            }
+            Log.e("fontStyle",fontStyle.substring(0,fontStyle.length()-1));
+            Fontfolio.prefs.setString("font_style",fontStyle.substring(0,fontStyle.length()-1));
             Intent intent = new Intent(SelectFontStyleActivity.this, LoadingActivity.class);
             startActivity(intent);
             finish();

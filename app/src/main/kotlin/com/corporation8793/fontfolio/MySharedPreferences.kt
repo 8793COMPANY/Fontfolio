@@ -4,7 +4,7 @@ import android.content.Context
 import android.content.SharedPreferences
 
 class MySharedPreferences(context: Context) {
-    private val prefs: SharedPreferences = context.getSharedPreferences("myCourseList", Context.MODE_PRIVATE)
+    private val prefs: SharedPreferences = context.getSharedPreferences("Fontfolio", Context.MODE_PRIVATE)
 
     fun getString(key: String, defValue: String): String {
         return prefs.getString(key, defValue).toString()
@@ -18,8 +18,14 @@ class MySharedPreferences(context: Context) {
     fun getBoolean(key: String, defValue: Boolean): Boolean{
         return prefs.getBoolean(key, defValue)
     }
-    fun setBoolean(key: String, str: Boolean) {
-        prefs.edit().putBoolean(key, str).apply()
+    fun setBoolean(key: String, defValue: Boolean) {
+        prefs.edit().putBoolean(key, defValue).apply()
     }
 
+    fun getInt(key: String, value: Int): Int{
+        return prefs.getInt(key, value)
+    }
+    fun setInt(key: String, value: Int) {
+        prefs.edit().putInt(key, value).apply()
+    }
 }
