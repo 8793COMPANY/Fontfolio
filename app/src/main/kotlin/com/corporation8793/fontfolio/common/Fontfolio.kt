@@ -162,8 +162,13 @@ class Fontfolio : Application() {
      * @see     <a href="https://developer.android.com/guide/topics/ui/look-and-feel/fonts-in-xml#fonts-in-code">developer-android</a>
      */
     fun changeFontOfTextView(act : Activity, textView: TextView, font_name : String) {
-        textView.typeface = resources.getFont(resources.getIdentifier("$font_name",
-            "id", act.packageName))
+        if (resources.getIdentifier("$font_name",
+                "id", act.packageName).equals(null)) {
+            textView.typeface = resources.getFont(resources.getIdentifier("$font_name",
+                "id", act.packageName))
+        } else {
+            Log.e("changeFontOfTextView", "$font_name Font File Not Found !! :(")
+        }
     }
 
     override fun onCreate() {

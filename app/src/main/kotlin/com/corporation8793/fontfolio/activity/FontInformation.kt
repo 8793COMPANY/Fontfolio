@@ -69,6 +69,18 @@ class FontInformation : AppCompatActivity() {
         search_bar_input.setText(font.fontName)
         font_title.text = font.fontName
 
+        font_sub_title.text = if (font.fontName.contains(" ")){
+            font.fontName.substringBefore(" ")
+        } else {
+            font.fontName.substringBefore("-")
+        }
+        Log.e("font_sub_title", font_sub_title.text.toString())
+
+        font_sub_style.text = "${Fontfolio.list.count {
+                it.fontName.contains(font_sub_title.text.toString()) }} styles"
+
+        Fontfolio().changeFontOfTextView(this, font_preview, font.fontName)
+
         font.fontClassification.apply {
             fc_badge_text.text = when {
                 Serif -> "Serif"
@@ -105,11 +117,11 @@ class FontInformation : AppCompatActivity() {
             override fun onPageFinished(view: WebView?, url: String?) {
                 view?.evaluateJavascript("(function() { if(document.getElementsByClassName('specimen__about-description')[0] != null){ return (document.getElementsByClassName('specimen__about-description')[0].innerText)}; })();")
                 { html ->
-                    Log.e("raw html", html)
+                    //Log.e("raw html", html)
                     if (html != "null") {
                         val result = html.replace("\\n", "\n")
                             .replace("\\\"", "\"")
-                        Log.e("replace html", result)
+                        //Log.e("replace html", result)
                         desc_result.text = result
                     } else {
                         desc_result.text = "Font Description Not Found.\nPlease Try Again Later. :("
