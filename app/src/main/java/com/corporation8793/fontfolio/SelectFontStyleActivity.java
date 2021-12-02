@@ -78,6 +78,7 @@ public class SelectFontStyleActivity extends AppCompatActivity {
         next_btn.setOnClickListener(v->{
             Intent intent = new Intent(SelectFontStyleActivity.this, LoadingActivity.class);
             startActivity(intent);
+            finish();
         });
 
 
