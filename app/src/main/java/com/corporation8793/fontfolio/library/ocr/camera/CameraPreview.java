@@ -200,9 +200,11 @@ public class CameraPreview extends SurfaceView implements SurfaceHolder.Callback
             try {
                 camera.setParameters(p);
             } catch (Exception e) {
-                Camera.Size previewSize = findBestPreviewSize(p);
-                p.setPreviewSize(previewSize.width, previewSize.height);
-                p.setPictureSize(previewSize.width, previewSize.height);
+                // TODO : 카메라 호환성 버그
+                Log.e("updateCameraParameters", "can't support camera parametrs : ");
+                //Camera.Size previewSize = findBestPreviewSize(p);
+                p.setPreviewSize(480, 320);
+                p.setPictureSize(480, 320);
                 camera.setParameters(p);
             }
         }
