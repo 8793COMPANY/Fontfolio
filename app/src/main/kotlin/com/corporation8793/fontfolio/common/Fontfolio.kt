@@ -8,6 +8,7 @@ import android.graphics.Typeface
 import android.util.Log
 import android.widget.TextView
 import androidx.room.Room
+import com.corporation8793.fontfolio.MySharedPreferences
 import com.corporation8793.fontfolio.R
 import com.corporation8793.fontfolio.library.excel.Excel
 import com.corporation8793.fontfolio.library.room.AppDatabase
@@ -40,6 +41,7 @@ class Fontfolio : Application() {
 
     companion object {
         lateinit var list : List<Font>
+        lateinit var prefs : MySharedPreferences
     }
 
     /**
@@ -162,5 +164,10 @@ class Fontfolio : Application() {
     fun changeFontOfTextView(act : Activity, textView: TextView, font_name : String) {
         textView.typeface = resources.getFont(resources.getIdentifier("$font_name",
             "id", act.packageName))
+    }
+
+    override fun onCreate() {
+        super.onCreate()
+        prefs = MySharedPreferences(applicationContext)
     }
 }

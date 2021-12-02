@@ -18,7 +18,7 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintWidth_default="percent"
         app:layout_constraintVertical_chainStyle="spread"
-        app:layout_constraintVertical_weight="0.07">
+        app:layout_constraintHeight_percent="0.07">
 
         <androidx.constraintlayout.widget.Guideline
             android:id="@+id/back_btn_guideline"
@@ -116,7 +116,8 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/empty2"
         app:layout_constraintBottom_toTopOf="@+id/empty3"
-        app:layout_constraintVertical_weight="0.24">
+        app:layout_constraintVertical_weight="0.24"
+        android:background="@color/white">
 
         <TextView
             android:id="@+id/email"
@@ -223,7 +224,8 @@
             app:layout_constraintTop_toBottomOf="@+id/pw_input_box"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintWidth_percent="0.71"
-            app:layout_constraintHeight_percent="0.27"></ImageView>
+            app:layout_constraintHeight_percent="0.27"
+            android:visibility="invisible"></ImageView>
 
         <Button
             android:id="@+id/visible_password"
@@ -277,7 +279,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/login_section"
         app:layout_constraintBottom_toTopOf="@+id/login_btn_area"
-        app:layout_constraintVertical_weight="0.07"
+        app:layout_constraintVertical_weight="0.04"
         ></View>
 
 
