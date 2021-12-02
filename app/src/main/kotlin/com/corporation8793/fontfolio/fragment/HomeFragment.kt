@@ -68,7 +68,7 @@ class HomeFragment(activity : MainActivity) : Fragment() {
 
         val sortByDialog = SortByDialog()
         val staggeredGridLayoutManager = StaggeredGridLayoutManager(2, LinearLayoutManager.VERTICAL)
-        mAdapter = FontAdapter(mActivity.applicationContext)
+        mAdapter = FontAdapter(mActivity.applicationContext,activity)
         notifyItem()
 
 

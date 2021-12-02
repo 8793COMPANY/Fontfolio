@@ -9,16 +9,19 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
+import androidx.appcompat.app.AppCompatActivity
+import androidx.fragment.app.FragmentActivity
 import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.StaggeredGridLayoutManager
 import com.corporation8793.fontfolio.R
+import com.corporation8793.fontfolio.activity.FontInformation
 import com.corporation8793.fontfolio.fragment.InfoFragment
 
 import com.corporation8793.fontfolio.library.room.entity.Font
 import com.corporation8793.fontfolio.login.LoginActivity
 
 
-class FontAdapter(val context: Context) : RecyclerView.Adapter<FontAdapter.ItemViewHolder>(){
+class FontAdapter(val context: Context, val activity:FragmentActivity?) : RecyclerView.Adapter<FontAdapter.ItemViewHolder>(){
     var datas = mutableListOf<Font>()
     var colors = arrayOf("#eaebde", "#ebc4ff", "#08000000", "#f8eddf")
 
@@ -56,7 +59,11 @@ class FontAdapter(val context: Context) : RecyclerView.Adapter<FontAdapter.ItemV
 
         holder.itemView.setOnClickListener({
             Log.e("item", "click!")
-            // 화면 이동
+            var intent :Intent = Intent(activity,FontInformation::class.java)
+            intent.putExtra("fontName",datas[position].fontName)
+            intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK
+            context.startActivity(intent)
+
         })
 
         val layoutParams = StaggeredGridLayoutManager.LayoutParams(

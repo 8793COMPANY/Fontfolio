@@ -76,7 +76,6 @@ public class LoadingActivity extends AppCompatActivity {
 //                                progressBar.getProgressDrawable().setColorFilter(Color.BLACK, PorterDuff.Mode.SRC_IN);
 //                            }
                             int value = map(cnt,0,230,0,255);
-                            Log.e("value",value+"");
 
                                 progressBar.getProgressDrawable().setAlpha(value);
 
