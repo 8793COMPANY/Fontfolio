@@ -98,10 +98,7 @@ class HomeFragment(activity : MainActivity) : Fragment() {
     fun notifyItem(){
         datas.clear()
         for (i in Fontfolio.list){
-<<<<<<< HEAD
             Log.e("fontStyle",i.fontStyle)
-=======
->>>>>>> 48ab4a840e0dc98c38594c4b3ffcb70f8a4e141e
             datas.add(i)
         }
 

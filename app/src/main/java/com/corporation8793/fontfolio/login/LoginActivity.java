@@ -44,7 +44,9 @@ public class LoginActivity extends AppCompatActivity {
         login_type_devide_section = findViewById(R.id.login_type_devide_section);
 
         login_btn.setOnClickListener(v_->{
-
+            Intent intent = new Intent(LoginActivity.this, AppLoginActivity.class);
+            startActivity(intent);
+            overridePendingTransition(0, 0);
 
 
         });
@@ -70,13 +72,13 @@ public class LoginActivity extends AppCompatActivity {
 //        animator.setDuration(500);
 //        animator.start();
 
-        Animation slideup = AnimationUtils.loadAnimation(getApplicationContext(),R.anim.anim_slide_up);
-        social_login_section.startAnimation(slideup);
-        slideup.setAnimationListener(aniListener01);
-
-        Animation middleAnim = AnimationUtils.loadAnimation(getApplicationContext(),R.anim.anim_splash_textview);
-        login_section.startAnimation(middleAnim);
-        middleAnim.setAnimationListener(aniListener02);
+//        Animation slideup = AnimationUtils.loadAnimation(getApplicationContext(),R.anim.anim_slide_up);
+//        social_login_section.startAnimation(slideup);
+//        slideup.setAnimationListener(aniListener01);
+//
+//        Animation middleAnim = AnimationUtils.loadAnimation(getApplicationContext(),R.anim.anim_splash_textview);
+//        login_section.startAnimation(middleAnim);
+//        middleAnim.setAnimationListener(aniListener02);
 //
 //        Animation middleAnim2 = AnimationUtils.loadAnimation(getApplicationContext(),R.anim.anim_splash_welcome_text);
 //        login_btn.startAnimation(middleAnim2);

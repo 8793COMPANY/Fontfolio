@@ -107,7 +107,7 @@ public class AppLoginActivity  extends AppCompatActivity {
 
         final InitPwBottomDialog initPwBottomDialog = new InitPwBottomDialog("boxerlady@naver.com");
 
-
+        login_btn.setEnabled(false);
 
 //        Handler handler = new Handler();
 //        handler.postDelayed(new Runnable() {
@@ -227,10 +227,11 @@ public class AppLoginActivity  extends AppCompatActivity {
         if(check && !pw_input_box.getText().toString().trim().equals("") ){
             login_btn.setBackgroundTintList((ColorStateList.valueOf(Color.parseColor("#dd0000"))));
             login_btn_text.setTextColor(getColor(R.color.white));
+            login_btn.setEnabled(true);
         }else{
             login_btn.setBackgroundTintList((ColorStateList.valueOf(Color.parseColor("#0D000000"))));
             login_btn_text.setTextColor(Color.parseColor("#80000000"));
-
+            login_btn.setEnabled(false);
         }
     }
 
