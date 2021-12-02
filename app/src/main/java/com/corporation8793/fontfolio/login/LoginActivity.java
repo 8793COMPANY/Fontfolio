@@ -53,25 +53,25 @@ public class LoginActivity extends AppCompatActivity {
         google_login_btn.setVisibility(View.INVISIBLE);
         login_type_devide_section.setVisibility(View.INVISIBLE);
 
-        Animation a = new Animation() {
-            @Override
-            protected void applyTransformation(float interpolatedTime, Transformation t) {
-                ConstraintLayout.LayoutParams lparams = (ConstraintLayout.LayoutParams) pw.getLayoutParams();
-                lparams.verticalBias = 0.17f;
-                pw.setLayoutParams(lparams);
-            }
-        };
-        a.setDuration(8); // in ms
-        a.setFillAfter(true);
-        pw.startAnimation(a);
+//        Animation a = new Animation() {
+//            @Override
+//            protected void applyTransformation(float interpolatedTime, Transformation t) {
+//                ConstraintLayout.LayoutParams lparams = (ConstraintLayout.LayoutParams) pw.getLayoutParams();
+//                lparams.verticalBias = 0.17f;
+//                pw.setLayoutParams(lparams);
+//            }
+//        };
+//        a.setDuration(8); // in ms
+//        a.setFillAfter(true);
+//        pw.startAnimation(a);
 
-//        Animation middleAnim = AnimationUtils.loadAnimation(getApplicationContext(),R.anim.anim_splash_textview);
-//        login_section.startAnimation(middleAnim);
-//        middleAnim.setAnimationListener(aniListener01);
-//
-//        Animation middleAnim2 = AnimationUtils.loadAnimation(getApplicationContext(),R.anim.anim_splash_welcome_text);
-//        login_btn.startAnimation(middleAnim2);
-//        middleAnim.setAnimationListener(aniListener02);
+        Animation middleAnim = AnimationUtils.loadAnimation(getApplicationContext(),R.anim.anim_splash_textview);
+        login_section.startAnimation(middleAnim);
+        middleAnim.setAnimationListener(aniListener01);
+
+        Animation middleAnim2 = AnimationUtils.loadAnimation(getApplicationContext(),R.anim.anim_splash_welcome_text);
+        login_btn.startAnimation(middleAnim2);
+        middleAnim.setAnimationListener(aniListener02);
 
 
 
