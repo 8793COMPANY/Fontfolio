@@ -119,7 +119,7 @@ class FontInformation : AppCompatActivity() {
 
         font_info_add_btn.setOnClickListener {
             if (Fontfolio.searchFragment != null) {
-                Fontfolio().moveToActivity(Fontfolio.searchFragment.activity, SaveBoardActivity::class.java, true)
+                Fontfolio().moveToActivity(Fontfolio.searchFragment.activity, SaveBoardActivity::class.java, false)
             }
         }
 
@@ -184,5 +184,12 @@ class FontInformation : AppCompatActivity() {
                 }
             }
         }
+    }
+
+    override fun onBackPressed() {
+        if (Fontfolio.searchFragment != null) {
+            Fontfolio.searchFragment.search_bar_input.text.clear()
+        }
+        finish()
     }
 }
