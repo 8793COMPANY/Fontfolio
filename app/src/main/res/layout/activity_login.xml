@@ -65,98 +65,112 @@
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 
-
-    <TextView
-        android:id="@+id/login_messge"
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/social_login_section"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:text="Login with a different account"
-        android:textColor="@color/black"
-        android:gravity="center"
-        android:orientation="horizontal"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/actionbar"
-        app:layout_constraintWidth_default="percent"
-        app:layout_constraintHeight_percent="0.03"
-        app:layout_constraintVertical_bias="0.015"></TextView>
+        app:layout_constraintHeight_percent="0.31"
+        app:layout_constraintVertical_bias="0">
+
+        <TextView
+            android:id="@+id/login_messge"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:text="Login with a different account"
+            android:textColor="@color/black"
+            android:gravity="center"
+            android:orientation="horizontal"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintWidth_default="percent"
+            app:layout_constraintHeight_percent="0.07"
+            app:layout_constraintVertical_bias="0.05"></TextView>
 
 
 
 
-    <LinearLayout
-        android:id="@+id/kakao_login_area"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:background="@drawable/kakao_login_btn"
-        android:orientation="horizontal"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/login_messge"
-        app:layout_constraintWidth_default="percent"
-        app:layout_constraintHeight_percent="0.06"
-        app:layout_constraintWidth_percent="0.9"
-        app:layout_constraintVertical_bias="0.015">
+        <LinearLayout
+            android:id="@+id/kakao_login_area"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:background="@drawable/kakao_login_btn"
+            android:orientation="horizontal"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/login_messge"
+            app:layout_constraintWidth_default="percent"
+            app:layout_constraintHeight_percent="0.19"
+            app:layout_constraintWidth_percent="0.9"
+            app:layout_constraintVertical_bias="0.1">
 
-
-    </LinearLayout>
-
-
-
-
-    <LinearLayout
-        android:id="@+id/facebook_login_area"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:background="@drawable/facebook_login_btn"
-        android:orientation="horizontal"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="@+id/kakao_login_area"
-        app:layout_constraintStart_toStartOf="@+id/kakao_login_area"
-        app:layout_constraintTop_toBottomOf="@+id/kakao_login_area"
-        app:layout_constraintWidth_default="percent"
-        app:layout_constraintHeight_percent="0.06"
-        app:layout_constraintWidth_percent="0.9"
-        app:layout_constraintVertical_bias="0.012"></LinearLayout>
+        </LinearLayout>
 
 
 
-    <LinearLayout
-        android:id="@+id/google_login_area"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:background="@drawable/google_login_btn"
-        android:orientation="horizontal"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="@+id/facebook_login_area"
-        app:layout_constraintStart_toStartOf="@+id/facebook_login_area"
-        app:layout_constraintTop_toBottomOf="@+id/facebook_login_area"
-        app:layout_constraintWidth_default="percent"
-        app:layout_constraintHeight_percent="0.06"
-        app:layout_constraintWidth_percent="0.9"
-        app:layout_constraintVertical_bias="0.012"></LinearLayout>
+        <LinearLayout
+            android:id="@+id/facebook_login_area"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:background="@drawable/facebook_login_btn"
+            android:orientation="horizontal"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="@+id/kakao_login_area"
+            app:layout_constraintStart_toStartOf="@+id/kakao_login_area"
+            app:layout_constraintTop_toBottomOf="@+id/kakao_login_area"
+            app:layout_constraintWidth_default="percent"
+            app:layout_constraintHeight_percent="0.19"
+            app:layout_constraintWidth_percent="0.9"
+            app:layout_constraintVertical_bias="0.1"></LinearLayout>
+
+
+
+        <LinearLayout
+            android:id="@+id/google_login_area"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:background="@drawable/google_login_btn"
+            android:orientation="horizontal"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="@+id/facebook_login_area"
+            app:layout_constraintStart_toStartOf="@+id/facebook_login_area"
+            app:layout_constraintTop_toBottomOf="@+id/facebook_login_area"
+            app:layout_constraintWidth_default="percent"
+            app:layout_constraintHeight_percent="0.19"
+            app:layout_constraintWidth_percent="0.9"
+            app:layout_constraintVertical_bias="0.1"></LinearLayout>
 
 
 
 
-    <TextView
-        android:id="@+id/login_type_devide_section"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:text="or"
-        android:gravity="center"
-        android:textColor="@color/black"
-        android:orientation="horizontal"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/google_login_area"
-        app:layout_constraintWidth_default="percent"
-        app:layout_constraintHeight_default="percent"
-        app:layout_constraintHeight_percent="0.02"
-        app:layout_constraintVertical_bias="0.015"></TextView>
+        <TextView
+            android:id="@+id/login_type_devide_section"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:text="or"
+            android:gravity="center"
+            android:textColor="@color/black"
+            android:orientation="horizontal"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/google_login_area"
+            app:layout_constraintWidth_default="percent"
+            app:layout_constraintHeight_default="percent"
+            app:layout_constraintHeight_percent="0.07"
+            app:layout_constraintVertical_bias="0.1"></TextView>
+
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
 
 
 
@@ -180,10 +194,11 @@
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:orientation="horizontal"
+        android:background="@color/white"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/login_type_devide_section"
+        app:layout_constraintTop_toBottomOf="@+id/social_login_section"
         app:layout_constraintWidth_default="percent"
         app:layout_constraintHeight_percent="0.15"
         app:layout_constraintVertical_bias="0.1">

@@ -92,13 +92,7 @@ class HomeFragment(activity : MainActivity) : Fragment() {
 
         datas.clear()
         for (i in Fontfolio.list){
-//            Log.e("font",i.fontName)
-//            Log.e("font",i.fontCopyrightHolder)
-//            Log.e("font",i.fontLicenseDescription)
-            Log.e("OFL",i.fontLicense.OFL.toString())
-//            Log.e("font",i.fontClassification.toString())
-//            Log.e("-----------","---------------")
-
+            Log.e("fontStyle",i.fontStyle)
             datas.add(i)
         }
 

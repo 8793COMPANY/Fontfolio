@@ -3,6 +3,7 @@ package com.corporation8793.fontfolio.login;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.constraintlayout.widget.ConstraintLayout;
 
+import android.animation.ObjectAnimator;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
@@ -22,7 +23,7 @@ import com.corporation8793.fontfolio.SelectFontStyleActivity;
 public class LoginActivity extends AppCompatActivity {
     LinearLayout login_btn;
 
-    View login_section;
+    View login_section, social_login_section;
     LinearLayout kakao_login_btn, facebook_login_btn, google_login_btn;
     TextView login_type_devide_section, pw;
 
@@ -32,6 +33,7 @@ public class LoginActivity extends AppCompatActivity {
         setContentView(R.layout.activity_login);
         login_btn = findViewById(R.id.login_btn_area);
         login_section = findViewById(R.id.login_section);
+        social_login_section = findViewById(R.id.social_login_section);
 
         kakao_login_btn = findViewById(R.id.kakao_login_area);
         facebook_login_btn = findViewById(R.id.facebook_login_area);
@@ -48,10 +50,10 @@ public class LoginActivity extends AppCompatActivity {
         });
 
 
-        kakao_login_btn.setVisibility(View.INVISIBLE);
-        facebook_login_btn.setVisibility(View.INVISIBLE);
-        google_login_btn.setVisibility(View.INVISIBLE);
-        login_type_devide_section.setVisibility(View.INVISIBLE);
+//        kakao_login_btn.setVisibility(View.INVISIBLE);
+//        facebook_login_btn.setVisibility(View.INVISIBLE);
+//        google_login_btn.setVisibility(View.INVISIBLE);
+//        login_type_devide_section.setVisibility(View.INVISIBLE);
 
 //        Animation a = new Animation() {
 //            @Override
@@ -64,14 +66,21 @@ public class LoginActivity extends AppCompatActivity {
 //        a.setDuration(8); // in ms
 //        a.setFillAfter(true);
 //        pw.startAnimation(a);
+//        ObjectAnimator animator = ObjectAnimator.ofFloat(login_section, "rotationX", 0, 180);
+//        animator.setDuration(500);
+//        animator.start();
+
+        Animation slideup = AnimationUtils.loadAnimation(getApplicationContext(),R.anim.anim_slide_up);
+        social_login_section.startAnimation(slideup);
+        slideup.setAnimationListener(aniListener01);
 
         Animation middleAnim = AnimationUtils.loadAnimation(getApplicationContext(),R.anim.anim_splash_textview);
         login_section.startAnimation(middleAnim);
-        middleAnim.setAnimationListener(aniListener01);
-
-        Animation middleAnim2 = AnimationUtils.loadAnimation(getApplicationContext(),R.anim.anim_splash_welcome_text);
-        login_btn.startAnimation(middleAnim2);
         middleAnim.setAnimationListener(aniListener02);
+//
+//        Animation middleAnim2 = AnimationUtils.loadAnimation(getApplicationContext(),R.anim.anim_splash_welcome_text);
+//        login_btn.startAnimation(middleAnim2);
+//        middleAnim.setAnimationListener(aniListener02);
 
 
 
@@ -107,7 +116,9 @@ public class LoginActivity extends AppCompatActivity {
         public void onAnimationRepeat(Animation animation) { }
         @Override
         public void onAnimationStart(Animation animation) {
-
+//                    ConstraintLayout.LayoutParams lp = (ConstraintLayout.LayoutParams) login_section.getLayoutParams();
+//                    lp.matchConstraintPercentHeight = (float) 0.13;
+//                    login_section.setLayoutParams(lp);
         }
     };
 

@@ -31,6 +31,8 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.corporation8793.fontfolio.R;
 import com.corporation8793.fontfolio.SelectFontStyleActivity;
+import com.corporation8793.fontfolio.activity.MainActivity;
+import com.corporation8793.fontfolio.common.Fontfolio;
 import com.corporation8793.fontfolio.dialog.InitPwBottomDialog;
 
 public class AppLoginActivity  extends AppCompatActivity {
@@ -121,9 +123,17 @@ public class AppLoginActivity  extends AppCompatActivity {
         login_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                if (Fontfolio.prefs.getBoolean("first_run",true)){
+                    Fontfolio.prefs.setBoolean("first_run",false);
+                    Intent intent = new Intent(AppLoginActivity.this, SelectFontStyleActivity.class);
+                    startActivity(intent);
+                    finish();
+                }else{
+                    Intent intent = new Intent(AppLoginActivity.this, MainActivity.class);
+                    startActivity(intent);
+                    finish();
+                }
 
-                Intent intent = new Intent(AppLoginActivity.this, SelectFontStyleActivity.class);
-                startActivity(intent);
 
             }
         });
