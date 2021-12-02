@@ -29,7 +29,7 @@ private const val ARG_PARAM1 = "param1"
 private const val ARG_PARAM2 = "param2"
 
 class HomeFragment(activity : MainActivity) : Fragment() {
-
+    //push 확인
     private var param1: String? = null
     private var param2: String? = null
     lateinit var sort_by_btn: Button
