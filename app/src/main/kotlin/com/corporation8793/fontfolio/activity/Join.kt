@@ -15,9 +15,7 @@ import com.corporation8793.fontfolio.BuildConfig
 import com.corporation8793.fontfolio.R
 import com.corporation8793.fontfolio.common.Fontfolio
 import com.corporation8793.fontfolio.login.LoginActivity
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.launch
+import kotlinx.coroutines.*
 
 class Join : AppCompatActivity() {
     val PERMISSIONS = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {
@@ -44,7 +42,7 @@ class Join : AppCompatActivity() {
 
         fontfolio.xlsToRoom()
 
-        CoroutineScope(Dispatchers.IO).launch {
+        val load = CoroutineScope(Dispatchers.IO).launch {
             Fontfolio.list = fontfolio.db.fontDao().getAll()
         }
 
@@ -60,7 +58,9 @@ class Join : AppCompatActivity() {
                 val uri = Uri.parse("package:" + BuildConfig.APPLICATION_ID)
                 startActivity(Intent(Settings.ACTION_MANAGE_APP_ALL_FILES_ACCESS_PERMISSION, uri))
             } else {
-                fontfolio.moveToActivity(this, MainActivity::class.java, false)
+                if (load.isCompleted) {
+                    fontfolio.moveToActivity(this, MainActivity::class.java, false)
+                }
             }
         }
 

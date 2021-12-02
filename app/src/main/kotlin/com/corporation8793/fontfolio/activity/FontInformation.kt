@@ -1,5 +1,6 @@
 package com.corporation8793.fontfolio.activity
 
+import android.content.Context
 import android.os.Bundle
 import android.util.Log
 import android.view.View
@@ -16,16 +17,11 @@ import com.corporation8793.fontfolio.common.Fontfolio
 import android.content.Intent
 import android.graphics.Paint
 import android.net.Uri
+import android.view.inputmethod.InputMethodManager
 import com.corporation8793.fontfolio.fragment.search.SearchFragment
 
-
 class FontInformation() : AppCompatActivity() {
-    lateinit var mFragment : SearchFragment
-    constructor(mFrag : SearchFragment) : this() {
-        mFragment = mFrag
-    }
-
-    lateinit var search_bar_input : EditText
+    lateinit var search_bar_input : TextView
     lateinit var search_bar_back_btn : LinearLayout
     lateinit var search_bar_div : ConstraintLayout
     lateinit var font_title : TextView
@@ -47,6 +43,13 @@ class FontInformation() : AppCompatActivity() {
 
     lateinit var desc : WebView
     lateinit var desc_result : TextView
+
+    override fun onDestroy() {
+        super.onDestroy()
+        if (Fontfolio.searchFragment != null) {
+            Fontfolio.searchFragment.showSoftKeyboard()
+        }
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -77,15 +80,24 @@ class FontInformation() : AppCompatActivity() {
 
         val font = Fontfolio.list.filter { font -> font.fontName == intent.getStringExtra("fontName") }[0]
 
-        search_bar_back_btn.setOnClickListener { finish() }
-
-        search_bar_div.setOnClickListener {
-            mFragment.search_bar_input.setText(font.fontName)
+        search_bar_back_btn.setOnClickListener {
+            Fontfolio.searchFragment.search_bar_input.text.clear()
             finish()
         }
 
-        search_bar_input.setText(font.fontName)
-        search_bar_input.isEnabled = false
+        search_bar_div.setOnClickListener {
+            Fontfolio.searchFragment.search_bar_input.setText(font.fontName)
+            Fontfolio.searchFragment.search_bar_input.setSelection(font.fontName.length)
+            Fontfolio.searchFragment.search_bar_input_cancel.setOnClickListener {
+                Fontfolio.searchFragment.activity.apply {
+                    startActivity(Intent(this, FontInformation().javaClass)
+                        .putExtra("fontName", font.fontName))
+                }
+            }
+            finish()
+        }
+
+        search_bar_input.text = font.fontName
 
         font_title.text = font.fontName
 

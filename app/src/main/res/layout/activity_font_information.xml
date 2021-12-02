@@ -38,12 +38,15 @@
         app:layout_constraintWidth_default="percent"
         app:layout_constraintWidth_percent="0.83">
 
-        <EditText
+        <TextView
             android:id="@+id/search_bar_input"
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:background="@android:color/transparent"
             android:text="something font :)"
+            android:textSize="15sp"
+            android:gravity="left|center"
+            android:textColor="#000"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintLeft_toLeftOf="parent"

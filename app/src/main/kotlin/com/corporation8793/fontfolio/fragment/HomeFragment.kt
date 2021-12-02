@@ -48,13 +48,13 @@ class HomeFragment(activity : MainActivity) : Fragment() {
             param2 = it.getString(ARG_PARAM2)
         }
 
-        fontfolio= Fontfolio().getInstance(mActivity.applicationContext)
-        fontfolio.xlsToRoom()
-
-
-
+        if (Fontfolio.list.isNullOrEmpty()) {
+            CoroutineScope(Dispatchers.IO).launch {
+                Log.e("HomeFragment", "list is Null Or Empty, Trying... re-initialize")
+                Fontfolio.list = fontfolio.db.fontDao().getAll()
+            }
+        }
     }
-
 
     @SuppressLint("MissingPermission")
     override fun onCreateView(
@@ -69,8 +69,15 @@ class HomeFragment(activity : MainActivity) : Fragment() {
         val sortByDialog = SortByDialog()
         val staggeredGridLayoutManager = StaggeredGridLayoutManager(2, LinearLayoutManager.VERTICAL)
         mAdapter = FontAdapter(mActivity.applicationContext,activity)
-        notifyItem()
 
+        if (Fontfolio.list.isNullOrEmpty()) {
+            CoroutineScope(Dispatchers.IO).launch {
+                Log.e("HomeFragment", "list is Null Or Empty, Trying... re-initialize")
+                Fontfolio.list = fontfolio.db.fontDao().getAll()
+            }
+        } else {
+            notifyItem()
+        }
 
         font_list.adapter = mAdapter
         font_list.layoutManager = staggeredGridLayoutManager
@@ -89,21 +96,12 @@ class HomeFragment(activity : MainActivity) : Fragment() {
     }
 
     fun notifyItem(){
-
         datas.clear()
         for (i in Fontfolio.list){
-//            Log.e("font",i.fontName)
-//            Log.e("font",i.fontCopyrightHolder)
-//            Log.e("font",i.fontLicenseDescription)
-            Log.e("OFL",i.fontLicense.OFL.toString())
-//            Log.e("font",i.fontClassification.toString())
-//            Log.e("-----------","---------------")
-
             datas.add(i)
         }
 
         mAdapter.datas = datas
         mAdapter.notifyDataSetChanged()
-
     }
 }

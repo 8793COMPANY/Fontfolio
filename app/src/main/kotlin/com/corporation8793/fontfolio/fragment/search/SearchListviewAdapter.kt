@@ -47,7 +47,7 @@ class SearchListviewAdapter(
             Log.e("onBindViewHolder", "onBindViewHolder: ${dataSet[position].fontName}")
             mFragment.search_bar_input.text.clear()
             mFragment.activity.apply {
-                startActivity(Intent(this, FontInformation(mFragment).javaClass)
+                startActivity(Intent(this, FontInformation().javaClass)
                     .putExtra("fontName", dataSet[position].fontName))
             }
         }

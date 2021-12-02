@@ -36,7 +36,6 @@ class SearchFragment(val activity : MainActivity) : Fragment() {
     private var param2: String? = null
 
     lateinit var fontfolio : Fontfolio
-    lateinit var total_result : List<Font>
     lateinit var filter_result : MutableList<Font>
     lateinit var search_listview : RecyclerView
     lateinit var search_listview_adapter : SearchListviewAdapter
@@ -75,6 +74,7 @@ class SearchFragment(val activity : MainActivity) : Fragment() {
         search_listview = view.findViewById(R.id.search_listview)
 
         fontfolio = Fontfolio().getInstance(activity.applicationContext)
+        Fontfolio.searchFragment = mFragment
 
         if (Fontfolio.list.isNullOrEmpty()) {
             CoroutineScope(Dispatchers.IO).launch {
@@ -89,7 +89,7 @@ class SearchFragment(val activity : MainActivity) : Fragment() {
         search_listview.layoutManager = object : LinearLayoutManager(context) { override fun canScrollVertically(): Boolean { return false } }
 
         // 자동 키보드 노출
-        search_bar_input.showSoftKeyboard()
+        showSoftKeyboard()
 
         search_bar_camera_icon.setOnClickListener {
             activity.supportFragmentManager.beginTransaction().replace(R.id.menu_view, HomeFragment(activity)).commitAllowingStateLoss()
@@ -155,6 +155,10 @@ class SearchFragment(val activity : MainActivity) : Fragment() {
         return view
     }
 
+    fun showSoftKeyboard() {
+        search_bar_input.showSoftKeyboard()
+    }
+
     // 써치-바 PercentWidth 동적 크기 변경
     fun ConstraintLayout.constrainPercentWidth(@IdRes targetViewId: Int, bias: Float) {
         val constraintSet = ConstraintSet()
@@ -174,6 +178,6 @@ class SearchFragment(val activity : MainActivity) : Fragment() {
     fun View.showSoftKeyboard() {
         this.requestFocus()
         val imm = context.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
-        imm.toggleSoftInput(InputMethodManager.SHOW_IMPLICIT, 0);
+        imm.toggleSoftInput(InputMethodManager.SHOW_IMPLICIT, 0)
     }
 }

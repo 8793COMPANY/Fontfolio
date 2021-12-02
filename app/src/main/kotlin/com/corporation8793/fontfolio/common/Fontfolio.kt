@@ -10,6 +10,8 @@ import android.widget.TextView
 import androidx.room.Room
 import com.corporation8793.fontfolio.MySharedPreferences
 import com.corporation8793.fontfolio.R
+import com.corporation8793.fontfolio.activity.MainActivity
+import com.corporation8793.fontfolio.fragment.search.SearchFragment
 import com.corporation8793.fontfolio.library.excel.Excel
 import com.corporation8793.fontfolio.library.room.AppDatabase
 import com.corporation8793.fontfolio.library.room.entity.Font
@@ -42,6 +44,7 @@ class Fontfolio : Application() {
     companion object {
         lateinit var list : List<Font>
         lateinit var prefs : MySharedPreferences
+        lateinit var searchFragment: SearchFragment
     }
 
     /**
