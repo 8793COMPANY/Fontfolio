@@ -14,6 +14,7 @@ import androidx.core.content.ContextCompat
 import com.corporation8793.fontfolio.BuildConfig
 import com.corporation8793.fontfolio.R
 import com.corporation8793.fontfolio.common.Fontfolio
+import com.corporation8793.fontfolio.library.room.entity.Font
 import com.corporation8793.fontfolio.login.LoginActivity
 import kotlinx.coroutines.*
 
@@ -30,20 +31,28 @@ class Join : AppCompatActivity() {
     }
     val LOCATION_PERMISSION_REQUEST_CODE = PERMISSIONS.size
     var p_list = mutableListOf<Boolean>()
+    lateinit var fontfolio : Fontfolio
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_join)
 
-        val fontfolio = Fontfolio().getInstance(applicationContext)
+        fontfolio = Fontfolio().getInstance(applicationContext)
+
         val sign_up_btn : LinearLayout = findViewById(R.id.sign_up_btn)
         val log_in_btn : LinearLayout = findViewById(R.id.log_in_btn)
         val take_to_experience : LinearLayout = findViewById(R.id.take_to_experience)
 
         fontfolio.xlsToRoom()
 
-        val load = CoroutineScope(Dispatchers.IO).launch {
-            Fontfolio.list = fontfolio.db.fontDao().getAll()
+        val job = CoroutineScope(Dispatchers.IO).launch {
+            fun getList() : List<Font> {
+                return fontfolio.db.fontDao().getAll()
+            }
+
+            Log.e("Join", "list initialize")
+            val a_list = async { getList() }
+            Fontfolio.list = a_list.await()
         }
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R && !Environment.isExternalStorageManager()) {
@@ -58,7 +67,7 @@ class Join : AppCompatActivity() {
                 val uri = Uri.parse("package:" + BuildConfig.APPLICATION_ID)
                 startActivity(Intent(Settings.ACTION_MANAGE_APP_ALL_FILES_ACCESS_PERMISSION, uri))
             } else {
-                if (load.isCompleted) {
+                if (job.isCompleted) {
                     fontfolio.moveToActivity(this, MainActivity::class.java, false)
                 }
             }
@@ -89,6 +98,11 @@ class Join : AppCompatActivity() {
                                             permissions: Array<String>,
                                             grantResults: IntArray) {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults)
+
+        CoroutineScope(Dispatchers.IO).launch {
+            Log.e("Join", "list initialize")
+            Fontfolio.list = fontfolio.db.fontDao().getAll()
+        }
 
         if(grantResults.isNotEmpty()) {
             for (p in permissions) {

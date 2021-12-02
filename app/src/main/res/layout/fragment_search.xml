@@ -82,6 +82,8 @@
             android:layout_height="0dp"
             android:background="@android:color/transparent"
             android:hint="Search font or producer"
+            android:inputType="text"
+            android:maxLines="1"
             android:textSize="15sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintHorizontal_bias="0.37"

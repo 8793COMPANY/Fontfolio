@@ -44,7 +44,7 @@ class Fontfolio : Application() {
     companion object {
         lateinit var list : List<Font>
         lateinit var prefs : MySharedPreferences
-        lateinit var searchFragment: SearchFragment
+        lateinit var searchFragment : SearchFragment
     }
 
     /**

@@ -47,13 +47,6 @@ class HomeFragment(activity : MainActivity) : Fragment() {
             param1 = it.getString(ARG_PARAM1)
             param2 = it.getString(ARG_PARAM2)
         }
-
-        if (Fontfolio.list.isNullOrEmpty()) {
-            CoroutineScope(Dispatchers.IO).launch {
-                Log.e("HomeFragment", "list is Null Or Empty, Trying... re-initialize")
-                Fontfolio.list = fontfolio.db.fontDao().getAll()
-            }
-        }
     }
 
     @SuppressLint("MissingPermission")
@@ -70,14 +63,7 @@ class HomeFragment(activity : MainActivity) : Fragment() {
         val staggeredGridLayoutManager = StaggeredGridLayoutManager(2, LinearLayoutManager.VERTICAL)
         mAdapter = FontAdapter(mActivity.applicationContext,activity)
 
-        if (Fontfolio.list.isNullOrEmpty()) {
-            CoroutineScope(Dispatchers.IO).launch {
-                Log.e("HomeFragment", "list is Null Or Empty, Trying... re-initialize")
-                Fontfolio.list = fontfolio.db.fontDao().getAll()
-            }
-        } else {
-            notifyItem()
-        }
+        notifyItem()
 
         font_list.adapter = mAdapter
         font_list.layoutManager = staggeredGridLayoutManager
@@ -97,6 +83,7 @@ class HomeFragment(activity : MainActivity) : Fragment() {
 
     fun notifyItem(){
         datas.clear()
+
         for (i in Fontfolio.list){
             Log.e("fontStyle",i.fontStyle)
             datas.add(i)

@@ -16,11 +16,13 @@ import com.corporation8793.fontfolio.R
 import com.corporation8793.fontfolio.common.Fontfolio
 import android.content.Intent
 import android.graphics.Paint
+import android.graphics.fonts.Font
 import android.net.Uri
 import android.view.inputmethod.InputMethodManager
+import com.corporation8793.fontfolio.board.SaveBoardActivity
 import com.corporation8793.fontfolio.fragment.search.SearchFragment
 
-class FontInformation() : AppCompatActivity() {
+class FontInformation : AppCompatActivity() {
     lateinit var search_bar_input : TextView
     lateinit var search_bar_back_btn : LinearLayout
     lateinit var search_bar_div : ConstraintLayout
@@ -81,17 +83,21 @@ class FontInformation() : AppCompatActivity() {
         val font = Fontfolio.list.filter { font -> font.fontName == intent.getStringExtra("fontName") }[0]
 
         search_bar_back_btn.setOnClickListener {
-            Fontfolio.searchFragment.search_bar_input.text.clear()
+            if (Fontfolio.searchFragment != null) {
+                Fontfolio.searchFragment.search_bar_input.text.clear()
+            }
             finish()
         }
 
         search_bar_div.setOnClickListener {
-            Fontfolio.searchFragment.search_bar_input.setText(font.fontName)
-            Fontfolio.searchFragment.search_bar_input.setSelection(font.fontName.length)
-            Fontfolio.searchFragment.search_bar_input_cancel.setOnClickListener {
-                Fontfolio.searchFragment.activity.apply {
-                    startActivity(Intent(this, FontInformation().javaClass)
-                        .putExtra("fontName", font.fontName))
+            if (Fontfolio.searchFragment != null) {
+                Fontfolio.searchFragment.search_bar_input.setText(font.fontName)
+                Fontfolio.searchFragment.search_bar_input.setSelection(font.fontName.length)
+                Fontfolio.searchFragment.search_bar_input_cancel.setOnClickListener {
+                    Fontfolio.searchFragment.activity.apply {
+                        startActivity(Intent(this, FontInformation().javaClass)
+                            .putExtra("fontName", font.fontName))
+                    }
                 }
             }
             finish()
@@ -110,6 +116,12 @@ class FontInformation() : AppCompatActivity() {
 
         font_sub_style.text = "${Fontfolio.list.count {
                 it.fontName.contains(font_sub_title.text.toString()) }} styles"
+
+        font_info_add_btn.setOnClickListener {
+            if (Fontfolio.searchFragment != null) {
+                Fontfolio().moveToActivity(Fontfolio.searchFragment.activity, SaveBoardActivity::class.java, true)
+            }
+        }
 
         if (resources.getIdentifier("${font.fontName}",
                 "id", this.packageName) == 0) {
