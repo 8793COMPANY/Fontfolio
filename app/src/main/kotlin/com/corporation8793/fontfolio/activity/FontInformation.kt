@@ -1,26 +1,21 @@
 package com.corporation8793.fontfolio.activity
 
-import android.content.Context
+import android.content.Intent
+import android.graphics.Paint
+import android.net.Uri
 import android.os.Bundle
 import android.util.Log
 import android.view.View
 import android.webkit.WebView
 import android.webkit.WebViewClient
-import android.widget.EditText
 import android.widget.ImageView
 import android.widget.LinearLayout
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.constraintlayout.widget.ConstraintLayout
 import com.corporation8793.fontfolio.R
-import com.corporation8793.fontfolio.common.Fontfolio
-import android.content.Intent
-import android.graphics.Paint
-import android.graphics.fonts.Font
-import android.net.Uri
-import android.view.inputmethod.InputMethodManager
 import com.corporation8793.fontfolio.board.SaveBoardActivity
-import com.corporation8793.fontfolio.fragment.search.SearchFragment
+import com.corporation8793.fontfolio.common.Fontfolio
 
 class FontInformation : AppCompatActivity() {
     lateinit var search_bar_input : TextView
@@ -48,7 +43,7 @@ class FontInformation : AppCompatActivity() {
 
     override fun onDestroy() {
         super.onDestroy()
-        if (Fontfolio.searchFragment != null) {
+        if (!Fontfolio.searchFragment.isDirectFromHomeFragment) {
             Fontfolio.searchFragment.showSoftKeyboard()
         }
     }
@@ -83,14 +78,15 @@ class FontInformation : AppCompatActivity() {
         val font = Fontfolio.list.filter { font -> font.fontName == intent.getStringExtra("fontName") }[0]
 
         search_bar_back_btn.setOnClickListener {
-            if (Fontfolio.searchFragment != null) {
+            if (!Fontfolio.searchFragment.isDirectFromHomeFragment) {
                 Fontfolio.searchFragment.search_bar_input.text.clear()
             }
+
             finish()
         }
 
         search_bar_div.setOnClickListener {
-            if (Fontfolio.searchFragment != null) {
+            if (!Fontfolio.searchFragment.isDirectFromHomeFragment) {
                 Fontfolio.searchFragment.search_bar_input.setText(font.fontName)
                 Fontfolio.searchFragment.search_bar_input.setSelection(font.fontName.length)
                 Fontfolio.searchFragment.search_bar_input_cancel.setOnClickListener {
@@ -99,7 +95,10 @@ class FontInformation : AppCompatActivity() {
                             .putExtra("fontName", font.fontName))
                     }
                 }
+            } else {
+                // TODO : Type something 구현 대기 중
             }
+
             finish()
         }
 
@@ -118,12 +117,11 @@ class FontInformation : AppCompatActivity() {
                 it.fontName.contains(font_sub_title.text.toString()) }} styles"
 
         font_info_add_btn.setOnClickListener {
-            if (Fontfolio.searchFragment != null) {
-                Fontfolio().moveToActivity(Fontfolio.searchFragment.activity, SaveBoardActivity::class.java, false)
-            }
+            Fontfolio().moveToActivity(Fontfolio.searchFragment.activity, SaveBoardActivity::class.java, false)
         }
 
-        if (resources.getIdentifier("${font.fontName}",
+        if (resources.getIdentifier(
+                font.fontName,
                 "id", this.packageName) == 0) {
             Log.e("changeFontOfTextView", "${font.fontName} Font File Not Found !! :(")
         } else {
@@ -160,10 +158,10 @@ class FontInformation : AppCompatActivity() {
         license.text = "License : ${font.fontLicenseDescription}"
         copyright.text = "Copyright : ${font.fontCopyrightHolder}"
 
-        download_link.text = "${font.fontDownloadLink}"
+        download_link.text = font.fontDownloadLink
         download_link.paintFlags = Paint.UNDERLINE_TEXT_FLAG
         download_link.setOnClickListener {
-            startActivity(Intent(Intent.ACTION_VIEW, Uri.parse("${font.fontDownloadLink}")))
+            startActivity(Intent(Intent.ACTION_VIEW, Uri.parse(font.fontDownloadLink)))
         }
 
         desc.settings.javaScriptEnabled = true
@@ -187,7 +185,7 @@ class FontInformation : AppCompatActivity() {
     }
 
     override fun onBackPressed() {
-        if (Fontfolio.searchFragment != null) {
+        if (!Fontfolio.searchFragment.isDirectFromHomeFragment) {
             Fontfolio.searchFragment.search_bar_input.text.clear()
         }
         finish()

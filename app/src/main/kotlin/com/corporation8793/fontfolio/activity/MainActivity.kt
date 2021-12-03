@@ -23,6 +23,7 @@ class MainActivity : AppCompatActivity() , BottomNavigationView.OnNavigationItem
         bottomNavigationView.setOnNavigationItemSelectedListener(this)
 
         supportFragmentManager.beginTransaction().add(R.id.menu_view, HomeFragment(this)).commit()
+        Fontfolio.searchFragment = SearchFragment(this, true)
     }
 
     override fun onNavigationItemSelected(item: MenuItem): Boolean {

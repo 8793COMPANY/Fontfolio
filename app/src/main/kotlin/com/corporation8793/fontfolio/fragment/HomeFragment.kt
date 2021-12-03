@@ -17,6 +17,7 @@ import com.corporation8793.fontfolio.activity.MainActivity
 import com.corporation8793.fontfolio.R
 import com.corporation8793.fontfolio.common.Fontfolio
 import com.corporation8793.fontfolio.dialog.SortByDialog
+import com.corporation8793.fontfolio.fragment.search.SearchFragment
 import com.corporation8793.fontfolio.library.room.entity.Font
 import com.corporation8793.fontfolio.recylcerview.FontAdapter
 import com.corporation8793.fontfolio.recylcerview.FontItem
@@ -56,6 +57,8 @@ class HomeFragment(activity : MainActivity) : Fragment() {
     ): View? {
         // Inflate the layout for this fragment
         val view: View = inflater.inflate(R.layout.fragment_home, container, false)
+        Fontfolio.searchFragment = SearchFragment(mActivity, true)
+
         sort_by_btn = view.findViewById(R.id.sort_by_btn)
         font_list = view.findViewById(R.id.font_list)
 

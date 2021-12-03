@@ -31,7 +31,7 @@ import kotlinx.coroutines.launch
 private const val ARG_PARAM1 = "param1"
 private const val ARG_PARAM2 = "param2"
 
-class SearchFragment(val activity : MainActivity) : Fragment() {
+class SearchFragment(val activity : MainActivity, val isDirectFromHomeFragment : Boolean = false) : Fragment() {
     private var param1: String? = null
     private var param2: String? = null
 
@@ -61,7 +61,7 @@ class SearchFragment(val activity : MainActivity) : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         // Inflate the layout for this fragment
         val view : View = inflater.inflate(R.layout.fragment_search, container, false)
         search_div = view.findViewById(R.id.search_div)
