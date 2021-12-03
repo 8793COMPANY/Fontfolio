@@ -81,14 +81,14 @@ public class AppLoginActivity  extends AppCompatActivity {
 //
 //        handler.sendEmptyMessageDelayed(0,250);
 
+        email_input_box.requestFocus();
+
+        InputMethodManager imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
+        imm.showSoftInput(email_input_box, 0);
 
 
 
 
-
-
-
-        email_input_box.setFocusable(View.FOCUSABLE);
         String content = welcome_login_text.getText().toString();
         SpannableString spannableString = new SpannableString(content);
 
@@ -102,8 +102,8 @@ public class AppLoginActivity  extends AppCompatActivity {
 
         welcome_login_text.setText(spannableString);
 
-        InputMethodManager imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
-        imm.hideSoftInputFromWindow(email_input_box.getApplicationWindowToken(), 0);
+
+
 
 
 
