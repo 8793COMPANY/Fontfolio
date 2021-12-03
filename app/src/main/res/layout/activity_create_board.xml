@@ -143,36 +143,60 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="@+id/guideline"></TextView>
 
-    <ImageView
-        android:id="@+id/take_picture_view"
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cardview_member"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:background="@drawable/board_image_camera_btn"
-        android:scaleType="centerCrop"
+        android:elevation="0dp"
+        app:cardCornerRadius="10dp"
+        app:cardElevation="0dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/board_image"
         app:layout_constraintLeft_toLeftOf="@+id/guideline"
-        app:layout_constraintRight_toLeftOf="@+id/get_picture_view"
+        app:layout_constraintRight_toLeftOf="@+id/cardview_member2"
         app:layout_constraintWidth_percent="0.155"
         app:layout_constraintHeight_percent="0.08"
         app:layout_constraintVertical_bias="0.02"
-        app:layout_constraintHorizontal_chainStyle="spread_inside"></ImageView>
+        app:layout_constraintHorizontal_chainStyle="spread_inside">
+
+        <ImageView
+            android:id="@+id/take_picture_view"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@drawable/board_image_camera_btn"
+            android:scaleType="centerCrop"></ImageView>
+
+    </androidx.cardview.widget.CardView>
 
 
-    <ImageView
-        android:id="@+id/get_picture_view"
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cardview_member2"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:background="@drawable/board_image_gallery_btn"
-        android:scaleType="centerCrop"
+        android:elevation="0dp"
+        app:cardCornerRadius="10dp"
+        app:cardElevation="0dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/board_image"
-        app:layout_constraintLeft_toRightOf="@+id/take_picture_view"
+        app:layout_constraintLeft_toRightOf="@+id/cardview_member"
         app:layout_constraintRight_toLeftOf="@+id/board_icon_view1"
         app:layout_constraintWidth_percent="0.155"
         app:layout_constraintVertical_bias="0.02"
         app:layout_constraintHeight_percent="0.08"
-        app:layout_constraintHorizontal_chainStyle="spread"></ImageView>
+        app:layout_constraintHorizontal_chainStyle="spread">
+
+
+        <ImageView
+            android:id="@+id/get_picture_view"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@drawable/board_image_gallery_btn"
+            android:scaleType="centerCrop"></ImageView>
+
+    </androidx.cardview.widget.CardView>
+
+
+
 
 
     <com.corporation8793.fontfolio.CustomView
@@ -183,7 +207,7 @@
         android:background="@drawable/board_image_heart_btn"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/board_image"
-        app:layout_constraintLeft_toRightOf="@+id/get_picture_view"
+        app:layout_constraintLeft_toRightOf="@+id/cardview_member2"
         app:layout_constraintRight_toLeftOf="@+id/board_icon_view2"
         app:layout_constraintWidth_percent="0.155"
         app:layout_constraintVertical_bias="0.02"
@@ -229,7 +253,7 @@
         android:layout_height="0dp"
         android:background="@drawable/board_divider"
         app:layout_constraintLeft_toLeftOf="@+id/guideline"
-        app:layout_constraintTop_toBottomOf="@+id/take_picture_view"
+        app:layout_constraintTop_toBottomOf="@+id/cardview_member"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintVertical_bias="0.05"
         app:layout_constraintWidth_percent="0.01"
@@ -246,7 +270,7 @@
         android:textColor="@color/black"
         android:gravity="center_vertical"
         app:layout_constraintLeft_toRightOf="@+id/divider"
-        app:layout_constraintTop_toBottomOf="@+id/take_picture_view"
+        app:layout_constraintTop_toBottomOf="@+id/cardview_member"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintVertical_bias="0.05"
         app:layout_constraintHorizontal_bias="0.01"

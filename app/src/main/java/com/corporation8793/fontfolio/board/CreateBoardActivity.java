@@ -21,6 +21,7 @@ import android.widget.ImageView;
 import com.corporation8793.fontfolio.CustomView;
 import com.corporation8793.fontfolio.R;
 
+import java.io.IOException;
 import java.io.InputStream;
 
 public class CreateBoardActivity extends AppCompatActivity {
@@ -58,7 +59,7 @@ public class CreateBoardActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 // 현재 선택된 별을 가져온다
-                initSelectIcon();
+                initBoardImage();
                 selectBoard(board_icon_view1);
             }
         });
@@ -67,7 +68,7 @@ public class CreateBoardActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 // 현재 선택된 별을 가져온다
-                initSelectIcon();
+                initBoardImage();
                 selectBoard(board_icon_view2);
             }
         });
@@ -76,7 +77,7 @@ public class CreateBoardActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 // 현재 선택된 별을 가져온다
-                initSelectIcon();
+                initBoardImage();
                 selectBoard(board_icon_view3);
             }
         });
@@ -170,29 +171,42 @@ public class CreateBoardActivity extends AppCompatActivity {
         if (resultCode == RESULT_OK){
             if (requestCode == REQUEST_CODE){
                 try {
+                    initBoardImage();
                     InputStream in = getContentResolver().openInputStream(data.getData());
 
                     Bitmap img = BitmapFactory.decodeStream(in);
                     in.close();
                     Drawable drawable = new BitmapDrawable(img);
                     get_picture_view.setBackground(drawable);
-                    get_picture_view.setClipToOutline(true);
 
 
 
                 }catch (Exception e){
 
                 }
-            }else if(resultCode == RESULT_CANCELED){
+            }
+            else if(requestCode == 1){
+                initBoardImage();
+                    Bundle extras = data.getExtras(); // Bitmap으로 컨버전
+                    Bitmap imageBitmap = (Bitmap) extras.get("data");
+
+//                    InputStream in = getContentResolver().openInputStream(data.getData());
+//
+//                    Bitmap img = BitmapFactory.decodeStream(in);
+//                    in.close();
+
+                    Drawable drawable = new BitmapDrawable(imageBitmap);
+                    take_picture_view.setBackground(drawable);
 
             }
-        }else if(resultCode == 1){
-            Bundle extras = data.getExtras(); // Bitmap으로 컨버전
-             Bitmap imageBitmap = (Bitmap) extras.get("data");
+        }else if(resultCode == RESULT_CANCELED){
 
-            Drawable drawable = new BitmapDrawable(imageBitmap);
-            take_picture_view.setBackground(drawable);
-            take_picture_view.setClipToOutline(true);
         }
+    }
+
+    public void initBoardImage(){
+        take_picture_view.setBackgroundResource(R.drawable.board_image_camera_btn);
+        get_picture_view.setBackgroundResource(R.drawable.board_image_gallery_btn);
+        initSelectIcon();
     }
 }

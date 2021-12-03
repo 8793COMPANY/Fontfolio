@@ -37,7 +37,8 @@
             android:windowSoftInputMode="adjustNothing" />
         <activity
             android:name=".login.AppLoginActivity"
-            android:windowSoftInputMode="adjustNothing" />
+            android:windowSoftInputMode="adjustNothing|stateAlwaysVisible" />
+
         <activity android:name=".login.LoginActivity" />
         <activity android:name=".LoadingActivity" />
         <activity
