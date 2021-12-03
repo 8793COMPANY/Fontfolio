@@ -200,11 +200,21 @@ public class CameraPreview extends SurfaceView implements SurfaceHolder.Callback
             try {
                 camera.setParameters(p);
             } catch (Exception e) {
-                // TODO : 카메라 호환성 버그
                 Log.e("updateCameraParameters", "can't support camera parametrs : ");
-                //Camera.Size previewSize = findBestPreviewSize(p);
-                p.setPreviewSize(480, 320);
-                p.setPictureSize(480, 320);
+
+                int SupportedWidth = p.getSupportedPictureSizes().get(p.getSupportedPictureSizes().size()-1).width;
+                int SupportedHeight = p.getSupportedPictureSizes().get(p.getSupportedPictureSizes().size()-1).height;
+
+                /*
+                Camera.Size previewSize = findBestPreviewSize(p);
+                p.setPreviewSize(previewSize.width, previewSize.height);
+                p.setPictureSize(previewSize.width, previewSize.height);
+                camera.setParameters(p);
+                */
+
+                p.setPreviewSize(SupportedWidth, SupportedHeight);
+                p.setPictureSize(SupportedWidth, SupportedHeight);
+
                 camera.setParameters(p);
             }
         }
@@ -215,9 +225,12 @@ public class CameraPreview extends SurfaceView implements SurfaceHolder.Callback
      */
     private void setParameters(Camera.Parameters p) {
         List<String> focusModes = p.getSupportedFocusModes();
-        if (focusModes
-                .contains(Camera.Parameters.FOCUS_MODE_CONTINUOUS_PICTURE)) {
+        if (focusModes.contains(Camera.Parameters.FOCUS_MODE_CONTINUOUS_PICTURE)) {
             p.setFocusMode(Camera.Parameters.FOCUS_MODE_CONTINUOUS_PICTURE);
+        } else if (focusModes.contains(Camera.Parameters.FOCUS_MODE_AUTO)) {
+            p.setFocusMode(Camera.Parameters.FOCUS_MODE_AUTO);
+        } else {
+            Log.e("setParameters", "can't support camera focus mode : ");
         }
 
         long time = new Date().getTime();
