@@ -202,18 +202,14 @@ public class CameraPreview extends SurfaceView implements SurfaceHolder.Callback
             } catch (Exception e) {
                 Log.e("updateCameraParameters", "can't support camera parametrs : ");
 
-                int SupportedWidth = p.getSupportedPictureSizes().get(p.getSupportedPictureSizes().size()-1).width;
-                int SupportedHeight = p.getSupportedPictureSizes().get(p.getSupportedPictureSizes().size()-1).height;
+                int SupportedMinWidth = p.getSupportedPictureSizes().get(p.getSupportedPictureSizes().size()-1).width;
+                int SupportedMinHeight = p.getSupportedPictureSizes().get(p.getSupportedPictureSizes().size()-1).height;
 
-                /*
-                Camera.Size previewSize = findBestPreviewSize(p);
-                p.setPreviewSize(previewSize.width, previewSize.height);
-                p.setPictureSize(previewSize.width, previewSize.height);
-                camera.setParameters(p);
-                */
+                int SupportedMaxWidth = p.getSupportedPictureSizes().get(0).width;
+                int SupportedMaxHeight = p.getSupportedPictureSizes().get(0).height;
 
-                p.setPreviewSize(SupportedWidth, SupportedHeight);
-                p.setPictureSize(SupportedWidth, SupportedHeight);
+                p.setPreviewSize(SupportedMinWidth, SupportedMinHeight);
+                p.setPictureSize(SupportedMaxWidth, SupportedMaxHeight);
 
                 camera.setParameters(p);
             }
