@@ -12,7 +12,7 @@ import androidx.core.text.buildSpannedString
 import androidx.recyclerview.widget.RecyclerView
 import com.corporation8793.fontfolio.R
 import com.corporation8793.fontfolio.activity.FontInformation
-import com.corporation8793.fontfolio.library.room.entity.Font
+import com.corporation8793.fontfolio.library.room.entity.font.Font
 
 
 class SearchListviewAdapter(

@@ -9,16 +9,13 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
-import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.FragmentActivity
 import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.StaggeredGridLayoutManager
 import com.corporation8793.fontfolio.R
 import com.corporation8793.fontfolio.activity.FontInformation
-import com.corporation8793.fontfolio.fragment.InfoFragment
 
-import com.corporation8793.fontfolio.library.room.entity.Font
-import com.corporation8793.fontfolio.login.LoginActivity
+import com.corporation8793.fontfolio.library.room.entity.font.Font
 
 
 class FontAdapter(val context: Context, val activity:FragmentActivity?) : RecyclerView.Adapter<FontAdapter.ItemViewHolder>(){

@@ -14,7 +14,7 @@ import androidx.core.content.ContextCompat
 import com.corporation8793.fontfolio.BuildConfig
 import com.corporation8793.fontfolio.R
 import com.corporation8793.fontfolio.common.Fontfolio
-import com.corporation8793.fontfolio.library.room.entity.Font
+import com.corporation8793.fontfolio.library.room.entity.font.Font
 import com.corporation8793.fontfolio.login.LoginActivity
 import kotlinx.coroutines.*
 

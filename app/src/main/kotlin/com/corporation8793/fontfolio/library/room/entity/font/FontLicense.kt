@@ -1,4 +1,4 @@
-package com.corporation8793.fontfolio.library.room.entity
+package com.corporation8793.fontfolio.library.room.entity.font
 
 import androidx.room.ColumnInfo
 import androidx.room.Entity

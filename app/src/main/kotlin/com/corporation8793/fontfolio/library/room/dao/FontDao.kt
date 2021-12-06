@@ -1,9 +1,8 @@
 package com.corporation8793.fontfolio.library.room.dao
 
-import android.app.Activity
 import androidx.room.*
-import com.corporation8793.fontfolio.library.room.entity.Font
-import com.corporation8793.fontfolio.library.room.entity.FontClassification
+import com.corporation8793.fontfolio.library.room.entity.font.Font
+import com.corporation8793.fontfolio.library.room.entity.font.FontClassification
 
 /**
  * [Font]의 [Dao].

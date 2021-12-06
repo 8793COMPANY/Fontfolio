@@ -1,6 +1,5 @@
-package com.corporation8793.fontfolio.library.room.entity
+package com.corporation8793.fontfolio.library.room.entity.font
 
-import android.app.Activity
 import androidx.room.*
 import com.corporation8793.fontfolio.library.room.converter.TypeConverter
 

@@ -2,8 +2,6 @@ package com.corporation8793.fontfolio.fragment
 
 import android.annotation.SuppressLint
 import android.os.Bundle
-import android.os.Handler
-import android.os.Looper
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
@@ -18,13 +16,9 @@ import com.corporation8793.fontfolio.R
 import com.corporation8793.fontfolio.common.Fontfolio
 import com.corporation8793.fontfolio.dialog.SortByDialog
 import com.corporation8793.fontfolio.fragment.search.SearchFragment
-import com.corporation8793.fontfolio.library.room.entity.Font
+import com.corporation8793.fontfolio.library.room.entity.font.Font
 import com.corporation8793.fontfolio.recylcerview.FontAdapter
-import com.corporation8793.fontfolio.recylcerview.FontItem
 import com.corporation8793.fontfolio.recylcerview.SpacesItemDecoration
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.launch
 
 private const val ARG_PARAM1 = "param1"
 private const val ARG_PARAM2 = "param2"

@@ -23,7 +23,7 @@ import com.corporation8793.fontfolio.activity.MainActivity
 import com.corporation8793.fontfolio.activity.ocr.StartOcrActivity
 import com.corporation8793.fontfolio.common.Fontfolio
 import com.corporation8793.fontfolio.fragment.HomeFragment
-import com.corporation8793.fontfolio.library.room.entity.Font
+import com.corporation8793.fontfolio.library.room.entity.font.Font
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch

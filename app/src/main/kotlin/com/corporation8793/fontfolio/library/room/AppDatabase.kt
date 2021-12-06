@@ -3,10 +3,10 @@ package com.corporation8793.fontfolio.library.room
 import androidx.room.*
 import com.corporation8793.fontfolio.library.room.converter.TypeConverter
 import com.corporation8793.fontfolio.library.room.dao.FontDao
-import com.corporation8793.fontfolio.library.room.entity.Font
-import com.corporation8793.fontfolio.library.room.entity.FontClassification
-import com.corporation8793.fontfolio.library.room.entity.FontLicense
-import com.corporation8793.fontfolio.library.room.entity.FontStyleInformation
+import com.corporation8793.fontfolio.library.room.entity.font.Font
+import com.corporation8793.fontfolio.library.room.entity.font.FontClassification
+import com.corporation8793.fontfolio.library.room.entity.font.FontLicense
+import com.corporation8793.fontfolio.library.room.entity.font.FontStyleInformation
 
 /**
  * Fontfolio 애플리케이션의 [RoomDatabase]

@@ -1,11 +1,9 @@
 package com.corporation8793.fontfolio.library.room.converter
 
-import android.app.Activity
 import androidx.room.TypeConverter
-import com.corporation8793.fontfolio.library.room.entity.Font
-import com.corporation8793.fontfolio.library.room.entity.FontClassification
-import com.corporation8793.fontfolio.library.room.entity.FontLicense
-import com.corporation8793.fontfolio.library.room.entity.FontStyleInformation
+import com.corporation8793.fontfolio.library.room.entity.font.FontClassification
+import com.corporation8793.fontfolio.library.room.entity.font.FontLicense
+import com.corporation8793.fontfolio.library.room.entity.font.FontStyleInformation
 import com.google.gson.Gson
 
 /**

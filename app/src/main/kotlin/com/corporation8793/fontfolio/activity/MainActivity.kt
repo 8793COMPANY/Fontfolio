@@ -8,6 +8,7 @@ import com.corporation8793.fontfolio.R
 import com.corporation8793.fontfolio.board.SaveBoardActivity
 import com.corporation8793.fontfolio.common.Fontfolio
 import com.corporation8793.fontfolio.fragment.*
+import com.corporation8793.fontfolio.fragment.qna.QnAFragment
 import com.corporation8793.fontfolio.fragment.search.SearchFragment
 import com.google.android.material.bottomnavigation.BottomNavigationView
 
@@ -43,7 +44,7 @@ class MainActivity : AppCompatActivity() , BottomNavigationView.OnNavigationItem
             }
 
             R.id.page_qna -> {
-                supportFragmentManager.beginTransaction().replace(R.id.menu_view, QnAFragment()).commitAllowingStateLoss()
+                supportFragmentManager.beginTransaction().replace(R.id.menu_view, QnAFragment(this)).commitAllowingStateLoss()
                 return true
             }
 

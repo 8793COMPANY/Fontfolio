@@ -9,15 +9,13 @@ import android.util.Log
 import android.widget.TextView
 import androidx.room.Room
 import com.corporation8793.fontfolio.MySharedPreferences
-import com.corporation8793.fontfolio.R
-import com.corporation8793.fontfolio.activity.MainActivity
 import com.corporation8793.fontfolio.fragment.search.SearchFragment
 import com.corporation8793.fontfolio.library.excel.Excel
 import com.corporation8793.fontfolio.library.room.AppDatabase
-import com.corporation8793.fontfolio.library.room.entity.Font
-import com.corporation8793.fontfolio.library.room.entity.FontClassification
-import com.corporation8793.fontfolio.library.room.entity.FontLicense
-import com.corporation8793.fontfolio.library.room.entity.FontStyleInformation
+import com.corporation8793.fontfolio.library.room.entity.font.Font
+import com.corporation8793.fontfolio.library.room.entity.font.FontClassification
+import com.corporation8793.fontfolio.library.room.entity.font.FontLicense
+import com.corporation8793.fontfolio.library.room.entity.font.FontStyleInformation
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -84,7 +82,8 @@ class Fontfolio : Application() {
         val roomData : MutableList<Font> = mutableListOf()
 
         for (row in xlsData.indices) {
-            roomData.add(Font(
+            roomData.add(
+                Font(
                 id = row + 3,
                 fontName = xlsData[row][0],
                 fontClassification = FontClassification(
@@ -117,7 +116,8 @@ class Fontfolio : Application() {
                 fontLicenseDescription = xlsData[row][20],
                 fontCopyrightHolder = xlsData[row][21],
                 fontDownloadLink = xlsData[row][22]
-            ))
+            )
+            )
         }
 
         CoroutineScope(Dispatchers.IO).launch {
