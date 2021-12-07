@@ -24,4 +24,4 @@ data class Question(
     @ColumnInfo(name = "questionDescription") val questionDescription : String,
     @ColumnInfo(name = "questioner") val questioner : Int,
     @ColumnInfo(name = "questionViews") val questionViews : Int = 0,
-    @ColumnInfo(name = "questionDate") val questionDate : Calendar)
+    @ColumnInfo(name = "questionDate") val questionDate : String)
