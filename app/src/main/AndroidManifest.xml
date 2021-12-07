@@ -26,19 +26,21 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Fontfolio">
         <activity
-            android:name=".activity.FontInformation"
-            android:windowSoftInputMode="adjustNothing"
+            android:name=".activity.QuestionInformation"
             android:exported="false" />
-        <activity android:name=".board.CreateBoardActivity"></activity>
-        <activity android:name=".SelectFontStyleActivity"></activity>
-        <activity android:name=".board.SaveBoardActivity"></activity>
+        <activity
+            android:name=".activity.FontInformation"
+            android:exported="false"
+            android:windowSoftInputMode="adjustNothing" />
+        <activity android:name=".board.CreateBoardActivity" />
+        <activity android:name=".SelectFontStyleActivity" />
+        <activity android:name=".board.SaveBoardActivity" />
         <activity
             android:name=".activity.MainActivity"
             android:windowSoftInputMode="adjustNothing" />
         <activity
             android:name=".login.AppLoginActivity"
             android:windowSoftInputMode="adjustNothing|stateAlwaysVisible" />
-
         <activity android:name=".login.LoginActivity" />
         <activity android:name=".LoadingActivity" />
         <activity

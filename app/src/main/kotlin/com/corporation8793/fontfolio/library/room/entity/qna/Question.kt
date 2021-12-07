@@ -1,6 +1,8 @@
 package com.corporation8793.fontfolio.library.room.entity.qna
 
 import androidx.room.ColumnInfo
+import androidx.room.Entity
+import androidx.room.Index
 import androidx.room.PrimaryKey
 import java.util.*
 
@@ -17,6 +19,7 @@ import java.util.*
  * @see     [androidx.room.Entity]
  * @see     [com.corporation8793.fontfolio.fragment.QnAFragment]
  */
+@Entity
 data class Question(
     @PrimaryKey(autoGenerate = true) val qid : Int = 0,
     @ColumnInfo(name = "questionPhotoPath") val questionPhotoPath : String,

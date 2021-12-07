@@ -1,6 +1,5 @@
 package com.corporation8793.fontfolio.fragment.qna
 
-import android.annotation.SuppressLint
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
@@ -16,10 +15,12 @@ import com.corporation8793.fontfolio.activity.MainActivity
 import com.corporation8793.fontfolio.common.Fontfolio
 import com.corporation8793.fontfolio.dialog.SortByDialog
 import com.corporation8793.fontfolio.library.room.entity.font.Font
-import com.corporation8793.fontfolio.library.room.entity.qna.Answer
 import com.corporation8793.fontfolio.library.room.entity.qna.Question
-import com.corporation8793.fontfolio.recylcerview.FontAdapter
 import com.corporation8793.fontfolio.recylcerview.SpacesItemDecoration
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.async
+import kotlinx.coroutines.launch
 import java.text.SimpleDateFormat
 import java.util.*
 
@@ -37,6 +38,7 @@ class QnAFragment(val mActivity : MainActivity) : Fragment() {
     lateinit var fontfolio: Fontfolio
 
     val datas = mutableListOf<Question>()
+    var q_list = mutableListOf<Question>()
     lateinit var mAdapter: qnaAdapter
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -57,6 +59,8 @@ class QnAFragment(val mActivity : MainActivity) : Fragment() {
         action_bar_setting_btn = view.findViewById(R.id.action_bar_setting_btn)
         action_bar_add_btn = view.findViewById(R.id.action_bar_add_btn)
         qna_list = view.findViewById(R.id.qna_list)
+
+        fontfolio = Fontfolio().getInstance(mActivity.applicationContext)
 
         val sortByDialog = SortByDialog()
         //val addQuestionDialog = AddQuestionDialog()
@@ -114,7 +118,31 @@ class QnAFragment(val mActivity : MainActivity) : Fragment() {
         datas.add(Question(questionPhotoPath = "https://cdn.notefolio.net/img/5c/48/5c48db78aa280562c4a2a2bc3e7f3626e964afdc37ca5ff45031def60949a68e_v1.jpg", questionTitle = "What kind of font is this in B books?", questionViews = 91,
             questionDescription = "7번 테스트 질문", questioner = 0, questionDate = sdf.format(cal.time).toString()))
 
-        mAdapter.datas = datas
-        mAdapter.notifyDataSetChanged()
+        CoroutineScope(Dispatchers.IO).launch {
+            fun getList() : MutableList<Question> {
+                return fontfolio.db.questionDao().getAll().toMutableList()
+            }
+
+            fun setList() {
+                if (fontfolio.db.questionDao().getAll().isNullOrEmpty()) {
+                    fontfolio.db.questionDao().insertAll(*datas.toTypedArray())
+                }
+            }
+
+            val a_list = async {
+                setList()
+                getList()
+            }
+            q_list = a_list.await()
+            Log.e("QnAFragment", "q_list initialize : ${q_list.size} questions")
+            q_list.onEach {
+                Log.e("q_list", "$it")
+            }
+
+            CoroutineScope(Dispatchers.Main).launch {
+                mAdapter.datas = q_list
+                mAdapter.notifyDataSetChanged()
+            }
+        }
     }
 }

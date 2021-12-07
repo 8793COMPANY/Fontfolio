@@ -18,6 +18,7 @@ import com.bumptech.glide.request.target.CustomTarget
 import com.bumptech.glide.request.transition.Transition
 import com.corporation8793.fontfolio.R
 import com.corporation8793.fontfolio.activity.FontInformation
+import com.corporation8793.fontfolio.activity.QuestionInformation
 import com.corporation8793.fontfolio.library.room.entity.font.Font
 import com.corporation8793.fontfolio.library.room.entity.qna.Question
 import java.text.SimpleDateFormat
@@ -78,13 +79,10 @@ class qnaAdapter(val context : Context, val activity : FragmentActivity) : Recyc
         holder.bind(datas[position])
 
         holder.itemView.setOnClickListener {
-            /*
-            var intent: Intent = Intent(activity, FontInformation::class.java)
-            intent.putExtra("fontName", datas[position].qid)
+            var intent = Intent(activity, QuestionInformation::class.java)
+            intent.putExtra("qid", datas[position].qid)
             intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK
             context.startActivity(intent)
-             */
-            Toast.makeText(activity, "click", Toast.LENGTH_SHORT).show()
         }
 
         val layoutParams = StaggeredGridLayoutManager.LayoutParams(holder.itemView.layoutParams)

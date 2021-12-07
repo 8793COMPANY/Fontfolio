@@ -16,6 +16,7 @@ import androidx.room.PrimaryKey
  * @see     [com.corporation8793.fontfolio.fragment.QnAFragment]
  * @see     [com.corporation8793.fontfolio.library.room.entity.qna.Question]
  */
+@Entity
 data class Answer(
     @PrimaryKey(autoGenerate = true) val aid : Int = 0,
     @ColumnInfo(name = "qid") val qid : Int?,

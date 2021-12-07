@@ -1,0 +1,242 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".activity.QuestionInformation">
+
+    <ImageView
+        android:id="@+id/image"
+        android:background="@drawable/not_found_test_1"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:scaleType="fitXY"
+        app:layout_constraintBottom_toBottomOf="@id/guideline_bottom"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"/>
+
+    <TextView
+        android:id="@+id/questionTitle"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="Does anyone know the font on the poster?"
+        android:textColor="#000"
+        android:textSize="22sp"
+        android:textStyle="bold"
+        app:layout_constraintVertical_bias="0.05"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="@id/guideline_left"
+        app:layout_constraintRight_toLeftOf="@id/guideline_right"
+        app:layout_constraintTop_toBottomOf="@id/image" />
+
+    <LinearLayout
+        android:id="@+id/question_div"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:gravity="left|center"
+        app:layout_constraintTop_toTopOf="@id/qna_big_comment"
+        app:layout_constraintBottom_toBottomOf="@+id/qna_big_comment"
+        app:layout_constraintLeft_toLeftOf="@id/guideline_left"
+        app:layout_constraintRight_toLeftOf="@id/qna_big_comment">
+
+        <TextView
+            android:id="@+id/questioner"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Tony Stark"
+            android:textColor="#000"
+            android:textSize="13sp" />
+
+        <ImageView
+            android:layout_width="2dp"
+            android:layout_height="12dp"
+            android:layout_marginHorizontal="10dp"
+            android:background="@drawable/qna_big_divider" />
+
+        <TextView
+            android:id="@+id/questionViews"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="109 views"
+            android:textColor="#000"
+            android:textSize="13sp" />
+
+        <ImageView
+            android:layout_width="2dp"
+            android:layout_height="12dp"
+            android:layout_marginHorizontal="10dp"
+            android:background="@drawable/qna_big_divider" />
+
+        <TextView
+            android:id="@+id/questionDate"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="1 days ago"
+            android:textColor="#4D000000"
+            android:textSize="13sp" />
+    </LinearLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/latest_comment_div"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintVertical_bias="0.1"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintHeight_default="percent"
+        app:layout_constraintHeight_percent="0.1"
+        app:layout_constraintLeft_toLeftOf="@id/guideline_left"
+        app:layout_constraintRight_toLeftOf="@id/guideline_right"
+        app:layout_constraintTop_toBottomOf="@id/qna_big_comment">
+
+        <ImageView
+            android:id="@+id/latest_comment_profile_image"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:src="@drawable/qna_circular_profile_default"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/latest_comment"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginLeft="10dp"
+            android:maxLength="100"
+            android:text="Pepper Potts  I think it’s not an existing ready-made font, but a design font … More"
+            android:textColor="#000"
+            android:textSize="13sp"
+            android:gravity="bottom"
+            app:layout_constraintBottom_toBottomOf="@id/guideline_latest_comment_div_bottom"
+            app:layout_constraintLeft_toRightOf="@id/latest_comment_profile_image"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <LinearLayout
+            android:id="@+id/heart_div"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:src="@drawable/heart_off"
+            app:layout_constraintWidth_default="percent"
+            app:layout_constraintWidth_percent="0.15"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintLeft_toLeftOf="@id/latest_comment"
+            app:layout_constraintTop_toBottomOf="@+id/latest_comment">
+
+            <ImageView
+                android:id="@+id/heart_icon"
+                android:layout_width="17dp"
+                android:layout_height="17dp"
+                android:src="@drawable/heart_off" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/reply_div"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            app:layout_constraintWidth_default="percent"
+            app:layout_constraintWidth_percent="0.15"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintLeft_toRightOf="@id/heart_div"
+            app:layout_constraintTop_toTopOf="@+id/heart_div"
+            app:layout_constraintBottom_toBottomOf="@id/heart_div"
+            app:layout_constraintRight_toRightOf="parent">
+
+            <TextView
+                android:id="@+id/reply_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Reply"
+                android:textStyle="bold"
+                android:textColor="#000"
+                android:textSize="11sp"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/helpful_div"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            app:layout_constraintWidth_default="percent"
+            app:layout_constraintWidth_percent="0.15"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintLeft_toRightOf="@id/reply_div"
+            app:layout_constraintTop_toTopOf="@+id/reply_div"
+            app:layout_constraintBottom_toBottomOf="@id/reply_div"
+            app:layout_constraintRight_toRightOf="parent">
+
+            <ImageView
+                android:id="@+id/helpful_icon"
+                android:layout_width="17dp"
+                android:layout_height="17dp"
+                android:src="@drawable/qna_bts_good_off" />
+
+            <TextView
+                android:id="@+id/helpful_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Helpful"
+                android:textStyle="bold"
+                android:textColor="#000"
+                android:textSize="11sp"/>
+
+        </LinearLayout>
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline_latest_comment_div_bottom"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent="0.55" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <ImageView
+        android:id="@+id/qna_big_comment"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:src="@drawable/qna_big_comment"
+        app:layout_constraintVertical_bias="0.07"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toRightOf="@id/question_div"
+        app:layout_constraintRight_toLeftOf="@id/guideline_right"
+        app:layout_constraintTop_toBottomOf="@id/questionTitle" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline_left"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:orientation="vertical"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintGuide_percent="0.05"/>
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline_right"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:orientation="vertical"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintGuide_percent="0.95"/>
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline_bottom"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.53" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
