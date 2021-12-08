@@ -8,10 +8,11 @@
     tools:context=".activity.QuestionInformation">
 
     <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/back_btn"
         android:layout_width="42dp"
         android:layout_height="42dp"
         app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintVertical_bias="0.05"
+        app:layout_constraintVertical_bias="0.1"
         android:background="@drawable/action_bar_prev_black_btn"
         app:layout_constraintBottom_toBottomOf="@id/guideline_bottom"
         app:layout_constraintLeft_toLeftOf="@id/guideline_left"
@@ -94,13 +95,13 @@
         android:id="@+id/latest_comment_div"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        app:layout_constraintVertical_bias="0.1"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintHeight_default="percent"
         app:layout_constraintHeight_percent="0.1"
         app:layout_constraintLeft_toLeftOf="@id/guideline_left"
         app:layout_constraintRight_toLeftOf="@id/guideline_right"
-        app:layout_constraintTop_toBottomOf="@id/qna_big_comment">
+        app:layout_constraintTop_toBottomOf="@id/qna_big_comment"
+        app:layout_constraintVertical_bias="0.1">
 
         <ImageView
             android:id="@+id/latest_comment_profile_image"
@@ -118,11 +119,11 @@
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:layout_marginLeft="10dp"
+            android:gravity="bottom"
             android:maxLength="100"
             android:text="Pepper Potts  I think it’s not an existing ready-made font, but a design font … More"
             android:textColor="#000"
             android:textSize="13sp"
-            android:gravity="bottom"
             app:layout_constraintBottom_toBottomOf="@id/guideline_latest_comment_div_bottom"
             app:layout_constraintLeft_toRightOf="@id/latest_comment_profile_image"
             app:layout_constraintRight_toRightOf="parent"
@@ -133,13 +134,13 @@
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:src="@drawable/heart_off"
-            app:layout_constraintWidth_default="percent"
-            app:layout_constraintWidth_percent="0.15"
-            app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintLeft_toLeftOf="@id/latest_comment"
-            app:layout_constraintTop_toBottomOf="@+id/latest_comment">
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/latest_comment"
+            app:layout_constraintWidth_default="percent"
+            app:layout_constraintWidth_percent="0.15">
 
             <ImageView
                 android:id="@+id/heart_icon"
@@ -147,42 +148,49 @@
                 android:layout_height="17dp"
                 android:src="@drawable/heart_off" />
 
+            <TextView
+                android:id="@+id/heart_count"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="2.5dp"
+                android:text="999+"
+                android:textColor="#66000000"
+                android:textSize="11sp"/>
+
         </LinearLayout>
 
         <LinearLayout
             android:id="@+id/reply_div"
             android:layout_width="0dp"
             android:layout_height="0dp"
-            app:layout_constraintWidth_default="percent"
-            app:layout_constraintWidth_percent="0.15"
+            app:layout_constraintBottom_toBottomOf="@id/heart_div"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintLeft_toRightOf="@id/heart_div"
+            app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintTop_toTopOf="@+id/heart_div"
-            app:layout_constraintBottom_toBottomOf="@id/heart_div"
-            app:layout_constraintRight_toRightOf="parent">
+            app:layout_constraintWidth_default="percent"
+            app:layout_constraintWidth_percent="0.15">
 
             <TextView
                 android:id="@+id/reply_text"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Reply"
-                android:textStyle="bold"
                 android:textColor="#000"
-                android:textSize="11sp"/>
+                android:textSize="11sp"
+                android:textStyle="bold" />
 
         </LinearLayout>
 
         <LinearLayout
             android:id="@+id/helpful_div"
-            android:layout_width="0dp"
+            android:layout_width="wrap_content"
             android:layout_height="0dp"
-            app:layout_constraintWidth_default="percent"
-            app:layout_constraintWidth_percent="0.2"
+            app:layout_constraintBottom_toBottomOf="@id/reply_div"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintLeft_toRightOf="@id/reply_div"
-            app:layout_constraintTop_toTopOf="@+id/reply_div"
-            app:layout_constraintBottom_toBottomOf="@id/reply_div"
-            app:layout_constraintRight_toRightOf="parent">
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/reply_div">
 
             <ImageView
                 android:id="@+id/helpful_icon"
@@ -196,8 +204,17 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Helpful"
-                android:textStyle="bold"
                 android:textColor="#000"
+                android:textSize="11sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/helpful_count"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="5dp"
+                android:text="999+"
+                android:textColor="#66000000"
                 android:textSize="11sp"/>
         </LinearLayout>
 
@@ -220,6 +237,44 @@
         app:layout_constraintLeft_toRightOf="@id/question_div"
         app:layout_constraintRight_toLeftOf="@id/guideline_right"
         app:layout_constraintTop_toBottomOf="@id/questionTitle" />
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/add_comment_div"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintHeight_default="percent"
+        app:layout_constraintHeight_percent="0.1"
+        app:layout_constraintLeft_toLeftOf="@id/guideline_left"
+        app:layout_constraintRight_toLeftOf="@id/guideline_right"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/latest_comment_div">
+
+        <ImageView
+            android:id="@+id/add_comment_image"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:src="@drawable/qna_circular_profile_2"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/add_comment"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginLeft="10dp"
+            android:gravity="left|center"
+            android:text="Add a comment"
+            android:textColor="#66000000"
+            android:textSize="13sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toRightOf="@id/add_comment_image"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline_left"
@@ -248,6 +303,6 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.53" />
+        app:layout_constraintGuide_percent="0.60" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

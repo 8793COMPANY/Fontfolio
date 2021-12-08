@@ -346,7 +346,7 @@
                 app:layout_constraintTop_toBottomOf="@+id/badge_area_paid"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="desc_result"
+                android:text=""
                 android:textColor="#000"
                 android:textSize="14sp"/>
 

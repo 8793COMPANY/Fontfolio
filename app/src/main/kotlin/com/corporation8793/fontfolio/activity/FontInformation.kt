@@ -127,6 +127,7 @@ class FontInformation : AppCompatActivity() {
             Log.e("changeFontOfTextView", "${font.fontName.toLowerCase()
                 .replace("-", "_")
                 .replace(" ", "_")} Font File Not Found !! :(")
+            font_preview.visibility = View.GONE
         } else {
             Fontfolio().changeFontOfTextView(this, font_preview, font.fontName)
         }
@@ -179,8 +180,10 @@ class FontInformation : AppCompatActivity() {
                             .replace("\\\"", "\"")
                         //Log.e("replace html", result)
                         desc_result.text = result
+                        desc_result.visibility = View.VISIBLE
                     } else {
                         desc_result.text = "Font Description Not Found.\nPlease Try Again Later. :("
+                        desc_result.visibility = View.GONE
                     }
                 }
             }

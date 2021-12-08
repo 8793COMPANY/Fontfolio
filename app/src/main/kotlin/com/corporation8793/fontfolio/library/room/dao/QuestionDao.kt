@@ -21,6 +21,16 @@ interface QuestionDao {
     @Query("SELECT * FROM question")
     fun getAll() : List<Question>
 
+
+    /**
+     * [Question.qid]와 [qid]가 일치하는 [Question]을 반환합니다.
+     * @author  두동근
+     * @param   qid  찾으려는 [Question]의 [qid]값
+     * @return  Question
+     */
+    @Query("SELECT * FROM question WHERE qid == :qid")
+    fun findByQid(qid: Int) : Question
+
     /**
      * [RoomDatabase]에 [Question]를 [Insert]합니다.
      * @author  두동근
