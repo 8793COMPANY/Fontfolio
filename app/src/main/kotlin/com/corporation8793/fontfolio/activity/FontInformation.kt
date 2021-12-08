@@ -119,11 +119,14 @@ class FontInformation : AppCompatActivity() {
         font_info_add_btn.setOnClickListener {
             Fontfolio().moveToActivity(Fontfolio.searchFragment.activity, SaveBoardActivity::class.java, false)
         }
-
-        if (resources.getIdentifier(
-                font.fontName,
-                "id", this.packageName) == 0) {
-            Log.e("changeFontOfTextView", "${font.fontName} Font File Not Found !! :(")
+        if (this.resources.getIdentifier(
+                "${font.fontName.toLowerCase()
+                    .replace("-", "_")
+                    .replace(" ", "_")}",
+                "font", this.packageName) == 0) {
+            Log.e("changeFontOfTextView", "${font.fontName.toLowerCase()
+                .replace("-", "_")
+                .replace(" ", "_")} Font File Not Found !! :(")
         } else {
             Fontfolio().changeFontOfTextView(this, font_preview, font.fontName)
         }

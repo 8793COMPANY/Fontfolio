@@ -7,6 +7,17 @@
     android:layout_height="match_parent"
     tools:context=".activity.QuestionInformation">
 
+    <androidx.appcompat.widget.AppCompatButton
+        android:layout_width="42dp"
+        android:layout_height="42dp"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintVertical_bias="0.05"
+        android:background="@drawable/action_bar_prev_black_btn"
+        app:layout_constraintBottom_toBottomOf="@id/guideline_bottom"
+        app:layout_constraintLeft_toLeftOf="@id/guideline_left"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
     <ImageView
         android:id="@+id/image"
         android:background="@drawable/not_found_test_1"
@@ -166,7 +177,7 @@
             android:layout_width="0dp"
             android:layout_height="0dp"
             app:layout_constraintWidth_default="percent"
-            app:layout_constraintWidth_percent="0.15"
+            app:layout_constraintWidth_percent="0.2"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintLeft_toRightOf="@id/reply_div"
             app:layout_constraintTop_toTopOf="@+id/reply_div"
@@ -177,6 +188,7 @@
                 android:id="@+id/helpful_icon"
                 android:layout_width="17dp"
                 android:layout_height="17dp"
+                android:layout_marginRight="8dp"
                 android:src="@drawable/qna_bts_good_off" />
 
             <TextView
@@ -187,7 +199,6 @@
                 android:textStyle="bold"
                 android:textColor="#000"
                 android:textSize="11sp"/>
-
         </LinearLayout>
 
         <androidx.constraintlayout.widget.Guideline
