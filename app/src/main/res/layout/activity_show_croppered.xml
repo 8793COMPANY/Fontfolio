@@ -195,6 +195,7 @@ android:layout_height="match_parent">
     <!-- TODO : 민경님, 여기에 AI로 폰트스타일 찾은거 작업 부탁드려요!! -->
 
     <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/analysis_result"
         android:layout_width="0dp"
         android:layout_height="0dp"
         app:layout_constraintTop_toBottomOf="@id/analysis_section"
