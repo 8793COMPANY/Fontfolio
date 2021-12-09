@@ -1,99 +1,107 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="wrap_content"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
 
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/top_guideline"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.03"></androidx.constraintlayout.widget.Guideline>
-
-
-    <TextView
-        android:id="@+id/fontName"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:text="Manrope"
-        android:textColor="@color/black"
-        android:textSize="18sp"
-        android:lineSpacingExtra="7sp"
-        android:gravity="center_vertical"
-        app:layout_constraintWidth_percent="0.65"
-        app:layout_constraintHeight_percent="0.04"
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/top_section"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintTop_toTopOf="@id/top_guideline"
-        app:layout_constraintVertical_bias="0"
-        app:layout_constraintHorizontal_bias="0"
-        ></TextView>
+        app:layout_constraintVertical_bias="0.15">
 
-    <TextView
-        android:id="@+id/percent"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:text="89.97%"
-        android:textColor="#4D000000"
-        android:textSize="18sp"
-        android:lineSpacingExtra="7sp"
-        android:gravity="center_vertical"
-        app:layout_constraintWidth_percent="0.15"
-        app:layout_constraintHeight_percent="0.04"
-        app:layout_constraintLeft_toRightOf="@+id/fontName"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintTop_toTopOf="@id/top_guideline"
-        app:layout_constraintVertical_bias="0"
-        app:layout_constraintHorizontal_bias="0.1"
-        ></TextView>
+        <TextView
+            android:id="@+id/fontName"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="Manrope"
+            android:textColor="@color/black"
+            android:textSize="18sp"
+            android:lineSpacingExtra="7sp"
+            android:gravity="center_vertical"
+            app:layout_constraintWidth_percent="0.65"
+            app:layout_constraintHeight_percent="0.04"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0"
+            app:layout_constraintHorizontal_bias="0"
+            ></TextView>
 
-    <Button
-        android:background="@drawable/font_info_heart_off"
-        android:id="@+id/like_font_btn"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        app:layout_constraintWidth_percent="0.065"
-        app:layout_constraintHeight_percent="0.04"
-        app:layout_constraintLeft_toRightOf="@+id/percent"
-        app:layout_constraintRight_toLeftOf="@+id/save_font_btn"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintTop_toTopOf="@id/top_guideline"
-        app:layout_constraintVertical_bias="0"
-        app:layout_constraintHorizontal_bias="0.8"
-        ></Button>
 
-    <Button
-        android:background="@drawable/font_info_add_btn"
-        android:id="@+id/save_font_btn"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        app:layout_constraintWidth_percent="0.065"
-        app:layout_constraintHeight_percent="0.04"
-        app:layout_constraintLeft_toRightOf="@+id/fontName"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintTop_toTopOf="@id/top_guideline"
-        app:layout_constraintVertical_bias="0"
-        app:layout_constraintHorizontal_bias="1"
-        ></Button>
+        <TextView
+            android:id="@+id/percent"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="89.97%"
+            android:textColor="#4D000000"
+            android:textSize="18sp"
+            android:lineSpacingExtra="7sp"
+            android:gravity="center_vertical"
+            app:layout_constraintWidth_percent="0.15"
+            app:layout_constraintHeight_percent="0.04"
+            app:layout_constraintLeft_toRightOf="@+id/fontName"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0"
+            app:layout_constraintHorizontal_bias="0.1"
+            ></TextView>
+
+        <Button
+            android:background="@drawable/font_info_heart_off"
+            android:id="@+id/like_font_btn"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            app:layout_constraintWidth_percent="0.065"
+            app:layout_constraintHeight_percent="1"
+            app:layout_constraintLeft_toRightOf="@+id/percent"
+            app:layout_constraintRight_toLeftOf="@+id/save_font_btn"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0"
+            app:layout_constraintHorizontal_bias="0.75"
+            ></Button>
+
+        <Button
+            android:background="@drawable/font_info_add_btn"
+            android:id="@+id/save_font_btn"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            app:layout_constraintWidth_percent="0.065"
+            app:layout_constraintHeight_percent="1"
+            app:layout_constraintLeft_toRightOf="@+id/fontName"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0"
+            app:layout_constraintHorizontal_bias="1"
+            ></Button>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+
 
     <TextView
         android:id="@+id/content"
         android:layout_width="0dp"
-        android:layout_height="0dp"
+        android:layout_height="wrap_content"
         android:text="agent Orange"
         android:textColor="@color/black"
         android:textSize="47sp"
+        android:gravity="center_vertical"
         app:layout_constraintWidth_percent="1"
         app:layout_constraintHeight_percent="0.09"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/fontName"
+        app:layout_constraintTop_toBottomOf="@id/top_section"
         app:layout_constraintVertical_bias="0"
         app:layout_constraintHorizontal_bias="0"
         ></TextView>
@@ -101,7 +109,7 @@
     <TextView
         android:id="@+id/copyright"
         android:layout_width="0dp"
-        android:layout_height="0dp"
+        android:layout_height="wrap_content"
         android:text="Copyright(c) Apple development"
         android:textColor="@color/black"
         android:textSize="10sp"
@@ -112,8 +120,7 @@
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintTop_toBottomOf="@id/content"
-        app:layout_constraintVertical_bias="0.012"
         app:layout_constraintHorizontal_bias="0"
-        ></TextView>
+        android:layout_marginBottom="15sp"></TextView>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

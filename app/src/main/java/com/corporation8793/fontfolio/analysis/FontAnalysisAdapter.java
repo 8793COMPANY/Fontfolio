@@ -1,15 +1,18 @@
 package com.corporation8793.fontfolio.analysis;
 
 import android.content.Context;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
 
+import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.corporation8793.fontfolio.R;
+import com.corporation8793.fontfolio.common.Fontfolio;
 
 import java.util.ArrayList;
 
@@ -61,9 +64,30 @@ public class FontAnalysisAdapter extends RecyclerView.Adapter<FontAnalysisAdapte
     @Override
     public void onBindViewHolder(FontAnalysisAdapter.ViewHolder holder, int position) {
         holder.font_name.setText(mData.get(position).name) ;
-        holder.content.setText(msg);
-        holder.percent.setText(mData.get(position).percent);
+        holder.percent.setText(mData.get(position).percent+"%");
         holder.copyright.setText(mData.get(position).copyright);
+
+        if (msg.trim().equals("")){
+            holder.content.setText("agent orange");
+        }else{
+            holder.content.setText(msg);
+        }
+
+//        holder.like_font_btn.setOnClickListener(v->{
+//            if (holder.like_font_btn.isSelected()){
+//                holder.like_font_btn.setBackgroundResource(R.drawable.font_info_heart_off);
+//            }else{
+//                holder.like_font_btn.setBackgroundResource(R.drawable.font_info);
+//            }
+//        });
+
+
+        int check = (int) Fontfolio.list.parallelStream().filter(p->p.getFontName().equals(mData.get(position).name)).count();
+        if (check == 1){
+            holder.copyright.setText(Fontfolio.list.parallelStream().filter(p->p.getFontName().equals(mData.get(position).name)).findAny().get().getFontCopyrightHolder());
+        }else{
+            holder.copyright.setText("None");
+        }
 
     }
 
