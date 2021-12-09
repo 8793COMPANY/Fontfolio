@@ -107,14 +107,17 @@ class QuestionInformation : AppCompatActivity() {
                 // 캘린더 기반으로 추산.
                 val cal = Calendar.getInstance()
                 val sdf = SimpleDateFormat("yyyy-MM-dd HH:mm:ss")
+                val ymd = DateTimeFormatter.ofPattern("yyyy-MM-dd")
                 val dtf = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss")
 
                 val current_time = LocalDateTime.parse(sdf.format(cal.time).toString(), dtf)
                 val saved_time = LocalDateTime.parse(question.questionDate, dtf)
+                val days = Duration.between(current_time, saved_time).toDays().toInt().absoluteValue
 
-                when(val days = Duration.between(current_time, saved_time).toDays().toInt().absoluteValue) {
-                    0 -> questionDate.text = "today"
-                    else -> questionDate.text = "$days days ago"
+                when {
+                    (days == 0) -> questionDate.text = "today"
+                    (days <= 31) -> questionDate.text = "$days days ago"
+                    else -> questionDate.text = saved_time.format(ymd)
                 }
             }
         }

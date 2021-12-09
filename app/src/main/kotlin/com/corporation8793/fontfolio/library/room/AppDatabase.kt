@@ -2,8 +2,8 @@ package com.corporation8793.fontfolio.library.room
 
 import androidx.room.*
 import com.corporation8793.fontfolio.library.room.converter.TypeConverter
-import com.corporation8793.fontfolio.library.room.dao.FontDao
-import com.corporation8793.fontfolio.library.room.dao.QuestionDao
+import com.corporation8793.fontfolio.library.room.dao.font.FontDao
+import com.corporation8793.fontfolio.library.room.dao.qna.QuestionDao
 import com.corporation8793.fontfolio.library.room.entity.font.Font
 import com.corporation8793.fontfolio.library.room.entity.font.FontClassification
 import com.corporation8793.fontfolio.library.room.entity.font.FontLicense

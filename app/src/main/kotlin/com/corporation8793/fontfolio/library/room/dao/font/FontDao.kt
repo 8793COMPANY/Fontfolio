@@ -1,4 +1,4 @@
-package com.corporation8793.fontfolio.library.room.dao
+package com.corporation8793.fontfolio.library.room.dao.font
 
 import androidx.room.*
 import com.corporation8793.fontfolio.library.room.entity.font.Font
