@@ -15,6 +15,7 @@ import android.provider.MediaStore;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.constraintlayout.widget.ConstraintLayout;
+import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -23,6 +24,7 @@ import android.util.Pair;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.corporation8793.fontfolio.Classifier;
@@ -38,6 +40,8 @@ import com.corporation8793.fontfolio.R;
 import java.io.IOException;
 import java.lang.reflect.Array;
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.FormatFlagsConversionMismatchException;
 import java.util.Locale;
 import java.util.Objects;
@@ -136,7 +140,10 @@ public class ShowCropperedActivity extends AppCompatActivity {
     private void initRecyclerView(){
         adapter = new FontAnalysisAdapter(mList,result);
         font_analysis_result.setAdapter(adapter);
+
         font_analysis_result.setLayoutManager(new LinearLayoutManager(this));
+        DividerItemDecoration dividerItemDecoration = new DividerItemDecoration(this, LinearLayout.VERTICAL);
+        font_analysis_result.addItemDecoration(dividerItemDecoration);
     }
 
 
@@ -297,6 +304,14 @@ public class ShowCropperedActivity extends AppCompatActivity {
                 item.setPercent(String.format("%.2f", arrays[i]));
                 mList.add(item);
             }
+
+            Collections.sort(mList, new Comparator<AnalysisItem>() {
+                @Override
+                public int compare(AnalysisItem b1, AnalysisItem b2) {
+                    return b2.getPercent().compareTo(b1.getPercent());
+                }
+            });
+
 
             Log.e("initClassifier","end");
         } catch (Exception e) {
