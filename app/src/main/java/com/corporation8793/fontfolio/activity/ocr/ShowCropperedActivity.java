@@ -3,6 +3,7 @@ package com.corporation8793.fontfolio.activity.ocr;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
 import android.graphics.ColorMatrix;
 import android.graphics.ColorMatrixColorFilter;
@@ -13,17 +14,32 @@ import android.os.Handler;
 import android.provider.MediaStore;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.constraintlayout.widget.ConstraintLayout;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.util.Log;
+import android.util.Pair;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.corporation8793.fontfolio.Classifier;
+import com.corporation8793.fontfolio.analysis.AnalysisItem;
+import com.corporation8793.fontfolio.analysis.FontAnalysisAdapter;
+import com.corporation8793.fontfolio.board.BoardItem;
+import com.corporation8793.fontfolio.common.Fontfolio;
+import com.corporation8793.fontfolio.recylcerview.FontItem;
 import com.googlecode.tesseract.android.TessBaseAPI;
 import com.corporation8793.fontfolio.library.ocr.utils.*;
 import com.corporation8793.fontfolio.R;
 
+import java.io.IOException;
+import java.lang.reflect.Array;
+import java.util.ArrayList;
+import java.util.FormatFlagsConversionMismatchException;
+import java.util.Locale;
 import java.util.Objects;
 import java.util.Random;
 
@@ -46,6 +62,7 @@ public class ShowCropperedActivity extends AppCompatActivity {
     private              TextView  textView;
     private              Button    back_btn;
     private              Button    info_btn;
+    private              RecyclerView font_analysis_result;
 
     private int    width;
     private int    height;
@@ -57,6 +74,13 @@ public class ShowCropperedActivity extends AppCompatActivity {
     private ProgressDialog dialog;
 
     private ColorMatrix colorMatrix;
+
+    private Classifier classifier;
+
+    FontAnalysisAdapter adapter;
+    ArrayList<AnalysisItem> mList = new ArrayList<AnalysisItem>();
+
+    String [] fontNames = {"Days","Fava-black","Gidole-Regular","Leaner-Thin","MoonLight","No-move","Nurom-Bold","SPACE","STAY HOME","TitanOne-Regular","ViceCitySans"};
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -72,6 +96,11 @@ public class ShowCropperedActivity extends AppCompatActivity {
 
         initView();
         initTess();
+        initClassifier();
+        initRecyclerView();
+
+
+//        String outString = String.format(Locale.ENGLISH, "%d, %.0f%%", result.first, result.second * 100.0f);
     }
 
     private void initView() {
@@ -79,6 +108,7 @@ public class ShowCropperedActivity extends AppCompatActivity {
         textView = findViewById(R.id.text);
         back_btn = findViewById(R.id.back_btn);
         info_btn = findViewById(R.id.info_btn);
+        font_analysis_result = findViewById(R.id.analysis_result);
 
         back_btn.setOnClickListener(v -> finish());
 
@@ -89,6 +119,8 @@ public class ShowCropperedActivity extends AppCompatActivity {
 
         imageView.setImageURI(uri);
         imageView.setScaleType(ImageView.ScaleType.FIT_XY);
+
+
     }
 
     private void initTess() {
@@ -99,6 +131,12 @@ public class ShowCropperedActivity extends AppCompatActivity {
         baseApi.setPageSegMode(TessBaseAPI.PageSegMode.PSM_AUTO);
         Thread myThread = new Thread(runnable);
         myThread.start();
+    }
+
+    private void initRecyclerView(){
+        adapter = new FontAnalysisAdapter(mList,result);
+        font_analysis_result.setAdapter(adapter);
+        font_analysis_result.setLayoutManager(new LinearLayoutManager(this));
     }
 
 
@@ -238,5 +276,31 @@ public class ShowCropperedActivity extends AppCompatActivity {
         res = res.substring(0, res.length() - 2);
 
         return res;
+    }
+
+
+    private void initClassifier() {
+        classifier = new Classifier(getAssets(), Classifier.DIGIT_CLASSIFIER);
+        try {
+            Log.e("initClassifier","in");
+            classifier.init();
+
+            Log.e("uri!!",uri+"");
+             Bitmap bitmapImage = getBitmapFromUri(uri);
+
+            Bitmap bitmap = Bitmap.createScaledBitmap(bitmapImage, 128, 128, true);
+            float [] arrays  = classifier.classify(bitmap);
+
+            for (int i=0; i<arrays.length; i++){
+                AnalysisItem item = new AnalysisItem();
+                item.setName(fontNames[i]);
+                item.setPercent(String.format("%.2f", arrays[i]));
+                mList.add(item);
+            }
+
+            Log.e("initClassifier","end");
+        } catch (Exception e) {
+            Log.d("initClassifier", "IOException");
+        }
     }
 }
