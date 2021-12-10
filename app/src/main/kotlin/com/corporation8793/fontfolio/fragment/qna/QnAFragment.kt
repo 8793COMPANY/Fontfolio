@@ -1,10 +1,13 @@
 package com.corporation8793.fontfolio.fragment.qna
 
+import android.net.Uri
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
+import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.widget.AppCompatButton
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -23,6 +26,9 @@ import kotlinx.coroutines.async
 import kotlinx.coroutines.launch
 import java.text.SimpleDateFormat
 import java.util.*
+import android.graphics.drawable.Drawable
+import java.io.InputStream
+
 
 private const val ARG_PARAM1 = "param1"
 private const val ARG_PARAM2 = "param2"
@@ -41,6 +47,8 @@ class QnAFragment(val mActivity : MainActivity) : Fragment() {
     var q_list = mutableListOf<Question>()
     lateinit var mAdapter: qnaAdapter
 
+    lateinit var test_img : ImageView
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         arguments?.let {
@@ -55,6 +63,8 @@ class QnAFragment(val mActivity : MainActivity) : Fragment() {
     ): View? {
         // Inflate the layout for this fragment
         val view: View = inflater.inflate(R.layout.fragment_qna, container, false)
+
+        test_img = view.findViewById(R.id.test_img)
 
         action_bar_setting_btn = view.findViewById(R.id.action_bar_setting_btn)
         action_bar_add_btn = view.findViewById(R.id.action_bar_add_btn)
@@ -83,13 +93,13 @@ class QnAFragment(val mActivity : MainActivity) : Fragment() {
         }
 
         action_bar_add_btn.setOnClickListener {
-
+            selectImageFromGallery()
         }
 
         return view
     }
 
-    fun notifyItem(){
+    fun notifyItem() {
         datas.clear()
 
         /*
@@ -145,4 +155,14 @@ class QnAFragment(val mActivity : MainActivity) : Fragment() {
             }
         }
     }
+
+    val selectImageFromGalleryResult = registerForActivityResult(ActivityResultContracts.GetContent()) { uri: Uri? ->
+        uri?.let {
+            val inputStream : InputStream? = activity?.contentResolver?.openInputStream(it)
+            val drawable = Drawable.createFromStream(inputStream, it.toString())
+            test_img.background = drawable
+        }
+    }
+
+    fun selectImageFromGallery() = selectImageFromGalleryResult.launch("image/*")
 }
