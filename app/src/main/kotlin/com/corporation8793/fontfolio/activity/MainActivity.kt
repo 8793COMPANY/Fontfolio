@@ -39,7 +39,7 @@ class MainActivity : AppCompatActivity() , BottomNavigationView.OnNavigationItem
                 return true
             }
             R.id.page_camera -> {
-                supportFragmentManager.beginTransaction().replace(R.id.menu_view, CameraFragment()).commitAllowingStateLoss()
+                supportFragmentManager.beginTransaction().replace(R.id.menu_view, CameraFragment(this)).commitAllowingStateLoss()
                 return false
             }
 
