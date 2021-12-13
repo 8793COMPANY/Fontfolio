@@ -7,6 +7,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
+import androidx.core.content.res.ResourcesCompat.getFont
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -19,6 +20,7 @@ import com.corporation8793.fontfolio.fragment.search.SearchFragment
 import com.corporation8793.fontfolio.library.room.entity.font.Font
 import com.corporation8793.fontfolio.recylcerview.FontAdapter
 import com.corporation8793.fontfolio.recylcerview.SpacesItemDecoration
+import java.lang.RuntimeException
 
 private const val ARG_PARAM1 = "param1"
 private const val ARG_PARAM2 = "param2"
@@ -80,10 +82,29 @@ class HomeFragment(activity : MainActivity) : Fragment() {
 
     fun notifyItem(){
         datas.clear()
+        var count = 0;
 
         for (i in Fontfolio.list){
-            Log.e("fontStyle",i.fontStyle)
-            datas.add(i)
+            if (i.fontLicenseDescription.contains("OFL") ) {
+
+                    try {
+                        if (!resources.getFont(resources.getIdentifier(
+                        "${i.fontName.toLowerCase().replace("-", "_")
+                            .replace(" ", "_")}",
+                        "font", activity?.packageName)).toString().equals(0x00000000)) {
+                            datas.add(i)
+                }
+                    }catch (e : RuntimeException){
+                        Log.e("폰트","저장 안 되어 있음")
+                    }
+
+//                }
+                count++
+                if (count == 150)
+                    break
+            }
+
+
         }
 
         mAdapter.datas = datas

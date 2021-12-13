@@ -8,7 +8,7 @@
 
     <TextView
         android:id="@+id/font_name"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:text="San Francisco PRO"
         android:textSize="17sp"
@@ -19,11 +19,11 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="@+id/guideline"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"></TextView>
+        app:layout_constraintEnd_toEndOf="@+id/guideline_right"></TextView>
 
     <TextView
         android:id="@+id/font_copyright"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:text="Apple Development"
         android:textSize="12sp"
@@ -33,7 +33,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="@+id/guideline"
         app:layout_constraintTop_toBottomOf="@+id/font_name"
-        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/guideline_right"
         app:layout_constraintVertical_bias="0"></TextView>
 
 
@@ -75,5 +75,6 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintGuide_percent="0.95"></androidx.constraintlayout.widget.Guideline>
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

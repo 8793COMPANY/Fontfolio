@@ -7,6 +7,7 @@ import android.content.Intent
 import android.graphics.Typeface
 import android.util.Log
 import android.widget.TextView
+import androidx.fragment.app.FragmentActivity
 import androidx.room.Room
 import com.corporation8793.fontfolio.MySharedPreferences
 import com.corporation8793.fontfolio.R
@@ -165,11 +166,11 @@ class Fontfolio : Application() {
      * @see     android.widget.TextView
      * @see     <a href="https://developer.android.com/guide/topics/ui/look-and-feel/fonts-in-xml#fonts-in-code">developer-android</a>
      */
-    fun changeFontOfTextView(act : Activity, textView: TextView, font_name : String) {
-        val res = act.resources
-        val pkg = act.packageName
+    fun changeFontOfTextView(act : FragmentActivity?, textView: TextView, font_name : String) {
+        val res = act?.resources
+        val pkg = act?.packageName
 
-        textView.typeface = res.getFont(res.getIdentifier(
+        textView.typeface = res?.getFont(res.getIdentifier(
             "${font_name.toLowerCase().replace("-", "_")
                 .replace(" ", "_")}",
             "font", pkg))
