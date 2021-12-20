@@ -25,6 +25,7 @@ import com.corporation8793.fontfolio.common.Fontfolio;
 import com.corporation8793.fontfolio.library.room.entity.board.Board;
 import com.google.android.datatransport.runtime.scheduling.DefaultScheduler;
 
+import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 
@@ -44,11 +45,15 @@ public class CreateBoardActivity extends AppCompatActivity {
 
     Switch secret_check;
 
+    String fontName = "";
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_create_board);
+
+
 
         board_icon_view1 = findViewById(R.id.board_icon_view1);
         board_icon_view2 = findViewById(R.id.board_icon_view2);
@@ -61,6 +66,13 @@ public class CreateBoardActivity extends AppCompatActivity {
 
         finish_btn = findViewById(R.id.finish_btn);
         cancel_btn = findViewById(R.id.cancel_btn);
+
+        if (!getIntent().getStringExtra("fontName").equals("none")){
+            Log.e("fontName",getIntent().getStringExtra("fontName"));
+            fontName = getIntent().getStringExtra("fontName");
+            font_name_input_box.setText(fontName);
+            font_name_input_box.setEnabled(false);
+        }
 
 
         take_picture_view  = findViewById(R.id.take_picture_view);
@@ -229,6 +241,14 @@ public class CreateBoardActivity extends AppCompatActivity {
         }else if(resultCode == RESULT_CANCELED){
 
         }
+    }
+
+    public byte[] getByteArrayFromDrawable(Bitmap bitmap){
+        ByteArrayOutputStream stream = new ByteArrayOutputStream();
+
+        byte[] data = stream.toByteArray();
+        return data;
+
     }
 
     public void initBoardImage(){

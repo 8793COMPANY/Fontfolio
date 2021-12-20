@@ -47,16 +47,17 @@ public class SaveBoardActivity extends AppCompatActivity {
         RecyclerDecoration spaceDecoration = new RecyclerDecoration(15);
         save_board.addItemDecoration(spaceDecoration);
 
-        addItem(R.drawable.board_image_heart_icon,"Apple Design FOnt");
-        addItem(R.drawable.board_image_heart_icon,"Favorites Font");
-        addItem(R.drawable.board_image_heart_icon,"Free commercial font");
-        addItem(R.drawable.board_image_heart_icon,"My Design Project Font");
-
-        mAdapter.notifyDataSetChanged();
+//        addItem(R.drawable.board_image_heart_icon,"Apple Design FOnt");
+//        addItem(R.drawable.board_image_heart_icon,"Favorites Font");
+//        addItem(R.drawable.board_image_heart_icon,"Free commercial font");
+//        addItem(R.drawable.board_image_heart_icon,"My Design Project Font");
+//
+//        mAdapter.notifyDataSetChanged();
 
 
         create_btn.setOnClickListener(v->{
             Intent intent = new Intent(SaveBoardActivity.this, CreateBoardActivity.class);
+            intent.putExtra("fontName","none");
             startActivity(intent);
 
         });
@@ -80,11 +81,15 @@ public class SaveBoardActivity extends AppCompatActivity {
 
         @Override
         public void run() {
+            addItem(R.drawable.board_image_heart_icon,"Apple Design FOnt");
+            addItem(R.drawable.board_image_heart_icon,"Favorites Font");
+            addItem(R.drawable.board_image_heart_icon,"Free commercial font");
+            addItem(R.drawable.board_image_heart_icon,"My Design Project Font");
+
             int size = fontfolio.db.boardDao().getAll().size();
             for (int i=0; i<size; i++){
-                addItem(R.drawable.board_image_heart_icon,fontfolio.db.boardDao().getAll().get(i).getFontName().toString());
+                addItem(R.drawable.board_image_heart_icon,fontfolio.db.boardDao().getAll().get(i).getBoardName().toString());
             }
-//            mAdapter.notifyDataSetChanged();
         }
     }
 
@@ -98,17 +103,13 @@ public class SaveBoardActivity extends AppCompatActivity {
     protected void onRestart() {
         super.onRestart();
         Log.e("restart in","???????");
-        if (mAdapter != null){
             mList.clear();
-            addItem(R.drawable.board_image_heart_icon,"Apple Design FOnt");
-            addItem(R.drawable.board_image_heart_icon,"Favorites Font");
-            addItem(R.drawable.board_image_heart_icon,"Free commercial font");
-            addItem(R.drawable.board_image_heart_icon,"My Design Project Font");
-            
+
+
             InsertRunnable insertRunnable = new InsertRunnable();
             Thread addThread = new Thread(insertRunnable);
             addThread.start();
             mAdapter.notifyDataSetChanged();
-        }
+
     }
 }

@@ -14,6 +14,7 @@ import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.constraintlayout.widget.ConstraintLayout
 import com.corporation8793.fontfolio.R
+import com.corporation8793.fontfolio.board.CreateBoardActivity
 import com.corporation8793.fontfolio.board.SaveBoardActivity
 import com.corporation8793.fontfolio.common.Fontfolio
 
@@ -117,7 +118,11 @@ class FontInformation : AppCompatActivity() {
                 it.fontName.contains(font_sub_title.text.toString()) }} styles"
 
         font_info_add_btn.setOnClickListener {
-            Fontfolio().moveToActivity(Fontfolio.searchFragment.activity, SaveBoardActivity::class.java, false)
+            var intent :Intent = Intent(Fontfolio.searchFragment.activity,CreateBoardActivity::class.java)
+            intent.putExtra("fontName",font.fontName)
+            intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK
+            startActivity(intent)
+//            Fontfolio().moveToActivity(Fontfolio.searchFragment.activity, CreateBoardActivity::class.java, false)
         }
         if (this.resources.getIdentifier(
                 "${font.fontName.toLowerCase()
