@@ -1,5 +1,6 @@
 package com.corporation8793.fontfolio.fragment.qna
 
+import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
 import android.util.Log
@@ -27,6 +28,8 @@ import kotlinx.coroutines.launch
 import java.text.SimpleDateFormat
 import java.util.*
 import android.graphics.drawable.Drawable
+import com.corporation8793.fontfolio.activity.QuestionRegistration
+import com.corporation8793.fontfolio.activity.ocr.ShowCropperedActivity
 import java.io.InputStream
 
 
@@ -158,9 +161,9 @@ class QnAFragment(val mActivity : MainActivity) : Fragment() {
 
     val selectImageFromGalleryResult = registerForActivityResult(ActivityResultContracts.GetContent()) { uri: Uri? ->
         uri?.let {
-            val inputStream : InputStream? = activity?.contentResolver?.openInputStream(it)
-            val drawable = Drawable.createFromStream(inputStream, it.toString())
-            test_img.background = drawable
+            val intent = Intent(mActivity.applicationContext, QuestionRegistration::class.java)
+            intent.data = it
+            startActivity(intent)
         }
     }
 

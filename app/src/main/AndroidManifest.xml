@@ -26,6 +26,11 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Fontfolio">
         <activity
+            android:name=".activity.QuestionRegistration"
+            android:windowSoftInputMode="adjustNothing|stateAlwaysVisible"
+            android:fitsSystemWindows="true"
+            android:exported="false" />
+        <activity
             android:name=".activity.QuestionInformation"
             android:exported="false" />
         <activity
