@@ -3,7 +3,6 @@ package com.corporation8793.fontfolio.library.room.dao.board
 import androidx.room.*
 import com.corporation8793.fontfolio.library.room.entity.board.Board
 import com.corporation8793.fontfolio.library.room.entity.font.Font
-import com.corporation8793.fontfolio.library.room.entity.font.FontClassification
 
 /**
  * [Font]의 [Dao].
@@ -21,9 +20,14 @@ interface BoardDao {
     @Query("SELECT * FROM board WHERE board_name == :boardName")
     fun getBoardData(boardName: String) : List<Board>
 
+
+
+    @Insert
+    fun insert(board: Board?)
+
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    fun insertAll(vararg font : Font)
+    fun insertAll(vararg board: Board)
 
     @Update
-    fun update(vararg font : Font)
+    fun update(vararg board: Board)
 }
