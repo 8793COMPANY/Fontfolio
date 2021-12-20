@@ -30,6 +30,10 @@
     <string name="content1">The secret of a good life is to have the right loyalties and hold them in the right scale of values.</string>
     <string name="content2">Almost before we knew it, we had left the ground.</string>
 
+    <!-- Home-->
+    <string name="font_item_content">Almost before we knew it, we had left the ground.</string>
+    <string name="font_item_content2">The secret of a good life is to have the right loyalties and hold them in the right scale of values.</string>
+
     <string name="sort_by">Sort by</string>
     <string name="sort_by_recommended">Recommended order</string>
     <string name="sort_by_popularity">View by Popularity</string>

@@ -2,8 +2,10 @@ package com.corporation8793.fontfolio.library.room
 
 import androidx.room.*
 import com.corporation8793.fontfolio.library.room.converter.TypeConverter
+import com.corporation8793.fontfolio.library.room.dao.board.BoardDao
 import com.corporation8793.fontfolio.library.room.dao.font.FontDao
 import com.corporation8793.fontfolio.library.room.dao.qna.QuestionDao
+import com.corporation8793.fontfolio.library.room.entity.board.Board
 import com.corporation8793.fontfolio.library.room.entity.font.Font
 import com.corporation8793.fontfolio.library.room.entity.font.FontClassification
 import com.corporation8793.fontfolio.library.room.entity.font.FontLicense
@@ -24,7 +26,7 @@ import com.corporation8793.fontfolio.library.room.entity.qna.Question
  * @see     [FontStyleInformation]
  */
 @Database(entities = [Font::class, FontClassification::class, FontLicense::class, FontStyleInformation::class,
-                     Question::class, Answer::class], version = 1)
+                     Question::class, Answer::class, Board::class], version = 1)
 @TypeConverters(TypeConverter::class)
 abstract class AppDatabase : RoomDatabase() {
     /**
@@ -35,4 +37,6 @@ abstract class AppDatabase : RoomDatabase() {
      * [Question]의 [Dao].
      */
     abstract fun questionDao() : QuestionDao
+
+    abstract fun boardDao() : BoardDao
 }

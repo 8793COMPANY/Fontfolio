@@ -6,9 +6,12 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.widget.Button;
 
 import com.corporation8793.fontfolio.R;
+import com.corporation8793.fontfolio.common.Fontfolio;
+import com.corporation8793.fontfolio.library.room.entity.board.Board;
 
 import java.util.ArrayList;
 
@@ -18,10 +21,15 @@ public class SaveBoardActivity extends AppCompatActivity {
     ArrayList<BoardItem> mList = new ArrayList<BoardItem>();
     Button create_btn, cancel_btn;
 
+    Fontfolio fontfolio;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_save_board);
+
+        fontfolio = new Fontfolio();
+        fontfolio.getInstance(this);
 
         save_board = findViewById(R.id.save_board_list);
         create_btn = findViewById(R.id.create_btn);
@@ -29,6 +37,10 @@ public class SaveBoardActivity extends AppCompatActivity {
 
         mAdapter = new RecyclerBoardAdapter(mList);
         save_board.setAdapter(mAdapter);
+
+        InsertRunnable insertRunnable = new InsertRunnable();
+        Thread addThread = new Thread(insertRunnable);
+        addThread.start();
 
         save_board.setLayoutManager(new LinearLayoutManager(this)) ;
 
@@ -62,5 +74,41 @@ public class SaveBoardActivity extends AppCompatActivity {
         item.setBoard_name(title);
 
         mList.add(item);
+    }
+
+    class InsertRunnable implements Runnable {
+
+        @Override
+        public void run() {
+            int size = fontfolio.db.boardDao().getAll().size();
+            for (int i=0; i<size; i++){
+                addItem(R.drawable.board_image_heart_icon,fontfolio.db.boardDao().getAll().get(i).getFontName().toString());
+            }
+//            mAdapter.notifyDataSetChanged();
+        }
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+
+    }
+
+    @Override
+    protected void onRestart() {
+        super.onRestart();
+        Log.e("restart in","???????");
+        if (mAdapter != null){
+            mList.clear();
+            addItem(R.drawable.board_image_heart_icon,"Apple Design FOnt");
+            addItem(R.drawable.board_image_heart_icon,"Favorites Font");
+            addItem(R.drawable.board_image_heart_icon,"Free commercial font");
+            addItem(R.drawable.board_image_heart_icon,"My Design Project Font");
+            
+            InsertRunnable insertRunnable = new InsertRunnable();
+            Thread addThread = new Thread(insertRunnable);
+            addThread.start();
+            mAdapter.notifyDataSetChanged();
+        }
     }
 }

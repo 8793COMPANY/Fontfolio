@@ -17,21 +17,34 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.Switch;
 
 import com.corporation8793.fontfolio.CustomView;
 import com.corporation8793.fontfolio.R;
+import com.corporation8793.fontfolio.common.Fontfolio;
+import com.corporation8793.fontfolio.library.room.entity.board.Board;
+import com.google.android.datatransport.runtime.scheduling.DefaultScheduler;
 
 import java.io.IOException;
 import java.io.InputStream;
+
+import kotlinx.coroutines.CoroutineScope;
+import kotlinx.coroutines.Dispatchers;
 
 public class CreateBoardActivity extends AppCompatActivity {
     Button finish_btn, cancel_btn;
     EditText font_name_input_box, board_name_input_box;
     CustomView board_icon_view1,board_icon_view2,board_icon_view3;
 
+     Fontfolio fontfolio;
+
     private static final int REQUEST_CODE = 0;
 
     ImageView take_picture_view, get_picture_view;
+
+    Switch secret_check;
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -44,6 +57,8 @@ public class CreateBoardActivity extends AppCompatActivity {
         font_name_input_box = findViewById(R.id.font_name_input_box);
         board_name_input_box = findViewById(R.id.board_name_input_box);
 
+        secret_check = findViewById(R.id.secret_check);
+
         finish_btn = findViewById(R.id.finish_btn);
         cancel_btn = findViewById(R.id.cancel_btn);
 
@@ -53,6 +68,9 @@ public class CreateBoardActivity extends AppCompatActivity {
 
         take_picture_view.setClipToOutline(true);
         get_picture_view.setClipToOutline(true);
+
+        fontfolio = new Fontfolio();
+        fontfolio.getInstance(this);
 
 
         board_icon_view1.setOnClickListener(new View.OnClickListener() {
@@ -105,8 +123,10 @@ public class CreateBoardActivity extends AppCompatActivity {
                 if (board_name_input_box.getText().toString().trim().equals("") ||
                         font_name_input_box.getText().toString().trim().equals("")){
                     finish_btn.setBackgroundResource(R.drawable.action_bar_next_arrow_btn);
+                    finish_btn.setEnabled(false);
                 }else{
                     finish_btn.setBackgroundResource(R.drawable.action_bar_next_red_btn);
+                    finish_btn.setEnabled(true);
                 }
             }
 
@@ -127,8 +147,10 @@ public class CreateBoardActivity extends AppCompatActivity {
                 if (board_name_input_box.getText().toString().trim().equals("") ||
                         font_name_input_box.getText().toString().trim().equals("")){
                     finish_btn.setBackgroundResource(R.drawable.action_bar_next_arrow_btn);
+                    finish_btn.setEnabled(false);
                 }else{
                     finish_btn.setBackgroundResource(R.drawable.action_bar_next_red_btn);
+                    finish_btn.setEnabled(true);
                 }
             }
 
@@ -139,12 +161,17 @@ public class CreateBoardActivity extends AppCompatActivity {
         });
 //
         finish_btn.setOnClickListener(v->{
+            InsertRunnable insertRunnable = new InsertRunnable();
+            Thread addThread = new Thread(insertRunnable);
+            addThread.start();
             finish();
         });
         cancel_btn.setOnClickListener(v->{
             finish();
         });
     }
+
+
 
     public void initSelectIcon(){
         board_icon_view1.setSelected(false);
@@ -208,5 +235,15 @@ public class CreateBoardActivity extends AppCompatActivity {
         take_picture_view.setBackgroundResource(R.drawable.board_image_camera_btn);
         get_picture_view.setBackgroundResource(R.drawable.board_image_gallery_btn);
         initSelectIcon();
+    }
+
+    class InsertRunnable implements Runnable {
+
+        @Override
+        public void run() {
+            Log.e("secret_check",secret_check.isChecked()+"");
+            Board board = new Board(fontfolio.db.boardDao().getAll().size(),font_name_input_box.getText().toString(), board_name_input_box.getText().toString(),secret_check.isChecked(),null);
+            fontfolio.db.boardDao().insertAll(board);
+        }
     }
 }
