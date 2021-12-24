@@ -118,7 +118,7 @@ class SearchFragment(val activity : MainActivity, val isDirectFromHomeFragment :
             override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
                 if (s != null) {
                     filter_result = Fontfolio.list.toMutableList()
-                    filter_result = filter_result.filter { font -> font.fontName.contains(s)}.toMutableList()
+                    filter_result = filter_result.filter { font -> font.fontName.contains(s, true)}.toMutableList()
 
                     search_listview_adapter = SearchListviewAdapter(mFragment, filter_result, listDataSet, s)
                     search_listview.adapter = search_listview_adapter

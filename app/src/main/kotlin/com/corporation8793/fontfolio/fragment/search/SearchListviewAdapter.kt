@@ -1,6 +1,8 @@
 package com.corporation8793.fontfolio.fragment.search
 
 import android.content.Intent
+import android.text.SpannableString
+import android.text.SpannableStringBuilder
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
@@ -36,9 +38,22 @@ class SearchListviewAdapter(
     override fun onBindViewHolder(holder: Holder, position: Int) {
         holder.setIsRecyclable(false)
         holder.fontName.text = buildSpannedString {
-            append("${dataSet[position].fontName.substringBefore(boldText.toString())}")
-            bold { append(boldText.toString()) }
-            append("${dataSet[position].fontName.substringAfter(boldText.toString())}")
+            // TODO : 대소문자 구분 없이 볼드처리
+            if (dataSet[position].fontName.contains(boldText.toString(), false)) {
+                append("${dataSet[position].fontName.substringBefore(boldText.toString(), "")}")
+                bold { append(boldText.toString()) }
+                append("${dataSet[position].fontName.substringAfter(boldText.toString(), "")}")
+            } else {
+                val list = dataSet[position].fontName.indexesOf(boldText.toString(), true)
+                for ((i, c) in dataSet[position].fontName.withIndex()) {
+                    if (list[0] > i) {
+                        append(c)
+                    }
+                }
+                val endIndex = (list[0]+(boldText.toString().length - 1))
+                bold { append(dataSet[position].fontName.substring(list[0]..endIndex)) }
+                append(dataSet[position].fontName.substring(endIndex + 1))
+            }
         }
 
         listDataSet.add(listData(position = position, font_name = dataSet[position].fontName))
@@ -55,6 +70,19 @@ class SearchListviewAdapter(
 
     override fun getItemCount(): Int {
         return dataSet.size
+    }
+
+    fun String?.indexesOf(substr: String, ignoreCase: Boolean = true): List<Int> {
+        tailrec fun String.collectIndexesOf(offset: Int = 0, indexes: List<Int> = emptyList()): List<Int> =
+            when (val index = indexOf(substr, offset, ignoreCase)) {
+                -1 -> indexes
+                else -> collectIndexesOf(index + substr.length, indexes + index)
+            }
+
+        return when (this) {
+            null -> emptyList()
+            else -> collectIndexesOf()
+        }
     }
 
     data class listData(
