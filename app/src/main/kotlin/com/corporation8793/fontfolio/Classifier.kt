@@ -29,14 +29,15 @@ class Classifier(private val assetManager: AssetManager, private val modelName: 
     }
 
     companion object {
-        const val DIGIT_CLASSIFIER = "converted_model.tflite"
+        const val DIGIT_CLASSIFIER = "model_unquant.tflite"
     }
+
 
 
     @Throws(IOException::class)
     private fun loadModelFile(): ByteBuffer {
         Log.e("in!!", "loadModelFile")
-        val assetFileDescriptor = assetManager.openFd("converted_model.tflite")
+        val assetFileDescriptor = assetManager.openFd("model_unquant.tflite")
         val fileInputStream = FileInputStream(assetFileDescriptor.fileDescriptor)
         val fileChannel: FileChannel = fileInputStream.getChannel()
         val startOffset = assetFileDescriptor.startOffset
@@ -65,9 +66,10 @@ class Classifier(private val assetManager: AssetManager, private val modelName: 
     }
 
     private fun convertBitmapGrayByteBuffer(bitmap: Bitmap): ByteBuffer {
+        Log.e("bitmap.byteCount",bitmap.byteCount.toString())
         val input = ByteBuffer.allocateDirect(bitmap.byteCount * 3).order(ByteOrder.nativeOrder())
-        for (y in 0 until 128) {
-            for (x in 0 until 128) {
+        for (y in 0 until 224) {
+            for (x in 0 until 224) {
                 val px = bitmap.getPixel(x, y)
 
                 // Get channel values from the pixel value.
@@ -95,9 +97,11 @@ class Classifier(private val assetManager: AssetManager, private val modelName: 
 
     fun classify(image: Bitmap): FloatArray  {
         Log.e("classify", "in!!!")
-        val buffer = convertBitmapGrayByteBuffer(image)
+        val buffer = convertBitmapGrayByteBuffer(resizeBitmap(image))
         val result = Array(1) { FloatArray(modelOutputClasses) { 0f } }
+        Log.e("result",result.toString())
         interpreter.run(buffer, result)
+        Log.e("result[0]",result[0].size.toString())
         return result[0]
     }
 
