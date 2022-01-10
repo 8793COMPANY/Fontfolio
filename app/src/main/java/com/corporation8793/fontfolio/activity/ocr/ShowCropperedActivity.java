@@ -84,8 +84,18 @@ public class ShowCropperedActivity extends AppCompatActivity {
     FontAnalysisAdapter adapter;
     ArrayList<AnalysisItem> mList = new ArrayList<AnalysisItem>();
 
-    String [] fontNames = {"Days","Fava-black","Gidole-Regular","Leaner-Thin","MoonLight","No-move","Nurom-Bold","SPACE","STAY HOME","TitanOne-Regular","ViceCitySans"};
-
+//    String [] fontNames = {"Days","Fava-black","Gidole-Regular","Leaner-Thin","MoonLight","No-move","Nurom-Bold","SPACE","STAY HOME","TitanOne-Regular","ViceCitySans"};
+    String [ ] fontNames = {
+        "Adobe Caslon Pro-Regular",
+        "Baskerville-Regular",
+        "Bembo Std-Regular",
+        "Centaur-Regular",
+        "Cormorant SC-Regular",
+        "david_libre_regular",
+        "EB Garamond-Regular",
+        "gentium_regular",
+        "Gill Sans Std-Regular",
+        "Mont-Regular"};
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
