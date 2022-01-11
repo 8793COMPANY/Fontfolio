@@ -29,7 +29,7 @@ class Classifier(private val assetManager: AssetManager, private val modelName: 
     }
 
     companion object {
-        const val DIGIT_CLASSIFIER = "model_unquant.tflite"
+        const val DIGIT_CLASSIFIER = "new_model_unquant.tflite"
     }
 
 
@@ -37,7 +37,7 @@ class Classifier(private val assetManager: AssetManager, private val modelName: 
     @Throws(IOException::class)
     private fun loadModelFile(): ByteBuffer {
         Log.e("in!!", "loadModelFile")
-        val assetFileDescriptor = assetManager.openFd("model_unquant.tflite")
+        val assetFileDescriptor = assetManager.openFd("new_model_unquant.tflite")
         val fileInputStream = FileInputStream(assetFileDescriptor.fileDescriptor)
         val fileChannel: FileChannel = fileInputStream.getChannel()
         val startOffset = assetFileDescriptor.startOffset

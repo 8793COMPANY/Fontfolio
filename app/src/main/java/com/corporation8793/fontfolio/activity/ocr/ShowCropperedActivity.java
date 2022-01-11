@@ -85,17 +85,29 @@ public class ShowCropperedActivity extends AppCompatActivity {
     ArrayList<AnalysisItem> mList = new ArrayList<AnalysisItem>();
 
 //    String [] fontNames = {"Days","Fava-black","Gidole-Regular","Leaner-Thin","MoonLight","No-move","Nurom-Bold","SPACE","STAY HOME","TitanOne-Regular","ViceCitySans"};
+//    String [ ] fontNames = {
+//        "Adobe Caslon Pro-Regular",
+//        "Baskerville-Regular",
+//        "Bembo Std-Regular",
+//        "Centaur-Regular",
+//        "Cormorant SC-Regular",
+//        "david_libre_regular",
+//        "EB Garamond-Regular",
+//        "gentium_regular",
+//        "Gill Sans Std-Regular",
+//        "Mont-Regular"};
+
     String [ ] fontNames = {
-        "Adobe Caslon Pro-Regular",
-        "Baskerville-Regular",
-        "Bembo Std-Regular",
-        "Centaur-Regular",
-        "Cormorant SC-Regular",
-        "david_libre_regular",
-        "EB Garamond-Regular",
-        "gentium_regular",
-        "Gill Sans Std-Regular",
-        "Mont-Regular"};
+            "Alegreya-Regular",
+            "Epilogue-Regular",
+            "Inter-Regular",
+            "David Libre-Regular",
+            "Gentium-Regular",
+            "Adobe Caslon Pro-Regular",
+            "Bembo Std-Regular",
+            "Centaur-Regular",
+            "Mont-Regular",
+            "Baskerville-Regular"};
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -150,7 +162,6 @@ public class ShowCropperedActivity extends AppCompatActivity {
     private void initRecyclerView(){
         adapter = new FontAnalysisAdapter(mList,result);
         font_analysis_result.setAdapter(adapter);
-
         font_analysis_result.setLayoutManager(new LinearLayoutManager(this));
         DividerItemDecoration dividerItemDecoration = new DividerItemDecoration(this, LinearLayout.VERTICAL);
         font_analysis_result.addItemDecoration(dividerItemDecoration);
