@@ -83,6 +83,17 @@
         android:orientation="vertical"
         app:layout_constraintGuide_percent="0.945" />
 
+    <ImageView
+        android:visibility="gone"
+        android:id="@+id/test_img"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toTopOf="@id/qna_list"
+        app:layout_constraintTop_toBottomOf="@+id/actionBar"
+        app:layout_constraintLeft_toRightOf="@id/guideline_parent_left"
+        app:layout_constraintRight_toLeftOf="@id/guideline_parent_right"
+        android:background="@drawable/qna_circular_profile_2" />
+
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/qna_list"
         android:layout_width="0dp"

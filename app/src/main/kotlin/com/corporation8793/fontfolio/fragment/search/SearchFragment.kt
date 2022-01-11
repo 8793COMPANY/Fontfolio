@@ -89,7 +89,7 @@ class SearchFragment(val activity : MainActivity, val isDirectFromHomeFragment :
         search_listview.layoutManager = object : LinearLayoutManager(context) { override fun canScrollVertically(): Boolean { return false } }
 
         // 자동 키보드 노출
-        showSoftKeyboard()
+        //showSoftKeyboard()
 
         search_bar_camera_icon.setOnClickListener {
             activity.supportFragmentManager.beginTransaction().replace(R.id.menu_view, HomeFragment(activity)).commitAllowingStateLoss()
@@ -118,7 +118,7 @@ class SearchFragment(val activity : MainActivity, val isDirectFromHomeFragment :
             override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
                 if (s != null) {
                     filter_result = Fontfolio.list.toMutableList()
-                    filter_result = filter_result.filter { font -> font.fontName.contains(s)}.toMutableList()
+                    filter_result = filter_result.filter { font -> font.fontName.contains(s, true)}.toMutableList()
 
                     search_listview_adapter = SearchListviewAdapter(mFragment, filter_result, listDataSet, s)
                     search_listview.adapter = search_listview_adapter
