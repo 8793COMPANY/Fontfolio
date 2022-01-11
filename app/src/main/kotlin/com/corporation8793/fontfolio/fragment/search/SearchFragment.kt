@@ -89,7 +89,7 @@ class SearchFragment(val activity : MainActivity, val isDirectFromHomeFragment :
         search_listview.layoutManager = object : LinearLayoutManager(context) { override fun canScrollVertically(): Boolean { return false } }
 
         // 자동 키보드 노출
-        showSoftKeyboard()
+        //showSoftKeyboard()
 
         search_bar_camera_icon.setOnClickListener {
             activity.supportFragmentManager.beginTransaction().replace(R.id.menu_view, HomeFragment(activity)).commitAllowingStateLoss()
