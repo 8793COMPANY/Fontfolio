@@ -66,11 +66,11 @@
 
 
     <TextView
-        android:id="@+id/sort_by_random"
+        android:id="@+id/sort_by_open_font"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:textSize="18sp"
-        android:text="@string/sort_by_random"
+        android:text="@string/sort_by_open_font"
         android:textColor="@color/black"
         android:gravity="center_vertical"
         app:layout_constraintLeft_toLeftOf="@+id/guideline_left"
@@ -96,19 +96,22 @@
 
 
     <TextView
-        android:id="@+id/sort_by_popularity"
+        android:id="@+id/sort_by_paid_font"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:textSize="18sp"
-        android:text="@string/sort_by_popularity"
+        android:text="@string/sort_by_paid_font"
         android:textColor="@color/black"
         android:gravity="center_vertical"
         app:layout_constraintLeft_toLeftOf="@+id/guideline_left"
-        app:layout_constraintTop_toBottomOf="@+id/sort_by_random"
+        app:layout_constraintTop_toBottomOf="@+id/sort_by_open_font"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintVertical_bias="0.03"
         app:layout_constraintWidth_percent="0.93"
         app:layout_constraintHeight_percent="0.06" />
+
+
+
 
 
     <androidx.appcompat.widget.AppCompatButton
@@ -118,7 +121,35 @@
         android:layout_height="0dp"
         android:visibility="invisible"
         app:layout_constraintLeft_toLeftOf="@+id/guideline_check_btn"
-        app:layout_constraintTop_toBottomOf="@+id/sort_by_random"
+        app:layout_constraintTop_toBottomOf="@+id/sort_by_open_font"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintVertical_bias="0.035"
+        app:layout_constraintWidth_percent="0.06"
+        app:layout_constraintHeight_percent="0.04"></androidx.appcompat.widget.AppCompatButton>
+
+    <TextView
+        android:id="@+id/sort_by_all_font"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:textSize="18sp"
+        android:text="@string/sort_by_all_font"
+        android:textColor="@color/black"
+        android:gravity="center_vertical"
+        app:layout_constraintLeft_toLeftOf="@+id/guideline_left"
+        app:layout_constraintTop_toBottomOf="@+id/sort_by_paid_font"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintVertical_bias="0.03"
+        app:layout_constraintWidth_percent="0.93"
+        app:layout_constraintHeight_percent="0.06" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/all_font_check"
+        android:background="@drawable/home_main_bts_list_item_check"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:visibility="invisible"
+        app:layout_constraintLeft_toLeftOf="@+id/guideline_check_btn"
+        app:layout_constraintTop_toBottomOf="@+id/sort_by_paid_font"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintVertical_bias="0.035"
         app:layout_constraintWidth_percent="0.06"
@@ -130,9 +161,9 @@
         android:layout_height="0dp"
         android:background="@drawable/home_main_bts_divider_red"
         app:layout_constraintLeft_toLeftOf="@+id/guideline_left"
-        app:layout_constraintTop_toBottomOf="@+id/sort_by_popularity"
+        app:layout_constraintTop_toBottomOf="@+id/sort_by_all_font"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintVertical_bias="0.125"
+        app:layout_constraintVertical_bias="0.11"
         app:layout_constraintWidth_percent="0.01"
         app:layout_constraintHeight_percent="0.05"></ImageView>
 
@@ -147,9 +178,9 @@
         android:textColor="@color/black"
         android:gravity="center_vertical"
         app:layout_constraintLeft_toRightOf="@+id/divider"
-        app:layout_constraintTop_toBottomOf="@+id/sort_by_popularity"
+        app:layout_constraintTop_toBottomOf="@+id/sort_by_all_font"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintVertical_bias="0.125"
+        app:layout_constraintVertical_bias="0.11"
         app:layout_constraintHorizontal_bias="0.01"
         app:layout_constraintWidth_percent="0.51"
         app:layout_constraintHeight_percent="0.05" />

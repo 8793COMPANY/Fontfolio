@@ -35,9 +35,10 @@
     <string name="font_item_content2">The secret of a good life is to have the right loyalties and hold them in the right scale of values.</string>
 
     <string name="sort_by">Sort by</string>
-    <string name="sort_by_recommended">Recommended order</string>
-    <string name="sort_by_popularity">View by Popularity</string>
-    <string name="sort_by_random">View by Random</string>
+    <string name="sort_by_recommended">Font Ranking TOP 100</string>
+    <string name="sort_by_open_font">View by Open Font License</string>
+    <string name="sort_by_paid_font">View by Commercial Paid Fonts</string>
+    <string name="sort_by_all_font">View by All Fonts</string>
     <string name="organize_profile">Organize profile</string>
     <string name="reorder_boards">Reorder Boards</string>
     <string name="reorder_boards_content">Drag and drop to reorder boards. it will save as your custom sort by setting</string>

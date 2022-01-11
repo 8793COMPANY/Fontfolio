@@ -2,14 +2,7 @@ package com.corporation8793.fontfolio.dialog;
 
 import android.app.Activity;
 import android.app.Dialog;
-import android.graphics.Color;
-import android.graphics.Typeface;
 import android.os.Bundle;
-import android.text.Spannable;
-import android.text.SpannableString;
-import android.text.style.ForegroundColorSpan;
-import android.text.style.RelativeSizeSpan;
-import android.text.style.StyleSpan;
 import android.util.DisplayMetrics;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -45,8 +38,8 @@ public class SortByDialog extends BottomSheetDialogFragment {
         close_btn = view.findViewById(R.id.close_btn);
 
         sort_by_recommended = view.findViewById(R.id.sort_by_recommended);
-        sort_by_random = view.findViewById(R.id.sort_by_random);
-        sort_by_popularity = view.findViewById(R.id.sort_by_popularity);
+        sort_by_random = view.findViewById(R.id.sort_by_open_font);
+        sort_by_popularity = view.findViewById(R.id.sort_by_paid_font);
 
         recommended_check = view.findViewById(R.id.recommeded_check);
         random_check = view.findViewById(R.id.random_check);

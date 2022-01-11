@@ -1,6 +1,7 @@
 package com.corporation8793.fontfolio.fragment
 
 import android.annotation.SuppressLint
+import android.graphics.drawable.ClipDrawable.VERTICAL
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
@@ -9,6 +10,7 @@ import android.view.ViewGroup
 import android.widget.Button
 import androidx.core.content.res.ResourcesCompat.getFont
 import androidx.fragment.app.Fragment
+import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.StaggeredGridLayoutManager
@@ -59,15 +61,15 @@ class HomeFragment(activity : MainActivity) : Fragment() {
         font_list = view.findViewById(R.id.font_list)
 
         val sortByDialog = SortByDialog()
-        val staggeredGridLayoutManager = StaggeredGridLayoutManager(2, LinearLayoutManager.VERTICAL)
         mAdapter = FontAdapter(mActivity.applicationContext,activity)
 
         notifyItem()
 
         font_list.adapter = mAdapter
-        font_list.layoutManager = staggeredGridLayoutManager
+        font_list.layoutManager = LinearLayoutManager(context)
+        font_list.addItemDecoration(DividerItemDecoration(context,1))
 
-        font_list.addItemDecoration(SpacesItemDecoration(10))
+
         
 
         sort_by_btn.setOnClickListener(View.OnClickListener {
@@ -85,13 +87,15 @@ class HomeFragment(activity : MainActivity) : Fragment() {
         var count = 0;
 
         for (i in Fontfolio.list){
-            if (i.fontLicenseDescription.contains("OFL") ) {
+            Log.e("fontLicenseDescription",i.fontLicenseDescription)
+//            if (!i.fontLicenseDescription.contains("Adobe") ) {
 
                     try {
                         if (!resources.getFont(resources.getIdentifier(
                         "${i.fontName.toLowerCase().replace("-", "_")
                             .replace(" ", "_")}",
                         "font", activity?.packageName)).toString().equals(0x00000000)) {
+                            Log.e("fontname",i.fontName)
                             datas.add(i)
                 }
                     }catch (e : RuntimeException){
@@ -100,12 +104,12 @@ class HomeFragment(activity : MainActivity) : Fragment() {
 
 //                }
                 count++
-                if (count == 150)
+                if (count == 200)
                     break
             }
 
 
-        }
+//        }
 
         mAdapter.datas = datas
         mAdapter.notifyDataSetChanged()
