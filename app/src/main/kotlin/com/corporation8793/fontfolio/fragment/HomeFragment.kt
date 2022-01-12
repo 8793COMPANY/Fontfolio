@@ -77,6 +77,7 @@ class HomeFragment(activity : MainActivity) : Fragment() {
         sortByDialog.isCancelable = false
         mAdapter = FontAdapter(mActivity.applicationContext,activity)
 
+
         sort_title.text = titles[Fontfolio.prefs.getInt("sortBy",1)-1]
 
         notifyItem()
