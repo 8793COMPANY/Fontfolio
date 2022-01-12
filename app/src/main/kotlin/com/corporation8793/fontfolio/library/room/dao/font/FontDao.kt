@@ -34,6 +34,10 @@ interface FontDao {
     @Query("SELECT * FROM font WHERE fontName == :fontName")
     fun findByCourseName(fontName: String) : List<Font>
 
+
+    @Query("SELECT * FROM font WHERE fontLicenseDescription == :License")
+    fun findByLicense(License: String) : List<Font>
+
     /**
      * [RoomDatabase]에 [Font]를 [Insert]합니다.
      * @author  두동근

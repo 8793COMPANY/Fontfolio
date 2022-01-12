@@ -1,9 +1,13 @@
 package com.corporation8793.fontfolio.activity
 
+import android.content.DialogInterface
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.view.MenuItem
 import androidx.appcompat.app.AppCompatActivity
+import androidx.fragment.app.Fragment
+import androidx.fragment.app.FragmentManager
 import com.corporation8793.fontfolio.R
 import com.corporation8793.fontfolio.board.SaveBoardActivity
 import com.corporation8793.fontfolio.common.Fontfolio
@@ -59,4 +63,7 @@ class MainActivity : AppCompatActivity() , BottomNavigationView.OnNavigationItem
 
         return false
     }
+
+
+
 }

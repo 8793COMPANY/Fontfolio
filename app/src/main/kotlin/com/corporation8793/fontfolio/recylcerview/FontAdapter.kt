@@ -37,20 +37,25 @@ class FontAdapter(val context: Context, val activity:FragmentActivity?) : Recycl
 //                val content = itemView.findViewById<TextView>(R.id.content)
 
         fun bind(font: Font){
-            Log.e("font.fontLicenseDescription", font.fontLicenseDescription)
-            font_name.text = font.fontName
+            font_name.text = font.fontName.split("-")[0]
             copyright.text = font.fontCopyrightHolder
 
-            license_info = font_license_info.get(font.fontLicenseDescription)!!.split(",")
-            font_license.text = license_info[0]
-            font_license_background.backgroundTintList = (ColorStateList.valueOf(Color.parseColor(license_info[1])))
+            Log.e("fontLicenseDescription",font.fontLicenseDescription)
+            if (font.fontLicenseDescription.trim().equals("inumocca_type")){
+                font_license.text = "inumocca_type"
+                font_license_background.backgroundTintList = (ColorStateList.valueOf(Color.parseColor("#485e90")))
+            }else{
+                license_info = font_license_info.get(font.fontLicenseDescription)!!.split(",")
+                font_license.text = license_info[0]
+                font_license_background.backgroundTintList = (ColorStateList.valueOf(Color.parseColor(license_info[1])))
+            }
+
             Log.e("fontname",font.fontName.toLowerCase().replace(" ", "_").replace("-","_")+".ttf")
             Fontfolio().changeFontOfTextView(activity,font_name,font.fontName)
         }
 
 
     }
-
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ItemViewHolder {
         val view = LayoutInflater.from(parent.context).inflate(
             R.layout.font_list_itemview,
@@ -64,6 +69,10 @@ class FontAdapter(val context: Context, val activity:FragmentActivity?) : Recycl
         font_license_info.put("Free for Personal Use only","Free for Personal use,#ffba00")
         font_license_info.put("100% Free","100% FREE,#ffba00")
         font_license_info.put("Demo Font","Demo Font,#485e90")
+        font_license_info.put("GNU / GPL / OFL","GNU / GPL / OFL,#485e90")
+        font_license_info.put("UInkown","UInkown,#485e90")
+
+
         return ItemViewHolder(view)
     }
 
@@ -100,4 +109,6 @@ class FontAdapter(val context: Context, val activity:FragmentActivity?) : Recycl
     }
 
     override fun getItemCount(): Int = datas.size
+
+
 }

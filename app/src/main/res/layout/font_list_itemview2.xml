@@ -5,31 +5,42 @@
     android:layout_height="wrap_content"
     android:backgroundTint="@color/white">
 
-    <TextView
-        android:id="@+id/ranking"
+
+    <LinearLayout
+        android:id="@+id/font_license_background"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="001"
-        android:textColor="@color/black"
-        android:textSize="13dp"
-        android:textStyle="normal"
+        android:background="@drawable/rounding_item_box_default"
+        android:backgroundTint="#2d717e"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0"
+        app:layout_constraintVertical_bias="0.15"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.15"></TextView>
+        app:layout_constraintTop_toTopOf="parent">
+
+        <TextView
+            android:id="@+id/font_license"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:gravity="top"
+            android:text="OFL"
+            android:textColor="@color/white"></TextView>
+
+    </LinearLayout>
 
     <ImageView
         android:id="@+id/heart_icon"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:background="@drawable/font_info_heart_off"
-        app:layout_constraintBottom_toBottomOf="@+id/ranking"
+        app:layout_constraintBottom_toBottomOf="@+id/font_license_background"
         app:layout_constraintHorizontal_bias="0.03"
-        app:layout_constraintLeft_toRightOf="@+id/ranking"
+        app:layout_constraintLeft_toRightOf="@+id/font_license_background"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/ranking"
+        app:layout_constraintTop_toTopOf="@+id/font_license_background"
         app:layout_constraintWidth_percent="0.05"></ImageView>
 
 
@@ -41,11 +52,11 @@
         android:textColor="#80000000"
         android:textSize="10dp"
         android:textStyle="normal"
-        app:layout_constraintBottom_toBottomOf="@+id/ranking"
+        app:layout_constraintBottom_toBottomOf="@+id/font_license_background"
         app:layout_constraintHorizontal_bias="0"
         app:layout_constraintLeft_toRightOf="@+id/heart_icon"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/ranking"
+        app:layout_constraintTop_toTopOf="@+id/font_license_background"
         app:layout_constraintVertical_bias="0.5"></TextView>
 
 
@@ -70,11 +81,11 @@
         android:textColor="#80000000"
         android:textSize="10dp"
         android:textStyle="normal"
-        app:layout_constraintBottom_toBottomOf="@+id/ranking"
+        app:layout_constraintBottom_toBottomOf="@+id/font_license_background"
         app:layout_constraintHorizontal_bias="0.05"
         app:layout_constraintLeft_toRightOf="@+id/divider"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/ranking"
+        app:layout_constraintTop_toTopOf="@+id/font_license_background"
         app:layout_constraintVertical_bias="0.5"></TextView>
 
     <TextView
@@ -85,36 +96,14 @@
         android:textColor="#80000000"
         android:textSize="10dp"
         android:textStyle="normal"
-        app:layout_constraintBottom_toBottomOf="@+id/ranking"
+        app:layout_constraintBottom_toBottomOf="@+id/font_license_background"
         app:layout_constraintHorizontal_bias="0.02"
         app:layout_constraintLeft_toRightOf="@+id/view_text"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/ranking"
+        app:layout_constraintTop_toTopOf="@+id/font_license_background"
         app:layout_constraintVertical_bias="0.5"></TextView>
 
-    <LinearLayout
-        android:id="@+id/font_license_background"
-        android:layout_width="wrap_content"
-        android:layout_height="0dp"
-        android:background="@drawable/rounding_item_box_default"
-        android:backgroundTint="#2d717e"
-        app:layout_constraintBottom_toBottomOf="@+id/ranking"
-        app:layout_constraintHorizontal_bias="0.08"
-        app:layout_constraintLeft_toRightOf="@+id/view_total_text"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/ranking">
 
-        <TextView
-            android:id="@+id/font_license"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:layout_marginLeft="10dp"
-            android:layout_marginRight="10dp"
-            android:gravity="top"
-            android:text="OFL"
-            android:textColor="@color/white"></TextView>
-
-    </LinearLayout>
 
 
     <TextView
@@ -131,7 +120,7 @@
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toLeftOf="@+id/button"
-        app:layout_constraintTop_toBottomOf="@+id/ranking"
+        app:layout_constraintTop_toBottomOf="@+id/font_license_background"
         app:layout_constraintVertical_bias="0.06"></TextView>
 
     <androidx.appcompat.widget.AppCompatButton

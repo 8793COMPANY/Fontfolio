@@ -2,6 +2,7 @@ package com.corporation8793.fontfolio.dialog;
 
 import android.app.Activity;
 import android.app.Dialog;
+import android.content.DialogInterface;
 import android.os.Bundle;
 import android.util.DisplayMetrics;
 import android.util.Log;
@@ -15,6 +16,7 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.fragment.app.Fragment;
 
 import com.corporation8793.fontfolio.R;
 import com.corporation8793.fontfolio.common.Fontfolio;
@@ -24,10 +26,21 @@ import com.google.android.material.bottomsheet.BottomSheetDialogFragment;
 
 public class SortByDialog extends BottomSheetDialogFragment {
     LinearLayout close_btn;
-    TextView sort_by_recommended,sort_by_random,sort_by_popularity;
-    Button recommended_check,random_check,popularity_check;
+    TextView sort_by_ranking, sort_by_open_font, sort_by_paid_font, sort_by_all_font;
+    Button ranking_check, open_font_check, paid_font_check, all_font_check;
+    private DialogInterface.OnDismissListener onDismissListener = null;
     public SortByDialog(){
 
+    }
+
+    public interface DismissListener {
+        void onDismiss(int hasDate);
+    }
+
+    public DismissListener listener = null;
+
+    public void setDismissListener(DismissListener listener) {
+        this.listener = listener;
     }
 
 
@@ -37,43 +50,54 @@ public class SortByDialog extends BottomSheetDialogFragment {
         View view = inflater.inflate(R.layout.sort_by_sheet_layout,container,false);
         close_btn = view.findViewById(R.id.close_btn);
 
-        sort_by_recommended = view.findViewById(R.id.sort_by_recommended);
-        sort_by_random = view.findViewById(R.id.sort_by_open_font);
-        sort_by_popularity = view.findViewById(R.id.sort_by_paid_font);
+        sort_by_ranking = view.findViewById(R.id.sort_by_recommended);
+        sort_by_open_font = view.findViewById(R.id.sort_by_open_font);
+        sort_by_paid_font = view.findViewById(R.id.sort_by_paid_font);
+        sort_by_all_font = view.findViewById(R.id.sort_by_all_font);
 
-        recommended_check = view.findViewById(R.id.recommeded_check);
-        random_check = view.findViewById(R.id.random_check);
-        popularity_check = view.findViewById(R.id.popularity_check);
+        ranking_check = view.findViewById(R.id.recommeded_check);
+        open_font_check = view.findViewById(R.id.random_check);
+        paid_font_check = view.findViewById(R.id.popularity_check);
+        all_font_check = view.findViewById(R.id.all_font_check);
 
         close_btn.setOnClickListener(v->{
             Log.e("clici","!");
             dismiss();
         });
 
-        if (Fontfolio.prefs.getInt("sortBy",1) == 1){
-            recommended_check.setVisibility(View.VISIBLE);
-        }else if (Fontfolio.prefs.getInt("sortBy",1) == 2){
-            random_check.setVisibility(View.VISIBLE);
-        }else if(Fontfolio.prefs.getInt("sortBy",1) == 3){
-            popularity_check.setVisibility(View.VISIBLE);
+        int sortby = Fontfolio.prefs.getInt("sortBy",1);
+        if (sortby== 1){
+            ranking_check.setVisibility(View.VISIBLE);
+        }else if (sortby == 2){
+            open_font_check.setVisibility(View.VISIBLE);
+        }else if(sortby == 3){
+            paid_font_check.setVisibility(View.VISIBLE);
+        }else if (sortby == 4){
+            all_font_check.setVisibility(View.VISIBLE);
         }
 
-        sort_by_recommended.setOnClickListener(v->{
+        sort_by_ranking.setOnClickListener(v->{
             check_init();
-            recommended_check.setVisibility(View.VISIBLE);
+            ranking_check.setVisibility(View.VISIBLE);
             Fontfolio.prefs.setInt("sortBy",1);
         });
 
-        sort_by_random.setOnClickListener(v->{
+        sort_by_open_font.setOnClickListener(v->{
             check_init();
-            random_check.setVisibility(View.VISIBLE);
+            open_font_check.setVisibility(View.VISIBLE);
             Fontfolio.prefs.setInt("sortBy",2);
         });
 
-        sort_by_popularity.setOnClickListener(v->{
+        sort_by_paid_font.setOnClickListener(v->{
             check_init();
-            popularity_check.setVisibility(View.VISIBLE);
+            paid_font_check.setVisibility(View.VISIBLE);
             Fontfolio.prefs.setInt("sortBy",3);
+        });
+
+        sort_by_all_font.setOnClickListener(v->{
+            check_init();
+            all_font_check.setVisibility(View.VISIBLE);
+            Fontfolio.prefs.setInt("sortBy",4);
         });
 
 
@@ -83,9 +107,9 @@ public class SortByDialog extends BottomSheetDialogFragment {
     }
 
     public void check_init(){
-        recommended_check.setVisibility(View.INVISIBLE);
-        random_check.setVisibility(View.INVISIBLE);
-        popularity_check.setVisibility(View.INVISIBLE);
+        ranking_check.setVisibility(View.INVISIBLE);
+        open_font_check.setVisibility(View.INVISIBLE);
+        paid_font_check.setVisibility(View.INVISIBLE);
     }
 
 
@@ -122,5 +146,15 @@ public class SortByDialog extends BottomSheetDialogFragment {
         DisplayMetrics displayMetrics = new DisplayMetrics();
         ((Activity) getContext()).getWindowManager().getDefaultDisplay().getMetrics(displayMetrics);
         return displayMetrics.heightPixels;
+    }
+
+
+    @Override
+    public void onDismiss(@NonNull DialogInterface dialog) {
+        super.onDismiss(dialog);
+        Log.e("hi","in dismisslistener");
+        if (listener != null) {
+            listener.onDismiss(Fontfolio.prefs.getInt("sortBy",4));
+        }
     }
 }
