@@ -1,8 +1,10 @@
 package com.corporation8793.fontfolio.fragment
 
+import `in`.myinnos.alphabetsindexfastscrollrecycler.IndexFastScrollRecyclerView
 import android.annotation.SuppressLint
 import android.content.DialogInterface
 import android.content.res.Resources
+import android.graphics.Color
 import android.graphics.drawable.ClipDrawable.VERTICAL
 import android.os.Bundle
 import android.util.Log
@@ -46,8 +48,10 @@ class HomeFragment(activity : MainActivity) : Fragment() {
     val datas = mutableListOf<Font>()
     val font_large_category= mutableListOf<String>()
     lateinit var mAdapter:FontAdapter
+    lateinit var indexBar: IndexFastScrollRecyclerView
 
     lateinit var sort_title : TextView
+    var sortby = 1;
     var titles = arrayOf("Font recommendation","Open Font License","Commercial Paid Fonts","All Fonts")
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -72,6 +76,12 @@ class HomeFragment(activity : MainActivity) : Fragment() {
         sort_by_btn = view.findViewById(R.id.sort_by_btn)
         font_list = view.findViewById(R.id.font_list)
         sort_title  = view.findViewById(R.id.sort_title)
+        indexBar = view.findViewById(R.id.index_bar)
+
+        indexBar.setIndexTextSize = 3
+        indexBar.setIndexBarColor(R.color.btn_red)
+        indexBar.setIndexBarTextColor(R.color.black)
+        indexBar.setIndexBarCornerRadius(10)
 
         val sortByDialog = SortByDialog()
         sortByDialog.isCancelable = false
@@ -91,6 +101,9 @@ class HomeFragment(activity : MainActivity) : Fragment() {
         
 
         sort_by_btn.setOnClickListener(View.OnClickListener {
+            val bundle = Bundle()
+            bundle.putInt("num",sortby)
+            sortByDialog.arguments = bundle
             sortByDialog.show(
                 mActivity.supportFragmentManager,
                 sortByDialog.tag
@@ -100,11 +113,19 @@ class HomeFragment(activity : MainActivity) : Fragment() {
 
         sortByDialog.setDismissListener(){
             sort_title.text = titles[it-1]
+            sortby =it
             if (it==1){
                 notifyItem()
-            }
-            if (it == 2){
+                mAdapter.setItemViewType(0)
+            }else if (it == 2){
                 getOpenFontList()
+                mAdapter.setItemViewType(1)
+            }else if(it ==3){
+                getPaidFonts()
+                mAdapter.setItemViewType(1)
+            }else{
+                getAllFonts()
+                mAdapter.setItemViewType(1)
             }
         }
 
@@ -116,7 +137,6 @@ class HomeFragment(activity : MainActivity) : Fragment() {
         var count = 0;
 
         for (i in Fontfolio.list){
-            Log.e("fontLicenseDescription",i.fontLicenseDescription)
 //            if (!i.fontLicenseDescription.contains("Adobe") ) {
 
 //            Log.e("font name split",i.fontName.split("-")[0])
@@ -128,17 +148,121 @@ class HomeFragment(activity : MainActivity) : Fragment() {
                             "${i.fontName.toLowerCase().replace("-", "_")
                                 .replace(" ", "_")}",
                             "font", activity?.packageName)).toString().equals(0x00000000)) {
-                        Log.e("fontname",i.fontName)
                         datas.add(i)
+                        count++
                     }
                 }catch (e : RuntimeException){
                     Log.e("폰트","저장 안 되어 있음")
                 }
 
 //                }
-//                count++
-//                if (count == 200)
-//                    break
+
+
+                font_large_category.add(i.fontName.split("-")[0])
+
+
+                if (count == 100)
+                    break
+
+            }
+
+
+//        }
+
+            }
+        mAdapter.datas = datas
+//        mAdapter.notifyDataSetChanged()
+
+    }
+
+    fun getOpenFontList(){
+        val font = Fontfolio.list.filter { font -> font.fontLicenseDescription == "OFL (Open Font License)" }
+
+        datas.clear()
+        font_large_category.clear()
+
+        for (i in font) {
+            if ((i.fontName.split("-")[0] in font_large_category)) {
+
+            }else{
+                try {
+                    if (!resources.getFont(resources.getIdentifier(
+                            "${i.fontName.toLowerCase().replace("-", "_")
+                                .replace(" ", "_")}",
+                            "font", activity?.packageName)).toString().equals(0x00000000)) {
+                        Log.e("i", i.fontName)
+                        datas.add(i)
+                        font_large_category.add(i.fontName.split("-")[0])
+
+                    }
+                }catch (e : RuntimeException){
+                    Log.e("폰트","저장 안 되어 있음")
+                }
+            }
+        }
+
+        datas.sortBy { it.fontName }
+        mAdapter.datas = datas
+//        mAdapter.notifyDataSetChanged()
+    }
+
+
+
+    fun getPaidFonts(){
+        val font = Fontfolio.list.filter { font -> font.fontLicenseDescription == "Paid Fonts" }
+        datas.clear()
+        font_large_category.clear()
+
+        for (i in font) {
+            if ((i.fontName.split("-")[0] in font_large_category)) {
+
+            }else{
+                try {
+                    if (!resources.getFont(resources.getIdentifier(
+                            "${i.fontName.toLowerCase().replace("-", "_")
+                                .replace(" ", "_")}",
+                            "font", activity?.packageName)).toString().equals(0x00000000)) {
+                        datas.add(i)
+                        font_large_category.add(i.fontName.split("-")[0])
+
+                    }
+                }catch (e : RuntimeException){
+                    Log.e("폰트","저장 안 되어 있음")
+                }
+            }
+        }
+
+        datas.sortBy { it.fontName }
+        mAdapter.datas = datas
+//        mAdapter.notifyDataSetChanged()
+    }
+
+
+    fun getAllFonts(){
+        datas.clear()
+        var count = 0;
+
+        for (i in Fontfolio.list){
+//            if (!i.fontLicenseDescription.contains("Adobe") ) {
+
+//            Log.e("font name split",i.fontName.split("-")[0])
+            if((i.fontName.split("-")[0] in font_large_category )){
+
+            }else{
+                try {
+                    if (!resources.getFont(resources.getIdentifier(
+                            "${i.fontName.toLowerCase().replace("-", "_")
+                                .replace(" ", "_")}",
+                            "font", activity?.packageName)).toString().equals(0x00000000)) {
+                        datas.add(i)
+                        count++
+                    }
+                }catch (e : RuntimeException){
+                    Log.e("폰트","저장 안 되어 있음")
+                }
+
+//                }
+
 
                 font_large_category.add(i.fontName.split("-")[0])
 
@@ -147,72 +271,14 @@ class HomeFragment(activity : MainActivity) : Fragment() {
 
 //        }
 
-            }
-
-        mAdapter.datas = datas
-        mAdapter.notifyDataSetChanged()
-
-    }
-
-    fun getOpenFontList(){
-        val font = Fontfolio.list.filter { font -> font.fontLicenseDescription == "OFL (Open Font License)" }
-        datas.clear()
-        font_large_category.clear()
-
-        for (i in font) {
-            if ((i.fontName.split("-")[0] in font_large_category)) {
-
-            }else{
-                try {
-                    if (!resources.getFont(resources.getIdentifier(
-                            "${i.fontName.toLowerCase().replace("-", "_")
-                                .replace(" ", "_")}",
-                            "font", activity?.packageName)).toString().equals(0x00000000)) {
-                        Log.e("i", i.fontName)
-                        datas.add(i)
-                        font_large_category.add(i.fontName.split("-")[0])
-
-                    }
-                }catch (e : RuntimeException){
-                    Log.e("폰트","저장 안 되어 있음")
-                }
-            }
         }
 
+        datas.sortBy { it.fontName }
         mAdapter.datas = datas
-        mAdapter.notifyDataSetChanged()
+//        mAdapter.notifyDataSetChanged()
+
     }
 
-
-
-    fun getPaidFonts(){
-        val font = Fontfolio.list.filter { font -> font.fontLicenseDescription == "OFL (Open Font License)" }
-        datas.clear()
-        font_large_category.clear()
-
-        for (i in font) {
-            if ((i.fontName.split("-")[0] in font_large_category)) {
-
-            }else{
-                try {
-                    if (!resources.getFont(resources.getIdentifier(
-                            "${i.fontName.toLowerCase().replace("-", "_")
-                                .replace(" ", "_")}",
-                            "font", activity?.packageName)).toString().equals(0x00000000)) {
-                        Log.e("i", i.fontName)
-                        datas.add(i)
-                        font_large_category.add(i.fontName.split("-")[0])
-
-                    }
-                }catch (e : RuntimeException){
-                    Log.e("폰트","저장 안 되어 있음")
-                }
-            }
-        }
-
-        mAdapter.datas = datas
-        mAdapter.notifyDataSetChanged()
-    }
 
 
 }

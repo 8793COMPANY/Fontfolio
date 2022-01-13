@@ -97,4 +97,6 @@ dependencies {
     implementation platform('com.google.firebase:firebase-bom:28.4.2')
     implementation 'com.google.firebase:firebase-ml-modeldownloader'
     implementation 'org.tensorflow:tensorflow-lite:+'
+
+    implementation 'com.github.myinnos:AlphabetIndex-Fast-Scroll-RecyclerView:1.0.95'
 }

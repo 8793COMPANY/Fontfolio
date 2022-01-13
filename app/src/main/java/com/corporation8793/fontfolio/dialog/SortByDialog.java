@@ -29,6 +29,7 @@ public class SortByDialog extends BottomSheetDialogFragment {
     TextView sort_by_ranking, sort_by_open_font, sort_by_paid_font, sort_by_all_font;
     Button ranking_check, open_font_check, paid_font_check, all_font_check;
     private DialogInterface.OnDismissListener onDismissListener = null;
+    int num = 0;
     public SortByDialog(){
 
     }
@@ -47,6 +48,7 @@ public class SortByDialog extends BottomSheetDialogFragment {
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+        num = getArguments().getInt("num");
         View view = inflater.inflate(R.layout.sort_by_sheet_layout,container,false);
         close_btn = view.findViewById(R.id.close_btn);
 
@@ -65,38 +67,42 @@ public class SortByDialog extends BottomSheetDialogFragment {
             dismiss();
         });
 
-        int sortby = Fontfolio.prefs.getInt("sortBy",1);
-        if (sortby== 1){
+
+        if (num== 1){
             ranking_check.setVisibility(View.VISIBLE);
-        }else if (sortby == 2){
+        }else if (num == 2){
             open_font_check.setVisibility(View.VISIBLE);
-        }else if(sortby == 3){
+        }else if(num == 3){
             paid_font_check.setVisibility(View.VISIBLE);
-        }else if (sortby == 4){
+        }else if (num == 4){
             all_font_check.setVisibility(View.VISIBLE);
         }
 
         sort_by_ranking.setOnClickListener(v->{
             check_init();
             ranking_check.setVisibility(View.VISIBLE);
+            num = 1;
             Fontfolio.prefs.setInt("sortBy",1);
         });
 
         sort_by_open_font.setOnClickListener(v->{
             check_init();
             open_font_check.setVisibility(View.VISIBLE);
+            num = 2;
             Fontfolio.prefs.setInt("sortBy",2);
         });
 
         sort_by_paid_font.setOnClickListener(v->{
             check_init();
             paid_font_check.setVisibility(View.VISIBLE);
+            num = 3;
             Fontfolio.prefs.setInt("sortBy",3);
         });
 
         sort_by_all_font.setOnClickListener(v->{
             check_init();
             all_font_check.setVisibility(View.VISIBLE);
+            num = 4;
             Fontfolio.prefs.setInt("sortBy",4);
         });
 
@@ -110,6 +116,7 @@ public class SortByDialog extends BottomSheetDialogFragment {
         ranking_check.setVisibility(View.INVISIBLE);
         open_font_check.setVisibility(View.INVISIBLE);
         paid_font_check.setVisibility(View.INVISIBLE);
+        all_font_check.setVisibility(View.INVISIBLE);
     }
 
 
@@ -154,7 +161,7 @@ public class SortByDialog extends BottomSheetDialogFragment {
         super.onDismiss(dialog);
         Log.e("hi","in dismisslistener");
         if (listener != null) {
-            listener.onDismiss(Fontfolio.prefs.getInt("sortBy",4));
+            listener.onDismiss(num);
         }
     }
 }
