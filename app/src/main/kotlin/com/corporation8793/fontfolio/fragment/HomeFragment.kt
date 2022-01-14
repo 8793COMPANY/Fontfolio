@@ -1,6 +1,5 @@
 package com.corporation8793.fontfolio.fragment
 
-import `in`.myinnos.alphabetsindexfastscrollrecycler.IndexFastScrollRecyclerView
 import android.annotation.SuppressLint
 import android.os.Bundle
 import android.util.Log
@@ -21,7 +20,6 @@ import com.corporation8793.fontfolio.fragment.search.SearchFragment
 import com.corporation8793.fontfolio.library.room.entity.font.Font
 import com.corporation8793.fontfolio.recylcerview.FontAdapter
 import com.reddit.indicatorfastscroll.FastScrollItemIndicator
-import com.reddit.indicatorfastscroll.FastScrollerThumbView
 import com.reddit.indicatorfastscroll.FastScrollerView
 import java.lang.RuntimeException
 
@@ -72,12 +70,6 @@ class HomeFragment(activity : MainActivity) : Fragment() {
         sort_title  = view.findViewById(R.id.sort_title)
         fastScroller = view.findViewById(R.id.fastscroller)
         fastScroller.textPadding = 5.0f
-//        indexBar = view.findViewById(R.id.index_bar)
-//
-//        indexBar.setIndexTextSize = 3
-//        indexBar.setIndexBarColor(R.color.btn_red)
-//        indexBar.setIndexBarTextColor(R.color.black)
-//        indexBar.setIndexBarCornerRadius(10)
 
         val sortByDialog = SortByDialog()
         sortByDialog.isCancelable = false
@@ -85,8 +77,17 @@ class HomeFragment(activity : MainActivity) : Fragment() {
 
 
         sort_title.text = titles[Fontfolio.prefs.getInt("sortBy",1)-1]
+        sortby = Fontfolio.prefs.getInt("sortBy",1)
+        if(Fontfolio.prefs.getInt("sortBy",1) == 1){
+            notifyItem()
+        }else if(Fontfolio.prefs.getInt("sortBy",1) == 2){
+            getLicenseFontList("OFL (Open Font License)")
+        }else if(Fontfolio.prefs.getInt("sortBy",1) == 3){
+            getLicenseFontList("Paid Fonts")
+        }else{
+            getAllFonts()
+        }
 
-        notifyItem()
         fastScroller.visibility = View.INVISIBLE
 
         font_list.adapter = mAdapter
@@ -102,14 +103,12 @@ class HomeFragment(activity : MainActivity) : Fragment() {
             ) {
                 // Handle scrolling
                 font_list.scrollToPosition(itemPosition)
-//                font_list.verticalScrollbarPosition = itemPosition
                 Log.e("itemPosition",itemPosition.toString())
             }
         }
 
         fastScroller.setupWithRecyclerView(font_list,{
-            position->val item = datas[position] // Get your model object
-            // or fetch the section at [position] from your database
+            position->val item = datas[position]
 
             FastScrollItemIndicator.Text(
                 item.fontName.substring(0,1).toUpperCase()
@@ -137,11 +136,11 @@ class HomeFragment(activity : MainActivity) : Fragment() {
                 fastScroller.visibility = View.INVISIBLE
                 mAdapter.setItemViewType(0)
             }else if (it == 2){
-                getOpenFontList()
+                getLicenseFontList("OFL (Open Font License)")
                 fastScroller.visibility = View.VISIBLE
                 mAdapter.setItemViewType(1)
             }else if(it ==3){
-                getPaidFonts()
+                getLicenseFontList("Paid Fonts")
                 fastScroller.visibility = View.VISIBLE
                 mAdapter.setItemViewType(1)
             }else{
@@ -156,12 +155,11 @@ class HomeFragment(activity : MainActivity) : Fragment() {
 
     fun notifyItem(){
         datas.clear()
+        font_large_category.clear()
         var count = 0;
 
         for (i in Fontfolio.list){
-//            if (!i.fontLicenseDescription.contains("Adobe") ) {
 
-//            Log.e("font name split",i.fontName.split("-")[0])
             if((i.fontName.split("-")[0] in font_large_category )){
 
             }else{
@@ -177,32 +175,22 @@ class HomeFragment(activity : MainActivity) : Fragment() {
                     Log.e("폰트","저장 안 되어 있음")
                 }
 
-//                }
-
-
                 font_large_category.add(i.fontName.split("-")[0])
-
 
                 if (count == 100)
                     break
-
             }
-
-
-//        }
 
             }
         mAdapter.datas = datas
-//        mAdapter.notifyDataSetChanged()
-
     }
 
-    fun getOpenFontList(){
-        val font = Fontfolio.list.filter { font -> font.fontLicenseDescription == "OFL (Open Font License)" }
+    fun getLicenseFontList(license:String){
+
+        val font = Fontfolio.list.filter { font -> font.fontLicenseDescription == license }
 
         datas.clear()
         font_large_category.clear()
-
         for (i in font) {
             if ((i.fontName.split("-")[0] in font_large_category)) {
 
@@ -225,49 +213,14 @@ class HomeFragment(activity : MainActivity) : Fragment() {
 
         datas.sortBy { it.fontName }
         mAdapter.datas = datas
-//        mAdapter.notifyDataSetChanged()
-    }
-
-
-
-    fun getPaidFonts(){
-        val font = Fontfolio.list.filter { font -> font.fontLicenseDescription == "Paid Fonts" }
-        datas.clear()
-        font_large_category.clear()
-
-        for (i in font) {
-            if ((i.fontName.split("-")[0] in font_large_category)) {
-
-            }else{
-                try {
-                    if (!resources.getFont(resources.getIdentifier(
-                            "${i.fontName.toLowerCase().replace("-", "_")
-                                .replace(" ", "_")}",
-                            "font", activity?.packageName)).toString().equals(0x00000000)) {
-                        datas.add(i)
-                        font_large_category.add(i.fontName.split("-")[0])
-
-                    }
-                }catch (e : RuntimeException){
-                    Log.e("폰트","저장 안 되어 있음")
-                }
-            }
-        }
-
-        datas.sortBy { it.fontName }
-        mAdapter.datas = datas
-//        mAdapter.notifyDataSetChanged()
     }
 
 
     fun getAllFonts(){
         datas.clear()
+        font_large_category.clear()
         var count = 0;
-
         for (i in Fontfolio.list){
-//            if (!i.fontLicenseDescription.contains("Adobe") ) {
-
-//            Log.e("font name split",i.fontName.split("-")[0])
             if((i.fontName.split("-")[0] in font_large_category )){
 
             }else{
@@ -290,16 +243,12 @@ class HomeFragment(activity : MainActivity) : Fragment() {
 
             }
 
-
-//        }
-
         }
-
         datas.sortBy { it.fontName }
         mAdapter.datas = datas
-//        mAdapter.notifyDataSetChanged()
 
     }
+
 
 
 

@@ -8,9 +8,11 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.FrameLayout
 import android.widget.LinearLayout
 import android.widget.SectionIndexer
 import android.widget.TextView
+import androidx.constraintlayout.widget.Constraints
 import androidx.fragment.app.FragmentActivity
 import androidx.recyclerview.widget.RecyclerView
 import com.corporation8793.fontfolio.R
@@ -150,38 +152,10 @@ class FontAdapter(val context: Context, val activity: FragmentActivity?) : Recyc
 
         })
 
+
     }
 
     override fun getItemCount(): Int = datas.size
-//    override fun getSections(): Array<Any> {
-//                Log.e("in","getSections")
-//        val sections: MutableList<String> = ArrayList(26)
-//        mSectionPositions = ArrayList(26)
-//
-//        var pos =0
-//
-//        for (i  in datas){
-//            Log.e("in",i.fontName)
-//            var section = i.fontName.toUpperCase()
-//            if (!sections.contains(section)){
-//                sections.add(section)
-//                mSectionPositions.add(pos)
-//            }
-//            pos++
-//        }
-//
-//        return sections.toTypedArray()
-//    }
-//
-//    override fun getPositionForSection(sectionIndex: Int): Int {
-//        Log.e("in","getPositionForSection")
-//        return mSectionPositions.get(sectionIndex)
-//    }
-//
-//    override fun getSectionForPosition(position: Int): Int {
-//        Log.e("in","getPositionForSection")
-//      return 0
-//    }
 
 
 
