@@ -19,7 +19,7 @@ import com.corporation8793.fontfolio.common.Fontfolio
 import com.corporation8793.fontfolio.library.room.entity.font.Font
 
 
-class FontAdapter(val context: Context, val activity: FragmentActivity?) : RecyclerView.Adapter<FontAdapter.ItemViewHolder>(), SectionIndexer{
+class FontAdapter(val context: Context, val activity: FragmentActivity?) : RecyclerView.Adapter<FontAdapter.ItemViewHolder>(){
     var datas = mutableListOf<Font>()
     var colors = arrayOf(
         "#eaebde",
@@ -153,35 +153,8 @@ class FontAdapter(val context: Context, val activity: FragmentActivity?) : Recyc
     }
 
     override fun getItemCount(): Int = datas.size
-    override fun getSections(): Array<Any> {
-                Log.e("in","getSections")
-        val sections: MutableList<String> = ArrayList(26)
-        mSectionPositions = ArrayList(26)
-
-        var pos =0
-
-        for (i  in datas){
-            Log.e("in",i.fontName)
-            var section = i.fontName.toUpperCase()
-            if (!sections.contains(section)){
-                sections.add(section)
-                mSectionPositions.add(pos)
-            }
-            pos++
-        }
-
-        return sections.toTypedArray()
-    }
-
-    override fun getPositionForSection(sectionIndex: Int): Int {
-        return mSectionPositions.get(sectionIndex)
-    }
-
-    override fun getSectionForPosition(position: Int): Int {
-      return 0
-    }
 //    override fun getSections(): Array<Any> {
-//        Log.e("in","getSections")
+//                Log.e("in","getSections")
 //        val sections: MutableList<String> = ArrayList(26)
 //        mSectionPositions = ArrayList(26)
 //
@@ -201,12 +174,15 @@ class FontAdapter(val context: Context, val activity: FragmentActivity?) : Recyc
 //    }
 //
 //    override fun getPositionForSection(sectionIndex: Int): Int {
+//        Log.e("in","getPositionForSection")
 //        return mSectionPositions.get(sectionIndex)
 //    }
 //
 //    override fun getSectionForPosition(position: Int): Int {
-//        return 0
+//        Log.e("in","getPositionForSection")
+//      return 0
 //    }
+
 
 
 }

@@ -97,17 +97,26 @@ public class ShowCropperedActivity extends AppCompatActivity {
 //        "Gill Sans Std-Regular",
 //        "Mont-Regular"};
 
+//    String [ ] fontNames = {
+//            "Alegreya-Regular",
+//            "Epilogue-Regular",
+//            "Inter-Regular",
+//            "David Libre-Regular",
+//            "Gentium-Regular",
+//            "Adobe Caslon Pro-Regular",
+//            "Bembo Std-Regular",
+//            "Centaur-Regular",
+//            "Mont-Regular",
+//            "Baskerville-Regular"};
+
     String [ ] fontNames = {
-            "Alegreya-Regular",
-            "Epilogue-Regular",
-            "Inter-Regular",
-            "David Libre-Regular",
-            "Gentium-Regular",
             "Adobe Caslon Pro-Regular",
+            "Alegreya-Regular",
+            "Baskerville-Regular",
             "Bembo Std-Regular",
             "Centaur-Regular",
-            "Mont-Regular",
-            "Baskerville-Regular"};
+            "David Libre-Regular",
+            };
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
