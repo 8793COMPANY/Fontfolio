@@ -99,9 +99,15 @@ class Join : AppCompatActivity() {
                                             grantResults: IntArray) {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults)
 
-        CoroutineScope(Dispatchers.IO).launch {
+        val job = CoroutineScope(Dispatchers.IO).launch {
             Log.e("Join", "list initialize")
-            Fontfolio.list = fontfolio.db.fontDao().getAll()
+            fun getList() : List<Font> {
+                return fontfolio.db.fontDao().getAll()
+            }
+
+            Log.e("Join", "list initialize")
+            val a_list = async { getList() }
+            Fontfolio.list = a_list.await()
         }
 
         if(grantResults.isNotEmpty()) {

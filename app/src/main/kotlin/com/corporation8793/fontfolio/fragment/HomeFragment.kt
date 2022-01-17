@@ -52,6 +52,8 @@ class HomeFragment(activity : MainActivity) : Fragment() {
             param1 = it.getString(ARG_PARAM1)
             param2 = it.getString(ARG_PARAM2)
         }
+
+        Fontfolio().getInstance(mActivity)
     }
 
 
@@ -156,33 +158,35 @@ class HomeFragment(activity : MainActivity) : Fragment() {
     fun notifyItem(){
         datas.clear()
         font_large_category.clear()
-        var count = 0;
+        var count = 0
 
-        for (i in Fontfolio.list){
+        if (!Fontfolio.list.isNullOrEmpty()) {
+            for (i in Fontfolio.list){
 
-            if((i.fontName.split("-")[0] in font_large_category )){
+                if((i.fontName.split("-")[0] in font_large_category )){
 
-            }else{
-                try {
-                    if (!resources.getFont(resources.getIdentifier(
-                            "${i.fontName.toLowerCase().replace("-", "_")
-                                .replace(" ", "_")}",
-                            "font", activity?.packageName)).toString().equals(0x00000000)) {
-                        datas.add(i)
-                        count++
+                }else{
+                    try {
+                        if (!resources.getFont(resources.getIdentifier(
+                                "${i.fontName.toLowerCase().replace("-", "_")
+                                    .replace(" ", "_")}",
+                                "font", activity?.packageName)).toString().equals(0x00000000)) {
+                            datas.add(i)
+                            count++
+                        }
+                    }catch (e : RuntimeException){
+                        Log.e("폰트","저장 안 되어 있음")
                     }
-                }catch (e : RuntimeException){
-                    Log.e("폰트","저장 안 되어 있음")
+
+                    font_large_category.add(i.fontName.split("-")[0])
+
+                    if (count == 100)
+                        break
                 }
 
-                font_large_category.add(i.fontName.split("-")[0])
-
-                if (count == 100)
-                    break
             }
-
-            }
-        mAdapter.datas = datas
+            mAdapter.datas = datas
+        }
     }
 
     fun getLicenseFontList(license:String){

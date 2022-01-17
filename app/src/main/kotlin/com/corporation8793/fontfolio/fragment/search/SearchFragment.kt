@@ -26,6 +26,7 @@ import com.corporation8793.fontfolio.fragment.HomeFragment
 import com.corporation8793.fontfolio.library.room.entity.font.Font
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.async
 import kotlinx.coroutines.launch
 
 private const val ARG_PARAM1 = "param1"
@@ -77,9 +78,15 @@ class SearchFragment(val activity : MainActivity, val isDirectFromHomeFragment :
         Fontfolio.searchFragment = mFragment
 
         if (Fontfolio.list.isNullOrEmpty()) {
-            CoroutineScope(Dispatchers.IO).launch {
+            val job = CoroutineScope(Dispatchers.IO).launch {
                 Log.e("SearchFragment", "list is Null Or Empty, Trying... re-initialize")
-                Fontfolio.list = fontfolio.db.fontDao().getAll()
+                fun getList() : List<Font> {
+                    return fontfolio.db.fontDao().getAll()
+                }
+
+                Log.e("Join", "list initialize")
+                val a_list = async { getList() }
+                Fontfolio.list = a_list.await()
             }
         } else {
             filter_result = Fontfolio.list.toMutableList()

@@ -3,6 +3,7 @@ package com.corporation8793.fontfolio.analysis;
 import android.app.Activity;
 import android.content.Context;
 import android.content.res.Resources;
+import android.graphics.Typeface;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -18,12 +19,14 @@ import com.corporation8793.fontfolio.common.Fontfolio;
 import com.corporation8793.fontfolio.library.room.entity.font.Font;
 
 import java.util.ArrayList;
+import java.util.Locale;
 
 public class FontAnalysisAdapter extends RecyclerView.Adapter<FontAnalysisAdapter.ViewHolder> {
 
     private ArrayList<AnalysisItem> mData = null ;
     String msg;
-    Activity activity;
+    Resources res;
+    String pkg;
 
     // 아이템 뷰를 저장하는 뷰홀더 클래스.
     public class ViewHolder extends RecyclerView.ViewHolder {
@@ -47,10 +50,11 @@ public class FontAnalysisAdapter extends RecyclerView.Adapter<FontAnalysisAdapte
     }
 
     // 생성자에서 데이터 리스트 객체를 전달받음.
-    public FontAnalysisAdapter(ArrayList<AnalysisItem> list, String msg, Activity activity) {
+    public FontAnalysisAdapter(ArrayList<AnalysisItem> list, String msg, Resources res, String pkg) {
         mData = list ;
         this.msg = msg;
-        this.activity = activity;
+        this.res = res;
+        this.pkg = pkg;
     }
 
     // onCreateViewHolder() - 아이템 뷰를 위한 뷰홀더 객체 생성하여 리턴.
@@ -82,12 +86,28 @@ public class FontAnalysisAdapter extends RecyclerView.Adapter<FontAnalysisAdapte
             msg = "Fontfolio";
         }
 
-//        Resources res = activity.getResources();
-//        String pkg = activity.getPackageName();
-//
-//        holder.content.setTypeface(res.getFont(res.getIdentifier(
-//                mData.get(position).name, "font", pkg
-//        )));
+        String preProcessingName = mData.get(position).name
+                .toLowerCase()
+                .replace("-", "_")
+                .replace(" ", "_");
+
+        Log.e("test1", "" + res.toString());
+        Log.e("test2", "" + pkg);
+        Log.e("test3", "" + preProcessingName);
+
+        Typeface typeface = null;
+
+        try {
+            typeface = res.getFont(res.getIdentifier(
+                    preProcessingName,
+                    "font", pkg
+            ));
+        } catch (Exception e) {
+            Log.e("typeface", "onBindViewHolder: ", e);
+        } finally {
+            // changeFontOfTextView
+            holder.content.setTypeface(typeface);
+        }
 
 //        holder.like_font_btn.setOnClickListener(v->{
 //            if (holder.like_font_btn.isSelected()){

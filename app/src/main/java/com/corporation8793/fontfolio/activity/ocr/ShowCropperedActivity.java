@@ -3,6 +3,7 @@ package com.corporation8793.fontfolio.activity.ocr;
 import android.app.Activity;
 import android.app.ProgressDialog;
 import android.content.Context;
+import android.content.res.Resources;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
@@ -81,6 +82,9 @@ public class ShowCropperedActivity extends AppCompatActivity {
     private              LinearLayout ofl_badge;
     private              LinearLayout paid_badge;
 
+    private              Resources res;
+    private              String pkg;
+
     private int    width;
     private int    height;
     private Uri    uri;
@@ -147,6 +151,9 @@ public class ShowCropperedActivity extends AppCompatActivity {
         initTess();
         initClassifier();
 
+        res = getResources();
+        pkg = getPackageName();
+
 //        Fontfolio.list.parallelStream().filter(p->p.getFontName().equals(mData.get(position).name)).findAny().get().getFontCopyrightHolder()
 
 
@@ -191,7 +198,7 @@ public class ShowCropperedActivity extends AppCompatActivity {
     }
 
     private void initRecyclerView(){
-        adapter = new FontAnalysisAdapter(mList, result, activity);
+        adapter = new FontAnalysisAdapter(mList, result, res, pkg);
         font_analysis_result.setAdapter(adapter);
         font_analysis_result.setLayoutManager(new LinearLayoutManager(this));
         DividerItemDecoration dividerItemDecoration = new DividerItemDecoration(this, LinearLayout.VERTICAL);
