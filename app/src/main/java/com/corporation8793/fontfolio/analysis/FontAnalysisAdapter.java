@@ -19,7 +19,7 @@ import java.util.ArrayList;
 public class FontAnalysisAdapter extends RecyclerView.Adapter<FontAnalysisAdapter.ViewHolder> {
 
     private ArrayList<AnalysisItem> mData = null ;
-    String msg = "";
+    String msg;
 
     // 아이템 뷰를 저장하는 뷰홀더 클래스.
     public class ViewHolder extends RecyclerView.ViewHolder {
@@ -67,10 +67,14 @@ public class FontAnalysisAdapter extends RecyclerView.Adapter<FontAnalysisAdapte
         holder.percent.setText(mData.get(position).percent+"%");
         holder.copyright.setText(mData.get(position).copyright);
 
-        if (msg.trim().equals("")){
-            holder.content.setText("agent orange");
-        }else{
-            holder.content.setText(msg);
+        if(msg != null) {
+            if (msg.trim().equals("")){
+                holder.content.setText("agent orange");
+            } else{
+                holder.content.setText(msg);
+            }
+        } else {
+            msg = "null";
         }
 
 //        holder.like_font_btn.setOnClickListener(v->{
