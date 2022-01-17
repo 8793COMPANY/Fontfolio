@@ -20,6 +20,7 @@ import com.corporation8793.fontfolio.library.room.entity.font.FontLicense
 import com.corporation8793.fontfolio.library.room.entity.font.FontStyleInformation
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.async
 import kotlinx.coroutines.launch
 
 /**
@@ -61,6 +62,18 @@ class Fontfolio : Application() {
             c,
             AppDatabase::class.java, "FontDB"
         ).build()
+
+        val job = CoroutineScope(Dispatchers.IO).launch {
+            Log.e("onCreate", "list is Null Or Empty, Trying... re-initialize")
+            fun getList() : List<Font> {
+                return db.fontDao().getAll()
+            }
+
+            Log.e("Join", "list initialize")
+            val a_list = async { getList() }
+            list = a_list.await()
+            Log.e("onCreate", "list is OK")
+        }
 
         return this
     }
