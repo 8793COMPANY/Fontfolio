@@ -132,7 +132,6 @@ public class ShowCropperedActivity extends AppCompatActivity {
         initView();
         initTess();
         initClassifier();
-        initRecyclerView();
 
 
 //        String outString = String.format(Locale.ENGLISH, "%d, %.0f%%", result.first, result.second * 100.0f);
@@ -169,7 +168,7 @@ public class ShowCropperedActivity extends AppCompatActivity {
     }
 
     private void initRecyclerView(){
-        adapter = new FontAnalysisAdapter(mList,result);
+        adapter = new FontAnalysisAdapter(mList, result);
         font_analysis_result.setAdapter(adapter);
         font_analysis_result.setLayoutManager(new LinearLayoutManager(this));
         DividerItemDecoration dividerItemDecoration = new DividerItemDecoration(this, LinearLayout.VERTICAL);
@@ -282,6 +281,7 @@ public class ShowCropperedActivity extends AppCompatActivity {
 
             handler.post(() -> {
                 textView.setText(result);
+                initRecyclerView();
                 dialog.dismiss();
             });
         }
