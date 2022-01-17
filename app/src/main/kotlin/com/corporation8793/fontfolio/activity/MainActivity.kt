@@ -17,6 +17,7 @@ import com.google.android.material.bottomnavigation.BottomNavigationView
 
 class MainActivity : AppCompatActivity() , BottomNavigationView.OnNavigationItemSelectedListener{
     lateinit var bottomNavigationView:BottomNavigationView
+    //commit 확인
     override fun onCreate(savedInstanceState: Bundle?) {
         supportFragmentManager.fragmentFactory = FragmentFactory(this)
         super.onCreate(savedInstanceState)
