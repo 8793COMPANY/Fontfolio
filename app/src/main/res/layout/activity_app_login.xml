@@ -219,7 +219,6 @@
             android:id="@+id/login_section_bottom"
             android:layout_width="0dp"
             android:layout_height="0dp"
-            android:background="@drawable/login_error4"
             app:layout_constraintLeft_toLeftOf="@id/guideline"
             app:layout_constraintTop_toBottomOf="@+id/pw_input_box"
             app:layout_constraintBottom_toBottomOf="parent"

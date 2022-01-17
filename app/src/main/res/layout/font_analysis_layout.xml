@@ -44,7 +44,7 @@
             android:textSize="18sp"
             android:lineSpacingExtra="7sp"
             android:gravity="center_vertical"
-            app:layout_constraintWidth_percent="0.15"
+            app:layout_constraintWidth_percent="0.18"
             app:layout_constraintHeight_percent="0.04"
             app:layout_constraintLeft_toRightOf="@+id/fontName"
             app:layout_constraintRight_toRightOf="parent"

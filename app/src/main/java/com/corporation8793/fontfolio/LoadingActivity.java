@@ -65,16 +65,6 @@ public class LoadingActivity extends AppCompatActivity {
                     case 0:
                         if(cnt<230){
                             cnt++;
-//                            progressBar.getProgressDrawable().setColorFilter(Color.RED, PorterDuff.Mode.SRC_IN);
-//                            if(cnt < 15){
-//                                progressBar.getProgressDrawable().setColorFilter(Color.WHITE, PorterDuff.Mode.SRC_IN);
-//                            }else if(cnt <= 50){
-//                                progressBar.getProgressDrawable().setColorFilter(Color.parseColor("#D5D5D5"), PorterDuff.Mode.SRC_IN);
-//                            } else if(cnt <=100){
-//                                progressBar.getProgressDrawable().setColorFilter(Color.GRAY, PorterDuff.Mode.SRC_IN);
-//                            }else{
-//                                progressBar.getProgressDrawable().setColorFilter(Color.BLACK, PorterDuff.Mode.SRC_IN);
-//                            }
                             int value = map(cnt,0,230,0,255);
 
                                 progressBar.getProgressDrawable().setAlpha(value);
@@ -91,15 +81,9 @@ public class LoadingActivity extends AppCompatActivity {
                     case 1:
                         sendProgressMessage();
                         break;
-
-
                 }
-
             }
         };
-
-
-
     }
 
     public void sendProgressMessage(){

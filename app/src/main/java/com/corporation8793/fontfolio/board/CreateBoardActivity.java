@@ -242,10 +242,6 @@ public class CreateBoardActivity extends AppCompatActivity {
                     Bundle extras = data.getExtras(); // Bitmap으로 컨버전
                     Bitmap imageBitmap = (Bitmap) extras.get("data");
 
-//                    InputStream in = getContentResolver().openInputStream(data.getData());
-//
-//                    Bitmap img = BitmapFactory.decodeStream(in);
-//                    in.close();
 
                     Drawable drawable = new BitmapDrawable(imageBitmap);
                     if (drawable == null)

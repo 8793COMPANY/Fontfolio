@@ -86,10 +86,7 @@ class FontAdapter(val context: Context, val activity: FragmentActivity?) : Recyc
             Fontfolio().changeFontOfTextView(activity, font_name, font.fontName)
         }
 
-
     }
-
-
 
     fun setItemViewType(viewType: Int){
         this.viewType = viewType

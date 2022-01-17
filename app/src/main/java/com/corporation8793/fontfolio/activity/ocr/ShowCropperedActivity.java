@@ -354,7 +354,7 @@ public class ShowCropperedActivity extends AppCompatActivity {
             for (int i=0; i<arrays.length; i++){
                 AnalysisItem item = new AnalysisItem();
                 item.setName(fontNames[i]);
-                item.setPercent(String.format("%.2f", arrays[i]));
+                item.setPercent(String.format("%.2f", arrays[i]*100));
                 mList.add(item);
             }
 

@@ -58,7 +58,6 @@ public class RecyclerBoardAdapter extends RecyclerView.Adapter<RecyclerBoardAdap
         holder.itemView.getLayoutParams().height = 85;
         holder.itemView.requestLayout();
 
-
     }
 
     // getItemCount() - 전체 데이터 갯수 리턴.
