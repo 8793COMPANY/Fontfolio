@@ -1,6 +1,8 @@
 package com.corporation8793.fontfolio.analysis;
 
+import android.app.Activity;
 import android.content.Context;
+import android.content.res.Resources;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -13,6 +15,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.corporation8793.fontfolio.R;
 import com.corporation8793.fontfolio.common.Fontfolio;
+import com.corporation8793.fontfolio.library.room.entity.font.Font;
 
 import java.util.ArrayList;
 
@@ -20,6 +23,7 @@ public class FontAnalysisAdapter extends RecyclerView.Adapter<FontAnalysisAdapte
 
     private ArrayList<AnalysisItem> mData = null ;
     String msg;
+    Activity activity;
 
     // 아이템 뷰를 저장하는 뷰홀더 클래스.
     public class ViewHolder extends RecyclerView.ViewHolder {
@@ -43,9 +47,10 @@ public class FontAnalysisAdapter extends RecyclerView.Adapter<FontAnalysisAdapte
     }
 
     // 생성자에서 데이터 리스트 객체를 전달받음.
-    public FontAnalysisAdapter(ArrayList<AnalysisItem> list,String msg) {
+    public FontAnalysisAdapter(ArrayList<AnalysisItem> list, String msg, Activity activity) {
         mData = list ;
         this.msg = msg;
+        this.activity = activity;
     }
 
     // onCreateViewHolder() - 아이템 뷰를 위한 뷰홀더 객체 생성하여 리턴.
@@ -69,13 +74,20 @@ public class FontAnalysisAdapter extends RecyclerView.Adapter<FontAnalysisAdapte
 
         if(msg != null) {
             if (msg.trim().equals("")){
-                holder.content.setText("agent orange");
+                holder.content.setText("Fontfolio");
             } else{
                 holder.content.setText(msg);
             }
         } else {
-            msg = "null";
+            msg = "Fontfolio";
         }
+
+//        Resources res = activity.getResources();
+//        String pkg = activity.getPackageName();
+//
+//        holder.content.setTypeface(res.getFont(res.getIdentifier(
+//                mData.get(position).name, "font", pkg
+//        )));
 
 //        holder.like_font_btn.setOnClickListener(v->{
 //            if (holder.like_font_btn.isSelected()){

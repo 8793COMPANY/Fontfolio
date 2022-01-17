@@ -1,5 +1,6 @@
 package com.corporation8793.fontfolio.activity.ocr;
 
+import android.app.Activity;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.graphics.Bitmap;
@@ -21,6 +22,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.util.Log;
 import android.util.Pair;
+import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -32,6 +34,9 @@ import com.corporation8793.fontfolio.analysis.AnalysisItem;
 import com.corporation8793.fontfolio.analysis.FontAnalysisAdapter;
 import com.corporation8793.fontfolio.board.BoardItem;
 import com.corporation8793.fontfolio.common.Fontfolio;
+import com.corporation8793.fontfolio.library.room.entity.font.Font;
+import com.corporation8793.fontfolio.library.room.entity.font.FontClassification;
+import com.corporation8793.fontfolio.library.room.entity.font.FontStyleInformation;
 import com.corporation8793.fontfolio.recylcerview.FontItem;
 import com.googlecode.tesseract.android.TessBaseAPI;
 import com.corporation8793.fontfolio.library.ocr.utils.*;
@@ -56,6 +61,7 @@ import java.util.Random;
 public class ShowCropperedActivity extends AppCompatActivity {
 
     private              Context context;
+    private              Activity activity;
     // sd 카드 경로
     private static       String  LANGUAGE_PATH = "";
     // 언어 식별 (assets\tessdata\ 경로의 OCR 파일명)
@@ -67,6 +73,13 @@ public class ShowCropperedActivity extends AppCompatActivity {
     private              Button    back_btn;
     private              Button    info_btn;
     private              RecyclerView font_analysis_result;
+
+    private              Font superiorFont;
+    private              TextView fc_badge_text;
+    private              TextView fs_badge_text;
+    private              TextView fsi_badge_text;
+    private              LinearLayout ofl_badge;
+    private              LinearLayout paid_badge;
 
     private int    width;
     private int    height;
@@ -122,6 +135,7 @@ public class ShowCropperedActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_show_croppered);
         context = this;
+        activity = this;
         LANGUAGE_PATH = getExternalFilesDir("") + "/";
         Log.e("---------", LANGUAGE_PATH);
 
@@ -133,6 +147,8 @@ public class ShowCropperedActivity extends AppCompatActivity {
         initTess();
         initClassifier();
 
+//        Fontfolio.list.parallelStream().filter(p->p.getFontName().equals(mData.get(position).name)).findAny().get().getFontCopyrightHolder()
+
 
 //        String outString = String.format(Locale.ENGLISH, "%d, %.0f%%", result.first, result.second * 100.0f);
     }
@@ -143,6 +159,13 @@ public class ShowCropperedActivity extends AppCompatActivity {
         back_btn = findViewById(R.id.back_btn);
         info_btn = findViewById(R.id.info_btn);
         font_analysis_result = findViewById(R.id.analysis_result);
+
+
+        fc_badge_text = findViewById(R.id.fc_badge_text);
+        fs_badge_text = findViewById(R.id.fs_badge_text);
+        fsi_badge_text = findViewById(R.id.fsi_badge_text);
+        ofl_badge = findViewById(R.id.ofl_badge);
+        paid_badge = findViewById(R.id.paid_badge);
 
         back_btn.setOnClickListener(v -> finish());
 
@@ -168,7 +191,7 @@ public class ShowCropperedActivity extends AppCompatActivity {
     }
 
     private void initRecyclerView(){
-        adapter = new FontAnalysisAdapter(mList, result);
+        adapter = new FontAnalysisAdapter(mList, result, activity);
         font_analysis_result.setAdapter(adapter);
         font_analysis_result.setLayoutManager(new LinearLayoutManager(this));
         DividerItemDecoration dividerItemDecoration = new DividerItemDecoration(this, LinearLayout.VERTICAL);
@@ -335,17 +358,67 @@ public class ShowCropperedActivity extends AppCompatActivity {
                 mList.add(item);
             }
 
-            Collections.sort(mList, new Comparator<AnalysisItem>() {
-                @Override
-                public int compare(AnalysisItem b1, AnalysisItem b2) {
-                    return b2.getPercent().compareTo(b1.getPercent());
-                }
-            });
-
+            Collections.sort(mList, (b1, b2) -> b2.getPercent().compareTo(b1.getPercent()));
 
             Log.e("initClassifier","end");
+
+            superiorFont = Fontfolio.list.stream()
+                    .filter(font -> font.getFontName().equals(mList.get(0).getName()))
+                    .findAny()
+                    .orElse(null);
+
+            Log.e("superiorFont","" + superiorFont.getFontName());
+
+            fontClassification();
         } catch (Exception e) {
             Log.d("initClassifier", "IOException");
+        }
+    }
+
+    private void fontClassification() {
+        if (superiorFont != null) {
+            FontClassification fontClassification = superiorFont.getFontClassification();
+            String fontStyle = superiorFont.getFontStyle();
+            FontStyleInformation fontStyleInformation = superiorFont.getFontStyleInformation();
+            Boolean isOFL = superiorFont.getFontLicense().getOFL();
+
+            // fontClassification
+            if (fontClassification.getSerif()) {
+                fc_badge_text.setText("Serif");
+            } else if (fontClassification.getSans_Serif()) {
+                fc_badge_text.setText("Sans Serif");
+            } else if (fontClassification.getSlab_Serif()) {
+                fc_badge_text.setText("Slab Serif");
+            } else if (fontClassification.getDisplay()) {
+                fc_badge_text.setText("Display");
+            } else if (fontClassification.getHand_Written()) {
+                fc_badge_text.setText("Hand Written");
+            } else if (fontClassification.getCalligraphy()) {
+                fc_badge_text.setText("Calligraphy");
+            } else if (fontClassification.getScript()) {
+                fc_badge_text.setText("Script");
+            } else {
+                fc_badge_text.setText("Unknown Class");
+            }
+
+            // fontStyle
+            fs_badge_text.setText(fontStyle);
+
+            // fontStyleInformation
+            if (fontStyleInformation.getOriginal()) {
+                fsi_badge_text.setText("Original");
+            } else if (fontStyleInformation.getNormal()) {
+                fsi_badge_text.setText("Normal");
+            } else {
+                fsi_badge_text.setText("Unknown Style Information");
+            }
+
+            // isOFL
+            if (isOFL) {
+                paid_badge.setVisibility(View.GONE);
+            } else {
+                ofl_badge.setVisibility(View.GONE);
+            }
         }
     }
 }
