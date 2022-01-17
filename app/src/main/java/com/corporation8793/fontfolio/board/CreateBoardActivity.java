@@ -8,6 +8,7 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
+import android.media.Image;
 import android.os.Bundle;
 import android.provider.MediaStore;
 import android.text.Editable;
@@ -45,7 +46,9 @@ public class CreateBoardActivity extends AppCompatActivity {
 
     Switch secret_check;
 
-    String fontName = "";
+    String fontName = "none";
+    int number =3;
+    Bitmap bitmapDrawable;
 
 
     @Override
@@ -72,6 +75,10 @@ public class CreateBoardActivity extends AppCompatActivity {
             fontName = getIntent().getStringExtra("fontName");
             font_name_input_box.setText(fontName);
             font_name_input_box.setEnabled(false);
+        }else{
+            fontName = "Abel-Regular";
+            font_name_input_box.setText(fontName);
+            font_name_input_box.setEnabled(false);
         }
 
 
@@ -84,6 +91,8 @@ public class CreateBoardActivity extends AppCompatActivity {
         fontfolio = new Fontfolio();
         fontfolio.getInstance(this);
 
+        selectBoard(board_icon_view1);
+
 
         board_icon_view1.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -91,6 +100,7 @@ public class CreateBoardActivity extends AppCompatActivity {
                 // 현재 선택된 별을 가져온다
                 initBoardImage();
                 selectBoard(board_icon_view1);
+                number = 3;
             }
         });
 
@@ -100,6 +110,7 @@ public class CreateBoardActivity extends AppCompatActivity {
                 // 현재 선택된 별을 가져온다
                 initBoardImage();
                 selectBoard(board_icon_view2);
+                number = 4;
             }
         });
 
@@ -109,6 +120,7 @@ public class CreateBoardActivity extends AppCompatActivity {
                 // 현재 선택된 별을 가져온다
                 initBoardImage();
                 selectBoard(board_icon_view3);
+                number = 5;
             }
         });
 
@@ -216,8 +228,9 @@ public class CreateBoardActivity extends AppCompatActivity {
                     Bitmap img = BitmapFactory.decodeStream(in);
                     in.close();
                     Drawable drawable = new BitmapDrawable(img);
+                    bitmapDrawable = img;
                     get_picture_view.setBackground(drawable);
-
+                    number = 2;
 
 
                 }catch (Exception e){
@@ -235,19 +248,28 @@ public class CreateBoardActivity extends AppCompatActivity {
 //                    in.close();
 
                     Drawable drawable = new BitmapDrawable(imageBitmap);
+                    if (drawable == null)
+                        Log.e("in","null");
+                    bitmapDrawable = imageBitmap;
                     take_picture_view.setBackground(drawable);
-
+                    number = 1;
             }
         }else if(resultCode == RESULT_CANCELED){
 
         }
     }
 
-    public byte[] getByteArrayFromDrawable(Bitmap bitmap){
-        ByteArrayOutputStream stream = new ByteArrayOutputStream();
+    public Bitmap convertBitmap(ImageView imageView){
+        BitmapDrawable drawable = (BitmapDrawable) imageView.getDrawable();
+        Bitmap bitmap = drawable.getBitmap();
+        return bitmap;
+    }
 
-        byte[] data = stream.toByteArray();
-        return data;
+    public byte[] getByteArrayFromDrawable(Bitmap bitmap){
+        ByteArrayOutputStream stream = new ByteArrayOutputStream() ;
+        bitmap.compress( Bitmap.CompressFormat.PNG, 100, stream);
+        byte[] byteArray = stream.toByteArray() ;
+        return byteArray ;
 
     }
 
@@ -262,7 +284,29 @@ public class CreateBoardActivity extends AppCompatActivity {
         @Override
         public void run() {
             Log.e("secret_check",secret_check.isChecked()+"");
-            Board board = new Board(fontfolio.db.boardDao().getAll().size(),font_name_input_box.getText().toString(), board_name_input_box.getText().toString(),secret_check.isChecked(),null);
+            byte [] image = null;
+            Log.e("number",number+"");
+            switch (number){
+                case 1:
+                    image = getByteArrayFromDrawable(bitmapDrawable);
+                    break;
+                case 2:
+                    image = getByteArrayFromDrawable(bitmapDrawable);
+                    break;
+                case 3:
+                    Bitmap icon = BitmapFactory.decodeResource(getResources(), R.drawable.board_image_heart_icon);
+                    image = getByteArrayFromDrawable(icon);
+                    break;
+                case 4:
+                    Bitmap icon2 = BitmapFactory.decodeResource(getResources(), R.drawable.board_image_star_icon);
+                    image = getByteArrayFromDrawable(icon2);
+                    break;
+                case 5:
+                    Bitmap icon3 = BitmapFactory.decodeResource(getResources(), R.drawable.board_image_folder_icon);
+                    image = getByteArrayFromDrawable(icon3);
+                    break;
+            }
+            Board board = new Board(fontfolio.db.boardDao().getAll().size(),font_name_input_box.getText().toString(), board_name_input_box.getText().toString(),secret_check.isChecked(),image);
             fontfolio.db.boardDao().insertAll(board);
         }
     }

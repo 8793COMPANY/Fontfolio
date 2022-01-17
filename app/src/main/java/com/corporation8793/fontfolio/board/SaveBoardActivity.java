@@ -5,6 +5,10 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.graphics.drawable.BitmapDrawable;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.util.Log;
 import android.widget.Button;
@@ -35,12 +39,14 @@ public class SaveBoardActivity extends AppCompatActivity {
         create_btn = findViewById(R.id.create_btn);
         cancel_btn = findViewById(R.id.cancel_btn);
 
-        mAdapter = new RecyclerBoardAdapter(mList);
-        save_board.setAdapter(mAdapter);
-
         InsertRunnable insertRunnable = new InsertRunnable();
         Thread addThread = new Thread(insertRunnable);
         addThread.start();
+
+        mAdapter = new RecyclerBoardAdapter(getApplicationContext(),mList);
+        save_board.setAdapter(mAdapter);
+
+
 
         save_board.setLayoutManager(new LinearLayoutManager(this)) ;
 
@@ -68,29 +74,40 @@ public class SaveBoardActivity extends AppCompatActivity {
     }
 
 
-    public void addItem(int icon, String title) {
+    public void addItem(String font, Drawable icon, String title) {
         BoardItem item = new BoardItem();
 
+        item.setFont_name(font);
         item.setBoard_image(icon);
         item.setBoard_name(title);
 
         mList.add(item);
     }
 
+    public Bitmap byteArrayToBitmap(byte [] b) {
+        Bitmap bmp = BitmapFactory.decodeByteArray(b, 0, b.length);
+        return bmp;
+    }
     class InsertRunnable implements Runnable {
 
         @Override
         public void run() {
-            addItem(R.drawable.board_image_heart_icon,"Apple Design FOnt");
-            addItem(R.drawable.board_image_heart_icon,"Favorites Font");
-            addItem(R.drawable.board_image_heart_icon,"Free commercial font");
-            addItem(R.drawable.board_image_heart_icon,"My Design Project Font");
+            addItem("Abel-Regular" ,getDrawable(R.drawable.board_image_heart_icon),"Apple Design FOnt");
+            addItem("Abel-Regular" ,getDrawable(R.drawable.board_image_heart_icon),"Favorites Font");
+            addItem("Abel-Regular" ,getDrawable(R.drawable.board_image_heart_icon),"Free commercial font");
+            addItem("Abel-Regular" ,getDrawable(R.drawable.board_image_heart_icon),"My Design Project Font");
 
             int size = fontfolio.db.boardDao().getAll().size();
+            Log.e("size",size+"");
             for (int i=0; i<size; i++){
-                addItem(R.drawable.board_image_heart_icon,fontfolio.db.boardDao().getAll().get(i).getBoardName().toString());
+                Drawable drawable = new BitmapDrawable(byteArrayToBitmap(fontfolio.db.boardDao().getAll().get(i).getImage()));
+                addItem(fontfolio.db.boardDao().getAll().get(i).getFontName(),
+                        drawable,
+                        fontfolio.db.boardDao().getAll().get(i).getBoardName().toString());
             }
+            mAdapter.notifyDataSetChanged();
         }
+
     }
 
     @Override

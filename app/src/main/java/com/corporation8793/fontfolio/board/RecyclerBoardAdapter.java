@@ -1,6 +1,8 @@
 package com.corporation8793.fontfolio.board;
 
 import android.content.Context;
+import android.content.Intent;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -10,15 +12,18 @@ import android.widget.TextView;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.corporation8793.fontfolio.R;
+import com.corporation8793.fontfolio.activity.FontInformation;
 
 import java.util.ArrayList;
 
 public class RecyclerBoardAdapter extends RecyclerView.Adapter<RecyclerBoardAdapter.ViewHolder> {
     private ArrayList<BoardItem> mData = null ;
+    Context context;
 
     // 생성자에서 데이터 리스트 객체를 전달받음.
-    RecyclerBoardAdapter(ArrayList<BoardItem> list) {
+    RecyclerBoardAdapter(Context context, ArrayList<BoardItem> list) {
         mData = list ;
+        this.context = context;
     }
 
     // onCreateViewHolder() - 아이템 뷰를 위한 뷰홀더 객체 생성하여 리턴.
@@ -38,14 +43,20 @@ public class RecyclerBoardAdapter extends RecyclerView.Adapter<RecyclerBoardAdap
     public void onBindViewHolder(RecyclerBoardAdapter.ViewHolder holder, int position) {
 
         BoardItem item = mData.get(position) ;
-
-        holder.icon.setBackgroundResource(item.getBoard_image()); ;
+        Log.e("hi",item.getFont_name());
+        holder.icon.setBackground(item.getBoard_image());
         holder.title.setText(item.getBoard_name()) ;
+        holder.itemView.setOnClickListener(v->{
+            Log.e("item", "click!");
+            Log.e("item",item.getFont_name());
+            Intent intent = new Intent(context, FontInformation.class);
+            intent.putExtra("fontName", item.getFont_name());
+            intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+            context.startActivity(intent);
+        });
 
-
-        holder.itemView.getLayoutParams().height = 75;
+        holder.itemView.getLayoutParams().height = 85;
         holder.itemView.requestLayout();
-
 
 
     }
