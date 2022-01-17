@@ -10,6 +10,7 @@ import android.graphics.BitmapFactory;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
+import android.os.Handler;
 import android.util.Log;
 import android.widget.Button;
 
@@ -71,10 +72,13 @@ public class SaveBoardActivity extends AppCompatActivity {
         cancel_btn.setOnClickListener(v->{
             finish();
         });
+
+        mAdapter.notifyDataSetChanged();
     }
 
 
     public void addItem(String font, Drawable icon, String title) {
+        Log.e("addItem","addItem");
         BoardItem item = new BoardItem();
 
         item.setFont_name(font);
@@ -103,17 +107,25 @@ public class SaveBoardActivity extends AppCompatActivity {
                 Drawable drawable = new BitmapDrawable(byteArrayToBitmap(fontfolio.db.boardDao().getAll().get(i).getImage()));
                 addItem(fontfolio.db.boardDao().getAll().get(i).getFontName(),
                         drawable,
-                        fontfolio.db.boardDao().getAll().get(i).getBoardName().toString());
+                        fontfolio.db.boardDao().getAll().get(i).getBoardName());
             }
-            mAdapter.notifyDataSetChanged();
+
+            runOnUiThread(new Runnable() {
+                @Override
+                public void run() {
+                    mAdapter.notifyDataSetChanged();
+                }
+            });
+
         }
 
     }
 
+
     @Override
     protected void onResume() {
         super.onResume();
-
+//        mAdapter.notifyDataSetChanged();
     }
 
     @Override
@@ -126,7 +138,9 @@ public class SaveBoardActivity extends AppCompatActivity {
             InsertRunnable insertRunnable = new InsertRunnable();
             Thread addThread = new Thread(insertRunnable);
             addThread.start();
-            mAdapter.notifyDataSetChanged();
 
+//            mAdapter.notifyDataSetChanged();
     }
+
+
 }
