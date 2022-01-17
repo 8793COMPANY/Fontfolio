@@ -16,6 +16,7 @@ import android.text.TextWatcher;
 import android.text.style.ForegroundColorSpan;
 import android.text.style.RelativeSizeSpan;
 import android.text.style.StyleSpan;
+import android.util.Log;
 import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
@@ -172,7 +173,8 @@ public class AppLoginActivity  extends AppCompatActivity {
                     input_cancel_btn.setVisibility(View.VISIBLE);
                 }else{
                     input_cancel_btn.setVisibility(View.INVISIBLE);
-                    email_error_msg.setVisibility(View.INVISIBLE);
+                    email_error_msg.setBackgroundResource(0);
+//                    email_error_msg.setVisibility(View.INVISIBLE);
                 }
             }
         });
@@ -193,6 +195,7 @@ public class AppLoginActivity  extends AppCompatActivity {
             @Override
             public void afterTextChanged(Editable s) {
                 if (email_input_box.getText().toString().trim().equals("")){
+                    Log.e("in","check");
                     email_error_msg.setBackgroundResource(R.drawable.login_error1);
                 }
             }
