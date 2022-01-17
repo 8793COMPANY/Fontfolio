@@ -188,6 +188,136 @@ android:layout_height="match_parent">
         </LinearLayout>
 
         <!-- TODO : AI로 폰트스타일 찾은걸로 폰트 속성 뱃지 표시하기 -->
+        <LinearLayout
+            android:id="@+id/badge_area_style"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/ocr_result_div"
+            android:layout_marginTop="10dp"
+            android:orientation="horizontal">
+
+            <LinearLayout
+                android:id="@+id/fc_badge"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/xml_rounding_btn_default"
+                android:backgroundTint="#709365">
+
+                <TextView
+                    android:id="@+id/fc_badge_text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginVertical="1.5dp"
+                    android:layout_marginHorizontal="10dp"
+                    android:gravity="center"
+                    android:textStyle="bold"
+                    android:text="Sans Serif"
+                    android:textColor="#FFF"
+                    android:textSize="13sp"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/fs_badge"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/xml_rounding_btn_default"
+                android:layout_marginHorizontal="5dp"
+                android:backgroundTint="#f0cb4d">
+
+                <TextView
+                    android:id="@+id/fs_badge_text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginVertical="1.5dp"
+                    android:layout_marginHorizontal="10dp"
+                    android:gravity="center"
+                    android:textStyle="bold"
+                    android:text="Grotesque"
+                    android:textColor="#B3000000"
+                    android:textSize="13sp"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/fsi_badge"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/xml_rounding_btn_default"
+                android:backgroundTint="#1a000000">
+
+                <TextView
+                    android:id="@+id/fsi_badge_text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginVertical="1.5dp"
+                    android:layout_marginHorizontal="10dp"
+                    android:gravity="center"
+                    android:textStyle="bold"
+                    android:text="Original"
+                    android:textColor="#B3000000"
+                    android:textSize="13sp"/>
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/badge_area_paid"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/badge_area_style"
+            android:layout_marginTop="6.5dp"
+            android:orientation="horizontal">
+
+            <View
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_marginBottom="57.5dp"/>
+
+            <LinearLayout
+                android:id="@+id/ofl_badge"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/xml_rounding_btn_default"
+                android:backgroundTint="#29646f">
+
+                <TextView
+                    android:id="@+id/ofl_badge_text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginVertical="1.5dp"
+                    android:layout_marginHorizontal="10dp"
+                    android:gravity="center"
+                    android:textStyle="bold"
+                    android:text="OFL (Open Font License)"
+                    android:textColor="#FFF"
+                    android:textSize="13sp"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/paid_badge"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/xml_rounding_btn_default"
+                android:backgroundTint="#c70000">
+
+                <TextView
+                    android:id="@+id/paid_badge_text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginVertical="1.5dp"
+                    android:layout_marginHorizontal="10dp"
+                    android:gravity="center"
+                    android:textStyle="bold"
+                    android:text="Paid font"
+                    android:textColor="#FFF"
+                    android:textSize="13sp"/>
+            </LinearLayout>
+
+        </LinearLayout>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
