@@ -82,6 +82,7 @@ class HomeFragment(activity : MainActivity) : Fragment() {
         sortby = Fontfolio.prefs.getInt("sortBy",1)
         if(Fontfolio.prefs.getInt("sortBy",1) == 1){
             notifyItem()
+            fastScroller.visibility = View.INVISIBLE
         }else if(Fontfolio.prefs.getInt("sortBy",1) == 2){
             getLicenseFontList("OFL (Open Font License)")
         }else if(Fontfolio.prefs.getInt("sortBy",1) == 3){
@@ -90,12 +91,13 @@ class HomeFragment(activity : MainActivity) : Fragment() {
             getAllFonts()
         }
 
-        fastScroller.visibility = View.INVISIBLE
 
         font_list.adapter = mAdapter
         font_list.layoutManager = LinearLayoutManager(context)
         font_list.addItemDecoration(DividerItemDecoration(context,1))
 
+
+        fastScroller.textAppearanceRes = R.style.MyTextAppearance
         fastScroller.useDefaultScroller = false
         fastScroller.itemIndicatorSelectedCallbacks += object : FastScrollerView.ItemIndicatorSelectedCallback {
             override fun onItemIndicatorSelected(
@@ -105,6 +107,7 @@ class HomeFragment(activity : MainActivity) : Fragment() {
             ) {
                 // Handle scrolling
                 font_list.scrollToPosition(itemPosition)
+                Log.e("indicatorCenterY",indicatorCenterY.toString())
                 Log.e("itemPosition",itemPosition.toString())
             }
         }

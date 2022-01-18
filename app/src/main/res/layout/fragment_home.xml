@@ -72,5 +72,6 @@
         android:background="@drawable/rounding_item_box_default"
         android:backgroundTint="#1a000000"
         fastScrollerTextPadding="20"
+        app:layout_constraintWidth_percent="0.03"
         ></com.reddit.indicatorfastscroll.FastScrollerView>
 </androidx.constraintlayout.widget.ConstraintLayout>

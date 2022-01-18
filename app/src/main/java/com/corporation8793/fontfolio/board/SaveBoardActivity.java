@@ -54,13 +54,6 @@ public class SaveBoardActivity extends AppCompatActivity {
         RecyclerDecoration spaceDecoration = new RecyclerDecoration(15);
         save_board.addItemDecoration(spaceDecoration);
 
-//        addItem(R.drawable.board_image_heart_icon,"Apple Design FOnt");
-//        addItem(R.drawable.board_image_heart_icon,"Favorites Font");
-//        addItem(R.drawable.board_image_heart_icon,"Free commercial font");
-//        addItem(R.drawable.board_image_heart_icon,"My Design Project Font");
-//
-//        mAdapter.notifyDataSetChanged();
-
 
         create_btn.setOnClickListener(v->{
             Intent intent = new Intent(SaveBoardActivity.this, CreateBoardActivity.class);
