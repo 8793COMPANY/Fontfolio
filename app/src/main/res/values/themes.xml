@@ -34,4 +34,8 @@
         <item name="android:textOff">""</item>
 
     </style>
+
+    <style name="MyTextAppearance">
+        <item name="android:textSize">12dp</item>
+    </style>
 </resources>
