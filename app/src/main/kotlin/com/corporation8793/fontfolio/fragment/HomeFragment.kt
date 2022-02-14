@@ -8,6 +8,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import android.widget.TextView
+import androidx.core.view.get
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -106,9 +107,13 @@ class HomeFragment(activity : MainActivity) : Fragment() {
                 itemPosition: Int
             ) {
                 // Handle scrolling
+                val layoutManager = font_list.layoutManager as LinearLayoutManager
                 font_list.scrollToPosition(itemPosition)
-                Log.e("indicatorCenterY",indicatorCenterY.toString())
-                Log.e("itemPosition",itemPosition.toString())
+                layoutManager.scrollToPositionWithOffset(itemPosition,0)
+
+                Log.e("fast scroller indicatorCenterY",indicatorCenterY.toString())
+                Log.e("fast scroller itemPosition",itemPosition.toString())
+                Log.e("data check",datas.get(itemPosition).toString())
             }
         }
 

@@ -14,6 +14,7 @@ import android.widget.SectionIndexer
 import android.widget.TextView
 import androidx.constraintlayout.widget.Constraints
 import androidx.fragment.app.FragmentActivity
+import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.corporation8793.fontfolio.R
 import com.corporation8793.fontfolio.activity.FontInformation
@@ -153,6 +154,8 @@ class FontAdapter(val context: Context, val activity: FragmentActivity?) : Recyc
     }
 
     override fun getItemCount(): Int = datas.size
+
+
 
 
 
