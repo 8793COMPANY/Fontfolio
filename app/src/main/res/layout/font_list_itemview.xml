@@ -102,15 +102,17 @@
         app:layout_constraintHorizontal_bias="0.08"
         app:layout_constraintLeft_toRightOf="@+id/view_total_text"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/ranking">
+        app:layout_constraintTop_toTopOf="@+id/ranking"
+        android:gravity="center_vertical">
 
         <TextView
             android:id="@+id/font_license"
             android:layout_width="wrap_content"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:layout_marginLeft="10dp"
             android:layout_marginRight="10dp"
-            android:gravity="top"
+            android:lineSpacingExtra="8dp"
+            android:textSize="10dp"
             android:text="OFL"
             android:textColor="@color/white"></TextView>
 
@@ -144,18 +146,19 @@
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintWidth_percent="0.085"
-        app:layout_constraintHeight_percent="0.25"
+        app:layout_constraintDimensionRatio="1:1"
         ></androidx.appcompat.widget.AppCompatButton>
 
     <TextView
         android:id="@+id/copyright"
         android:layout_width="0dp"
-        android:layout_height="0dp"
+        android:layout_height="wrap_content"
         android:text="San Francisco PRO/Apple Development"
         android:textColor="#80000000"
         android:textSize="12dp"
         android:textStyle="normal"
-        app:layout_constraintHeight_percent="0.25"
+        android:layout_marginBottom="15dp"
+        app:layout_constraintHeight_percent="0.27"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0"

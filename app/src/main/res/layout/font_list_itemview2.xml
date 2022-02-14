@@ -17,12 +17,14 @@
         app:layout_constraintHorizontal_bias="0"
         app:layout_constraintVertical_bias="0.15"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintTop_toTopOf="parent"
+        android:gravity="center_vertical">
 
         <TextView
             android:id="@+id/font_license"
             android:layout_width="wrap_content"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="10dp"
             android:layout_marginLeft="10dp"
             android:layout_marginRight="10dp"
             android:gravity="top"
@@ -137,8 +139,8 @@
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintWidth_percent="0.085"
-        app:layout_constraintHeight_percent="0.25"
-        android:layout_marginRight="13dp"></androidx.appcompat.widget.AppCompatButton>
+        app:layout_constraintDimensionRatio="1:1"
+        ></androidx.appcompat.widget.AppCompatButton>
 
     <TextView
         android:id="@+id/copyright"
@@ -148,7 +150,7 @@
         android:textColor="#80000000"
         android:textSize="12dp"
         android:textStyle="normal"
-        app:layout_constraintHeight_percent="0.25"
+        app:layout_constraintHeight_percent="0.27"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0"
@@ -163,7 +165,7 @@
         android:layout_height="0dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHeight_percent="0.08"
+        app:layout_constraintHeight_percent="0.06"
         app:layout_constraintHorizontal_bias="0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/copyright"></View>
