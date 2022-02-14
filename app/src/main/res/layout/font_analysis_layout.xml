@@ -21,11 +21,10 @@
             android:layout_height="wrap_content"
             android:text="Manrope"
             android:textColor="@color/black"
-            android:textSize="18sp"
+            android:textSize="18dp"
             android:lineSpacingExtra="7sp"
             android:gravity="center_vertical"
             app:layout_constraintWidth_percent="0.65"
-            app:layout_constraintHeight_percent="0.04"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintBottom_toBottomOf="parent"
@@ -37,14 +36,14 @@
 
         <TextView
             android:id="@+id/percent"
-            android:layout_width="0dp"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="89.97%"
             android:textColor="#4D000000"
-            android:textSize="18sp"
+            android:textSize="18dp"
             android:lineSpacingExtra="7sp"
-            android:gravity="center_vertical"
-            app:layout_constraintWidth_percent="0.18"
+            android:gravity="center"
+            app:layout_constraintWidth_percent="0.2"
             app:layout_constraintHeight_percent="0.04"
             app:layout_constraintLeft_toRightOf="@+id/fontName"
             app:layout_constraintRight_toRightOf="parent"
@@ -54,28 +53,28 @@
             app:layout_constraintHorizontal_bias="0.1"
             ></TextView>
 
-        <Button
+        <androidx.appcompat.widget.AppCompatButton
             android:background="@drawable/font_info_heart_off"
             android:id="@+id/like_font_btn"
             android:layout_width="0dp"
             android:layout_height="0dp"
+            app:layout_constraintDimensionRatio="1:1"
             app:layout_constraintWidth_percent="0.065"
-            app:layout_constraintHeight_percent="1"
             app:layout_constraintLeft_toRightOf="@+id/percent"
             app:layout_constraintRight_toLeftOf="@+id/save_font_btn"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_bias="0"
             app:layout_constraintHorizontal_bias="0.75"
-            ></Button>
+            ></androidx.appcompat.widget.AppCompatButton>
 
         <Button
             android:background="@drawable/font_info_add_btn"
             android:id="@+id/save_font_btn"
             android:layout_width="0dp"
             android:layout_height="0dp"
+            app:layout_constraintDimensionRatio="1:1"
             app:layout_constraintWidth_percent="0.065"
-            app:layout_constraintHeight_percent="1"
             app:layout_constraintLeft_toRightOf="@+id/fontName"
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintBottom_toBottomOf="parent"

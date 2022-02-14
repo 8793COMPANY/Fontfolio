@@ -8,10 +8,7 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.FrameLayout
-import android.widget.LinearLayout
-import android.widget.SectionIndexer
-import android.widget.TextView
+import android.widget.*
 import androidx.constraintlayout.widget.Constraints
 import androidx.fragment.app.FragmentActivity
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -57,6 +54,7 @@ class FontAdapter(val context: Context, val activity: FragmentActivity?) : Recyc
         val copyright = itemView.findViewById<TextView>(R.id.copyright)
         val font_license = itemView.findViewById<TextView>(R.id.font_license)
         val font_license_background = itemView.findViewById<LinearLayout>(R.id.font_license_background)
+        val button = itemView.findViewById<Button>(R.id.button)
 //                val content = itemView.findViewById<TextView>(R.id.content)
 
         fun bind(font: Font){
@@ -147,8 +145,15 @@ class FontAdapter(val context: Context, val activity: FragmentActivity?) : Recyc
             intent.putExtra("fontName", datas[position].fontName)
             intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK
             context.startActivity(intent)
-
         })
+
+        holder.button.setOnClickListener({
+            var intent: Intent = Intent(activity, FontInformation::class.java)
+            intent.putExtra("fontName", datas[position].fontName)
+            intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK
+            context.startActivity(intent)
+        })
+
 
 
     }

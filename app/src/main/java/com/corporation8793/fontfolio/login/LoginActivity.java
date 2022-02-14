@@ -23,6 +23,8 @@ import com.corporation8793.fontfolio.SelectFontStyleActivity;
 public class LoginActivity extends AppCompatActivity {
     LinearLayout login_btn;
 
+    Button back_btn;
+
     View login_section, social_login_section;
     LinearLayout kakao_login_btn, facebook_login_btn, google_login_btn;
     TextView login_type_devide_section, pw;
@@ -31,6 +33,9 @@ public class LoginActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
+
+        back_btn = findViewById(R.id.login_back_btn);
+
         login_btn = findViewById(R.id.login_btn_area);
         login_section = findViewById(R.id.login_section);
         social_login_section = findViewById(R.id.social_login_section);
@@ -49,6 +54,10 @@ public class LoginActivity extends AppCompatActivity {
 //            overridePendingTransition(0, 0);
 
 
+        });
+
+        back_btn.setOnClickListener(v->{
+            finish();
         });
 
 

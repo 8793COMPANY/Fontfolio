@@ -41,6 +41,7 @@ class FontInformation : AppCompatActivity() {
 
     lateinit var desc : WebView
     lateinit var desc_result : TextView
+    var heart_check = false
 
     override fun onDestroy() {
         super.onDestroy()
@@ -85,6 +86,16 @@ class FontInformation : AppCompatActivity() {
 
             finish()
         }
+
+        font_info_heart.setOnClickListener({
+            if (heart_check) {
+                font_info_heart.setImageResource(R.drawable.font_info_heart_off)
+                heart_check = false
+            }else{
+                font_info_heart.setImageResource(R.drawable.font_info_heart_on)
+                heart_check = true
+            }
+        })
 
         search_bar_div.setOnClickListener {
             if (!Fontfolio.searchFragment.isDirectFromHomeFragment) {
