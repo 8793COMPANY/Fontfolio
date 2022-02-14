@@ -332,6 +332,7 @@ android:layout_height="match_parent">
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toRightOf="@id/guideline_parent_left"
         app:layout_constraintRight_toLeftOf="@id/guideline_parent_right"
+        android:overScrollMode="never"
         ></androidx.recyclerview.widget.RecyclerView>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

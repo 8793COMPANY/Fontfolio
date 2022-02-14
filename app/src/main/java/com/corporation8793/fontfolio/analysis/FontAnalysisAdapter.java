@@ -73,7 +73,12 @@ public class FontAnalysisAdapter extends RecyclerView.Adapter<FontAnalysisAdapte
     @Override
     public void onBindViewHolder(FontAnalysisAdapter.ViewHolder holder, int position) {
         holder.font_name.setText(mData.get(position).name) ;
-        holder.percent.setText(mData.get(position).percent+"%");
+        holder.like_font_btn.setSelected(false);
+        String percent = mData.get(position).percent;
+        if (percent.equals("100.00")){
+            percent = "100";
+        }
+        holder.percent.setText(percent+"%");
         holder.copyright.setText(mData.get(position).copyright);
 
         if(msg != null) {
@@ -109,13 +114,15 @@ public class FontAnalysisAdapter extends RecyclerView.Adapter<FontAnalysisAdapte
             holder.content.setTypeface(typeface);
         }
 
-//        holder.like_font_btn.setOnClickListener(v->{
-//            if (holder.like_font_btn.isSelected()){
-//                holder.like_font_btn.setBackgroundResource(R.drawable.font_info_heart_off);
-//            }else{
-//                holder.like_font_btn.setBackgroundResource(R.drawable.font_info);
-//            }
-//        });
+        holder.like_font_btn.setOnClickListener(v->{
+            if (holder.like_font_btn.isSelected()){
+                holder.like_font_btn.setBackgroundResource(R.drawable.font_info_heart_off);
+                holder.like_font_btn.setSelected(false);
+            }else{
+                holder.like_font_btn.setBackgroundResource(R.drawable.font_info_heart_on);
+                holder.like_font_btn.setSelected(true);
+            }
+        });
 
 
         int check = (int) Fontfolio.list.parallelStream().filter(p->p.getFontName().equals(mData.get(position).name)).count();
