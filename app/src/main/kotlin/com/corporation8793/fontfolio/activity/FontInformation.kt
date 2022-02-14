@@ -4,10 +4,12 @@ import android.content.Intent
 import android.graphics.Paint
 import android.net.Uri
 import android.os.Bundle
+import android.text.InputType
 import android.util.Log
 import android.view.View
 import android.webkit.WebView
 import android.webkit.WebViewClient
+import android.widget.EditText
 import android.widget.ImageView
 import android.widget.LinearLayout
 import android.widget.TextView
@@ -29,7 +31,7 @@ class FontInformation : AppCompatActivity() {
     lateinit var font_view_count : TextView
     lateinit var font_info_heart : ImageView
     lateinit var font_info_add_btn : ImageView
-    lateinit var font_preview : TextView
+    lateinit var font_preview : EditText
     lateinit var fc_badge_text : TextView
     lateinit var fs_badge_text : TextView
     lateinit var fsi_badge_text : TextView
@@ -135,6 +137,7 @@ class FontInformation : AppCompatActivity() {
             font_preview.visibility = View.GONE
         } else {
             Fontfolio().changeFontOfTextView(this, font_preview, font.fontName)
+            //font_preview.inputType = InputType.TYPE_TEXT_FLAG_NO_SUGGESTIONS
         }
 
         font.fontClassification.apply {

@@ -198,13 +198,18 @@
 
             </LinearLayout>
 
-            <TextView
+            <EditText
                 android:id="@+id/font_preview"
+                android:background="@android:color/transparent"
                 app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/font_sub_style"
                 android:layout_marginTop="20dp"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:inputType="textNoSuggestions|textMultiLine|textVisiblePassword"
+                android:scrollHorizontally="false"
+                android:hint="Type something :)"
                 android:text="The secret of a good life is to have the right loyalties and hold them in the right scale of values."
                 android:textColor="#000"
                 android:textSize="27sp"/>

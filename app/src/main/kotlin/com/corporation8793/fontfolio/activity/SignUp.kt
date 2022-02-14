@@ -30,6 +30,11 @@ import com.google.android.material.bottomsheet.BottomSheetDialog
 import com.google.android.material.progressindicator.LinearProgressIndicator
 
 class SignUp : AppCompatActivity() {
+    // global variable for signup
+    lateinit var email : String
+    lateinit var real_id : String
+    lateinit var pw : String
+
     // step1 - widget
     lateinit var progressBar : LinearProgressIndicator
     lateinit var main_div : ConstraintLayout
@@ -157,6 +162,9 @@ class SignUp : AppCompatActivity() {
     }
 
     fun step2() {
+        email = input_email.text.toString()
+        real_id = email.substringBefore('@')
+
         // step2 - init
         view_pw_btn = findViewById(R.id.view_pw_btn)
         view_pw_chk = findViewById(R.id.view_pw_chk)
@@ -243,13 +251,15 @@ class SignUp : AppCompatActivity() {
         input_name_div.visibility = View.VISIBLE
         view_pw_btn.visibility = View.GONE
 
+        input_name.setText(real_id)
+
         input_name_init.setOnClickListener {
             input_name.text.clear()
         }
 
-        input_name.requestFocus()
+        input_email.requestFocus()
         showKeyboard(this)
-        sign_up_name_error.visibility = View.VISIBLE
+        sign_up_name_error.visibility = View.GONE
 
         input_name_edit.visibility = View.GONE
         input_name_edit.setOnClickListener {
@@ -373,6 +383,8 @@ class SignUp : AppCompatActivity() {
 
     fun step4() {
         // step4 - init
+        hideKeyboard(this)
+
         actionBar = findViewById(R.id.actionBar)
         welcome_text_3 = findViewById(R.id.welcome_text_3)
         group_select_div = findViewById(R.id.group_select_div)
@@ -477,97 +489,87 @@ class SignUp : AppCompatActivity() {
 
         job_architecture.setOnClickListener {
             group_select_text.text = "Architecture / Facilities"
-            group_type_more_div.visibility = View.VISIBLE
+            group_type_more_div.visibility = View.INVISIBLE
             group_select_error.visibility = View.INVISIBLE
             bottomSheetDialog.dismiss()
-            group_type_more_input.requestFocus()
-            showKeyboard(this)
+            group_type_more_input.setText("none")
         }
         job_art.setOnClickListener {
             group_select_text.text = "Art / Design / Creation"
-            group_type_more_div.visibility = View.VISIBLE
+            group_type_more_div.visibility = View.INVISIBLE
             group_select_error.visibility = View.INVISIBLE
             bottomSheetDialog.dismiss()
-            group_type_more_input.requestFocus()
-            showKeyboard(this)
+            group_type_more_input.setText("none")
         }
         job_broadcast.setOnClickListener {
             group_select_text.text = "Broadcast / Culture"
-            group_type_more_div.visibility = View.VISIBLE
+            group_type_more_div.visibility = View.INVISIBLE
             group_select_error.visibility = View.INVISIBLE
             bottomSheetDialog.dismiss()
-            group_type_more_input.requestFocus()
-            showKeyboard(this)
+            group_type_more_input.setText("none")
         }
         job_business.setOnClickListener {
             group_select_text.text = "Business / Management"
-            group_type_more_div.visibility = View.VISIBLE
+            group_type_more_div.visibility = View.INVISIBLE
             group_select_error.visibility = View.INVISIBLE
             bottomSheetDialog.dismiss()
-            group_type_more_input.requestFocus()
-            showKeyboard(this)
+            group_type_more_input.setText("none")
         }
         job_chemistry.setOnClickListener {
             group_select_text.text = "Chemistry / Materials"
-            group_type_more_div.visibility = View.VISIBLE
+            group_type_more_div.visibility = View.INVISIBLE
             group_select_error.visibility = View.INVISIBLE
             bottomSheetDialog.dismiss()
-            group_type_more_input.requestFocus()
-            showKeyboard(this)
+            group_type_more_input.setText("none")
         }
         job_education.setOnClickListener {
             group_select_text.text = "Education / Research"
-            group_type_more_div.visibility = View.VISIBLE
+            group_type_more_div.visibility = View.INVISIBLE
             group_select_error.visibility = View.INVISIBLE
             bottomSheetDialog.dismiss()
-            group_type_more_input.requestFocus()
-            showKeyboard(this)
+            group_type_more_input.setText("none")
         }
         job_electronic.setOnClickListener {
             group_select_text.text = "Electronic / Communication"
-            group_type_more_div.visibility = View.VISIBLE
+            group_type_more_div.visibility = View.INVISIBLE
             group_select_error.visibility = View.INVISIBLE
             bottomSheetDialog.dismiss()
-            group_type_more_input.requestFocus()
-            showKeyboard(this)
+            group_type_more_input.setText("none")
         }
         job_food.setOnClickListener {
             group_select_text.text = "Food / Restaurant"
-            group_type_more_div.visibility = View.VISIBLE
+            group_type_more_div.visibility = View.INVISIBLE
             group_select_error.visibility = View.INVISIBLE
             bottomSheetDialog.dismiss()
-            group_type_more_input.requestFocus()
-            showKeyboard(this)
+            group_type_more_input.setText("none")
         }
         job_health.setOnClickListener {
             group_select_text.text = "Health / Medical"
-            group_type_more_div.visibility = View.VISIBLE
+            group_type_more_div.visibility = View.INVISIBLE
             group_select_error.visibility = View.INVISIBLE
             bottomSheetDialog.dismiss()
-            group_type_more_input.requestFocus()
-            showKeyboard(this)
+            group_type_more_input.setText("none")
         }
         job_it.setOnClickListener {
             group_select_text.text = "IT / Software / Solution"
-            group_type_more_div.visibility = View.VISIBLE
+            group_type_more_div.visibility = View.INVISIBLE
             group_select_error.visibility = View.INVISIBLE
             bottomSheetDialog.dismiss()
-            group_type_more_input.requestFocus()
-            showKeyboard(this)
+            group_type_more_input.setText("none")
         }
         job_sports.setOnClickListener {
             group_select_text.text = "Sports / Entertainment"
-            group_type_more_div.visibility = View.VISIBLE
+            group_type_more_div.visibility = View.INVISIBLE
             group_select_error.visibility = View.INVISIBLE
             bottomSheetDialog.dismiss()
-            group_type_more_input.requestFocus()
-            showKeyboard(this)
+            group_type_more_input.setText("none")
         }
         job_etc.setOnClickListener {
             group_select_text.text = "Etc & Direct input"
             group_type_more_div.visibility = View.VISIBLE
             group_select_error.visibility = View.INVISIBLE
             bottomSheetDialog.dismiss()
+            group_type_more_input.text.clear()
             group_type_more_input.requestFocus()
             showKeyboard(this)
         }

@@ -89,10 +89,13 @@ class QnAFragment(val mActivity : MainActivity) : Fragment() {
 
 
         action_bar_setting_btn.setOnClickListener {
+            // TODO : 아직 미구현 기능, 우선 막아주세요.
+            /*
             sortByDialog.show(
                 mActivity.supportFragmentManager,
                 sortByDialog.tag
             )
+            */
         }
 
         action_bar_add_btn.setOnClickListener {
