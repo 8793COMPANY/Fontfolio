@@ -64,6 +64,7 @@ class FontInformation : AppCompatActivity() {
         font_heart_count = findViewById(R.id.font_heart_count)
         font_view_count = findViewById(R.id.font_view_count)
         font_info_heart = findViewById(R.id.font_info_heart)
+        var font_info_heart_state = false
         font_info_add_btn = findViewById(R.id.font_info_add_btn)
         font_preview = findViewById(R.id.font_preview)
         fc_badge_text = findViewById(R.id.fc_badge_text)
@@ -79,6 +80,18 @@ class FontInformation : AppCompatActivity() {
         desc_result = findViewById(R.id.desc_result)
 
         val font = Fontfolio.list.filter { font -> font.fontName == intent.getStringExtra("fontName") }[0]
+
+        font_info_heart.setOnClickListener {
+            font_info_heart_state = !font_info_heart_state
+
+            if (font_info_heart_state) {
+                // ON
+                font_info_heart.setImageDrawable(resources.getDrawable(R.drawable.heart_on, theme))
+            } else {
+                // OFF
+                font_info_heart.setImageDrawable(resources.getDrawable(R.drawable.font_info_heart_off, theme))
+            }
+        }
 
         search_bar_back_btn.setOnClickListener {
             if (!Fontfolio.searchFragment.isDirectFromHomeFragment) {
@@ -99,7 +112,6 @@ class FontInformation : AppCompatActivity() {
                     }
                 }
             } else {
-                // TODO : Type something 구현 대기 중
             }
 
             finish()
