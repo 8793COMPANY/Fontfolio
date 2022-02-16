@@ -111,20 +111,12 @@ public class StartOcrActivity extends AppCompatActivity {
 
     void checkSelfPermission() {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {
-            if (!Environment.isExternalStorageManager()) {
-                finish();
-                Uri uri = Uri.parse("package:" + BuildConfig.APPLICATION_ID);
-                Toast.makeText(context, "권한을 허용해주세요", Toast.LENGTH_SHORT).show();
-                startActivity(new Intent(Settings.ACTION_MANAGE_APP_ALL_FILES_ACCESS_PERMISSION, uri));
-                finish();
+            if (ContextCompat.checkSelfPermission(this, PERMISSION_CAMERA) != PackageManager.PERMISSION_GRANTED) {
+                ActivityCompat.requestPermissions(this, new String[]{PERMISSION_CAMERA}, PERMISSIONS_REQUEST_CAMERA);
             } else {
-                if (ContextCompat.checkSelfPermission(this, PERMISSION_CAMERA) != PackageManager.PERMISSION_GRANTED) {
-                    ActivityCompat.requestPermissions(this, new String[]{PERMISSION_CAMERA}, PERMISSIONS_REQUEST_CAMERA);
-                } else {
-                    fontfolio.moveToActivity(this, TakePhoteActivity.class, true);
-                }
+                fontfolio.moveToActivity(this, TakePhoteActivity.class, true);
             }
-        }else {
+        } else {
             if (ContextCompat.checkSelfPermission(this, PERMISSION_CAMERA) != PackageManager.PERMISSION_GRANTED) {
                 ActivityCompat.requestPermissions(this, new String[]{PERMISSION_CAMERA}, PERMISSIONS_REQUEST_CAMERA);
             } else if (ContextCompat.checkSelfPermission(this, PERMISSION_WRITE_STORAGE) != PackageManager.PERMISSION_GRANTED) {

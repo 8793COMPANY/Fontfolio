@@ -54,43 +54,20 @@ class Join : AppCompatActivity() {
             val a_list = async { getList() }
             Fontfolio.list = a_list.await()
         }
-
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R && !Environment.isExternalStorageManager()) {
-            //val uri = Uri.parse("package:" + BuildConfig.APPLICATION_ID)
-            //startActivity(Intent(Settings.ACTION_MANAGE_APP_ALL_FILES_ACCESS_PERMISSION, uri))
-        }
         ActivityCompat.requestPermissions(this, PERMISSIONS, LOCATION_PERMISSION_REQUEST_CODE)
 
         take_to_experience.setOnClickListener {
-            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R && !Environment.isExternalStorageManager()) {
-                Toast.makeText(this, "서비스 이용을 위해 권한을 허용해주세요", Toast.LENGTH_SHORT).show()
-                val uri = Uri.parse("package:" + BuildConfig.APPLICATION_ID)
-                startActivity(Intent(Settings.ACTION_MANAGE_APP_ALL_FILES_ACCESS_PERMISSION, uri))
-            } else {
-                if (job.isCompleted) {
-                    fontfolio.moveToActivity(this, MainActivity::class.java, false)
-                }
+            if (job.isCompleted) {
+                fontfolio.moveToActivity(this, MainActivity::class.java, false)
             }
         }
 
         sign_up_btn.setOnClickListener {
-            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R && !Environment.isExternalStorageManager()) {
-                Toast.makeText(this, "서비스 이용을 위해 권한을 허용해주세요", Toast.LENGTH_SHORT).show()
-                val uri = Uri.parse("package:" + BuildConfig.APPLICATION_ID)
-                startActivity(Intent(Settings.ACTION_MANAGE_APP_ALL_FILES_ACCESS_PERMISSION, uri))
-            } else {
-                fontfolio.moveToActivity(this, SignUp::class.java, false)
-            }
+            fontfolio.moveToActivity(this, SignUp::class.java, false)
         }
 
         log_in_btn.setOnClickListener {
-            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R && !Environment.isExternalStorageManager()) {
-                Toast.makeText(this, "서비스 이용을 위해 권한을 허용해주세요", Toast.LENGTH_SHORT).show()
-                val uri = Uri.parse("package:" + BuildConfig.APPLICATION_ID)
-                startActivity(Intent(Settings.ACTION_MANAGE_APP_ALL_FILES_ACCESS_PERMISSION, uri))
-            } else {
-                fontfolio.moveToActivity(this, LoginActivity::class.java, false)
-            }
+            fontfolio.moveToActivity(this, LoginActivity::class.java, false)
         }
     }
 
