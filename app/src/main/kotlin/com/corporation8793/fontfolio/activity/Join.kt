@@ -21,12 +21,16 @@ import kotlinx.coroutines.*
 class Join : AppCompatActivity() {
     val PERMISSIONS = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {
         arrayOf(
-            android.Manifest.permission.CAMERA
+            android.Manifest.permission.CAMERA,
+            android.Manifest.permission.READ_EXTERNAL_STORAGE,
+            android.Manifest.permission.ACCESS_MEDIA_LOCATION
         )
     } else {
         arrayOf(
             android.Manifest.permission.CAMERA,
-            android.Manifest.permission.WRITE_EXTERNAL_STORAGE
+            android.Manifest.permission.WRITE_EXTERNAL_STORAGE,
+            android.Manifest.permission.READ_EXTERNAL_STORAGE,
+            android.Manifest.permission.ACCESS_MEDIA_LOCATION
         )
     }
     val LOCATION_PERMISSION_REQUEST_CODE = PERMISSIONS.size

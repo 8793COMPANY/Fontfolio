@@ -14,7 +14,9 @@ import android.hardware.SensorEvent;
 import android.hardware.SensorEventListener;
 import android.hardware.SensorManager;
 import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
+import android.os.Environment;
 import android.provider.MediaStore;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -40,6 +42,7 @@ import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.OutputStream;
+import java.util.Objects;
 
 /**
  * 포토 인터페이스
@@ -300,40 +303,63 @@ public class TakePhoteActivity extends AppCompatActivity implements CameraPrevie
      */
     private Uri insertImage(ContentResolver cr, String name, long dateTaken,
                             String directory, String filename, Bitmap source, byte[] jpegData) {
+        Uri imageUri;
         OutputStream outputStream = null;
-        String filePath = directory + filename;
-        try {
-            File dir = new File(directory);
-            if (!dir.exists()) {
-                dir.mkdirs();
+
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {
+            ContentValues contentValues = new ContentValues();
+            contentValues.put(MediaStore.MediaColumns.DISPLAY_NAME, "Image_"+".jpg");
+            contentValues.put(MediaStore.MediaColumns.MIME_TYPE, "image/jpeg");
+            contentValues.put(MediaStore.MediaColumns.RELATIVE_PATH, Environment.DIRECTORY_PICTURES + File.separator+"TestFolder");
+            imageUri = cr.insert(MediaStore.Images.Media.EXTERNAL_CONTENT_URI, contentValues);
+
+            try {
+                outputStream = cr.openOutputStream(Objects.requireNonNull(imageUri) );
+                source.compress(Bitmap.CompressFormat.JPEG,100,outputStream);
+                Objects.requireNonNull(outputStream);
+                Log.e(TAG, "insertImage : Image Saved");
+            } catch (Exception e) {
+                Log.e(TAG, "insertImage : Image Not Saved - " + e);
+                e.printStackTrace();
             }
-            File file = new File(directory, filename);
-            if (file.createNewFile()) {
-                outputStream = new FileOutputStream(file);
-                if (source != null) {
-                    source.compress(Bitmap.CompressFormat.JPEG, 100, outputStream);
-                } else {
-                    outputStream.write(jpegData);
+        } else {
+            // legacy method
+            String filePath = directory + filename;
+            try {
+                File dir = new File(directory);
+                if (!dir.exists()) {
+                    dir.mkdirs();
+                }
+                File file = new File(directory, filename);
+                if (file.createNewFile()) {
+                    outputStream = new FileOutputStream(file);
+                    if (source != null) {
+                        source.compress(Bitmap.CompressFormat.JPEG, 100, outputStream);
+                    } else {
+                        outputStream.write(jpegData);
+                    }
+                }
+            } catch (IOException e) {
+                Log.e(TAG, e.getMessage());
+                return null;
+            } finally {
+                if (outputStream != null) {
+                    try {
+                        outputStream.close();
+                    } catch (Throwable t) {
+                    }
                 }
             }
-        } catch (IOException e) {
-            Log.e(TAG, e.getMessage());
-            return null;
-        } finally {
-            if (outputStream != null) {
-                try {
-                    outputStream.close();
-                } catch (Throwable t) {
-                }
-            }
+            ContentValues values = new ContentValues(7);
+            values.put(MediaStore.Images.Media.TITLE, name);
+            values.put(MediaStore.Images.Media.DISPLAY_NAME, filename);
+            values.put(MediaStore.Images.Media.DATE_TAKEN, dateTaken);
+            values.put(MediaStore.Images.Media.MIME_TYPE, "image/jpeg");
+            values.put(MediaStore.Images.Media.DATA, filePath);
+            imageUri = cr.insert(IMAGE_URI, values);
         }
-        ContentValues values = new ContentValues(7);
-        values.put(MediaStore.Images.Media.TITLE, name);
-        values.put(MediaStore.Images.Media.DISPLAY_NAME, filename);
-        values.put(MediaStore.Images.Media.DATE_TAKEN, dateTaken);
-        values.put(MediaStore.Images.Media.MIME_TYPE, "image/jpeg");
-        values.put(MediaStore.Images.Media.DATA, filePath);
-        return cr.insert(IMAGE_URI, values);
+
+        return imageUri;
     }
 
     private void showTakePhotoLayout() {

@@ -146,6 +146,7 @@ public class ShowCropperedActivity extends AppCompatActivity {
         width = getIntent().getIntExtra("width", 0);
         height = getIntent().getIntExtra("height", 0);
         uri = getIntent().getData();
+        Log.e(TAG, "get uri info : " + uri);
 
         initView();
         initTess();
@@ -353,7 +354,7 @@ public class ShowCropperedActivity extends AppCompatActivity {
             classifier.init();
 
             Log.e("uri!!",uri+"");
-             Bitmap bitmapImage = getBitmapFromUri(uri);
+            Bitmap bitmapImage = getBitmapFromUri(uri);
 
             Bitmap bitmap = Bitmap.createScaledBitmap(bitmapImage, 128, 128, true);
             float [] arrays  = classifier.classify(bitmap);
